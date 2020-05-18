@@ -30,11 +30,11 @@ yarn add stimulus-use
 ## Modules and Controllers
 
 Sets of controllers arround the `Observer APIs`
-- [**Observers**](./docs/observers.md)
-  - [`useIntersection`, `IntersectionController`](./docs/useIntersection.md) &mdash; tracks the element's intersection and adds `appear`, `disapear` callbacks to your controller.
+- **Observers**
+  - [`useIntersection`, `IntersectionController`](./docs/use-intersection.md) &mdash; tracks the element's intersection and adds `appear`, `disapear` callbacks to your controller.
   - [`useResize`, `ResizeController`](./docs/use-resize.md) &mdash; tracks the element's size and adds a new lifecyle callback 'resized'.
 
-- [**Application**](./docs/application.md)
+- **Application**
   - [`useApplication, ApplicationController`](./docs/application-controller.md) &mdash; supercharged controller for your application.
 
 
