@@ -40,7 +40,7 @@ Sets of controllers arround the `Observer APIs`
 
 ## Extend or compose
 
-Stimulus use can be used in two maners: extending or composing
+Stimulus use can be used in two manners: extending or composing
 
 **Extending**
 
