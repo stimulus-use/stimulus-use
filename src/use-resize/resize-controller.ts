@@ -2,7 +2,7 @@ import { Controller, Context } from 'stimulus'
 import { useResize } from './use-resize'
 
 export class ResizeController extends Controller {
-  observer: ResizeObserver
+  observer!: ResizeObserver
 
   constructor(context: Context) {
     super(context)

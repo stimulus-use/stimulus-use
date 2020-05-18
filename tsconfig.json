@@ -2,20 +2,20 @@
   "compilerOptions": {
     "lib": ["dom", "es2015", "scripthost"],
     "noUnusedLocals": true,
-    // "strict": true,
+    "strict": true,
     "target": "es5",
     "composite": true,
     "declaration": true,
     "declarationMap": true,
     "module": "es2015",
     "moduleResolution": "node",
-    // "sourceMap": true,
+    "sourceMap": true,
     "outDir": "dist",
     "rootDir": "src",
-    "baseUrl": "."
-    // "paths": {
-    //   "scr/*": ["src/index.ts"]
-    // }
+    "baseUrl": ".",
+    "paths": {
+      "scr/*": ["src/index.ts"]
+    }
   },
-  // "include": ["./src/**/*.js", "./src/**/*.ts"]
+  "include": ["./src/**/*.js", "./src/**/*.ts"]
 }

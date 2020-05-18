@@ -19,6 +19,8 @@ export const useLazyLoad = (controller: LazyLoadController, options?: Intersecti
 
   const handleAppear = (entry: IntersectionObserverEntry) => {
     const src = controller.data.get('src')
+    if (!src) return
+
     const imageElement = <HTMLImageElement>controller.element
     controller.isLoading = true
     controller.loading && method('loading').call(controller, src)
@@ -29,7 +31,7 @@ export const useLazyLoad = (controller: LazyLoadController, options?: Intersecti
     imageElement.src = src
   }
 
-  const handleLoaded = src => {
+  const handleLoaded = (src: string) => {
     controller.isLoading = false
     controller.isLoaded = true
     controller.loading && method('loaded').call(controller, src)
