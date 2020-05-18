@@ -1,0 +1,14 @@
+{
+  "name": "stimulus-use",
+  "version": "0.1.5",
+  "description": "A collection of standard controllers and utilities for Stimulus",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/adrienpoly/stimulus-use.git"
+  },
+  "dependencies": {
+    "stimulus": "^1.1.1",
+    "stimulus-use": "^0.1.5"
+  }
+}

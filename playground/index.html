@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Playground Stimulus Intersection</title>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="bundle.js" async></script>
+  </head>
+  <body>
+    <div class="container mt-5">
+      <h1 class="mt-5">Example of using dispatch</h1>
+      <p>Communication between 2 controllers item_controller and cart_controller</p>
+      <div data-controller="cart" data-action="item:add->cart#refreshTotal" data-cart-counter="0" class="card">
+        <div class="card-body">
+          <div class="card card-body">
+            <ul>
+              <li data-controller="item" data-item-id="item-1" class="d-flex mb-3">
+                <span>item 1</span>
+                <button data-action="item#add" class="btn btn-primary btn-sm ml-3">Add</button>
+              </li>
+              <li data-controller="item" data-item-id="item-2" class="d-flex mb-3">
+                <span>item 2</span>
+                <button data-action="item#add" class="btn btn-primary btn-sm ml-3">Add</button>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="card-footer">
+          <span>Nb of items : </span>
+          <span data-target="cart.counterView">0</span>
+        </div>
+      </div>
+
+      <h1 class="mt-5">useSize</h1>
+      <p>Resize your window</p>
+      <div data-controller="resize" class="card">
+        <div class="card-body">
+          <span>width : </span>
+          <span data-target="resize.width"></span>
+        </div>
+      </div>
+
+      <h1 class="mt-5">useLazyLoad</h1>
+      <div class="row">
+        <img data-controller="lazy-load" data-lazy-load-src="https://loremflickr.com/200/200" style="min-height: 200px" class="img-fluid col-6 mb-2">
+        <img data-controller="lazy-load" data-lazy-load-src="https://loremflickr.com/201/201" style="min-height: 200px" class="img-fluid col-6 mb-2">
+        <img data-controller="lazy-load" data-lazy-load-src="https://loremflickr.com/202/202" style="min-height: 200px" class="img-fluid col-6 mb-2">
+        <img data-controller="lazy-load" data-lazy-load-src="https://loremflickr.com/203/203" style="min-height: 200px" class="img-fluid col-6 mb-2">
+        <img data-controller="lazy-load" data-lazy-load-src="https://loremflickr.com/204/204" style="min-height: 200px" class="img-fluid col-6 mb-2">
+        <img data-controller="lazy-load" data-lazy-load-src="https://loremflickr.com/205/205" style="min-height: 200px" class="img-fluid col-6 mb-2">
+      </div>
+
+      <h1 class="mt-5">Example of Stimulus intersection</h1>
+      <div style="max-height: 50vh; overflow-y: scroll">
+        <div style="height: 60vh"></div>
+        <div data-controller="appear" style="height: 30vh" class="d-flex align-items-center justify-content-center bg-info">
+
+        </div>
+        <div style="height: 60vh"></div>
+        <div data-controller="appear" style="height: 30rem; background-color: red;">
+          hello
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
