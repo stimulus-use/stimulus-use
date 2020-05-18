@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="assets/stimulus-use-logo.png" width="500" srcset="assets/stimulus-use-logo@2x.png 2x, assets/stimulus-use-logo@3x.png 3x" />
+  <img src="docs/assets/stimulus-use-logo.png" width="500" srcset="docs/assets/stimulus-use-logo@2x.png 2x, docs/assets/stimulus-use-logo@3x.png 3x" />
 </p>
 
 <p align="center">
