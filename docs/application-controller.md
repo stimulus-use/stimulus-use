@@ -1,6 +1,6 @@
 # useApplication
 
-This is a supercharged Stimlus Controller. You can extend all of your Stilmulus controllers from this one and access a few handy functions everywhere.
+This is a supercharged Stimulus Controller. You can extend all of your Stimulus controllers from this one and access a few handy functions everywhere.
 
 ## Usage
 
