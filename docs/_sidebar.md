@@ -8,5 +8,5 @@
 
 <br />
 
-* Applcation
+* Application
   * [useApplication](application-controller.md)
