@@ -1,0 +1,24 @@
+{
+  "files": [
+    "README.md"
+  ],
+  "imageSize": 100,
+  "commit": false,
+  "contributors": [
+    {
+      "login": "jonathan-s",
+      "name": "Jonathan Sundqvist",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/2124818?v=4",
+      "profile": "https://www.argpar.se",
+      "contributions": [
+        "doc"
+      ]
+    }
+  ],
+  "contributorsPerLine": 7,
+  "projectName": "stimulus-use",
+  "projectOwner": "stimulus-use",
+  "repoType": "github",
+  "repoHost": "https://github.com",
+  "skipCi": true
+}
