@@ -25,7 +25,7 @@ import { ApplicationController } from 'stimulus-use'
 export default class extends ApplicationController {
 
   connect() {
-    this.isPreview // true/flase if it is a Turbolinks preview
+    this.isPreview // true/false if it is a Turbolinks preview
     this.dispatch("hello") // helper to dispatch a custom event to other Stimulus controllers
   }
 }
@@ -33,7 +33,7 @@ export default class extends ApplicationController {
 
 ## Functions
 
-**`dispatch(name, eventArgs)`**: helper function to dispatch events to other Stimulus controller
+**`dispatch(name, eventArgs)`**: helper function to dispatch events to other Stimulus controllers
 
 **`getMeta(name)`**: return the value of a meta attribute
 
@@ -46,7 +46,7 @@ export default class extends ApplicationController {
 
 ## Example building a cart counter with the dispatch helper
 
-The Html markup. See the custom event `item:add` that the cart controller is listening to
+The HTML markup. See the custom event `item:add` that the cart controller is listening to
 
 ```html
 <div data-controller="cart"
@@ -58,7 +58,7 @@ The Html markup. See the custom event `item:add` that the cart controller is lis
   </button>
 
   <div>
-    <span>Nb of items : </span>
+    <span>No of items : </span>
     <span data-target="cart.counterView">0</span>
   </div>
 </div>
