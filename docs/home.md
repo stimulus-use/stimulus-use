@@ -16,8 +16,6 @@
 
 <br />
 
-## ✨ Features
-
 - **New lifecycle behaviors**: adds new standard behaviors to your Stimulus controllers.
 - **Composable**: compose at will different behaviors in a single controller.
 - **Modular**: built as ES6 modules, just import what you need and tree shaking will remove the rest.
@@ -25,7 +23,7 @@
 - **Tiny**: 1k gzip
 - **MIT Licensed**: free for personal and commercial use.
 
-## 🔧 Getting Started
+## Getting Started
 
 npm
 ```bash
@@ -37,7 +35,7 @@ yarn
 yarn add stimulus-use
 ```
 
-## 📦 Modules and Controllers
+## Modules and Controllers
 
 - **Observers**
 
