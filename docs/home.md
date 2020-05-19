@@ -3,10 +3,20 @@
 </p>
 
 <p align="center">
-  <b>A collection of composable behaviors for your Stimulus Controllers</b></br>
+  <b>A collection of composable behaviors for your Stimulus Controllers</b>
+  </br>
+  </br>
+  <img src="https://badgen.net/npm/v/stimulus-use" alt="npm version">
+  <a href="https://bundlephobia.com/result?p=stimulus-use" rel="nofollow">
+    <img src="https://badgen.net/bundlephobia/minzip/stimulus-use" alt="minified + gzip size">
+  </a>
+  <img src="https://badgen.net/npm/types/tslib" alt="types included">
+  <img src="https://badgen.net/npm/license/stimulus-use" alt="types included">
 </p>
 
 <br />
+
+## ✨ Features
 
 - **New lifecycle behaviors**: adds new standard behaviors to your Stimulus controllers.
 - **Composable**: compose at will different behaviors in a single controller.
@@ -15,7 +25,7 @@
 - **Tiny**: 1k gzip
 - **MIT Licensed**: free for personal and commercial use.
 
-## Getting Started
+## 🔧 Getting Started
 
 npm
 ```bash
@@ -27,12 +37,15 @@ yarn
 yarn add stimulus-use
 ```
 
-## Modules and Controllers
+## 📦 Modules and Controllers
 
-Sets of controllers arround the `Observer APIs`
 - **Observers**
-  - [`useIntersection`, `IntersectionController`](./docs/use-intersection.md) &mdash; tracks the element's intersection and adds `appear`, `disappear` callbacks to your controller.
-  - [`useResize`, `ResizeController`](./docs/use-resize.md) &mdash; tracks the element's size and adds a new lifecyle callback 'resized'.
+
+  Sets of controllers arround the `Observer APIs`
+  | useFunction/Controller| Description | NEW Callbacks |
+  |-----------------------|-------------|---------------------|
+  | [`useIntersection`](./docs/use-intersection.md) </br> `IntersectionController` | Tracks the element's intersection and adds **appear**, **disappear** callbacks to your controller.|`appear`</br> `disappear`|
+  |[`useResize`](./docs/use-resize.md) </br>`ResizeController`|Tracks the element's size and adds a new lifecyle callback **resized**.|`resized`|
 
 - **Application**
   - [`useApplication, ApplicationController`](./docs/application-controller.md) &mdash; supercharged controller for your application.
@@ -40,7 +53,7 @@ Sets of controllers arround the `Observer APIs`
 
 ## Extend or compose
 
-Stimulus use can be used in two manners: extending or composing
+Stimulus-use can be used in two manners: extending or composing
 
 **Extending**
 
@@ -79,6 +92,3 @@ export default class extends Controller {
   }
 }
 ```
-
-
-
