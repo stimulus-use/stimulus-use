@@ -19,7 +19,7 @@
 - **New lifecycle behaviors**: adds new standard behaviors to your Stimulus controllers.
 - **Composable**: compose at will different behaviors in a single controller.
 - **Modular**: built as ES6 modules, just import what you need and tree shaking will remove the rest.
-- **Typscript**: Types available, better autocompletion.
+- **Typescript**: Types available, better autocompletion.
 - **Tiny**: 1k gzip
 - **MIT Licensed**: free for personal and commercial use.
 
@@ -39,7 +39,7 @@ yarn add stimulus-use
 
 - **Observers**
 
-  Sets of controllers arround the `Observer APIs`
+  Sets of controllers around the `Observer APIs`
   | useFunction/Controller| Description | NEW Callbacks |
   |-----------------------|-------------|---------------------|
   | [`useIntersection`](./docs/use-intersection.md) </br> `IntersectionController` | Tracks the element's intersection and adds **appear**, **disappear** callbacks to your controller.|`appear`</br> `disappear`|
