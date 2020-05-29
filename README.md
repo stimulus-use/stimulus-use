@@ -35,11 +35,41 @@ yarn
 yarn add stimulus-use
 ```
 
+
+## Launch a local playground
+
+Play with Stimulus-use controllers locally before adding them to one of your projects.
+
+Fork and clone the repo (SSH):
+```bash
+git clone git@github.com:stimulus-use/stimulus-use.git
+```
+
+OR using HTTPS:
+```bash
+git clone https://github.com/stimulus-use/stimulus-use.git
+```
+
+Once in your local stimulus-use directory, run:
+```bash
+yarn yarn install
+```
+
+Then, build the library locally
+```bash
+yarn build
+```
+
+Launch the playground locally (available at http://localhost:8080/ by default):
+```bash
+yarn start
+```
+
 ## Modules and Controllers
 
 - **Observers**
 
-  Sets of controllers around the `Observer APIs`
+  This set of controllers is built around the [`Observer APIs`](https://developer.mozilla.org/en-US/docs/Web/API)
   | useFunction/Controller| Description | NEW Callbacks |
   |-----------------------|-------------|---------------------|
   | [`useIntersection`](./docs/use-intersection.md) </br> `IntersectionController` | Tracks the element's intersection and adds **appear**, **disappear** callbacks to your controller.|`appear`</br> `disappear`|
@@ -51,11 +81,12 @@ yarn add stimulus-use
 
 ## Extend or compose
 
-Stimulus-use can be used in two manners: extending or composing
+Stimulus-use can be used in two ways: **extending** or **composing**
 
 **Extending**
 
-You can create your stimulus from a pre-build Stimulus-use controller that offers the new behavior you are looking for. This method is perfectly suited when you only need a single behavior for your controller
+You can create your Stimulus controller from a pre-built Stimulus-use controller which offers the new behavior you're looking for.
+This method works perfectly when you only need a single behavior for your controller.
 
 ```js
 import { IntersectionController } from 'stimulus-use'
@@ -69,7 +100,8 @@ export default class extends IntersectionController {
 
 **Composing**
 
-When you need multiple behaviors or you are already extending your controller from another one. You can easily add new behavior with the `use` functions.
+When you need multiple behaviors or you are already extending your controller from another one,
+you can easily add new behavior with the built-in `use` functions.
 
 ```js
 import { Controller } from 'stimulus'
