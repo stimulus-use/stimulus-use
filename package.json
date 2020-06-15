@@ -40,6 +40,7 @@
     "karma-sourcemap-loader": "^0.3.7",
     "karma-typescript": "^5.0.3",
     "karma-webpack": "^4.0.2",
+    "kind-of": "^6.0.3",
     "microbundle": "^0.12.0",
     "mocha": "^7.2.0",
     "np": "^6.2.3",
