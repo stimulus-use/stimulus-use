@@ -13,11 +13,10 @@ export class ApplicationController extends Controller {
 
   constructor(context: Context) {
     super(context)
-    requestAnimationFrame(() => {
-      useApplication(this)
-    })
+    useApplication(this)
   }
 
+  // define function for Typescript but they are overwitten by useApplication
   dispatch(eventName: String, eventArgs: EventArgs) {}
 
   metaValue(name: string): string {
