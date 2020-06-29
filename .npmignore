@@ -18,3 +18,5 @@ yarn-error.log
 readme.md
 /docs
 /.circleci
+*.tsbuildinfo
+*.log
