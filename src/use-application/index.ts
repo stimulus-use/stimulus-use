@@ -1,2 +1,2 @@
-export { UseApplication } from './use-application'
+export { useApplication } from './use-application'
 export { ApplicationController } from './application-controller'
