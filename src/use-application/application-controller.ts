@@ -1,5 +1,5 @@
 import { Controller, Context } from 'stimulus'
-import { UseApplication } from './use-application'
+import { useApplication } from './use-application'
 
 interface EventArgs {
   target: any
@@ -14,7 +14,7 @@ export class ApplicationController extends Controller {
   constructor(context: Context) {
     super(context)
     requestAnimationFrame(() => {
-      new UseApplication(this)
+      useApplication(this)
     })
   }
 
