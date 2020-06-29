@@ -35,7 +35,7 @@ export default class extends ApplicationController {
 
 **`dispatch(name, eventArgs)`**: helper function to dispatch events to other Stimulus controllers
 
-**`getMeta(name)`**: return the value of a meta attribute
+**`metaValue(name)`**: return the value of a meta attribute
 
 **Getters**
 
