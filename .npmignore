@@ -20,3 +20,4 @@ readme.md
 /.circleci
 *.tsbuildinfo
 *.log
+.all-contributorsrc
