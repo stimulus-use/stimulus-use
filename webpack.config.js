@@ -13,7 +13,7 @@ module.exports = {
 
   resolve: {
     alias: {
-      'stimulus-use': path.resolve(__dirname, './dist/index.modern.js'),
+      'stimulus-use': path.resolve(__dirname, './dist/index.js'),
     },
   },
 
