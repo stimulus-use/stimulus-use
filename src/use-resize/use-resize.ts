@@ -1,17 +1,10 @@
 import { ResizeController } from './resize-controller'
+import { method } from '../support'
 
 export const useResize = (controller: ResizeController) => {
-  const method = (methodName: string): Function => {
-    const method = (controller as any)[methodName]
-    if (typeof method == 'function') {
-      return method
-    }
-    throw new Error(`undefined method "${methodName}"`)
-  }
-
   const callback = (entries: ResizeObserverEntry[]) => {
     const [entry] = entries
-    controller.resize && method('resize').call(controller, entry.contentRect)
+    controller.resize && method(controller, 'resize').call(controller, entry.contentRect)
   }
 
   const controllerDisconnect = controller.disconnect

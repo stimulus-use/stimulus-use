@@ -1,14 +1,7 @@
 import { IntersectionController } from './intersection-controller'
+import { method } from '../support'
 
 export const useIntersection = (controller: IntersectionController, options?: IntersectionObserverInit) => {
-  const method = (methodName: string): Function => {
-    const method = (controller as any)[methodName]
-    if (typeof method == 'function') {
-      return method
-    }
-    throw new Error(`undefined method "${methodName}"`)
-  }
-
   const callback = (entries: IntersectionObserverEntry[]) => {
     const [entry] = entries
     if (entry.isIntersecting) {
@@ -20,12 +13,12 @@ export const useIntersection = (controller: IntersectionController, options?: In
 
   const dispatchAppear = (entry: IntersectionObserverEntry) => {
     controller.isVisible = true
-    controller.appear && method('appear').call(controller, entry)
+    controller.appear && method(controller, 'appear').call(controller, entry)
   }
 
   const dispatchDisappear = (entry: IntersectionObserverEntry) => {
     controller.isVisible = false
-    controller.disappear && method('disappear').call(controller, entry)
+    controller.disappear && method(controller, 'disappear').call(controller, entry)
   }
 
   // keep a copy of the current disconnect() function of the controller to not override it
