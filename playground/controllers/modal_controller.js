@@ -10,4 +10,8 @@ export default class extends Controller {
   clickOutside(e) {
     console.log(e)
   }
+
+  close(e) {
+    console.log(e, 'close')
+  }
 }
