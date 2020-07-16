@@ -6,6 +6,9 @@ export const useClickOutside = (controller: ClickOutsideController) => {
     if (controller.element.contains(event.target as Node)) return
 
     controller.clickOutside && method(controller, 'clickOutside').call(controller, event)
+    const { bubbles, cancelable, composed } = event
+    const clickOutsideEvent = new CustomEvent('click:outside', { bubbles, cancelable, composed })
+    controller.element.dispatchEvent(clickOutsideEvent)
   }
 
   window.addEventListener('click', handleClick, false)
