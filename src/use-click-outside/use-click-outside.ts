@@ -1,13 +1,13 @@
 import { ClickOutsideController } from './click-outside-controller'
-import { method } from '../support'
+import { method, extendedEvent } from '../support'
 
 export const useClickOutside = (controller: ClickOutsideController) => {
   const handleClick = (event: Event) => {
     if (controller.element.contains(event.target as Node)) return
 
     controller.clickOutside && method(controller, 'clickOutside').call(controller, event)
-    const { bubbles, cancelable, composed } = event
-    const clickOutsideEvent = new CustomEvent('click:outside', { bubbles, cancelable, composed })
+
+    const clickOutsideEvent = extendedEvent('click:outside', event, controller)
     controller.element.dispatchEvent(clickOutsideEvent)
   }
 
