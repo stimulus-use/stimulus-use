@@ -3,8 +3,10 @@ import { Controller } from 'stimulus'
 import { useClickOutside } from 'stimulus-use'
 
 export default class extends Controller {
+  static targets = ['content']
+
   connect() {
-    useClickOutside(this)
+    useClickOutside(this, { element: this.contentTarget })
   }
 
   clickOutside(e) {

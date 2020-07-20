@@ -21,7 +21,8 @@ export const useIntersection = (controller: IntersectionController, options?: In
     controller.disappear && method(controller, 'disappear').call(controller, entry)
   }
 
-  // keep a copy of the current disconnect() function of the controller to not override it
+  // keep a copy of the current disconnect() function of the controller
+  // to support composing several behaviors
   const controllerDisconnect = controller.disconnect
 
   Object.assign(controller, {
