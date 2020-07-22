@@ -45,6 +45,7 @@
     "microbundle": "^0.12.2",
     "mocha": "^7.2.0",
     "np": "^6.2.3",
+    "rimraf": "^3.0.2",
     "sinon": "^9.0.2",
     "sinon-chai": "^3.5.0",
     "sourcemap": "^0.1.0",
