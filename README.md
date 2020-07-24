@@ -44,6 +44,7 @@ yarn add stimulus-use
   |-----------------------|-------------|---------------------|
   | [`useIntersection`](./docs/use-intersection.md) </br> `IntersectionController` | Tracks the element's intersection and adds **appear**, **disappear** callbacks to your controller.|`appear`</br> `disappear`|
   |[`useResize`](./docs/use-resize.md) </br>`ResizeController`|Tracks the element's size and adds a new lifecyle callback **resized**.|`resized`|
+  |[`useIdle`](./docs/use-idle.md) </br>`IdleController`| Tracks if the user is idle on your page and adds **idle** and **returned** callbacks to your controller.|`idle`<br/>`returned`|
 
 - **Application**
   - [`useApplication, ApplicationController`](./docs/application-controller.md) &mdash; supercharged controller for your application.

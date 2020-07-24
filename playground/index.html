@@ -42,6 +42,18 @@
         </div>
       </div>
 
+      <h1 class="mt-5">useIdle</h1>
+      <p>Do nothing for 2 seconds</p>
+      <div data-controller="idle" class="card">
+        <div class="card-body">
+          <span>User is: </span>
+          <span data-target="idle.status"></span>
+          <br />
+          <span><code>isIdle</code>: </span>
+          <span data-target="idle.isIdle"></span>
+        </div>
+      </div>
+
       <h1 class="mt-5">useLazyLoad</h1>
       <div class="row">
         <img data-controller="lazy-load" data-lazy-load-src="https://loremflickr.com/200/200" style="min-height: 200px" class="img-fluid col-6 mb-2">
