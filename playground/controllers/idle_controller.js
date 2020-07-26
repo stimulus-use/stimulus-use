@@ -8,12 +8,12 @@ export default class extends Controller {
     useIdle(this, 2000)
   }
 
-  idle() {
-    this.statusTarget.textContent = 'idle'
+  away() {
+    this.statusTarget.textContent = 'away'
     this.isIdleTarget.textContent = this.isIdle
   }
 
-  returned() {
+  back() {
     this.statusTarget.textContent = 'active'
     this.isIdleTarget.textContent = this.isIdle
   }

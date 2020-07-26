@@ -2,7 +2,7 @@
 
 `useIdle` tracks if the user is idle on the page.
 
-Adds two new behaviors to your Stimulus controller: `idle` and `returned`.
+Adds two new behaviors to your Stimulus controller: `away` and `back`.
 
 
 ## Usage
@@ -18,11 +18,11 @@ export default class extends Controller {
     useIdle(this)
   }
 
-  idle() {
+  away() {
     alert('Hey, wake up!')
   }
 
-  returned() {
+  back() {
     alert('Welcome back!')
   }
 }
@@ -34,11 +34,11 @@ export default class extends Controller {
 import { IdleController } from 'stimulus-use'
 
 export default class extends IdleController {
-  idle() {
+  away() {
     alert('Hey, wake up!')
   }
 
-  returned() {
+  back() {
     alert('Welcome back!')
   }
 }

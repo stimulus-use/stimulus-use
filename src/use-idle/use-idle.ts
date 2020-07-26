@@ -7,7 +7,7 @@ export const useIdle = (controller: IdleController, ms: number = oneMinute, init
   let isIdle = initialState;
   let timeout = setTimeout(() => {
     isIdle = true
-    dispatchIdle();
+    dispatchAway();
   }, ms);
 
   const method = (methodName: string): Function => {
@@ -18,25 +18,25 @@ export const useIdle = (controller: IdleController, ms: number = oneMinute, init
     throw new Error(`undefined method "${methodName}"`)
   }
 
-  const dispatchIdle = () => {
+  const dispatchAway = () => {
     controller.isIdle = true;
-    controller.idle && method('idle').call(controller);
+    controller.away && method('away').call(controller);
   }
 
-  const dispachReturned = () => {
+  const dispatchBack = () => {
     controller.isIdle = false;
-    controller.returned && method('returned').call(controller);
+    controller.back && method('back').call(controller);
   }
 
   const onEvent = () => {
-    if (isIdle) dispachReturned();
+    if (isIdle) dispatchBack();
 
     isIdle = false;
     clearTimeout(timeout);
 
     timeout = setTimeout(() => {
       isIdle = true
-      dispatchIdle();
+      dispatchAway();
     }, ms);
   }
 
@@ -45,9 +45,9 @@ export const useIdle = (controller: IdleController, ms: number = oneMinute, init
   };
 
   if (isIdle) {
-    dispatchIdle();
+    dispatchAway();
   } else {
-    dispachReturned();
+    dispatchBack();
   }
 
   Object.assign(controller, {
