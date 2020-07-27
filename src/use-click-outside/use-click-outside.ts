@@ -1,20 +1,30 @@
 import { ClickOutsideController } from './click-outside-controller'
-import { method, extendedEvent } from '../support'
+import { method, extendedEvent, isElementInViewport } from '../support'
 
 interface ClickOutsideOptions {
-  element: HTMLElement
+  element?: HTMLElement
+  onlyVisible?: boolean
+  withEvent?: boolean
 }
 
-export const useClickOutside = (controller: ClickOutsideController, options?: ClickOutsideOptions) => {
+export const useClickOutside = (controller: ClickOutsideController, options: ClickOutsideOptions = {}) => {
+  const { onlyVisible = true, withEvent = true } = options
+
   const handleClick = (event: Event) => {
     const targetElement: Element = options?.element || controller.element
 
-    if (targetElement.contains(event.target as Node)) return
+    if (targetElement.contains(event.target as Node) || (!isElementInViewport(targetElement) && onlyVisible)) {
+      return
+    }
 
+    // call the clickOutside method of the Stimulus controller
     controller.clickOutside && method(controller, 'clickOutside').call(controller, event)
 
-    const clickOutsideEvent = extendedEvent('click:outside', event, controller)
-    targetElement.dispatchEvent(clickOutsideEvent)
+    // emit a custom event
+    if (withEvent) {
+      const clickOutsideEvent = extendedEvent('click:outside', event, controller)
+      targetElement.dispatchEvent(clickOutsideEvent)
+    }
   }
 
   window.addEventListener('click', handleClick, false)
