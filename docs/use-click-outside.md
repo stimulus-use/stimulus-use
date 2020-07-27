@@ -4,17 +4,25 @@ Adds one new `clickOutside` behavior to your Stimulus controller as well as a ne
 
 ## Reference
 
-```typescript
-useClickOutside(controller: Controller, options?: ClickOutsideOptions)
+```javascript
+useClickOutside(controller, options = {})
 ```
 
-- `controller` : a Stimulus Controller (usually `'this'`)
-- `options` (optional)
-  - `element` : the root element listening for outside click. By default it is the controller element.
+**controller** : a Stimulus Controller (usually `'this'`)
+
+**options** :
+
+| Option| Description | Default value |
+|-----------------------|-------------|---------------------|
+| `element` | The root element listening for outside click.| The controller element|
+| `onlyVisible` | Triggers click outside only to elements that are visible with in the viewport.| `true` |
+| `withEvent` | Whether to emit a `click:outside` event.| `true` |
 
 **Example :**
+
 ```js
 connect() {
+  // passing a custom target as the root element.
   useClickOutside(this, { element: this.contentTarget })
 }
 ```
