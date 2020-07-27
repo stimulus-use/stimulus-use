@@ -1,9 +1,5 @@
 import { Controller } from 'stimulus'
 
-interface StimulusUseEvent extends CustomEvent {
-  controller: Controller
-}
-
 export const method = (controller: Controller, methodName: string): Function => {
   const method = (controller as any)[methodName]
   if (typeof method == 'function') {
@@ -12,11 +8,15 @@ export const method = (controller: Controller, methodName: string): Function => 
   throw new Error(`undefined method "${methodName}"`)
 }
 
-export const extendedEvent = (type: string, event: Event, controller: Controller): StimulusUseEvent => {
+export const extendedEvent = (type: string, event: Event, controller: Controller): CustomEvent => {
   const { bubbles, cancelable, composed } = event
-  const customEvent = new CustomEvent(type, { bubbles, cancelable, composed })
-  Object.assign(customEvent, { controller })
-  return customEvent as StimulusUseEvent
+  const customEvent = new CustomEvent(type, {
+    bubbles,
+    cancelable,
+    composed,
+    detail: { originalEvent: event, controller },
+  })
+  return customEvent
 }
 
 export const isElementInViewport = (el: Element): boolean => {

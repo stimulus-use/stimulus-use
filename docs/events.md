@@ -8,13 +8,12 @@ Here is the list of additional events availables
 |-------|-------|-------------|
 |`click:outside`|[`useClickOutside`](./docs/use-click-outside.md)| New event being triggered whenever the user clicks outside of the controller element|
 
-## Accessing source controller
-
-The event is emitted from the controller element and includes the emitting controller.
+## Accessing source controller & original event
+The controller and the original event are provided within the details object of the event.
 
 ```js
-// get the emitting controller
-const { controller } = event
+// get the emitting controller and original event
+const { controller, originalEvent } = event.detail
 ```
 
 
