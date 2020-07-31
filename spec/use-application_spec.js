@@ -73,10 +73,11 @@ controllers.forEach(Controller => {
         document.documentElement.removeAttribute('data-turbolinks-preview')
       })
 
-      it('csrf token is correctly updated', function () {
+      it('csrf token is correctly updated', async function () {
         expect(application.controllers[0].csrfToken).to.equal(null)
-        document.head.innerHTML += '<meta crsf-token="12345678">'
+        document.head.innerHTML += '<meta name="csrf-token" content="12345678">'
         expect(application.controllers[0].csrfToken).to.equal('12345678')
+        document.head.querySelector(`meta[name="csrf-token"]`).remove()
       })
     })
   })
