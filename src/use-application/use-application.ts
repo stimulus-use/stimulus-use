@@ -1,12 +1,14 @@
 import { Controller } from 'stimulus'
 
 export const useApplication = (controller: Controller) => {
+  // getter to detect Turbolink preview
   Object.defineProperty(controller, 'isPreview', {
     get(): boolean {
       return document.documentElement.hasAttribute('data-turbolinks-preview')
     },
   })
 
+  // getter to get the csrf token
   Object.defineProperty(controller, 'csrfToken', {
     get(): boolean {
       return this.metaValue('csrf-token')
@@ -19,7 +21,11 @@ export const useApplication = (controller: Controller) => {
       { target = controller.element, detail = {}, bubbles = true, cancelable = true } = {},
     ): CustomEvent {
       const type = `${controller.identifier}:${eventName}`
-      const event = new CustomEvent(type, { detail, bubbles, cancelable })
+      const event = new CustomEvent(type, {
+        detail,
+        bubbles,
+        cancelable,
+      })
       target.dispatchEvent(event)
       return event
     },
