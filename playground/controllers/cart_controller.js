@@ -5,6 +5,7 @@ export default class extends ApplicationController {
 
   refreshTotal(e) {
     this.counter++
+    console.log(e.detail.controller)
   }
 
   renderCounter() {

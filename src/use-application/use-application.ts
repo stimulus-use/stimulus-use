@@ -6,6 +6,9 @@ export const useApplication = (controller: Controller) => {
       eventName: String,
       { target = controller.element, detail = {}, bubbles = true, cancelable = true } = {},
     ): CustomEvent {
+      // include the emitting controller in the event detail
+      Object.assign(detail, { controller })
+
       const type = `${controller.identifier}:${eventName}`
       const event = new CustomEvent(type, { detail, bubbles, cancelable })
       target.dispatchEvent(event)
