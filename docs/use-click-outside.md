@@ -15,8 +15,9 @@ useClickOutside(controller, options = {})
 | Option| Description | Default value |
 |-----------------------|-------------|---------------------|
 | `element` | The root element listening for outside click.| The controller element|
+| `events` | Array of events to listen on to detect if the user clicks outside of the component.| `['click', 'touchend']` |
 | `onlyVisible` | Triggers click outside only to elements that are visible with in the viewport.| `true` |
-| `withEvent` | Whether to emit a `click:outside` event.| `true` |
+| `dispatchEvent` | Whether to dispatch a `click:outside` event or not.| `true` |
 
 **Example :**
 
