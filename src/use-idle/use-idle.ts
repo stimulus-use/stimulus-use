@@ -1,4 +1,5 @@
 import { IdleController } from './idle-controller'
+import { extendedEvent, method } from '../support'
 
 const defaultEvents = ['mousemove', 'mousedown', 'resize', 'keydown', 'touchstart', 'wheel'];
 const oneMinute = 60e3;
@@ -7,10 +8,11 @@ interface IdleOptions {
   ms?: number
   initialState?: boolean
   events?: string[]
+  withEvent?: boolean
 };
 
 export const useIdle = (controller: IdleController, options: IdleOptions = {}) => {
-  const { ms = oneMinute, initialState = false, events = defaultEvents } = options;
+  const { ms = oneMinute, initialState = false, events = defaultEvents, withEvent = true } = options;
 
   let isIdle = initialState;
   let timeout = setTimeout(() => {
@@ -18,38 +20,40 @@ export const useIdle = (controller: IdleController, options: IdleOptions = {}) =
     dispatchAway();
   }, ms);
 
-  const method = (methodName: string): Function => {
-    const method = (controller as any)[methodName]
-    if (typeof method == 'function') {
-      return method
-    }
-    throw new Error(`undefined method "${methodName}"`)
-  }
-
-  const dispatchAway = () => {
+  const dispatchAway = (event: Event = new Event('away')) => {
     controller.isIdle = true;
-    controller.away && method('away').call(controller);
+    controller.away && method(controller, 'away').call(controller);
+
+    if (withEvent) {
+      const clickOutsideEvent = extendedEvent('away', event, controller)
+      controller.element.dispatchEvent(clickOutsideEvent)
+    }
   }
 
-  const dispatchBack = () => {
+  const dispatchBack = (event: Event = new Event('back')) => {
     controller.isIdle = false;
-    controller.back && method('back').call(controller);
+    controller.back && method(controller, 'back').call(controller);
+
+    if (withEvent) {
+      const clickOutsideEvent = extendedEvent('back', event, controller)
+      controller.element.dispatchEvent(clickOutsideEvent)
+    }
   }
 
-  const onEvent = () => {
-    if (isIdle) dispatchBack();
+  const onEvent = (event: Event) => {
+    if (isIdle) dispatchBack(event);
 
     isIdle = false;
     clearTimeout(timeout);
 
     timeout = setTimeout(() => {
       isIdle = true
-      dispatchAway();
+      dispatchAway(event);
     }, ms);
   }
 
-  const onVisibility = () => {
-    if (!document.hidden) onEvent();
+  const onVisibility = (event: Event) => {
+    if (!document.hidden) onEvent(event);
   };
 
   if (isIdle) {

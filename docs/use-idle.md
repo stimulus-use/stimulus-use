@@ -4,6 +4,39 @@
 
 Adds two new behaviors to your Stimulus controller: `away` and `back`.
 
+## Reference
+
+```javascript
+useIdle(controller, options = {})
+```
+
+**controller:** A Stimulus Controller (usually `'this'`)
+
+**options:**
+
+
+| Option| Description | Default value |
+|-----------------------|-------------|---------------------|
+| `ms` | Time in milliseconds after which to consider the user idle |`60e3` which translates to `60000` (one minute) |
+| `initialState` | Whether to consider the user initially idle | `false` |
+| `events` | Array of events to listen on to detect if the user is "active" on the page. | `['mousemove', 'mousedown', 'resize', 'keydown', 'touchstart', 'wheel']` |
+| `withEvent` | Whether to emit `away` and `back events on `window`.| `true` |
+
+
+**Basic Example:**
+
+```js
+connect() {
+  useIdle(this, { ms: 3000 });
+}
+```
+**Example with all options:**
+
+```js
+connect() {
+  useIdle(this, { ms: 3000, initialState: true, events: ['click'], withEvent: false });
+}
+```
 
 ## Usage
 
@@ -45,29 +78,29 @@ export default class extends IdleController {
 ```
 
 
-**Options**
+## Events
 
-The available options and their default values are listed below:
+This module adds `away` and `back` events that you may use to triggers stimulus actions
 
-| Option| Description | Default value |
-|-----------------------|-------------|---------------------|
-| `ms` | Time in milliseconds after which to consider the user idle |`60e3` which translates to `60000` (one minute) |
-| `initialState` | Whether to consider the user initially idle | `false` |
-| `events` | Array of events to listen on to detect if the user is "active" on the page. | `['mousemove', 'mousedown', 'resize', 'keydown', 'touchstart', 'wheel']` |
+```html
+<div data-controller="user" data-action="away->user#logout">
+   ...
+</div>
+ ```
 
-
-If you don't want to use the defaults you can call `useIdle` like this:
 
 ```js
-import { Controller } from 'stimulus'
-import { useIdle } from 'stimulus-use'
+// user_controller.js
 
 export default class extends Controller {
+
   connect() {
-    useIdle(this, { ms: 3000, initialState: true, events: ['click'] });
+    useIdle(this)
   }
 
-  // ...
+  logout(event) {
+    event.preventDefault()
+    // do some actions to logout the user
+  }
 }
-
 ```
