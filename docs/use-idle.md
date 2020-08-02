@@ -20,7 +20,7 @@ useIdle(controller, options = {})
 | `ms` | Time in milliseconds after which to consider the user idle |`60e3` which translates to `60000` (one minute) |
 | `initialState` | Whether to consider the user initially idle | `false` |
 | `events` | Array of events to listen on to detect if the user is "active" on the page. | `['mousemove', 'mousedown', 'resize', 'keydown', 'touchstart', 'wheel']` |
-| `withEvent` | Whether to emit `away` and `back events on `window`.| `true` |
+| `withEvent` | Whether to emit `away` and `back` events.| `true` |
 
 
 **Basic Example:**
