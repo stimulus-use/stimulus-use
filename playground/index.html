@@ -9,6 +9,14 @@
     <script src="bundle.js" async></script>
   </head>
   <body>
+    <nav class="navbar fixed-top navbar-light bg-light" data-controller="navbar" data-action="appear@window->navbar#increase disappear@window->navbar#decrease">
+      <div class="container">
+        <div>
+          <span class="navbar-text">Visible : </span>
+          <span class="navbar-text" data-target="navbar.visibleCounter">0</span>
+        </div>
+      </div>
+    </nav>
     <div class="container mt-5">
       <h1 class="mt-5">useClickOutside</h1>
       <div data-controller="modal" data-action="click:outside->modal#close" style="height: 3rem; width: 30rem; background-color: gray;">
@@ -42,8 +50,14 @@
       <p>Resize your window</p>
       <div data-controller="resize" class="card">
         <div class="card-body">
-          <span>width : </span>
-          <span data-target="resize.width"></span>
+          <div>
+            <span>width : </span>
+            <span data-target="resize.width"></span>
+          </div>
+          <div>
+            <span>height : </span>
+            <span data-target="resize.height"></span>
+          </div>
         </div>
       </div>
 
