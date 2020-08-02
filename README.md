@@ -43,7 +43,7 @@ yarn add stimulus-use
   | useFunction/Controller| Description | NEW Callbacks |
   |-----------------------|-------------|---------------------|
   | [`useIntersection`](./docs/use-intersection.md) </br> `IntersectionController` | Tracks the element's intersection and adds **appear**, **disappear** callbacks to your controller.|`appear`</br> `disappear`|
-  |[`useResize`](./docs/use-resize.md) </br>`ResizeController`|Tracks the element's size and adds a new lifecyle callback **resized**.|`resized`|
+  |[`useResize`](./docs/use-resize.md) </br>`ResizeController`|Tracks the element's size and adds a new lifecyle callback **resize**.|`resize`|
 
 - **Application**
   - [`useApplication, ApplicationController`](./docs/application-controller.md) &mdash; supercharged controller for your application.
@@ -91,7 +91,7 @@ export default class extends Controller {
     // triggered when the element appears within the viewport
   }
 
-  resized({ height, width }) {
+  resize({ height, width }) {
     // trigered when the element is resized
   }
 }
