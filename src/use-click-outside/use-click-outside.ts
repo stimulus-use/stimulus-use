@@ -2,7 +2,7 @@ import { ClickOutsideController } from './click-outside-controller'
 import { method, extendedEvent, isElementInViewport } from '../support'
 
 interface ClickOutsideOptions {
-  element?: HTMLElement
+  element?: Element
   events?: string[]
   onlyVisible?: boolean
   dispatchEvent?: boolean
