@@ -1,7 +1,19 @@
 import { IntersectionController } from './intersection-controller'
-import { method } from '../support'
+import { method, extendedEvent } from '../support'
 
-export const useIntersection = (controller: IntersectionController, options?: IntersectionObserverInit) => {
+export interface IntersectionOptions extends IntersectionObserverInit {
+  element?: Element
+  dispatchEvent?: boolean
+}
+
+const defaultOptions = {
+  dispatchEvent: true,
+}
+
+export const useIntersection = (controller: IntersectionController, options: IntersectionOptions = {}) => {
+  const { dispatchEvent } = Object.assign(defaultOptions, options)
+  const targetElement: Element = options?.element || controller.element
+
   const callback = (entries: IntersectionObserverEntry[]) => {
     const [entry] = entries
     if (entry.isIntersecting) {
@@ -14,11 +26,23 @@ export const useIntersection = (controller: IntersectionController, options?: In
   const dispatchAppear = (entry: IntersectionObserverEntry) => {
     controller.isVisible = true
     controller.appear && method(controller, 'appear').call(controller, entry)
+
+    // emit a custom "appear" event
+    if (dispatchEvent) {
+      const appearEvent = extendedEvent('appear', null, { controller, entry })
+      targetElement.dispatchEvent(appearEvent)
+    }
   }
 
   const dispatchDisappear = (entry: IntersectionObserverEntry) => {
     controller.isVisible = false
     controller.disappear && method(controller, 'disappear').call(controller, entry)
+
+    // emit a custom "disappear" event
+    if (dispatchEvent) {
+      const disappearEvent = extendedEvent('disappear', null, { controller, entry })
+      targetElement.dispatchEvent(disappearEvent)
+    }
   }
 
   // keep a copy of the current disconnect() function of the controller
