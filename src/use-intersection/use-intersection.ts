@@ -53,10 +53,10 @@ export const useIntersection = (controller: IntersectionController, options: Int
     isVisible: false,
     observer: new IntersectionObserver(callback, options),
     observe() {
-      this.observer.observe(controller.element)
+      this.observer.observe(targetElement)
     },
     unObserve() {
-      this.observer.unobserve(controller.element)
+      this.observer.unobserve(targetElement)
     },
     disconnect() {
       controller.unObserve()
