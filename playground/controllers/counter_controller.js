@@ -1,26 +1,29 @@
 // intersection_controller.js
 import { Controller } from 'stimulus'
 
-const controllers = new Set()
-
 export default class extends Controller {
   static targets = ['visibleCounter']
 
   connect() {
+    this.controllers = new Set()
     this.updateCounter()
   }
 
+  disconnect() {
+    this.controllers.clear()
+  }
+
   decrease({ detail: { controller } }) {
-    controllers.delete(controller)
+    this.controllers.delete(controller)
     this.updateCounter()
   }
 
   increase({ detail: { controller } }) {
-    controllers.add(controller)
+    this.controllers.add(controller)
     this.updateCounter()
   }
 
   updateCounter() {
-    this.visibleCounterTarget.textContent = controllers.size
+    this.visibleCounterTarget.textContent = this.controllers.size
   }
 }

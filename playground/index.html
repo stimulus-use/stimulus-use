@@ -9,11 +9,11 @@
     <script src="bundle.js" async></script>
   </head>
   <body>
-    <nav class="navbar fixed-top navbar-light bg-light" data-controller="navbar" data-action="appear@window->navbar#increase disappear@window->navbar#decrease">
+    <nav class="navbar fixed-top navbar-light bg-light" >
       <div class="container">
-        <div>
+        <div data-controller="counter" data-action="appear@window->counter#increase disappear@window->counter#decrease">
           <span class="navbar-text">Visible : </span>
-          <span class="navbar-text" data-target="navbar.visibleCounter">0</span>
+          <span class="navbar-text" data-target="counter.visibleCounter">0</span>
         </div>
       </div>
     </nav>
