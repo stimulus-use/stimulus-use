@@ -1,13 +1,14 @@
 import { Controller, Context } from 'stimulus'
-import { useClickOutside } from './use-click-outside'
+import { useClickOutside, ClickOutsideOptions } from './use-click-outside'
 
 export class ClickOutsideController extends Controller {
   observer!: ResizeObserver
+  options: ClickOutsideOptions = {}
 
   constructor(context: Context) {
     super(context)
     requestAnimationFrame(() => {
-      useClickOutside(this)
+      useClickOutside(this, this.options)
     })
   }
 
