@@ -5,7 +5,7 @@ export default class extends Controller {
   static targets = ['status', 'isIdle']
 
   connect() {
-    useIdle(this, 2000)
+    useIdle(this, { ms: 2000 })
   }
 
   away() {

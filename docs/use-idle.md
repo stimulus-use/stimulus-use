@@ -64,7 +64,7 @@ import { useIdle } from 'stimulus-use'
 
 export default class extends Controller {
   connect() {
-    useIdle(this, 3000, true, ['click']);
+    useIdle(this, { ms: 3000, initialState: true, events: ['click'] });
   }
 
   // ...

@@ -44,10 +44,13 @@ yarn add stimulus-use
   |-----------------------|-------------|---------------------|
   | [`useIntersection`](./docs/use-intersection.md) </br> `IntersectionController` | Tracks the element's intersection and adds **appear**, **disappear** callbacks to your controller.|`appear`</br> `disappear`|
   |[`useResize`](./docs/use-resize.md) </br>`ResizeController`|Tracks the element's size and adds a new lifecyle callback **resized**.|`resized`|
-  |[`useIdle`](./docs/use-idle.md) </br>`IdleController`| Tracks if the user is idle on your page and adds **away** and **back** callbacks to your controller.|`away`<br/>`back`|
 
 - **Application**
   - [`useApplication, ApplicationController`](./docs/application-controller.md) &mdash; supercharged controller for your application.
+
+
+- **Idle**
+  - [`useIdle, IdleController`](./docs/use-idle.md) &mdash;  Tracks if the user is idle on your page and adds **away** and **back** callbacks to your controller.
 
 
 ## Extend or compose

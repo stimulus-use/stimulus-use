@@ -49,6 +49,9 @@ yarn add stimulus-use
   - [`useApplication, ApplicationController`](./docs/application-controller.md) &mdash; supercharged controller for your application.
 
 
+- **Idle**
+  - [`useIdle, IdleController`](./docs/use-idle.md) &mdash;  Tracks if the user is idle on your page and adds **away** and **back** callbacks to your controller.
+
 ## Extend or compose
 
 Stimulus-use can be used in two manners: extending or composing

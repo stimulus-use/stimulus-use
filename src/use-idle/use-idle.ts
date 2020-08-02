@@ -3,7 +3,15 @@ import { IdleController } from './idle-controller'
 const defaultEvents = ['mousemove', 'mousedown', 'resize', 'keydown', 'touchstart', 'wheel'];
 const oneMinute = 60e3;
 
-export const useIdle = (controller: IdleController, ms: number = oneMinute, initialState: boolean = false, events: string[] = defaultEvents) => {
+interface IdleOptions {
+  ms?: number
+  initialState?: boolean
+  events?: string[]
+};
+
+export const useIdle = (controller: IdleController, options: IdleOptions = {}) => {
+  const { ms = oneMinute, initialState = false, events = defaultEvents } = options;
+
   let isIdle = initialState;
   let timeout = setTimeout(() => {
     isIdle = true
@@ -50,6 +58,8 @@ export const useIdle = (controller: IdleController, ms: number = oneMinute, init
     dispatchBack();
   }
 
+  const controllerDisconnect = controller.disconnect
+
   Object.assign(controller, {
     observe() {
       events.forEach(event => {
@@ -65,7 +75,7 @@ export const useIdle = (controller: IdleController, ms: number = oneMinute, init
     },
     disconnect() {
       this.unObserve();
-      controller.disconnect();
+      controllerDisconnect();
     },
   })
 
