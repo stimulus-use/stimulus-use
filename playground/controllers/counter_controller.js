@@ -2,7 +2,7 @@
 import { Controller } from 'stimulus'
 
 export default class extends Controller {
-  static targets = ['visibleCounter']
+  static targets = ['visibleCounter', 'width']
 
   connect() {
     this.controllers = new Set()
@@ -24,6 +24,11 @@ export default class extends Controller {
   }
 
   updateCounter() {
+    if (!this.hasVisibleCounterTarget) return
     this.visibleCounterTarget.textContent = this.controllers.size
+  }
+
+  updateSize(e) {
+    this.widthTarget.textContent = e.detail.entry.contentRect.width
   }
 }

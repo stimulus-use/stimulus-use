@@ -4,8 +4,12 @@ import { useResize } from 'stimulus-use'
 export default class extends Controller {
   static targets = ['width', 'height']
 
+  options = {
+    eventPrefix: 'card',
+  }
+
   connect() {
-    useResize(this)
+    useResize(this, this.options)
   }
 
   resize({ width, height }) {

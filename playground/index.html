@@ -15,6 +15,10 @@
           <span class="navbar-text">Visible : </span>
           <span class="navbar-text" data-target="counter.visibleCounter">0</span>
         </div>
+        <div data-controller="counter" data-action="card:resize@window->counter#updateSize">
+          <span class="navbar-text">Width : </span>
+          <span class="navbar-text" data-target="counter.width">0</span>
+        </div>
       </div>
     </nav>
     <div class="container mt-5">
