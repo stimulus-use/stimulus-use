@@ -20,13 +20,14 @@ export default class extends Controller {
 **Extending a controller**
 
 ```js
+// greet_controller.js
 import { ApplicationController } from 'stimulus-use'
 
 export default class extends ApplicationController {
 
   connect() {
     this.isPreview // true/false if it is a Turbolinks preview
-    this.dispatch("hello") // helper to dispatch a custom event to other Stimulus controllers
+    this.dispatch("hello") // helper to dispatch a custom event "greet:hello" to other Stimulus controllers
   }
 }
 ```
@@ -88,6 +89,7 @@ export default class extends ApplicationController {
 
   refreshTotal(e) {
     this.counter += e.detail.quantity
+    console.log(e.detail.controller) // the emitting item_controller
   }
 
   renderCounter() {

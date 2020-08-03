@@ -52,14 +52,32 @@ controllers.forEach(Controller => {
       fixture.load('index-application.html')
       application.register('application', Controller)
       await nextFrame()
-      fixture.el.querySelector('#children').click()
     })
 
     describe('click dispatch a count ', function () {
       it('parent controller receives the message', async function () {
+        fixture.el.querySelector('#children').click()
+        await nextFrame()
+
         expect(testLogger.eventsById('1').length).to.equal(1)
         expect(testLogger.eventsById('1')[0].event).to.equal('dispatch')
         expect(testLogger.eventsById('2').length).to.equal(0)
+      })
+    })
+
+    describe('test getters', function () {
+      it('preview getter returns the correct value when it changes', function () {
+        expect(application.controllers[0].isPreview).to.equal(false)
+        document.documentElement.setAttribute('data-turbolinks-preview', true)
+        expect(application.controllers[0].isPreview).to.equal(true)
+        document.documentElement.removeAttribute('data-turbolinks-preview')
+      })
+
+      it('csrf token is correctly updated', async function () {
+        expect(application.controllers[0].csrfToken).to.equal(null)
+        document.head.innerHTML += '<meta name="csrf-token" content="12345678">'
+        expect(application.controllers[0].csrfToken).to.equal('12345678')
+        document.head.querySelector(`meta[name="csrf-token"]`).remove()
       })
     })
   })

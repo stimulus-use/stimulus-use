@@ -58,6 +58,15 @@
       "contributions": [
         "infra"
       ]
+    },
+    {
+      "login": "daun",
+      "name": "Philipp Daun",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/22225348?v=4",
+      "profile": "http://philippdaun.net",
+      "contributions": [
+        "bug"
+      ]
     }
   ],
   "contributorsPerLine": 7,
