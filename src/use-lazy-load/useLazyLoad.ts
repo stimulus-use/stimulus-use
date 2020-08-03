@@ -1,15 +1,7 @@
 import { LazyLoadController } from './lazy-load-controller'
-// import { useIntersection, IntersectionController } from '../'
+import { method } from '../support'
 
 export const useLazyLoad = (controller: LazyLoadController, options?: IntersectionObserverInit) => {
-  const method = (methodName: string): Function => {
-    const method = (controller as any)[methodName]
-    if (typeof method == 'function') {
-      return method
-    }
-    throw new Error(`undefined method "${methodName}"`)
-  }
-
   const callback = (entries: IntersectionObserverEntry[]) => {
     const [entry] = entries
     if (entry.isIntersecting && !controller.isLoaded) {
@@ -23,7 +15,7 @@ export const useLazyLoad = (controller: LazyLoadController, options?: Intersecti
 
     const imageElement = <HTMLImageElement>controller.element
     controller.isLoading = true
-    controller.loading && method('loading').call(controller, src)
+    controller.loading && method(controller, 'loading').call(controller, src)
     imageElement.onload = () => {
       handleLoaded(src)
     }
@@ -34,7 +26,7 @@ export const useLazyLoad = (controller: LazyLoadController, options?: Intersecti
   const handleLoaded = (src: string) => {
     controller.isLoading = false
     controller.isLoaded = true
-    controller.loading && method('loaded').call(controller, src)
+    controller.loading && method(controller, 'loaded').call(controller, src)
   }
 
   // keep a copy of the current disconnect() function of the controller to not override it

@@ -39,11 +39,12 @@ yarn add stimulus-use
 
 - **Observers**
 
-  Sets of controllers arround the `Observer APIs`
+  This set of controllers is built around the [`Observer APIs`](https://developer.mozilla.org/en-US/docs/Web/API) & events
   | useFunction/Controller| Description | NEW Callbacks |
   |-----------------------|-------------|---------------------|
   | [`useIntersection`](./docs/use-intersection.md) </br> `IntersectionController` | Tracks the element's intersection and adds **appear**, **disappear** callbacks to your controller.|`appear`</br> `disappear`|
   |[`useResize`](./docs/use-resize.md) </br>`ResizeController`|Tracks the element's size and adds a new lifecyle callback **resize**.|`resize`|
+  |[`useClickOutside`](./docs/use-click-outside.md) </br>`ClickOutsideController`|Tracks the clicks outside of the element and adds a new lifecyle callback **clickOutside**.|`clickOutside`|
 
 - **Application**
   - [`useApplication, ApplicationController`](./docs/application-controller.md) &mdash; supercharged controller for your application.
