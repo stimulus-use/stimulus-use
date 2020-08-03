@@ -1,17 +1,19 @@
 import { IntersectionController } from './intersection-controller'
-import { method, extendedEvent } from '../support'
+import { method, extendedEvent, composeEventName } from '../support'
 
 export interface IntersectionOptions extends IntersectionObserverInit {
   element?: Element
   dispatchEvent?: boolean
+  eventPrefix?: boolean | string
 }
 
 const defaultOptions = {
   dispatchEvent: true,
+  eventPrefix: true,
 }
 
 export const useIntersection = (controller: IntersectionController, options: IntersectionOptions = {}) => {
-  const { dispatchEvent } = Object.assign(defaultOptions, options)
+  const { dispatchEvent, eventPrefix } = Object.assign(defaultOptions, options)
   const targetElement: Element = options?.element || controller.element
 
   const callback = (entries: IntersectionObserverEntry[]) => {
@@ -29,7 +31,9 @@ export const useIntersection = (controller: IntersectionController, options: Int
 
     // emit a custom "appear" event
     if (dispatchEvent) {
-      const appearEvent = extendedEvent('appear', null, { controller, entry })
+      const eventName = composeEventName('appear', controller, eventPrefix)
+
+      const appearEvent = extendedEvent(eventName, null, { controller, entry })
       targetElement.dispatchEvent(appearEvent)
     }
   }
@@ -40,7 +44,9 @@ export const useIntersection = (controller: IntersectionController, options: Int
 
     // emit a custom "disappear" event
     if (dispatchEvent) {
-      const disappearEvent = extendedEvent('disappear', null, { controller, entry })
+      const eventName = composeEventName('disappear', controller, eventPrefix)
+
+      const disappearEvent = extendedEvent(eventName, null, { controller, entry })
       targetElement.dispatchEvent(disappearEvent)
     }
   }
