@@ -14,4 +14,9 @@
 
 <br />
 
+* Idle
+  * [useIdle](use-idle.md)
+
+<br />
+
 * [Events](events.md)
