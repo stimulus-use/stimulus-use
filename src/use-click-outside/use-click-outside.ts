@@ -1,17 +1,23 @@
 import { ClickOutsideController } from './click-outside-controller'
-import { method, extendedEvent, isElementInViewport } from '../support'
+import { method, extendedEvent, isElementInViewport, composeEventName } from '../support'
 
-interface ClickOutsideOptions {
+export interface ClickOutsideOptions {
   element?: Element
   events?: string[]
   onlyVisible?: boolean
   dispatchEvent?: boolean
+  eventPrefix?: boolean | string
 }
 
-const defaultEvents = ['click', 'touchend']
+const defaultOptions = {
+  events: ['click', 'touchend'],
+  onlyVisible: true,
+  dispatchEvent: true,
+  eventPrefix: true,
+}
 
 export const useClickOutside = (controller: ClickOutsideController, options: ClickOutsideOptions = {}) => {
-  const { onlyVisible = true, dispatchEvent = true, events = defaultEvents } = options
+  const { onlyVisible, dispatchEvent, events, eventPrefix } = Object.assign(defaultOptions, options)
 
   const onEvent = (event: Event) => {
     const targetElement: Element = options?.element || controller.element
@@ -25,12 +31,14 @@ export const useClickOutside = (controller: ClickOutsideController, options: Cli
 
     // emit a custom event
     if (dispatchEvent) {
-      const clickOutsideEvent = extendedEvent('click:outside', event, controller)
+      const eventName = composeEventName('click:outside', controller, eventPrefix)
+
+      const clickOutsideEvent = extendedEvent(eventName, event, { controller })
       targetElement.dispatchEvent(clickOutsideEvent)
     }
   }
 
-  events.forEach(event => {
+  events?.forEach(event => {
     window.addEventListener(event, onEvent, false)
   })
 
@@ -40,7 +48,7 @@ export const useClickOutside = (controller: ClickOutsideController, options: Cli
 
   Object.assign(controller, {
     disconnect() {
-      events.forEach(event => {
+      events?.forEach(event => {
         window.removeEventListener(event, onEvent, false)
       })
       controllerDisconnect()

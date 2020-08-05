@@ -12,12 +12,13 @@ useClickOutside(controller, options = {})
 
 **options** :
 
-| Option| Description | Default value |
+| Option| Description |&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Default value&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;|
 |-----------------------|-------------|---------------------|
+| `dispatchEvent` | Whether to dispatch a `click:outside` event or not.| `true` |
 | `element` | The root element listening for outside click.| The controller element|
+|`eventPrefix`| Whether to prefix or not the emitted event. Can be a **boolean** or a **string**.<br>- **true** prefix the event with the controller identifier `card:click:outside` <br>- **someString** prefix the event with the given string `someString:click:outside` <br>- **false** to remove prefix  |true|
 | `events` | Array of events to listen on to detect if the user clicks outside of the component.| `['click', 'touchend']` |
 | `onlyVisible` | Triggers click outside only to elements that are visible with in the viewport.| `true` |
-| `dispatchEvent` | Whether to dispatch a `click:outside` event or not.| `true` |
 
 **Example :**
 
@@ -66,10 +67,10 @@ export default class extends ClickOutsideController {
 
 ## Events
 
-This module adds a new `click:outside` event that you may use to triggers stimulus actions
+This module adds a new `click:outside` (prefixed by the controller identifier by default) event that you may use to triggers stimulus actions
 
 ```html
-<div class="modal" data-controller="modal" data-action="click:outside->modal#close" >
+<div class="modal" data-controller="modal" data-action="modal:click:outside->modal#close" >
   ...
 </div>
 ```
