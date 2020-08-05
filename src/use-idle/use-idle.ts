@@ -1,5 +1,5 @@
 import { IdleController } from './idle-controller'
-import { extendedEvent, method } from '../support'
+import { extendedEvent, method, composeEventName } from '../support'
 
 const defaultEvents = ['mousemove', 'mousedown', 'resize', 'keydown', 'touchstart', 'wheel'];
 const oneMinute = 60e3;
@@ -8,11 +8,20 @@ interface IdleOptions {
   ms?: number
   initialState?: boolean
   events?: string[]
-  withEvent?: boolean
+  dispatchEvent?: boolean
+  eventPrefix?: boolean | string
 };
 
+const defaultOptions = {
+  ms: oneMinute,
+  initialState: false,
+  events: defaultEvents,
+  dispatchEvent: true,
+  eventPrefix: true,
+}
+
 export const useIdle = (controller: IdleController, options: IdleOptions = {}) => {
-  const { ms = oneMinute, initialState = false, events = defaultEvents, withEvent = true } = options;
+  const { ms, initialState, events, dispatchEvent, eventPrefix } = Object.assign(defaultOptions, options);
 
   let isIdle = initialState;
   let timeout = setTimeout(() => {
@@ -20,22 +29,26 @@ export const useIdle = (controller: IdleController, options: IdleOptions = {}) =
     dispatchAway();
   }, ms);
 
-  const dispatchAway = (event: Event = new Event('away')) => {
-    controller.isIdle = true;
-    controller.away && method(controller, 'away').call(controller);
+  const dispatchAway = (event?: Event) => {
+    const eventName = composeEventName('away', controller, eventPrefix)
 
-    if (withEvent) {
-      const clickOutsideEvent = extendedEvent('away', event, controller)
+    controller.isIdle = true;
+    controller.away && method(controller, 'away').call(controller, event);
+
+    if (dispatchEvent) {
+      const clickOutsideEvent = extendedEvent(eventName, event || null, { controller })
       controller.element.dispatchEvent(clickOutsideEvent)
     }
   }
 
-  const dispatchBack = (event: Event = new Event('back')) => {
-    controller.isIdle = false;
-    controller.back && method(controller, 'back').call(controller);
+  const dispatchBack = (event?: Event) => {
+    const eventName = composeEventName('back', controller, eventPrefix)
 
-    if (withEvent) {
-      const clickOutsideEvent = extendedEvent('back', event, controller)
+    controller.isIdle = false;
+    controller.back && method(controller, 'back').call(controller, event);
+
+    if (dispatchEvent) {
+      const clickOutsideEvent = extendedEvent(eventName, event || null, { controller })
       controller.element.dispatchEvent(clickOutsideEvent)
     }
   }

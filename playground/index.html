@@ -67,7 +67,7 @@
 
       <h1 class="mt-5">useIdle</h1>
       <p>Do nothing for 2 seconds</p>
-      <div data-controller="idle" class="card">
+      <div data-controller="idle" class="card" data-action="idle:away->idle#log idle:back->idle#log">
         <div class="card-body">
           <span>User is: </span>
           <span data-target="idle.status"></span>

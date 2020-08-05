@@ -8,13 +8,17 @@ export default class extends Controller {
     useIdle(this, { ms: 2000 })
   }
 
-  away() {
+  away(event) {
     this.statusTarget.textContent = 'away'
     this.isIdleTarget.textContent = this.isIdle
   }
 
-  back() {
+  back(event) {
     this.statusTarget.textContent = 'active'
     this.isIdleTarget.textContent = this.isIdle
+  }
+
+  log(event) {
+    console.log("state changed", event)
   }
 }
