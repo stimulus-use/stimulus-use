@@ -16,6 +16,7 @@ With the module options you can specify the event prefix. By default all module 
 
 The `eventPrefix` option can be a **boolean** or a **string**.
 
+```js
 // card_controller.js
 export default class extends Controller {
   options = {
@@ -26,6 +27,7 @@ export default class extends Controller {
     useIntersection(this, this.options)
   }
 }
+```
 
 Example for `eventPrefix` values:
 - true -> `card:appear`

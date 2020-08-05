@@ -12,11 +12,11 @@ useClickOutside(controller, options = {})
 
 **options** :
 
-| Option| Description | Default value |
+| Option| Description | Default value &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;|
 |-----------------------|-------------|---------------------|
 | `dispatchEvent` | Whether to dispatch a `click:outside` event or not.| `true` |
 | `element` | The root element listening for outside click.| The controller element|
-|`eventPrefix`| Whether to prefix or not the emitted event. Can be a **boolean** or a **string**.<br>- **true** prefix the event with the controller identifier `card:appear` <br>- **someString** prefix the event with the given string `someString:appear` <br>- **false** to remove prefix  |true|
+|`eventPrefix`| Whether to prefix or not the emitted event. Can be a **boolean** or a **string**.<br>- **true** prefix the event with the controller identifier `card:click:outside` <br>- **someString** prefix the event with the given string `someString:click:outside` <br>- **false** to remove prefix  |true|
 | `events` | Array of events to listen on to detect if the user clicks outside of the component.| `['click', 'touchend']` |
 | `onlyVisible` | Triggers click outside only to elements that are visible with in the viewport.| `true` |
 
