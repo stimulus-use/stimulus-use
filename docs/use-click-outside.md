@@ -67,10 +67,10 @@ export default class extends ClickOutsideController {
 
 ## Events
 
-This module adds a new `click:outside` event that you may use to triggers stimulus actions
+This module adds a new `click:outside` (prefixed by the controller identifier by default) event that you may use to triggers stimulus actions
 
 ```html
-<div class="modal" data-controller="modal" data-action="click:outside->modal#close" >
+<div class="modal" data-controller="modal" data-action="modal:click:outside->modal#close" >
   ...
 </div>
 ```
