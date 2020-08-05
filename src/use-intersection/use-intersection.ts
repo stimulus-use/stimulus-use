@@ -1,13 +1,20 @@
 import { IntersectionController } from './intersection-controller'
+import { method, extendedEvent, composeEventName } from '../support'
 
-export const useIntersection = (controller: IntersectionController, options?: IntersectionObserverInit) => {
-  const method = (methodName: string): Function => {
-    const method = (controller as any)[methodName]
-    if (typeof method == 'function') {
-      return method
-    }
-    throw new Error(`undefined method "${methodName}"`)
-  }
+export interface IntersectionOptions extends IntersectionObserverInit {
+  element?: Element
+  dispatchEvent?: boolean
+  eventPrefix?: boolean | string
+}
+
+const defaultOptions = {
+  dispatchEvent: true,
+  eventPrefix: true,
+}
+
+export const useIntersection = (controller: IntersectionController, options: IntersectionOptions = {}) => {
+  const { dispatchEvent, eventPrefix } = Object.assign(defaultOptions, options)
+  const targetElement: Element = options?.element || controller.element
 
   const callback = (entries: IntersectionObserverEntry[]) => {
     const [entry] = entries
@@ -20,25 +27,42 @@ export const useIntersection = (controller: IntersectionController, options?: In
 
   const dispatchAppear = (entry: IntersectionObserverEntry) => {
     controller.isVisible = true
-    controller.appear && method('appear').call(controller, entry)
+    controller.appear && method(controller, 'appear').call(controller, entry)
+
+    // emit a custom "appear" event
+    if (dispatchEvent) {
+      const eventName = composeEventName('appear', controller, eventPrefix)
+
+      const appearEvent = extendedEvent(eventName, null, { controller, entry })
+      targetElement.dispatchEvent(appearEvent)
+    }
   }
 
   const dispatchDisappear = (entry: IntersectionObserverEntry) => {
     controller.isVisible = false
-    controller.disappear && method('disappear').call(controller, entry)
+    controller.disappear && method(controller, 'disappear').call(controller, entry)
+
+    // emit a custom "disappear" event
+    if (dispatchEvent) {
+      const eventName = composeEventName('disappear', controller, eventPrefix)
+
+      const disappearEvent = extendedEvent(eventName, null, { controller, entry })
+      targetElement.dispatchEvent(disappearEvent)
+    }
   }
 
-  // keep a copy of the current disconnect() function of the controller to not override it
+  // keep a copy of the current disconnect() function of the controller
+  // to support composing several behaviors
   const controllerDisconnect = controller.disconnect
 
   Object.assign(controller, {
     isVisible: false,
     observer: new IntersectionObserver(callback, options),
     observe() {
-      this.observer.observe(controller.element)
+      this.observer.observe(targetElement)
     },
     unObserve() {
-      this.observer.unobserve(controller.element)
+      this.observer.unobserve(targetElement)
     },
     disconnect() {
       controller.unObserve()

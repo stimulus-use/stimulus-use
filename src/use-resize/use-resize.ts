@@ -1,17 +1,34 @@
 import { ResizeController } from './resize-controller'
+import { method, extendedEvent, composeEventName } from '../support'
 
-export const useResize = (controller: ResizeController) => {
-  const method = (methodName: string): Function => {
-    const method = (controller as any)[methodName]
-    if (typeof method == 'function') {
-      return method
-    }
-    throw new Error(`undefined method "${methodName}"`)
-  }
+export interface ResizeOptions {
+  element?: Element
+  dispatchEvent?: boolean
+  eventPrefix?: boolean | string
+}
+
+const defaultOptions = {
+  dispatchEvent: true,
+  eventPrefix: true,
+}
+
+export const useResize = (controller: ResizeController, options: ResizeOptions = {}) => {
+  const { dispatchEvent, eventPrefix } = Object.assign(defaultOptions, options)
+  const targetElement: Element = options?.element || controller.element
 
   const callback = (entries: ResizeObserverEntry[]) => {
     const [entry] = entries
-    controller.resize && method('resize').call(controller, entry.contentRect)
+    controller.resize && method(controller, 'resize').call(controller, entry.contentRect)
+
+    // emit a custom "controllerIdentifier:resize" event
+    if (dispatchEvent) {
+      const eventName = composeEventName('resize', controller, eventPrefix)
+      const appearEvent = extendedEvent(eventName, null, {
+        controller,
+        entry,
+      })
+      targetElement.dispatchEvent(appearEvent)
+    }
   }
 
   const controllerDisconnect = controller.disconnect
@@ -19,10 +36,10 @@ export const useResize = (controller: ResizeController) => {
   Object.assign(controller, {
     observer: new ResizeObserver(callback),
     observe() {
-      this.observer.observe(controller.element)
+      this.observer.observe(targetElement)
     },
     unObserve() {
-      this.observer.unobserve(controller.element)
+      this.observer.unobserve(targetElement)
     },
     disconnect() {
       controller.unObserve()

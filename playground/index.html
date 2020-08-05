@@ -9,7 +9,24 @@
     <script src="bundle.js" async></script>
   </head>
   <body>
+    <nav class="navbar fixed-top navbar-light bg-light" >
+      <div class="container">
+        <div data-controller="counter" data-action="appear@window->counter#increase disappear@window->counter#decrease">
+          <span class="navbar-text">Visible : </span>
+          <span class="navbar-text" data-target="counter.visibleCounter">0</span>
+        </div>
+        <div data-controller="counter" data-action="card:resize@window->counter#updateSize">
+          <span class="navbar-text">Width : </span>
+          <span class="navbar-text" data-target="counter.width">0</span>
+        </div>
+      </div>
+    </nav>
     <div class="container mt-5">
+      <h1 class="mt-5">useClickOutside</h1>
+      <div data-controller="modal" data-action="click:outside->modal#close" style="height: 3rem; width: 30rem; background-color: gray;">
+        Click outside
+        <button data-target="modal.content">Test</button>
+      </div>
       <h1 class="mt-5">Example of using dispatch</h1>
       <p>Communication between 2 controllers item_controller and cart_controller</p>
       <div data-controller="cart" data-action="item:add->cart#refreshTotal" data-cart-counter="0" class="card">
@@ -37,8 +54,14 @@
       <p>Resize your window</p>
       <div data-controller="resize" class="card">
         <div class="card-body">
-          <span>width : </span>
-          <span data-target="resize.width"></span>
+          <div>
+            <span>width : </span>
+            <span data-target="resize.width"></span>
+          </div>
+          <div>
+            <span>height : </span>
+            <span data-target="resize.height"></span>
+          </div>
         </div>
       </div>
 

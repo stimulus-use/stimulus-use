@@ -44,6 +44,7 @@ yarn add stimulus-use
   |-----------------------|-------------|---------------------|
   | [`useIntersection`](./docs/use-intersection.md) </br> `IntersectionController` | Tracks the element's intersection and adds **appear**, **disappear** callbacks to your controller.|`appear`</br> `disappear`|
   |[`useResize`](./docs/use-resize.md) </br>`ResizeController`|Tracks the element's size and adds a new lifecyle callback **resize**.|`resize`|
+  |[`useClickOutside`](./docs/use-click-outside.md) </br>`ClickOutsideController`|Tracks the clicks outside of the element and adds a new lifecyle callback **clickOutside**.|`clickOutside`|
 
 - **Application**
   - [`useApplication, ApplicationController`](./docs/application-controller.md) &mdash; supercharged controller for your application.
@@ -136,6 +137,7 @@ Made with :heart: by [@adrienpoly](https://twitter.com/adrienpoly) and all these
     <td align="center"><a href="https://github.com/bdarcet"><img src="https://avatars1.githubusercontent.com/u/9220278?v=4" width="100px;" alt=""/><br /><sub><b>Benjamin Darcet</b></sub></a><br /><a href="https://github.com/stimulus-use/stimulus-use/commits?author=bdarcet" title="Documentation">📖</a></td>
     <td align="center"><a href="https://github.com/juancarlosasensio"><img src="https://avatars3.githubusercontent.com/u/37816105?v=4" width="100px;" alt=""/><br /><sub><b>juancarlosasensio</b></sub></a><br /><a href="https://github.com/stimulus-use/stimulus-use/commits?author=juancarlosasensio" title="Documentation">📖</a></td>
     <td align="center"><a href="https://marcoroth.dev"><img src="https://avatars2.githubusercontent.com/u/6411752?v=4" width="100px;" alt=""/><br /><sub><b>Marco Roth</b></sub></a><br /><a href="#infra-marcoroth" title="Infrastructure (Hosting, Build-Tools, etc)">🚇</a></td>
+    <td align="center"><a href="http://philippdaun.net"><img src="https://avatars3.githubusercontent.com/u/22225348?v=4" width="100px;" alt=""/><br /><sub><b>Philipp Daun</b></sub></a><br /><a href="https://github.com/stimulus-use/stimulus-use/issues?q=author%3Adaun" title="Bug reports">🐛</a></td>
   </tr>
 </table>
 

@@ -8,13 +8,28 @@ export const method = (controller: Controller, methodName: string): Function => 
   throw new Error(`undefined method "${methodName}"`)
 }
 
-export const extendedEvent = (type: string, event: Event, controller: Controller): CustomEvent => {
-  const { bubbles, cancelable, composed } = event
+export const composeEventName = (name: string, controller: Controller, eventPrefix: boolean | string) => {
+  let composedName = name
+  if (eventPrefix === true) {
+    composedName = `${controller.identifier}:${name}`
+  } else if (typeof eventPrefix === 'string') {
+    composedName = `${eventPrefix}:${name}`
+  }
+  return composedName
+}
+
+export const extendedEvent = (type: string, event: Event | null, detail: object): CustomEvent => {
+  const { bubbles, cancelable, composed } = event || { bubbles: true, cancelable: true, composed: true }
+
+  if (event) {
+    Object.assign(detail, { originalEvent: event })
+  }
+
   const customEvent = new CustomEvent(type, {
     bubbles,
     cancelable,
     composed,
-    detail: { originalEvent: event, controller },
+    detail,
   })
   return customEvent
 }

@@ -1,9 +1,9 @@
 import { Controller, Context } from 'stimulus'
-import { useIntersection } from './use-intersection'
+import { useIntersection, IntersectionOptions } from './use-intersection'
 
 export class IntersectionController extends Controller {
   isVisible: boolean = false
-  options: IntersectionObserverInit = {}
+  options: IntersectionOptions = {}
   observer!: IntersectionObserver
 
   constructor(context: Context) {

@@ -1,13 +1,14 @@
 import { Controller, Context } from 'stimulus'
-import { useResize } from './use-resize'
+import { useResize, ResizeOptions } from './use-resize'
 
 export class ResizeController extends Controller {
   observer!: ResizeObserver
+  options: ResizeOptions = {}
 
   constructor(context: Context) {
     super(context)
     requestAnimationFrame(() => {
-      useResize(this)
+      useResize(this, this.options)
     })
   }
 
