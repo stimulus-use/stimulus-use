@@ -14,7 +14,7 @@ useIntersection(controller, options = {})
 
 **options** :
 
-| Option| Description | Default value |
+| Option| Description |&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Default value&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;|
 |-----------------------|-------------|---------------------|
 | `dispatchEvent` | Whether to dispatch `appear`, `disappear` events or not.| `true` |
 | `element` | The root element listening to intersection events.| The controller element|

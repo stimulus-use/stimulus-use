@@ -12,7 +12,7 @@ useClickOutside(controller, options = {})
 
 **options** :
 
-| Option| Description | Default value &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;|
+| Option| Description |&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Default value&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;|
 |-----------------------|-------------|---------------------|
 | `dispatchEvent` | Whether to dispatch a `click:outside` event or not.| `true` |
 | `element` | The root element listening for outside click.| The controller element|
