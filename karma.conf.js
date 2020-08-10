@@ -12,7 +12,7 @@ module.exports = function (config) {
 
     // list of files / patterns to load in the browser
     files: [
-      'spec/*.js',
+      'spec/**/*_spec.js',
       'spec/fixtures/*.html',
       {
         pattern: '**/*.js.map',
@@ -41,6 +41,9 @@ module.exports = function (config) {
             exclude: [/node_modules/],
             use: {
               loader: 'babel-loader',
+              options: {
+                plugins: ['@babel/plugin-proposal-class-properties'],
+              },
             },
           },
           {
