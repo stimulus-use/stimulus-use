@@ -3,7 +3,7 @@ import { useClickOutside, ClickOutsideOptions } from './use-click-outside'
 
 export class ClickOutsideController extends Controller {
   observer!: ResizeObserver
-  options: ClickOutsideOptions = {}
+  options!: ClickOutsideOptions
 
   initialize() {
     useClickOutside(this, this.options)

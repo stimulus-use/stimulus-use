@@ -1,11 +1,6 @@
 import { ClickOutsideController } from '../../src'
 
 export default class LogController extends ClickOutsideController {
-  initialize() {
-    this.options = this.application.options
-    super.initialize()
-  }
-
   clickOutside() {
     this.application.testLogger.log({ id: this.id, event: 'clickOutside', type: 'callback' })
   }
@@ -16,5 +11,9 @@ export default class LogController extends ClickOutsideController {
 
   get id() {
     return this.element.dataset.id
+  }
+
+  get options() {
+    return this.application.options
   }
 }
