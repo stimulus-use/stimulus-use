@@ -2,10 +2,12 @@ export const nextFrame = async () => {
   return await new Promise(resolve => requestAnimationFrame(resolve))
 }
 
+export const click = selector => {
+  fixture.el.querySelector(selector).click()
+}
+
 export class TestLogger {
-  constructor() {
-    this.logs = []
-  }
+  logs = []
 
   clear() {
     this.logs = []
@@ -18,4 +20,20 @@ export class TestLogger {
   eventsById(id) {
     return this.logs.filter(entry => entry.id === id)
   }
+
+  eventsFilter(keys) {
+    return filterByKeys(this.logs, keys)
+  }
+}
+
+const filterByKeys = (array, keys) => {
+  const filterKeys = Object.keys(keys)
+  return array.filter(item => {
+    // validates all filter criteria
+    return filterKeys.every(key => {
+      // ignores an empty filter
+      if (!keys[key].length) return true
+      return keys[key].find(filter => filter === item[key])
+    })
+  })
 }
