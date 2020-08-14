@@ -1,12 +1,10 @@
 // modal_controller.js
-import { Controller } from 'stimulus'
-import { useClickOutside } from 'stimulus-use'
+import { ClickOutsideController } from 'stimulus-use'
 
-export default class extends Controller {
+export default class extends ClickOutsideController {
   static targets = ['content']
-
-  connect() {
-    useClickOutside(this, { element: this.contentTarget })
+  options = {
+    dispatchEvent: false,
   }
 
   clickOutside(e) {
