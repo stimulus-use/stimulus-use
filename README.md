@@ -16,6 +16,12 @@
 
 <br />
 
+<p align="center">
+  <img src="./docs/assets/stimulus-use example.png" alt="Stimulus Use Example">
+</p>
+
+<br />
+
 - **New lifecycle behaviors**: adds new standard behaviors to your Stimulus controllers.
 - **Composable**: compose at will different behaviors in a single controller.
 - **Modular**: built as ES6 modules, just import what you need and tree shaking will remove the rest.
