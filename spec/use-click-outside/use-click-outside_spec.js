@@ -3,9 +3,7 @@ import { nextFrame, TestLogger, click } from '../helpers'
 import { expect } from 'chai'
 import LogController from './log_controller'
 import UseLogController from './use_log_controller'
-
-let testLogger
-let application
+import { fixtureBase, fixtureCustomPrefix, fixtureWithoutPrefix } from './fixtures'
 
 const controllers = [
   {
@@ -21,6 +19,7 @@ const controllers = [
 const scenarios = [
   {
     name: 'default scenario',
+    fixture: fixtureBase,
     options: {},
     answers: {
       eventCount: 1,
@@ -30,6 +29,7 @@ const scenarios = [
   },
   {
     name: 'with custom prefix',
+    fixture: fixtureCustomPrefix,
     options: {
       eventPrefix: 'custom',
     },
@@ -41,6 +41,7 @@ const scenarios = [
   },
   {
     name: 'without prefix',
+    fixture: fixtureWithoutPrefix,
     options: {
       eventPrefix: false,
     },
@@ -52,6 +53,7 @@ const scenarios = [
   },
   {
     name: 'dispatch event false',
+    fixture: fixtureBase,
     options: {
       dispatchEvent: false,
     },
@@ -62,6 +64,7 @@ const scenarios = [
   },
   {
     name: 'only touch end events',
+    fixture: fixtureBase,
     options: {
       events: ['touchend'],
     },
@@ -75,17 +78,20 @@ const scenarios = [
 scenarios.forEach(scenario => {
   controllers.forEach(Controller => {
     describe(`ClickOutsideController tests scenario : ${scenario.name} controller type ${Controller.type}`, function () {
+      let application
+      let testLogger
+
       before('initialize controller', async function () {
         application = Application.start()
         testLogger = new TestLogger()
         application.testLogger = testLogger
         application.options = scenario.options
-        fixture.load('index-click-outside.html')
+        fixture.set(scenario.fixture)
         application.register('modal', Controller.controller)
         await nextFrame()
       })
 
-      after('stop applcation', async function () {
+      after('stop application', async function () {
         await application.stop()
       })
 
