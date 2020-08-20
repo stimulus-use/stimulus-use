@@ -20,3 +20,21 @@ export default class extends Controller {
     // callback whenever the element gets resized
   }
 }
+
+//user_controller.js
+import { Controller } from 'stimulus'
+import { useIdle } from 'stimulus-use'
+
+export default class extends Controller {
+  connect() {
+    useIdle(this)
+  }
+
+  away(event) {
+    alert('Hey, wake up!')
+  }
+
+  back(event) {
+    alert('Welcome back!')
+  }
+}
