@@ -1,6 +1,18 @@
 import { ClickOutsideController } from '../../src'
 
 export default class LogController extends ClickOutsideController {
+  initialize() {
+    this.application.testLogger.log({ id: this.id, event: 'initialize', type: 'lifecycle' })
+  }
+
+  connect() {
+    this.application.testLogger.log({ id: this.id, event: 'connect', type: 'lifecycle' })
+  }
+
+  disconnect() {
+    this.application.testLogger.log({ id: this.id, event: 'disconnect', type: 'lifecycle' })
+  }
+
   clickOutside() {
     this.application.testLogger.log({ id: this.id, event: 'clickOutside', type: 'callback' })
   }

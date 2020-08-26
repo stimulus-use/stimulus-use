@@ -2,8 +2,14 @@ export const nextFrame = async () => {
   return await new Promise(resolve => requestAnimationFrame(resolve))
 }
 
-export const click = selector => {
+export const click = async selector => {
   fixture.el.querySelector(selector).click()
+  return nextFrame()
+}
+
+export const remove = async selector => {
+  fixture.el.querySelector(selector).remove()
+  return nextFrame()
 }
 
 export class TestLogger {
