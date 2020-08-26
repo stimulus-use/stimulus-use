@@ -68,6 +68,15 @@
       "contributions": [
         "bug"
       ]
+    },
+    {
+      "login": "mepatterson",
+      "name": "M. E. Patterson",
+      "avatar_url": "https://avatars0.githubusercontent.com/u/74207?v=4",
+      "profile": "http://code.digimonkey.com",
+      "contributions": [
+        "bug"
+      ]
     }
   ],
   "contributorsPerLine": 7,
