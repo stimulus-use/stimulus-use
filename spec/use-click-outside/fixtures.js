@@ -1,6 +1,6 @@
 export const fixtureBase = `
   <div style="height: 10vh;" id="outside-1"></div>
-  <div data-controller="modal" data-action="modal:click:outside->modal#close click:outside->modal#close" data-id="1">
+  <div data-controller="modal" id="modal-1" data-action="modal:click:outside->modal#close click:outside->modal#close" data-id="1">
     <button style="height: 10vh;" id="inside-1"></button>
   </div>
 
@@ -13,7 +13,7 @@ export const fixtureBase = `
 
 export const fixtureCustomPrefix = `
   <div style="height: 10vh;" id="outside-1"></div>
-  <div data-controller="modal" data-action="custom:click:outside->modal#close" data-id="1">
+  <div data-controller="modal" id="modal-1" data-action="custom:click:outside->modal#close" data-id="1">
     <button style="height: 10vh;" id="inside-1"></button>
   </div>
 
@@ -26,7 +26,7 @@ export const fixtureCustomPrefix = `
 
 export const fixtureWithoutPrefix = `
   <div style="height: 10vh;" id="outside-1"></div>
-  <div data-controller="modal" data-action="click:outside->modal#close" data-id="1">
+  <div data-controller="modal" id="modal-1" data-action="click:outside->modal#close" data-id="1">
     <button style="height: 10vh;" id="inside-1"></button>
   </div>
 

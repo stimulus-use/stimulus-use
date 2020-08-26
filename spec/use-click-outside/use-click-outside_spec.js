@@ -1,5 +1,5 @@
 import { Application } from 'stimulus'
-import { nextFrame, TestLogger, click } from '../helpers'
+import { nextFrame, TestLogger, click, remove } from '../helpers'
 import { expect } from 'chai'
 import LogController from './log_controller'
 import UseLogController from './use_log_controller'
@@ -101,10 +101,13 @@ scenarios.forEach(scenario => {
           click('#inside-1')
         })
         it('it triggers the outsideClick function', async function () {
-          expect(testLogger.eventsFilter({ id: ['1'] }).length).to.equal(
-            scenario.answers.eventCount + scenario.answers.callbackCounts,
-          )
-          expect(testLogger.eventsFilter({ id: ['2'] }).length).to.equal(0)
+          expect(
+            testLogger.eventsFilter({
+              id: ['1'],
+              event: ['clickOutside', 'click:outside'],
+            }).length,
+          ).to.equal(scenario.answers.eventCount + scenario.answers.callbackCounts)
+          expect(testLogger.eventsFilter({ id: ['2'], event: ['clickOutside', 'click:outside'] }).length).to.equal(0)
           expect(testLogger.eventsFilter({ id: ['1'], type: ['callback'] }).length).to.equal(
             scenario.answers.callbackCounts,
           )
@@ -120,7 +123,19 @@ scenarios.forEach(scenario => {
           click('#outside-1')
         })
         it('it triggers the outsideClick function', function () {
-          expect(testLogger.eventsFilter({ id: ['2'] }).length).to.equal(0)
+          expect(testLogger.eventsFilter({ id: ['2'], event: ['clickOutside', 'click:outside'] }).length).to.equal(0)
+        })
+      })
+
+      describe(`Preserve connect and disconnect lifecycles`, async function () {
+        before('perform a full lifecycle', async function () {
+          click('#outside-1')
+          await remove('#modal-1')
+        })
+        it('initialize connect and disconnect are recorded with this context', async function () {
+          expect(testLogger.eventsFilter({ id: ['1'], event: ['initialize'] }).length).to.equal(1)
+          expect(testLogger.eventsFilter({ id: ['1'], event: ['connect'] }).length).to.equal(1)
+          expect(testLogger.eventsFilter({ id: ['1'], event: ['disconnect'] }).length).to.equal(1)
         })
       })
     })
