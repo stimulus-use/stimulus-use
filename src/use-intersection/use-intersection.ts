@@ -53,7 +53,7 @@ export const useIntersection = (controller: IntersectionController, options: Int
 
   // keep a copy of the current disconnect() function of the controller
   // to support composing several behaviors
-  const controllerDisconnect = controller.disconnect
+  const controllerDisconnect = controller.disconnect.bind(controller)
 
   Object.assign(controller, {
     isVisible: false,

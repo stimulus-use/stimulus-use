@@ -1,8 +1,8 @@
 import { IdleController } from './idle-controller'
 import { extendedEvent, method, composeEventName } from '../support'
 
-const defaultEvents = ['mousemove', 'mousedown', 'resize', 'keydown', 'touchstart', 'wheel'];
-const oneMinute = 60e3;
+const defaultEvents = ['mousemove', 'mousedown', 'resize', 'keydown', 'touchstart', 'wheel']
+const oneMinute = 60e3
 
 interface IdleOptions {
   ms?: number
@@ -10,7 +10,7 @@ interface IdleOptions {
   events?: string[]
   dispatchEvent?: boolean
   eventPrefix?: boolean | string
-};
+}
 
 const defaultOptions = {
   ms: oneMinute,
@@ -21,22 +21,22 @@ const defaultOptions = {
 }
 
 export const useIdle = (controller: IdleController, options: IdleOptions = {}) => {
-  const { ms, initialState, events, dispatchEvent, eventPrefix } = Object.assign(defaultOptions, options);
+  const { ms, initialState, events, dispatchEvent, eventPrefix } = Object.assign(defaultOptions, options)
 
-  let isIdle = initialState;
+  let isIdle = initialState
   let timeout = setTimeout(() => {
     isIdle = true
-    dispatchAway();
-  }, ms);
+    dispatchAway()
+  }, ms)
 
   const dispatchAway = (event?: Event) => {
     const eventName = composeEventName('away', controller, eventPrefix)
 
-    controller.isIdle = true;
-    controller.away && method(controller, 'away').call(controller, event);
+    controller.isIdle = true
+    controller.away && method(controller, 'away').call(controller, event)
 
     if (dispatchEvent) {
-      const clickOutsideEvent = extendedEvent(eventName, event || null, { controller })
+      const clickOutsideEvent = extendedEvent(eventName, event || null, { controller })
       controller.element.dispatchEvent(clickOutsideEvent)
     }
   }
@@ -44,8 +44,8 @@ export const useIdle = (controller: IdleController, options: IdleOptions = {}) =
   const dispatchBack = (event?: Event) => {
     const eventName = composeEventName('back', controller, eventPrefix)
 
-    controller.isIdle = false;
-    controller.back && method(controller, 'back').call(controller, event);
+    controller.isIdle = false
+    controller.back && method(controller, 'back').call(controller, event)
 
     if (dispatchEvent) {
       const clickOutsideEvent = extendedEvent(eventName, event || null, { controller })
@@ -54,45 +54,45 @@ export const useIdle = (controller: IdleController, options: IdleOptions = {}) =
   }
 
   const onEvent = (event: Event) => {
-    if (isIdle) dispatchBack(event);
+    if (isIdle) dispatchBack(event)
 
-    isIdle = false;
-    clearTimeout(timeout);
+    isIdle = false
+    clearTimeout(timeout)
 
     timeout = setTimeout(() => {
       isIdle = true
-      dispatchAway(event);
-    }, ms);
+      dispatchAway(event)
+    }, ms)
   }
 
   const onVisibility = (event: Event) => {
-    if (!document.hidden) onEvent(event);
-  };
-
-  if (isIdle) {
-    dispatchAway();
-  } else {
-    dispatchBack();
+    if (!document.hidden) onEvent(event)
   }
 
-  const controllerDisconnect = controller.disconnect
+  if (isIdle) {
+    dispatchAway()
+  } else {
+    dispatchBack()
+  }
+
+  const controllerDisconnect = controller.disconnect.bind(controller)
 
   Object.assign(controller, {
     observe() {
       events.forEach(event => {
-        window.addEventListener(event, onEvent);
-      });
-      document.addEventListener('visibilitychange', onVisibility);
+        window.addEventListener(event, onEvent)
+      })
+      document.addEventListener('visibilitychange', onVisibility)
     },
     unObserve() {
       events.forEach(event => {
-        window.removeEventListener(event, onEvent);
-      });
-      document.removeEventListener('visibilitychange', onVisibility);
+        window.removeEventListener(event, onEvent)
+      })
+      document.removeEventListener('visibilitychange', onVisibility)
     },
     disconnect() {
-      this.unObserve();
-      controllerDisconnect();
+      this.unObserve()
+      controllerDisconnect()
     },
   })
 
