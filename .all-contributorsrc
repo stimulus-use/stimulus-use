@@ -2,9 +2,37 @@
   "files": [
     "README.md"
   ],
-  "imageSize": 100,
+  "imageSize": 80,
   "commit": false,
   "contributors": [
+    {
+      "login": "marcoroth",
+      "name": "Marco Roth",
+      "avatar_url": "https://avatars2.githubusercontent.com/u/6411752?v=4",
+      "profile": "https://marcoroth.dev",
+      "contributions": [
+        "infra",
+        "code"
+      ]
+    },
+    {
+      "login": "daun",
+      "name": "Philipp Daun",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/22225348?v=4",
+      "profile": "http://philippdaun.net",
+      "contributions": [
+        "bug"
+      ]
+    },
+    {
+      "login": "mepatterson",
+      "name": "M. E. Patterson",
+      "avatar_url": "https://avatars0.githubusercontent.com/u/74207?v=4",
+      "profile": "http://code.digimonkey.com",
+      "contributions": [
+        "bug"
+      ]
+    },
     {
       "login": "jonathan-s",
       "name": "Jonathan Sundqvist",
@@ -50,34 +78,7 @@
         "doc"
       ]
     },
-    {
-      "login": "marcoroth",
-      "name": "Marco Roth",
-      "avatar_url": "https://avatars2.githubusercontent.com/u/6411752?v=4",
-      "profile": "https://marcoroth.dev",
-      "contributions": [
-        "infra",
-        "code"
-      ]
-    },
-    {
-      "login": "daun",
-      "name": "Philipp Daun",
-      "avatar_url": "https://avatars3.githubusercontent.com/u/22225348?v=4",
-      "profile": "http://philippdaun.net",
-      "contributions": [
-        "bug"
-      ]
-    },
-    {
-      "login": "mepatterson",
-      "name": "M. E. Patterson",
-      "avatar_url": "https://avatars0.githubusercontent.com/u/74207?v=4",
-      "profile": "http://code.digimonkey.com",
-      "contributions": [
-        "bug"
-      ]
-    }
+
   ],
   "contributorsPerLine": 7,
   "projectName": "stimulus-use",
