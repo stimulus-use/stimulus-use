@@ -11,7 +11,7 @@
   "external": "stimulus",
   "scripts": {
     "start": "webpack-dev-server --mode development --open",
-    "prebuild": "yarn clean",
+    "prebuild": "$npm_execpath run clean",
     "build": "tsc -b && microbundle src/index.ts -f umd",
     "test": "NODE_ENV=test karma start",
     "test:watch": "NODE_ENV=test karma start --auto-watch --no-single-run",
