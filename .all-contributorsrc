@@ -77,6 +77,15 @@
       "contributions": [
         "doc"
       ]
+    },
+    {
+      "login": "lidqqq",
+      "name": "lidqqq",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/39523918?v=4",
+      "profile": "https://lidqqq.dev/",
+      "contributions": [
+        "infra"
+      ]
     }
   ],
   "contributorsPerLine": 7,
