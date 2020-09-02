@@ -77,8 +77,7 @@
       "contributions": [
         "doc"
       ]
-    },
-
+    }
   ],
   "contributorsPerLine": 7,
   "projectName": "stimulus-use",
