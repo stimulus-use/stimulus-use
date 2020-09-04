@@ -3,7 +3,7 @@ import { useIntersection, IntersectionOptions } from './use-intersection'
 
 export class IntersectionController extends Controller {
   isVisible: boolean = false
-  options: IntersectionOptions = {}
+  options!: IntersectionOptions
   observer!: IntersectionObserver
 
   constructor(context: Context) {
