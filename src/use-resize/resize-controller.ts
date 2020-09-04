@@ -12,9 +12,9 @@ export class ResizeController extends Controller {
     })
   }
 
-  observe() {}
+  observeResize() {}
 
-  unObserve() {}
+  unObserveResize() {}
 
   resize(contentRect: DOMRectReadOnly) {}
 }

@@ -35,17 +35,17 @@ export const useLazyLoad = (controller: LazyLoadController, options?: Intersecti
   Object.assign(controller, {
     isVisible: false,
     observer: new IntersectionObserver(callback, options),
-    observe() {
+    observeLazyLoad() {
       this.observer.observe(controller.element)
     },
-    unObserve() {
+    unObserveLazyLoad() {
       this.observer.unobserve(controller.element)
     },
     disconnect() {
-      controller.unObserve()
+      controller.unObserveLazyLoad()
       controllerDisconnect()
     },
   })
 
-  controller.observe()
+  controller.observeLazyLoad()
 }

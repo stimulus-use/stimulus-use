@@ -14,9 +14,9 @@ export class LazyLoadController extends Controller {
     })
   }
 
-  observe() {}
+  observeLazyLoad() {}
 
-  unObserve() {}
+  unObserveLazyLoad() {}
 
   loading(src: string) {}
 

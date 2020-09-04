@@ -3,6 +3,7 @@ import { nextFrame, TestLogger, click, remove } from '../helpers'
 import { expect } from 'chai'
 import { LogController } from './log_controller'
 import { UseLogController } from './use_log_controller'
+import { ComposedLogController } from './composed_log_controller'
 import { fixtureBase, fixtureCustomPrefix, fixtureWithoutPrefix } from './fixtures'
 
 const controllers = [
@@ -13,6 +14,10 @@ const controllers = [
   {
     type: 'mixin',
     controller: UseLogController,
+  },
+  {
+    type: 'mixin composed',
+    controller: ComposedLogController,
   },
 ]
 

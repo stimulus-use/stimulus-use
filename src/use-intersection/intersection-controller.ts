@@ -13,9 +13,9 @@ export class IntersectionController extends Controller {
     })
   }
 
-  observe() {}
+  observeIntersection() {}
 
-  unObserve() {}
+  unObserveIntersection() {}
 
   appear(entry: IntersectionObserverEntry) {}
 

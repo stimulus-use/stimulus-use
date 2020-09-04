@@ -78,23 +78,23 @@ export const useIdle = (controller: IdleController, options: IdleOptions = {}) =
   const controllerDisconnect = controller.disconnect.bind(controller)
 
   Object.assign(controller, {
-    observe() {
+    observeIdle() {
       events.forEach(event => {
         window.addEventListener(event, onEvent)
       })
       document.addEventListener('visibilitychange', onVisibility)
     },
-    unObserve() {
+    unObserveIdle() {
       events.forEach(event => {
         window.removeEventListener(event, onEvent)
       })
       document.removeEventListener('visibilitychange', onVisibility)
     },
     disconnect() {
-      this.unObserve()
+      controller.unObserveIdle()
       controllerDisconnect()
     },
   })
 
-  controller.observe()
+  controller.observeIdle()
 }

@@ -11,9 +11,9 @@ export class IdleController extends Controller {
     })
   }
 
-  observe() {}
+  observeIdle() {}
 
-  unObserve() {}
+  unObserveIdle() {}
 
   away() {}
 
