@@ -2,7 +2,7 @@ import { Controller, Context } from 'stimulus'
 import { useResize, ResizeOptions } from './use-resize'
 
 export class ResizeController extends Controller {
-  options: ResizeOptions = {}
+  options!: ResizeOptions
   observe!: () => void
   unobserve!: () => void
 
