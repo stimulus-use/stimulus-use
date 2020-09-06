@@ -2,19 +2,17 @@ import { Controller, Context } from 'stimulus'
 import { useResize, ResizeOptions } from './use-resize'
 
 export class ResizeController extends Controller {
-  observer!: ResizeObserver
   options: ResizeOptions = {}
+  observe!: () => void
+  unobserve!: () => void
 
   constructor(context: Context) {
     super(context)
     requestAnimationFrame(() => {
-      useResize(this, this.options)
+      const [observe, unobserve] = useResize(this, this.options)
+      Object.assign(this, { observe, unobserve })
     })
   }
-
-  observe() {}
-
-  unObserve() {}
 
   resize(contentRect: DOMRectReadOnly) {}
 }

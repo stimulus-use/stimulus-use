@@ -55,20 +55,25 @@ export const useIntersection = (controller: IntersectionController, options: Int
   // to support composing several behaviors
   const controllerDisconnect = controller.disconnect.bind(controller)
 
+  const observer = new IntersectionObserver(callback, options)
+
+  const observe = () => {
+    observer.observe(targetElement)
+  }
+
+  const unobserve = () => {
+    observer.unobserve(targetElement)
+  }
+
   Object.assign(controller, {
     isVisible: false,
-    observer: new IntersectionObserver(callback, options),
-    observe() {
-      this.observer.observe(targetElement)
-    },
-    unObserve() {
-      this.observer.unobserve(targetElement)
-    },
     disconnect() {
-      controller.unObserve()
+      unobserve()
       controllerDisconnect()
     },
   })
 
-  controller.observe()
+  observe()
+
+  return [observe, unobserve] as const
 }

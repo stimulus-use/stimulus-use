@@ -42,9 +42,17 @@ export const useClickOutside = (controller: ClickOutsideController, options: Cli
     }
   }
 
-  events?.forEach(event => {
-    window.addEventListener(event, onEvent, false)
-  })
+  const observe = () => {
+    events?.forEach(event => {
+      window.addEventListener(event, onEvent, false)
+    })
+  }
+
+  const unobserve = () => {
+    events?.forEach(event => {
+      window.removeEventListener(event, onEvent, false)
+    })
+  }
 
   // keep a copy of the current disconnect() function of the controller
   // to support composing several behaviors
@@ -52,10 +60,12 @@ export const useClickOutside = (controller: ClickOutsideController, options: Cli
 
   Object.assign(controller, {
     disconnect() {
-      events?.forEach(event => {
-        window.removeEventListener(event, onEvent, false)
-      })
+      unobserve()
       controllerDisconnect()
     },
   })
+
+  observe()
+
+  return [observe, unobserve] as const
 }
