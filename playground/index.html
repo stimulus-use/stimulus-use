@@ -26,6 +26,8 @@
       <div data-controller="modal" data-action="modal:click:outside->modal#close" style="height: 3rem; width: 30rem; background-color: gray;">
         Click outside
         <button data-target="modal.content">Test</button>
+        <button data-action="modal#observe">Observe</button>
+        <button data-action="modal#unobserve">Unobserve</button>
       </div>
       <h1 class="mt-5">Example of using dispatch</h1>
       <p>Communication between 2 controllers item_controller and cart_controller</p>
