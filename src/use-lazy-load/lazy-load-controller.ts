@@ -5,7 +5,6 @@ export class LazyLoadController extends Controller {
   isLoading: boolean = false
   isLoaded: boolean = false
   options: IntersectionObserverInit = { rootMargin: '10%' }
-  observer!: IntersectionObserver
 
   constructor(context: Context) {
     super(context)
@@ -13,10 +12,6 @@ export class LazyLoadController extends Controller {
       useLazyLoad(this, this.options)
     })
   }
-
-  observe() {}
-
-  unObserve() {}
 
   loading(src: string) {}
 

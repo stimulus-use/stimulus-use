@@ -4,7 +4,6 @@ import { useIntersection, IntersectionOptions } from './use-intersection'
 export class IntersectionController extends Controller {
   isVisible: boolean = false
   options!: IntersectionOptions
-  observer!: IntersectionObserver
 
   constructor(context: Context) {
     super(context)
@@ -12,10 +11,6 @@ export class IntersectionController extends Controller {
       useIntersection(this, this.options)
     })
   }
-
-  observe() {}
-
-  unObserve() {}
 
   appear(entry: IntersectionObserverEntry) {}
 

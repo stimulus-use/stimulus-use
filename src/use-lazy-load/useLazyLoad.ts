@@ -30,22 +30,27 @@ export const useLazyLoad = (controller: LazyLoadController, options?: Intersecti
   }
 
   // keep a copy of the current disconnect() function of the controller to not override it
-  const controllerDisconnect = controller.disconnect
+  const controllerDisconnect = controller.disconnect.bind(controller)
+
+  const observer = new IntersectionObserver(callback, options)
+
+  const observe = () => {
+    observer.observe(controller.element)
+  }
+
+  const unobserve = () => {
+    observer.unobserve(controller.element)
+  }
 
   Object.assign(controller, {
     isVisible: false,
-    observer: new IntersectionObserver(callback, options),
-    observe() {
-      this.observer.observe(controller.element)
-    },
-    unObserve() {
-      this.observer.unobserve(controller.element)
-    },
     disconnect() {
-      controller.unObserve()
+      unobserve()
       controllerDisconnect()
     },
   })
 
-  controller.observe()
+  observe()
+
+  return [observe, unobserve] as const
 }

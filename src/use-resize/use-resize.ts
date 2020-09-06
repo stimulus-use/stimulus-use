@@ -33,19 +33,23 @@ export const useResize = (controller: ResizeController, options: ResizeOptions =
 
   const controllerDisconnect = controller.disconnect.bind(controller)
 
+  const observer = new ResizeObserver(callback)
+
+  const observe = () => {
+    observer.observe(targetElement)
+  }
+  const unobserve = () => {
+    observer.unobserve(targetElement)
+  }
+
   Object.assign(controller, {
-    observer: new ResizeObserver(callback),
-    observe() {
-      this.observer.observe(targetElement)
-    },
-    unObserve() {
-      this.observer.unobserve(targetElement)
-    },
     disconnect() {
-      controller.unObserve()
+      unobserve()
       controllerDisconnect()
     },
   })
 
-  controller.observe()
+  observe()
+
+  return [observe, unobserve] as const
 }

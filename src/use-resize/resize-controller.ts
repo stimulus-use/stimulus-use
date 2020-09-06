@@ -2,7 +2,6 @@ import { Controller, Context } from 'stimulus'
 import { useResize, ResizeOptions } from './use-resize'
 
 export class ResizeController extends Controller {
-  observer!: ResizeObserver
   options: ResizeOptions = {}
 
   constructor(context: Context) {
@@ -11,10 +10,6 @@ export class ResizeController extends Controller {
       useResize(this, this.options)
     })
   }
-
-  observe() {}
-
-  unObserve() {}
 
   resize(contentRect: DOMRectReadOnly) {}
 }
