@@ -10,7 +10,6 @@ export class IdleController extends Controller {
   constructor(context: Context) {
     super(context)
     requestAnimationFrame(() => {
-      useIdle(this)
       const [observe, unobserve] = useIdle(this, this.options)
       Object.assign(this, { observe, unobserve })
     })
