@@ -4,7 +4,7 @@ import { extendedEvent, method, composeEventName } from '../support'
 const defaultEvents = ['mousemove', 'mousedown', 'resize', 'keydown', 'touchstart', 'wheel']
 const oneMinute = 60e3
 
-interface IdleOptions {
+export interface IdleOptions {
   ms?: number
   initialState?: boolean
   events?: string[]
