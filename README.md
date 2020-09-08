@@ -12,8 +12,8 @@
   </a>
   <img src="https://badgen.net/npm/types/tslib" alt="types included">
   <img src="https://badgen.net/npm/license/stimulus-use" alt="types included">
+  <img src="./docs/assets/example-buildstatus-badge.png" alt="Sauce test status">
 </p>
-
 <br />
 
 <p align="center">
