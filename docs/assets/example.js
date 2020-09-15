@@ -38,3 +38,19 @@ export default class extends Controller {
     alert('Welcome back!')
   }
 }
+
+//video_controller
+export default class extends Controller {
+  connect() {
+    useVisible(this)
+    this.player = new VideoPlayer()
+  }
+
+  visible() {
+    this.player.play()
+  }
+
+  invisible() {
+    this.player.pause()
+  }
+}
