@@ -45,19 +45,18 @@ yarn add stimulus-use
 
 - **Observers**
 
-  This set of controllers is built around the [`Observer APIs`](https://developer.mozilla.org/en-US/docs/Web/API)
+  This set of controllers is built around the [`Observer APIs`](https://developer.mozilla.org/en-US/docs/Web/API) and custom events
   | useFunction/Controller| Description | NEW Callbacks |
   |-----------------------|-------------|---------------------|
-  | [`useIntersection`](./docs/use-intersection.md) </br> `IntersectionController` | Tracks the element's intersection and adds **appear**, **disappear** callbacks to your controller.|`appear`</br> `disappear`|
-  |[`useResize`](./docs/use-resize.md) </br>`ResizeController`|Tracks the element's size and adds a new lifecyle callback **resize**.|`resize`|
-  |[`useClickOutside`](./docs/use-click-outside.md) </br>`ClickOutsideController`|Tracks the clicks outside of the element and adds a new lifecyle callback **clickOutside**.|`clickOutside`|
+  |[`useClickOutside`](./docs/use-click-outside.md)|Tracks the clicks outside of the element and adds a new lifecyle callback **clickOutside**.|`clickOutside`|
+  | [`useIdle`](./docs/use-idle.md)| Tracks if the user is idle on your page and adds **away** and **back** callbacks to your controller.|`away`</br> `back`|
+  | [`useIntersection`](./docs/use-intersection.md) | Tracks the element's intersection and adds **appear**, **disappear** callbacks to your controller.|`appear`</br> `disappear`|
+  | [`useVisibility`](./docs/use-visibility.md) </br>| Tracks the page visibility and adds **visible**, **invisible** callbacks to your controller.|`visible`</br> `invisible`|
+  |[`useResize`](./docs/use-resize.md)|Tracks the element's size and adds a new lifecyle callback **resize**.|`resize`|
+
 
 - **Application**
   - [`useApplication, ApplicationController`](./docs/application-controller.md) &mdash; supercharged controller for your application.
-
-
-- **Idle**
-  - [`useIdle, IdleController`](./docs/use-idle.md) &mdash;  Tracks if the user is idle on your page and adds **away** and **back** callbacks to your controller.
 
 
 ## Extend or compose
