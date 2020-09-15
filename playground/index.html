@@ -79,6 +79,18 @@
         </div>
       </div>
 
+      <h1 class="mt-5">useVisibility</h1>
+      <p>Counts only when tab is visible</p>
+      <div data-controller="visibility" class="card">
+        <div class="card-body">
+          <span>Standard counter: </span>
+          <span data-target="visibility.standardCounter"></span>
+          <br />
+          <span>Visible counter: </span>
+          <span data-target="visibility.visibleCounter"></span>
+        </div>
+      </div>
+
       <h1 class="mt-5">useLazyLoad</h1>
       <div class="row">
         <img data-controller="lazy-load" data-lazy-load-src="https://loremflickr.com/200/200" style="min-height: 200px" class="img-fluid col-6 mb-2">
