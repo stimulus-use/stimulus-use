@@ -1,7 +1,88 @@
 // Karma configuration
 // Generated on Mon Sep 03 2018 21:41:15 GMT+0200 (CEST)
 
+const customLaunchers = {
+  sl_chrome_latest: {
+    base: 'SauceLabs',
+    browserName: 'chrome',
+    version: 'latest'
+  },
+  // sl_chrome_latest_i8n: {
+  //   base: 'SauceLabs',
+  //   browserName: 'chrome',
+  //   version: 'latest',
+  //   chromeOptions: {
+  //     args: ['--lang=tr'],
+  //   },
+  // },
+  // sl_firefox_43: {
+  //   base: 'SauceLabs',
+  //   browserName: 'firefox',
+  //   version: '43',
+  // },
+  sl_firefox_latest: {
+    base: 'SauceLabs',
+    browserName: 'firefox',
+    version: 'latest'
+  },
+  // sl_safari_9: {
+  //   base: 'SauceLabs',
+  //   browserName: 'safari',
+  //   platform: 'OS X 10.11',
+  //   version: '9',
+  // },
+  // sl_safari_10_1: {
+  //   base: 'SauceLabs',
+  //   browserName: 'safari',
+  //   platform: 'macOS 10.12',
+  //   version: '10.1',
+  // },
+  sl_safari_latest: {
+    base: 'SauceLabs',
+    browserName: 'safari',
+    platform: 'macOS 10.13',
+    version: 'latest'
+  }
+  // sl_edge_17: {
+  //   base: 'SauceLabs',
+  //   browserName: 'microsoftedge',
+  //   platform: 'Windows 10',
+  //   version: '17.17134',
+  // },
+  // sl_edge_latest: {
+  //   base: 'SauceLabs',
+  //   browserName: 'microsoftedge',
+  //   platform: 'Windows 10',
+  //   version: '18.17763',
+  // },
+  // sl_ie_11: {
+  //   base: 'SauceLabs',
+  //   browserName: 'internet explorer',
+  //   platform: 'Windows 8.1',
+  //   version: '11',
+  // },
+  // sl_ios_latest: {
+  //   base: 'SauceLabs',
+  //   browserName: 'safari',
+  //   platform: 'ios',
+  //   device: 'iPhone X Simulator',
+  //   version: '13.0',
+  // },
+  // sl_android_latest: {
+  //   base: 'SauceLabs',
+  //   browserName: 'chrome',
+  //   platform: 'android',
+  //   device: 'Android GoogleAPI Emulator',
+  //   version: '10.0',
+  // },
+}
+
 module.exports = function (config) {
+  if ((!process.env.SAUCE_USERNAME || !process.env.SAUCE_ACCESS_KEY) && process.env.CI) {
+    console.log('Make sure the SAUCE_USERNAME and SAUCE_ACCESS_KEY environment variables are set.')
+    process.exit(1)
+  }
+
   config.set({
     // base path that will be used to resolve all patterns (eg. files, exclude)
     basePath: '',
@@ -16,20 +97,20 @@ module.exports = function (config) {
       'spec/fixtures/*.html',
       {
         pattern: '**/*.js.map',
-        included: false,
+        included: false
       },
-      'src/**/*.ts',
+      'src/**/*.ts'
     ],
 
     // list of files / patterns to exclude
-    exclude: [],
+    exclude: ['**/*.d.ts'],
 
     // preprocess matching files before serving them to the browser
     // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
     preprocessors: {
       'spec/**/*.js': ['webpack', 'sourcemap'],
       'src/**/*.ts': ['karma-typescript'],
-      'spec/fixtures/*.html': ['html2js'],
+      'spec/fixtures/*.html': ['html2js']
     },
 
     webpack: {
@@ -42,59 +123,62 @@ module.exports = function (config) {
             use: {
               loader: 'babel-loader',
               options: {
-                plugins: ['@babel/plugin-proposal-class-properties'],
-              },
-            },
+                plugins: ['@babel/plugin-proposal-class-properties']
+              }
+            }
           },
           {
             test: /\.ts?$/,
             use: 'ts-loader',
-            exclude: /node_modules/,
+            exclude: /node_modules/
           },
           {
             test: /\.css$/,
-            use: ['style-loader', 'css-loader'],
-          },
-        ],
+            use: ['style-loader', 'css-loader']
+          }
+        ]
       },
       resolve: {
-        extensions: ['.tsx', '.ts', '.js'],
-      },
+        extensions: ['.tsx', '.ts', '.js']
+      }
     },
 
     client: {
       captureConsole: true,
       chai: {
-        includeStack: true,
+        includeStack: true
       },
-      clearContext: false,
+      clearContext: false
     },
 
     // test results reporter to use
     // possible values: 'dots', 'progress'
     // available reporters: https://npmjs.org/browse/keyword/karma-reporter
-    reporters: ['progress', 'karma-typescript'],
+    reporters: ['dots', 'karma-typescript'],
 
     coverageReporter: {
       reporters: [
         {
-          type: 'lcov',
+          type: 'lcov'
         },
         {
-          type: 'html',
+          type: 'html'
         },
         {
-          type: 'text-summary',
+          type: 'text-summary'
         },
         {
-          type: 'text',
-        },
-      ],
+          type: 'text'
+        }
+      ]
     },
-    // web server port
-    port: 9876,
 
-    // enable / disable colors in the output (reporters and logs)
+    // hostname: '0.0.0.0',
+
+    captureTimeout: 180000,
+    browserDisconnectTimeout: 180000,
+    browserDisconnectTolerance: 3,
+    browserNoActivityTimeout: 300000,
     colors: true,
 
     // level of logging
@@ -104,32 +188,22 @@ module.exports = function (config) {
     // enable / disable watching file and executing tests whenever any file changes
     autoWatch: true,
 
-    customLaunchers: {
-      ChromeHeadless: {
-        base: 'Chrome',
-        flags: [
-          '--no-sandbox',
-          '--headless',
-          '--disable-gpu',
-          // Without a remote debugging port, Google Chrome exits immediately.
-          '--remote-debugging-port=9222',
-          '--window-size=1920x1080',
-          '--disable-dev-shm-usage',
-          'start-maximised',
-        ],
-        debug: true,
-      },
-    },
     // start these browsers
     // available browser launchers: https://npmjs.org/browse/keyword/karma-launcher
-    browsers: ['ChromeHeadless'],
+    browsers: ['ChromeHeadless', 'FirefoxHeadless'],
 
     // Continuous Integration mode
     // if true, Karma captures browsers, runs the tests and exits
-    singleRun: true,
-
-    // Concurrency level
-    // how many browser should be started simultaneous
-    concurrency: 5,
+    singleRun: true
   })
+
+  if (process.env.CI) {
+    config.customLaunchers = customLaunchers
+    config.browsers = Object.keys(customLaunchers)
+    config.sauceLabs = {
+      region: 'eu',
+      testName: 'Stimulus Browser Tests'
+    }
+    config.reporters = ['dots', 'saucelabs']
+  }
 }

@@ -1,10 +1,40 @@
-version: 2.1
+version: 2
 jobs:
-  build:
+  test:
     docker:
       # specify the version you desire here
-      - image: circleci/node:latest-browsers
+      - image: circleci/node:12.6.0
     steps:
       - checkout
-      - run: yarn install
-      - run: yarn test
+      - run:
+          name: Install Yarn
+          command: curl -o- -L https://yarnpkg.com/install.sh | bash && yarn --version
+      - restore_cache:
+          key: dependency-cache-{{ checksum "yarn.lock" }}
+      - run:
+          name: Install npm dependencies
+          command: yarn
+      - run:
+          name: Run test suite
+          command: yarn test
+      - save_cache:
+          key: dependency-cache-{{ checksum "yarn.lock" }}
+          paths:
+            - node_modules
+workflows:
+  version: 2
+  test:
+    jobs:
+      - test
+
+# version: 2.1
+# jobs:
+#   build:
+#     docker:
+#       # specify the version you desire here
+#       - image: circleci/node:latest-browsers
+#     steps:
+#       - checkout
+#       - run: yarn install
+#       - run: yarn test
+

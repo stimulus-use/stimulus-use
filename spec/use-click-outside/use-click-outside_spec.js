@@ -8,12 +8,12 @@ import { fixtureBase, fixtureCustomPrefix, fixtureWithoutPrefix } from './fixtur
 const controllers = [
   {
     type: 'controller',
-    controller: LogController,
+    controller: LogController
   },
   {
     type: 'mixin',
-    controller: UseLogController,
-  },
+    controller: UseLogController
+  }
 ]
 
 const scenarios = [
@@ -24,55 +24,55 @@ const scenarios = [
     answers: {
       eventCount: 1,
       callbackCounts: 1,
-      eventName: 'modal:click:outside',
-    },
+      eventName: 'modal:click:outside'
+    }
   },
   {
     name: 'with custom prefix',
     fixture: fixtureCustomPrefix,
     options: {
-      eventPrefix: 'custom',
+      eventPrefix: 'custom'
     },
     answers: {
       eventCount: 1,
       callbackCounts: 1,
-      eventName: 'custom:click:outside',
-    },
+      eventName: 'custom:click:outside'
+    }
   },
   {
     name: 'without prefix',
     fixture: fixtureWithoutPrefix,
     options: {
-      eventPrefix: false,
+      eventPrefix: false
     },
     answers: {
       eventCount: 1,
       callbackCounts: 1,
-      eventName: 'click:outside',
-    },
+      eventName: 'click:outside'
+    }
   },
   {
     name: 'dispatch event false',
     fixture: fixtureBase,
     options: {
-      dispatchEvent: false,
+      dispatchEvent: false
     },
     answers: {
       eventCount: 0,
-      callbackCounts: 1,
-    },
+      callbackCounts: 1
+    }
   },
   {
     name: 'only touch end events',
     fixture: fixtureBase,
     options: {
-      events: ['touchend'],
+      events: ['touchend']
     },
     answers: {
       eventCount: 0,
-      callbackCounts: 0,
-    },
-  },
+      callbackCounts: 0
+    }
+  }
 ]
 
 scenarios.forEach(scenario => {
@@ -104,12 +104,12 @@ scenarios.forEach(scenario => {
           expect(
             testLogger.eventsFilter({
               id: ['1'],
-              event: ['clickOutside', 'click:outside'],
-            }).length,
+              event: ['clickOutside', 'click:outside']
+            }).length
           ).to.equal(scenario.answers.eventCount + scenario.answers.callbackCounts)
           expect(testLogger.eventsFilter({ id: ['2'], event: ['clickOutside', 'click:outside'] }).length).to.equal(0)
           expect(testLogger.eventsFilter({ id: ['1'], type: ['callback'] }).length).to.equal(
-            scenario.answers.callbackCounts,
+            scenario.answers.callbackCounts
           )
           expect(testLogger.eventsFilter({ id: ['1'], type: ['event'] }).length).to.equal(scenario.answers.eventCount)
           if (scenario.answers.eventCount > 0) {

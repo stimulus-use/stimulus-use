@@ -2,13 +2,17 @@ export const nextFrame = async () => {
   return await new Promise(resolve => requestAnimationFrame(resolve))
 }
 
+export function delay(ms = 1) {
+  return new Promise(resolve => setTimeout(resolve, ms))
+}
+
 export const click = async selector => {
-  fixture.el.querySelector(selector).click()
+  document.querySelector(selector).click()
   return nextFrame()
 }
 
 export const remove = async selector => {
-  fixture.el.querySelector(selector).remove()
+  document.querySelector(selector).remove()
   return nextFrame()
 }
 
