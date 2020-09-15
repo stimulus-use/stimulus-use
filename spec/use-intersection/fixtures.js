@@ -4,6 +4,7 @@ export const fixtureBase = `
   <div style="height: 110vh;"></div>
   <div data-controller="intersection" data-id="2" id="2"></div>
   <a href="#scroll-down" id="scroll-top">Scroll top<a/>
+  <div style="height: 30vh;"></div>
 `
 
 export const fixtureCustomPrefix = `
@@ -14,6 +15,7 @@ export const fixtureCustomPrefix = `
   <div data-controller="intersection" data-id="2" id="2"></div>
   <div style="height: 100vh;" id="spacer"></div>
   <a href="#scroll-down" id="scroll-top">Scroll top<a/>
+  <div style="height: 30vh;"></div>
 `
 
 export const fixtureWithoutPrefix = `
@@ -24,4 +26,5 @@ export const fixtureWithoutPrefix = `
   <div data-controller="intersection" data-id="2" id="2"></div>
   <div style="height: 100vh;" id="spacer"></div>
   <a href="#scroll-down" id="scroll-top">Scroll top<a/>
+  <div style="height: 30vh;"></div>
 `
