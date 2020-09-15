@@ -1,0 +1,22 @@
+# name: Run Tests
+
+# on: [push]
+
+# jobs:
+#   build:
+#     runs-on: ubuntu-latest
+#     steps:
+#       - uses: actions/checkout@v1
+#       - name: Install dependencies
+#         run: yarn
+#       - uses: saucelabs/sauce-connect-action@master
+#         with:
+#           username: ${{ secrets.SAUCE_USERNAME }}
+#           accessKey: ${{ secrets.SAUCE_ACCESS_KEY }}
+#           tunnelIdentifier: github-action-tunnel
+#       - name: Run tests
+#         env:
+#           SAUCE_USERNAME: ${{ secrets.SAUCE_USERNAME }}
+#           SAUCE_ACCESS_KEY: ${{ secrets.SAUCE_ACCESS_KEY }}
+#           SAUCE_REGION: eu
+#         run: yarn test
