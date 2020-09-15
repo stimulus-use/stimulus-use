@@ -12,8 +12,8 @@
   </a>
   <img src="https://badgen.net/npm/types/tslib" alt="types included">
   <img src="https://badgen.net/npm/license/stimulus-use" alt="types included">
+  <img src="./docs/assets/example-buildstatus-badge.png" alt="Sauce test status">
 </p>
-
 <br />
 
 <p align="center">
@@ -156,3 +156,10 @@ Made with :heart: by [@adrienpoly](https://twitter.com/adrienpoly) and all these
 <!-- ALL-CONTRIBUTORS-LIST:END -->
 
 This project follows the [all-contributors](https://github.com/all-contributors/all-contributors) specification. Contributions of any kind welcome!
+
+
+## Acknowledgments
+
+Continuous integration and cross browser testing is generously provided Sauce Labs.
+
+[![Testing Powered By SauceLabs](https://opensource.saucelabs.com/images/opensauce/powered-by-saucelabs-badge-white.png?sanitize=true "Testing Powered By SauceLabs")](https://saucelabs.com)
