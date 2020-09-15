@@ -6,6 +6,8 @@ export class IntersectionController extends Controller {
   options!: IntersectionOptions
   observe!: () => void
   unobserve!: () => void
+  appear!: (entry: IntersectionObserverEntry) => void
+  disappear!: (entry: IntersectionObserverEntry) => void
 
   constructor(context: Context) {
     super(context)
@@ -14,8 +16,4 @@ export class IntersectionController extends Controller {
       Object.assign(this, { observe, unobserve })
     })
   }
-
-  appear(entry: IntersectionObserverEntry) {}
-
-  disappear(entry: IntersectionObserverEntry) {}
 }
