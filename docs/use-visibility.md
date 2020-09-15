@@ -1,4 +1,4 @@
-# useClickOutside
+# useVisibility
 
 `useVisibility` tracks the visibility state of the page.
 
@@ -17,7 +17,7 @@ useVisibility(controller, options)
 | Option| Description |&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Default value&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;|
 |-----------------------|-------------|---------------------|
 | `dispatchEvent` | Whether to dispatch a `click:outside` event or not.| `true` |
-|`eventPrefix`| Whether to prefix or not the emitted event. Can be a **boolean** or a **string**.<br>- **true** prefix the event with the controller identifier `card:click:outside` <br>- **someString** prefix the event with the given string `someString:click:outside` <br>- **false** to remove prefix  |true|
+|`eventPrefix`| Whether to prefix or not the emitted event. Can be a **boolean** or a **string**.<br>- **true** prefix the event with the controller identifier `application:visible` <br>- **someString** prefix the event with the given string `someString:invisible` <br>- **false** to remove prefix  |true|
 
 **Example :**
 
