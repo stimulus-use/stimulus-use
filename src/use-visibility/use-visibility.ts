@@ -12,17 +12,20 @@ const defaultOptions = {
 }
 
 export class UseVisibility {
-  delegate: VisibilityController
+  controller: VisibilityController
   eventPrefix!: boolean | string
   dispatchEvent!: boolean
 
   constructor(controller: VisibilityController, options: VisibilityOptions = {}) {
     const { dispatchEvent, eventPrefix } = Object.assign(defaultOptions, options)
     Object.assign(this, { dispatchEvent, eventPrefix })
-    this.delegate = controller
+
+    this.controller = controller
+
+    // make a copy as tthis.unobserve is not available within Object.assign ??
+    const unobserve = this.unobserve
     const controllerDisconnect = controller.disconnect.bind(controller)
 
-    const unobserve = this.unobserve
     Object.assign(controller, {
       disconnect() {
         unobserve()
@@ -30,11 +33,14 @@ export class UseVisibility {
       }
     })
 
+    // triggers initial callback on connect
+    this.handleVisibilityChange()
+
     this.observe()
   }
 
   observe = () => {
-    this.delegate.isVisible = !document.hidden
+    this.controller.isVisible = !document.hidden
     document.addEventListener('visibilitychange', this.handleVisibilityChange)
   }
 
@@ -42,31 +48,33 @@ export class UseVisibility {
     document.removeEventListener('visibilitychange', this.handleVisibilityChange)
   }
 
+  // private
   private dispatchInvisible = (event?: Event) => {
-    const eventName = composeEventName('invisible', this.delegate, this.eventPrefix)
+    const eventName = composeEventName('invisible', this.controller, this.eventPrefix)
 
-    this.delegate.isVisible = false
-    this.delegate.invisible && method(this.delegate, 'invisible').call(this.delegate, event)
+    this.controller.isVisible = false
+    this.controller.invisible && method(this.controller, 'invisible').call(this.controller, event)
 
-    if (this.dispatchEvent) {
-      const invisibleEvent = extendedEvent(eventName, event || null, { controller: this.delegate })
-      this.delegate.element.dispatchEvent(invisibleEvent)
-    }
+    this.dispatch(eventName, event)
   }
 
   private dispatchVisible = (event?: Event) => {
-    const eventName = composeEventName('Visible', this.delegate, this.eventPrefix)
+    const eventName = composeEventName('visible', this.controller, this.eventPrefix)
 
-    this.delegate.isVisible = true
-    this.delegate.visible && method(this.delegate, 'visible').call(this.delegate, event)
+    this.controller.isVisible = true
+    this.controller.visible && method(this.controller, 'visible').call(this.controller, event)
 
+    this.dispatch(eventName, event)
+  }
+
+  private dispatch = (eventName: string, event?: Event) => {
     if (this.dispatchEvent) {
-      const visibleEvent = extendedEvent(eventName, event || null, { controller: this.delegate })
-      this.delegate.element.dispatchEvent(visibleEvent)
+      const visibilityEvent = extendedEvent(eventName, event || null, { controller: this.controller })
+      this.controller.element.dispatchEvent(visibilityEvent)
     }
   }
 
-  private handleVisibilityChange = (event: Event) => {
+  private handleVisibilityChange = (event?: Event) => {
     if (document.hidden) {
       this.dispatchInvisible(event)
     } else {

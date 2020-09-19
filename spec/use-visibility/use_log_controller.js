@@ -16,12 +16,10 @@ export class UseLogController extends Controller {
   }
 
   invisible() {
-    console.log('invisible')
     this.log({ type: 'invisible', visibility: this.isVisible })
   }
 
   visible() {
-    console.log('invisible')
     this.log({ type: 'visible', visibility: this.isVisible })
   }
 
