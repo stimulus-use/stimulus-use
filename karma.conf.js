@@ -202,7 +202,8 @@ module.exports = function (config) {
     config.browsers = Object.keys(customLaunchers)
     config.sauceLabs = {
       region: 'eu',
-      testName: 'Stimulus Browser Tests'
+      testName: 'Stimulus Browser Tests',
+      build: process.env.CIRCLE_BUILD_NUM
     }
     config.reporters = ['dots', 'saucelabs']
   }
