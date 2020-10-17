@@ -18,7 +18,7 @@ export const useWindowSize = (controller: WindowSizeController) => {
       event
     }
 
-    controller.resize && method(controller, 'resize').call(controller, payload)
+    controller.windowResize && method(controller, 'windowResize').call(controller, payload)
   }
 
   const controllerDisconnect = controller.disconnect.bind(controller)

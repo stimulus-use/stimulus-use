@@ -8,7 +8,7 @@ export default class extends Controller {
     useWindowSize(this)
   }
 
-  resize({ width, height }) {
+  windowResize({ width, height }) {
     this.widthTarget.textContent = width
     this.heightTarget.textContent = height
   }

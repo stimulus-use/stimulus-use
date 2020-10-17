@@ -1,6 +1,6 @@
 # useWindowSize
 
-Adds one new behavior to your Stimulus controller : `resize`
+Adds one new behavior to your Stimulus controller : `windowResize`
 
 This behavior is built on top of the `resize` event on the `window` object.
 
@@ -27,7 +27,7 @@ export default class extends Controller {
     useWindowSize(this)
   }
 
-  resize({ width, height, event }) {
+  windowResize({ width, height, event }) {
     this.widthTarget.textContent = width
   }
 }
@@ -42,7 +42,7 @@ import { ResizeController } from 'stimulus-use'
 export default class extends WindowSizeController {
   static targets = ['width']
 
-  resize({ width, height, event }) {
+  windowResize({ width, height, event }) {
     this.widthTarget.textContent = width
   }
 }

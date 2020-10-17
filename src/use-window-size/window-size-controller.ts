@@ -13,5 +13,5 @@ export class WindowSizeController extends Controller {
     })
   }
 
-  resize(payload: WindowSizePayload) {}
+  windowResize(payload: WindowSizePayload) {}
 }
