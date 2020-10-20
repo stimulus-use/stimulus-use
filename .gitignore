@@ -7,3 +7,5 @@ yarn-error.log
 *.tsbuildinfo
 *.log
 *~
+/cypress/videos/
+/cypress/screenshots/

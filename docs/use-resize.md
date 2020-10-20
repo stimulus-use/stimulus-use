@@ -30,6 +30,7 @@ import { Controller } from 'stimulus'
 import { useResize } from 'stimulus-use'
 
 export default class extends Controller {
+  static targets = ['width']
 
   connect() {
     useResize(this)
@@ -47,6 +48,8 @@ export default class extends Controller {
 import { ResizeController } from 'stimulus-use'
 
 export default class extends ResizeController {
+  static targets = ['width']
+
   resize({ width }) {
     this.widthTarget.textContent = width
   }
@@ -59,4 +62,3 @@ ResizeObserver is quite widely supported by modern browsers [can I use](https://
 To support older browsers such as IE11 you need a polyfill.
 
 https://github.com/juggle/resize-observer
-
