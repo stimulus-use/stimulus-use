@@ -1,14 +1,12 @@
-// import { MemoController } from './memo-controller'
-// import { method } from '../support'
+import { Controller } from 'stimulus'
 
-const memoize = (object: object, name: string, value: any) => {
-  console.log(`memoizing ${name} with ${value}`)
-  Object.defineProperty(object, name, { value })
+const memoize = (controller: Controller, name: string, value: any) => {
+  Object.defineProperty(controller, name, { value })
   return value
 }
 
-export const useMemo = (controller: any) => {
-  controller.constructor.memoizedGetters.forEach((getter: string) => {
-    memoize(controller, getter, controller[getter])
+export const useMemo = (controller: Controller) => {
+  ;(controller.constructor as any).memoizedGetters?.forEach((getter: string) => {
+    memoize(controller, getter, Reflect.get(controller, getter))
   })
 }
