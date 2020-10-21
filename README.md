@@ -55,6 +55,8 @@ yarn add stimulus-use
   |[`useResize`](./docs/use-resize.md)|Tracks the element's size and adds a new lifecyle callback **resize**.|`resize`|
   |[`useWindowSize`](./docs/use-window-size.md)| Tracks the size of the `window` object and adds a new lifecyle callback **windowResize**.|`windowResize`|
 
+- **Optimization**
+  - [`useMemo`](./docs/use-memo.md) &mdash; memoize expensive getters by mixing in `useMemo` and adding a static `memos` array.
 
 - **Application**
   - [`useApplication, ApplicationController`](./docs/application-controller.md) &mdash; supercharged controller for your application.
