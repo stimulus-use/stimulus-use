@@ -2,7 +2,7 @@ import { Controller } from 'stimulus'
 import { useMemo } from 'stimulus-use'
 
 export default class extends Controller {
-  static memoizedGetters = ['a', 'b']
+  static memos = ['a', 'b']
 
   connect() {
     useMemo(this)
