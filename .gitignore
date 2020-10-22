@@ -6,5 +6,6 @@ yarn-error.log
 *.tgz
 *.tsbuildinfo
 *.log
+*~
 /cypress/videos/
 /cypress/screenshots/
