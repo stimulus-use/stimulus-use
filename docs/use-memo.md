@@ -21,33 +21,18 @@ import { Controller } from 'stimulus'
 import { useMemo } from 'stimulus-use'
 
 export default class extends Controller {
-  static memos = ['a', 'b']
+  static memos = ['normalizedText']
+  static targets = ['longText']
 
   connect() {
     useMemo(this)
 
-    console.log(this.a)
-    console.log(this.b)
-    console.log(this.c)
-
-    console.log(this.a)
-    console.log(this.b)
-    console.log(this.c)
+    this.normalizedText // first call normalize the text and cache the result
+    this.normalizedText // second call gets the result from the cache
   }
 
-  get a() {
-    console.log('getting a')
-    return 1
-  }
-
-  get b() {
-    console.log('getting b')
-    return 2
-  }
-
-  get c() {
-    console.log('getting c')
-    return 3
+  get normalizedText() {
+    return this.longTextTarget.textContent.normalize('NFD')
   }
 }
 ```

@@ -6,7 +6,7 @@ const memoize = (controller: Controller, name: string, value: any) => {
 }
 
 export const useMemo = (controller: Controller) => {
-  ;(controller.constructor as any).memos?.forEach((getter: string) => {
+  (controller.constructor as any).memos?.forEach((getter: string) => {
     memoize(controller, getter, (controller as any)[getter])
   })
 }

@@ -8,6 +8,12 @@
   * [useIntersection](use-intersection.md)
   * [useResize](use-resize.md)
   * [useVisibility](use-visibility.md)
+  * [useWindowResize](use-window-resize.md)
+
+<br />
+
+* Optimization
+  * [useMemo](use-memo.md)
 
 <br />
 
