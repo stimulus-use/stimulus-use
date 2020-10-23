@@ -7,13 +7,13 @@ export default class UseLogController extends Controller {
   connect() {
     useMemo(this)
 
-    console.log(this.a)
-    console.log(this.b)
-    console.log(this.c)
+    this.a
+    this.b
+    this.c
 
-    console.log(this.a)
-    console.log(this.b)
-    console.log(this.c)
+    this.a
+    this.b
+    this.c
   }
 
   get a() {
