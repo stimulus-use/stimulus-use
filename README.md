@@ -57,7 +57,14 @@ yarn add stimulus-use
   |[`useWindowSize`](./docs/use-window-size.md)| Tracks the size of the `window` object and adds a new lifecyle callback **windowResize**.|`windowResize`|
 
 - **Optimization**
-  - [`useMemo`](./docs/use-memo.md) &mdash; memoize expensive getters by mixing in `useMemo` and adding a static `memos` array.
+
+A set of mixin to optimize performances.
+
+| Mixin| Description |
+|------|-------------|
+|[`useDebounce`](./docs/use-debounce.md)|adds the ability to pecify an array "debouces" of function to debounce.|
+|[`useMemo`](./docs/use-memo.md)|memoize expensive getters by mixing in `useMemo` and adding a static `memos` array.|
+
 
 - **Application**
   - [`useApplication, ApplicationController`](./docs/application-controller.md) &mdash; supercharged controller for your application.
