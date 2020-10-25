@@ -8,3 +8,4 @@ export { useVisibility, UseVisibility, VisibilityController } from './use-visibi
 export { useWindowSize, WindowSizeController } from './use-window-size'
 export { useMemo } from './use-memo'
 export { useDebounce } from './use-debounce'
+export { useThrottle } from './use-throttle'
