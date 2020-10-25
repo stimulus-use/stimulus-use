@@ -1,6 +1,6 @@
 # useDebounce
 
-`useDebounce` adds the ability to pecify an array "debouces" of function to debounce.
+`useDebounce` adds the ability to specify an array "debounces" of functions to debounce.
 
 All you need to do is to add a static array of function names `debounces`, as you would define your `targets`. Then call `useDebounce(this)` in your `connect()` callback and your functions are debounced.
 

@@ -56,7 +56,7 @@ A set of mixin to optimize performances.
 
 | Mixin| Description |
 |------|-------------|
-|[`useDebounce`](./docs/use-debounce.md)|adds the ability to pecify an array "debouces" of function to debounce.|
+|[`useDebounce`](./docs/use-debounce.md)|adds the ability to specify an array "debounces" of functions to debounce.|
 |[`useMemo`](./docs/use-memo.md)|memoize expensive getters by mixing in `useMemo` and adding a static `memos` array.|
 
 - **Application**
