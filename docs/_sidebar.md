@@ -15,6 +15,7 @@
 * Optimization
   * [useDebounce](use-debounce.md)
   * [useMemo](use-memo.md)
+  * [useThrottle](use-throttle.md)
 
 <br />
 
