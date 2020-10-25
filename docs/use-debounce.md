@@ -16,7 +16,7 @@ useDebounce(controller, options = {})
 
 | Option| Description | Default value |
 |-----------------------|-------------|---------------------|
-| `delay` | The number of milliseconds to delay | `200` |
+| `wait` | The number of milliseconds to wait | `200` |
 
 **Example:**
 

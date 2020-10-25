@@ -22,10 +22,10 @@ const scenarios = [
     options: {}
   },
   {
-    name: 'with custom delay',
+    name: 'with custom wait',
     fixture: fixtureBase,
     options: {
-      delay: 50
+      wait: 50
     }
   }
 ]
@@ -52,14 +52,14 @@ scenarios.forEach(scenario => {
 
       describe('perform multiple clicks', async function () {
         it('it debounces a function', async function () {
-          const delayValue = (scenario.options && scenario.options.delay) || 200
+          const waitValue = (scenario.options && scenario.options.wait) || 200
           click('#debounced')
-          await delay(delayValue - 10)
+          await delay(waitValue - 10)
           click('#debounced')
           await nextFrame()
           expect(testLogger.eventsFilter({ name: ['a'] }).length).to.equal(0)
           expect(testLogger.eventsFilter({ name: ['b'] }).length).to.equal(2)
-          await delay(delayValue + 50)
+          await delay(waitValue + 10)
           expect(testLogger.eventsFilter({ name: ['a'] }).length).to.equal(1)
         })
       })
