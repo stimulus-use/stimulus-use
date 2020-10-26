@@ -1,8 +1,11 @@
 * [Home](/)
+* [Getting Started](getting_started.md)
+* [Usage](usage.md)
+* [Events](events.md)
 
 <br />
 
-* Observers
+* [Observers](observers.md)
   * [useClickOutside](use-click-outside.md)
   * [useIdle](use-idle.md)
   * [useIntersection](use-intersection.md)
@@ -12,7 +15,7 @@
 
 <br />
 
-* Optimization
+* [Optimization](optimization.md)
   * [useDebounce](use-debounce.md)
   * [useMemo](use-memo.md)
   * [useThrottle](use-throttle.md)
@@ -22,6 +25,3 @@
 * Application
   * [useApplication](application-controller.md)
 
-<br />
-
-* [Events](events.md)
