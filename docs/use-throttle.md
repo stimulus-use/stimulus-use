@@ -27,7 +27,7 @@ export default class extends ApplicationController {
   static throttles = ['add']
 
   connect() {
-    useThrottle(this)
+    useThrottle(this, { wait: 100 })
   }
 
   add() {
