@@ -1,5 +1,4 @@
-context('useWindowSize', () => {
-
+context('useWindowResize', () => {
   beforeEach(() => {
     cy.visit('http://localhost:8080')
     cy.viewport(1000, 600)
@@ -31,5 +30,4 @@ context('useWindowSize', () => {
     cy.get('[data-target="window-size.width"]').contains('1250')
     cy.get('[data-target="window-size.height"]').contains('850')
   })
-
 })

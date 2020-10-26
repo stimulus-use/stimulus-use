@@ -1,4 +1,4 @@
-# useWindowSize
+# useWindowResize
 
 Adds one new behavior to your Stimulus controller : `windowResize`
 
@@ -7,7 +7,7 @@ This behavior is built on top of the `resize` event on the `window` object.
 ## Reference
 
 ```javascript
-useWindowSize(controller)
+useWindowResize(controller)
 ```
 
 **controller** : a Stimulus Controller (usually `'this'`)
@@ -18,13 +18,13 @@ useWindowSize(controller)
 
 ```js
 import { Controller } from 'stimulus'
-import { useWindowSize } from 'stimulus-use'
+import { useWindowResize } from 'stimulus-use'
 
 export default class extends Controller {
   static targets = ['width']
 
   connect() {
-    useWindowSize(this)
+    useWindowResize(this)
   }
 
   windowResize({ width, height, event }) {
@@ -37,9 +37,9 @@ export default class extends Controller {
 **Extending a controller**
 
 ```js
-import { ResizeController } from 'stimulus-use'
+import { WindowResizeController } from 'stimulus-use'
 
-export default class extends WindowSizeController {
+export default class extends WindowResizeController {
   static targets = ['width']
 
   windowResize({ width, height, event }) {

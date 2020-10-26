@@ -1,18 +1,18 @@
-import { WindowSizeController } from './window-size-controller'
+import { WindowResizeController } from './window-resize-controller'
 import { method } from '../support'
 
-export interface WindowSizePayload {
+export interface WindowResizePayload {
   height: number,
   width: number,
   event?: Event
 }
 
-export const useWindowSize = (controller: WindowSizeController) => {
+export const useWindowResize = (controller: WindowResizeController) => {
 
   const callback = (event?: Event) => {
     const { innerWidth, innerHeight } = window
 
-    const payload:WindowSizePayload = {
+    const payload: WindowResizePayload = {
       height: innerHeight || Infinity,
       width: innerWidth || Infinity,
       event
