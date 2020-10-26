@@ -1,17 +1,17 @@
 import { Controller, Context } from 'stimulus'
-import { useWindowSize, WindowSizePayload } from './use-window-size'
+import { useWindowResize, WindowResizePayload } from './use-window-resize'
 
-export class WindowSizeController extends Controller {
+export class WindowResizeController extends Controller {
   observe!: () => void
   unobserve!: () => void
 
   constructor(context: Context) {
     super(context)
     requestAnimationFrame(() => {
-      const [observe, unobserve] = useWindowSize(this)
+      const [observe, unobserve] = useWindowResize(this)
       Object.assign(this, { observe, unobserve })
     })
   }
 
-  windowResize(payload: WindowSizePayload) {}
+  windowResize(payload: WindowResizePayload) { }
 }

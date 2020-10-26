@@ -1,11 +1,11 @@
 import { Controller } from 'stimulus'
-import { useWindowSize } from 'stimulus-use'
+import { useWindowResize } from 'stimulus-use'
 
 export default class extends Controller {
   static targets = ['width', 'height']
 
   connect() {
-    useWindowSize(this)
+    useWindowResize(this)
   }
 
   windowResize({ width, height }) {
