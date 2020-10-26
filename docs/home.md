@@ -58,6 +58,7 @@ A set of mixin to optimize performances.
 |------|-------------|
 |[`useDebounce`](./docs/use-debounce.md)|adds the ability to specify an array "debounces" of functions to debounce.|
 |[`useMemo`](./docs/use-memo.md)|memoize expensive getters by mixing in `useMemo` and adding a static `memos` array.|
+|[`useThrottle`](./docs/use-throttle.md)|adds the ability to specify an array "throttles" of functions to throttle.|
 
 - **Application**
   - [`useApplication, ApplicationController`](./docs/application-controller.md) &mdash; supercharged controller for your application.
