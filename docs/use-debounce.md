@@ -47,9 +47,7 @@ If you need to set a different wait option for each function, you can specify it
 ```js
 export default class extends ApplicationController {
   static debounces = [
-    {
-      name: 'click',
-    },
+    'click',
     {
       name: 'fecth',
       wait: 500

@@ -7,9 +7,7 @@ export default class UseLogObjectDescriptionController extends Controller {
       name: 'a',
       wait: 300
     },
-    {
-      name: 'c'
-    }
+    'c'
   ]
 
   connect() {
