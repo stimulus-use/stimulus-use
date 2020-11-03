@@ -1,8 +1,14 @@
 import { Controller } from 'stimulus'
 import { useDebounce } from '../../src'
 
-export default class UseLogController extends Controller {
-  static debounces = ['a']
+export default class UseLogObjectDescriptionController extends Controller {
+  static debounces = [
+    {
+      name: 'a',
+      wait: 300
+    },
+    'c'
+  ]
 
   connect() {
     useDebounce(this, this.application.options)

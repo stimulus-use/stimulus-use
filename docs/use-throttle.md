@@ -39,3 +39,35 @@ export default class extends ApplicationController {
   }
 }
 ```
+
+## Per function wait option
+
+If you need to set a different wait option for each function, you can specify it within the `throttles` array like so :
+
+```js
+export default class extends ApplicationController {
+  static throttles = [
+    'click',
+    {
+      name: 'fetch',
+      wait: 500
+    }
+  ]
+
+  connect() {
+    useThrottle(this, { wait: 100 })
+  }
+
+  click() {
+    // this function is throttled with a wait time of 100ms.
+  }
+
+  fetch() {
+    // this function is throttled with a wait time of 500ms.
+  }
+
+  instant() {
+    // this function is not throttled.
+  }
+}
+```

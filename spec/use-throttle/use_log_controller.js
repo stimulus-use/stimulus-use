@@ -2,7 +2,7 @@ import { Controller } from 'stimulus'
 import { useThrottle } from '../../src'
 
 export default class UseLogController extends Controller {
-  static throttles = ['a']
+  static throttles = ['a', { name: 'c', wait: 300 }]
 
   connect() {
     useThrottle(this, this.application.options)
@@ -14,5 +14,9 @@ export default class UseLogController extends Controller {
 
   b(event) {
     this.application.testLogger.log({ name: 'b', id: event.currentTarget.id })
+  }
+
+  c(event) {
+    this.application.testLogger.log({ name: 'c', id: event.currentTarget.id })
   }
 }

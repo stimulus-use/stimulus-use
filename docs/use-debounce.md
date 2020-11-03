@@ -39,3 +39,35 @@ export default class extends ApplicationController {
   }
 }
 ```
+
+## Per function wait option
+
+If you need to set a different wait option for each function, you can specify it within the `debounces` array like so :
+
+```js
+export default class extends ApplicationController {
+  static debounces = [
+    'click',
+    {
+      name: 'fecth',
+      wait: 500
+    }
+  ]
+
+  connect() {
+    useDebounce(this, { wait: 100 })
+  }
+
+  click() {
+    // this function is debounced with a wait time of 100ms.
+  }
+
+  fetch() {
+    // this function is debounced with a wait time of 500ms.
+  }
+
+  instant() {
+    //this function is not debounced.
+  }
+}
+```

@@ -41,6 +41,7 @@ scenarios.forEach(scenario => {
         testLogger = new TestLogger()
         application.testLogger = testLogger
         application.options = scenario.options
+
         fixture.set(scenario.fixture)
         application.register('debounce', Controller.controller)
         await nextFrame()
