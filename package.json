@@ -16,10 +16,11 @@
     "build": "tsc -b && microbundle src/index.ts -f umd --globals stimulus=Stimulus",
     "test": "NODE_ENV=test karma start",
     "test:watch": "NODE_ENV=test karma start --auto-watch --no-single-run",
+    "test:treeshake": "$npm_execpath run agadoo",
     "dev": "tsc -b -w",
     "clean": "rimraf dist *.tsbuildinfo coverage",
     "doc": "docsify serve ./docs",
-    "prerelease": "$npm_execpath run build && $npm_execpath run agadoo",
+    "prerelease": "$npm_execpath run build && $npm_execpath run test:treeshake",
     "release": "np",
     "cypress:open": "cypress open",
     "cypress:run": "cypress run"
