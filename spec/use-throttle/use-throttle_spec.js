@@ -14,18 +14,42 @@ const controllers = [
 const scenarios = [
   {
     name: 'with nill options',
-    fixture: fixtureBase
+    fixture: fixtureBase,
+    answers: {
+      firstACount: 1,
+      secondACount: 2,
+      firstBCount: 2,
+      secondBCount: 3,
+      firstCCount: 1,
+      secondCCount: 2
+    }
   },
   {
     name: 'with empty object option',
     fixture: fixtureBase,
-    options: {}
+    options: {},
+    answers: {
+      firstACount: 1,
+      secondACount: 2,
+      firstBCount: 2,
+      secondBCount: 3,
+      firstCCount: 1,
+      secondCCount: 2
+    }
   },
   {
     name: 'with custom wait',
     fixture: fixtureBase,
     options: {
       wait: 50
+    },
+    answers: {
+      firstACount: 1,
+      secondACount: 2,
+      firstBCount: 2,
+      secondBCount: 3,
+      firstCCount: 1,
+      secondCCount: 1
     }
   }
 ]
@@ -52,18 +76,21 @@ scenarios.forEach(scenario => {
 
       describe('perform multiple clicks', async function () {
         it('it throttles a function', async function () {
-          const waitValue = (scenario.options && scenario.options.wait) || 200
+          const { answers, options } = scenario
+          const waitValue = (options && options.wait) || 200
           click('#throttled')
           await delay(waitValue - 10)
           click('#throttled')
           await nextFrame()
-          expect(testLogger.eventsFilter({ name: ['a'], id: ['throttled'] }).length).to.equal(1)
-          expect(testLogger.eventsFilter({ name: ['b'], id: ['throttled'] }).length).to.equal(2)
+          expect(testLogger.eventsFilter({ name: ['a'], id: ['throttled'] }).length).to.equal(answers.firstACount)
+          expect(testLogger.eventsFilter({ name: ['b'], id: ['throttled'] }).length).to.equal(answers.firstBCount)
+          expect(testLogger.eventsFilter({ name: ['c'], id: ['throttled'] }).length).to.equal(answers.firstCCount)
           await delay(waitValue + 20)
           click('#throttled')
           await nextFrame()
-          expect(testLogger.eventsFilter({ name: ['a'], id: ['throttled'] }).length).to.equal(2)
-          expect(testLogger.eventsFilter({ name: ['b'], id: ['throttled'] }).length).to.equal(3)
+          expect(testLogger.eventsFilter({ name: ['a'], id: ['throttled'] }).length).to.equal(answers.secondACount)
+          expect(testLogger.eventsFilter({ name: ['b'], id: ['throttled'] }).length).to.equal(answers.secondBCount)
+          expect(testLogger.eventsFilter({ name: ['c'], id: ['throttled'] }).length).to.equal(answers.secondCCount)
         })
       })
     })
