@@ -1,5 +1,5 @@
 import { IdleController } from './idle-controller'
-import { extendedEvent, method, composeEventName } from '../support'
+import { extendedEvent, method, composeEventName } from '../support/index'
 
 const defaultEvents = ['mousemove', 'mousedown', 'resize', 'keydown', 'touchstart', 'wheel']
 const oneMinute = 60e3

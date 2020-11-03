@@ -1454,6 +1454,15 @@ after@0.8.2:
   resolved "https://registry.yarnpkg.com/after/-/after-0.8.2.tgz#fedb394f9f0e02aa9768e702bda23b505fae7e1f"
   integrity sha1-/ts5T58OAqqXaOcCvaI7UF+ufh8=
 
+agadoo@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/agadoo/-/agadoo-2.0.0.tgz#1fbbcf429ce5e71df3d93855a915252b277667ed"
+  integrity sha512-68aFhseH51ZBKYKkQNxwDi1hJwTnywBjHWg068qFnMkpXShhOazNzJUPRvaLQjrqhT3EOUth5G9mt1A0/dGhOw==
+  dependencies:
+    acorn "^7.1.0"
+    rollup "^1"
+    rollup-plugin-virtual "^1.0.1"
+
 agent-base@5:
   version "5.1.1"
   resolved "https://registry.yarnpkg.com/agent-base/-/agent-base-5.1.1.tgz#e8fb3f242959db44d63be665db7a8e739537a32c"
@@ -9060,6 +9069,11 @@ rollup-plugin-typescript2@^0.25.3:
     rollup-pluginutils "2.8.1"
     tslib "1.10.0"
 
+rollup-plugin-virtual@^1.0.1:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/rollup-plugin-virtual/-/rollup-plugin-virtual-1.0.1.tgz#8227c94c605b981adfe433ea74de3551e42ffeb4"
+  integrity sha512-HCTBpV8MwP5lNzZrHD2moVxHIToHU1EkzkKGVj6Z0DcgUfxrxrZmeQirQeLz2yhnkJqRjwiVywK9CS8jDYakrw==
+
 rollup-pluginutils@2.8.1:
   version "2.8.1"
   resolved "https://registry.yarnpkg.com/rollup-pluginutils/-/rollup-pluginutils-2.8.1.tgz#8fa6dd0697344938ef26c2c09d2488ce9e33ce97"
@@ -9074,7 +9088,7 @@ rollup-pluginutils@^2.8.2:
   dependencies:
     estree-walker "^0.6.1"
 
-rollup@^1.32.1:
+rollup@^1, rollup@^1.32.1:
   version "1.32.1"
   resolved "https://registry.yarnpkg.com/rollup/-/rollup-1.32.1.tgz#4480e52d9d9e2ae4b46ba0d9ddeaf3163940f9c4"
   integrity sha512-/2HA0Ec70TvQnXdzynFffkjA6XN+1e2pEv/uKS5Ulca40g2L7KuOE3riasHoNVHOsFD5KKZgDsMk1CP3Tw9s+A==
