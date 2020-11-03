@@ -18,6 +18,9 @@ yarn-error.log
 readme.md
 /docs
 /.circleci
+/cypress
+cypress.json
+/.github
 *.tsbuildinfo
 *.log
 .all-contributorsrc
