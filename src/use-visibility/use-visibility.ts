@@ -1,5 +1,5 @@
 import { VisibilityController } from './visibility-controller'
-import { extendedEvent, method, composeEventName } from '../support'
+import { extendedEvent, method, composeEventName } from '../support/index'
 
 export interface VisibilityOptions {
   dispatchEvent?: boolean

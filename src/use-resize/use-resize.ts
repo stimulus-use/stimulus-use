@@ -1,5 +1,5 @@
 import { ResizeController } from './resize-controller'
-import { method, extendedEvent, composeEventName } from '../support'
+import { method, extendedEvent, composeEventName } from '../support/index'
 
 export interface ResizeOptions {
   element?: Element

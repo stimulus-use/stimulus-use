@@ -1,5 +1,5 @@
 import { Controller } from 'stimulus'
-import { method, extendedEvent, isElementInViewport, composeEventName } from '../support'
+import { method, extendedEvent, isElementInViewport, composeEventName } from '../support/index'
 
 interface ClickOutsideController extends Controller {
   clickOutside?: (event: Event) => void

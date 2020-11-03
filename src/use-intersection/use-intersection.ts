@@ -1,5 +1,5 @@
 import { IntersectionController } from './intersection-controller'
-import { method, extendedEvent, composeEventName } from '../support'
+import { method, extendedEvent, composeEventName } from '../support/index'
 
 export interface IntersectionOptions extends IntersectionObserverInit {
   element?: Element

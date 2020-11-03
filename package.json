@@ -19,6 +19,7 @@
     "dev": "tsc -b -w",
     "clean": "rimraf dist *.tsbuildinfo coverage",
     "doc": "docsify serve ./docs",
+    "prerelease": "$npm_execpath run build && $npm_execpath run agadoo",
     "release": "np",
     "cypress:open": "cypress open",
     "cypress:run": "cypress run"
@@ -28,6 +29,7 @@
     "@babel/plugin-proposal-class-properties": "^7.10.4",
     "@babel/plugin-transform-runtime": "^7.11.5",
     "@babel/preset-modules": "^0.1.4",
+    "agadoo": "^2.0.0",
     "babel-loader": "^8.1.0",
     "chai": "^4.2.0",
     "chai-dom": "^1.8.2",

@@ -1,5 +1,5 @@
 import { WindowResizeController } from './window-resize-controller'
-import { method } from '../support'
+import { method } from '../support/index'
 
 export interface WindowResizePayload {
   height: number,

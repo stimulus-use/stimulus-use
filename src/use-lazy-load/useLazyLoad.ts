@@ -1,5 +1,5 @@
 import { LazyLoadController } from './lazy-load-controller'
-import { method } from '../support'
+import { method } from '../support/index'
 
 export const useLazyLoad = (controller: LazyLoadController, options?: IntersectionObserverInit) => {
   const callback = (entries: IntersectionObserverEntry[]) => {
