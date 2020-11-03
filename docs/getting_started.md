@@ -14,7 +14,7 @@ yarn add stimulus-use
 
 #### UMD
 
-If you prefer not to use a build system, you can load StimulusUse in a `<script> tag and it will be globally available through the window.StimulusUse object.
+If you prefer not to use a build system, you can load StimulusUse in a `<script>` tag and it will be globally available through the window.StimulusUse object.
 
 ```html
 <!doctype html>
