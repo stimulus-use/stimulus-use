@@ -7,19 +7,19 @@ const customLaunchers = {
     browserName: 'chrome',
     version: 'latest'
   },
-  sl_chrome_latest_i8n: {
-    base: 'SauceLabs',
-    browserName: 'chrome',
-    version: 'latest',
-    chromeOptions: {
-      args: ['--lang=tr']
-    }
-  },
-  sl_firefox_43: {
-    base: 'SauceLabs',
-    browserName: 'firefox',
-    version: '43'
-  },
+  // sl_chrome_latest_i8n: {
+  //   base: 'SauceLabs',
+  //   browserName: 'chrome',
+  //   version: 'latest',
+  //   chromeOptions: {
+  //     args: ['--lang=tr']
+  //   }
+  // },
+  // sl_firefox_43: {
+  //   base: 'SauceLabs',
+  //   browserName: 'firefox',
+  //   version: '43'
+  // },
   sl_firefox_latest: {
     base: 'SauceLabs',
     browserName: 'firefox',
