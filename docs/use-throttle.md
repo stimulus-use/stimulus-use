@@ -49,7 +49,7 @@ export default class extends ApplicationController {
   static throttles = [
     'click',
     {
-      name: 'fecth',
+      name: 'fetch',
       wait: 500
     }
   ]
