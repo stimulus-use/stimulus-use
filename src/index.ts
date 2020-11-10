@@ -9,3 +9,4 @@ export { useWindowResize, WindowResizeController } from './use-window-resize/ind
 export { useMemo } from './use-memo/index'
 export { useDebounce } from './use-debounce/index'
 export { useThrottle } from './use-throttle/index'
+export { useDispatch } from './use-dispatch/index'

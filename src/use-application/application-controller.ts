@@ -1,25 +1,17 @@
 import { Controller, Context } from 'stimulus'
 import { useApplication } from './use-application'
-
-interface EventArgs {
-  target: any
-  detail: any
-  bubbles: boolean
-}
+import { DispatchOptions } from "../use-dispatch"
 
 export class ApplicationController extends Controller {
+  options!: DispatchOptions
+  dispatch!: (eventName: String, detail: any) => void
+  metaValue!: (name: string) => string
   readonly isPreview: boolean = false
   readonly csrfToken: string = ''
 
+
   constructor(context: Context) {
     super(context)
-    useApplication(this)
-  }
-
-  // define function for Typescript but they are overwitten by useApplication
-  dispatch(eventName: String, eventArgs: EventArgs) {}
-
-  metaValue(name: string): string {
-    return ''
+    useApplication(this, this.options)
   }
 }
