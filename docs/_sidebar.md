@@ -3,9 +3,7 @@
 * [Usage](usage.md)
 * [Events](events.md)
 
-<br />
-
-* [Observers](observers.md)
+* [**Observers**](observers.md)
   * [useClickOutside](use-click-outside.md)
   * [useIdle](use-idle.md)
   * [useIntersection](use-intersection.md)
@@ -13,15 +11,13 @@
   * [useVisibility](use-visibility.md)
   * [useWindowResize](use-window-resize.md)
 
-<br />
-
-* [Optimization](optimization.md)
+* [**Optimization**](optimization.md)
   * [useDebounce](use-debounce.md)
   * [useMemo](use-memo.md)
   * [useThrottle](use-throttle.md)
 
-<br />
-
-* Application
+* [**Application**](application.md)
   * [useApplication](application-controller.md)
+  * [useDispatch](use-dispatch.md)
+* [Playground](stu-playground.md)
 
