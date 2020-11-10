@@ -2,10 +2,11 @@ import { ApplicationController } from 'stimulus-use'
 
 export default class extends ApplicationController {
   static targets = ['counterView']
+  counter = 0
 
   refreshTotal(e) {
-    this.counter++
-    console.log(e.detail.controller)
+    this.counter += e.detail.quantity
+    console.log(e.detail)
   }
 
   renderCounter() {
@@ -18,6 +19,6 @@ export default class extends ApplicationController {
   }
 
   get counter() {
-    return this.data.get('counter')
+    return parseInt(this.data.get('counter'))
   }
 }
