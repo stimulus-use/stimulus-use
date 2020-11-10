@@ -1,6 +1,6 @@
 import { Controller, Application } from 'stimulus'
 import { useApplication, ApplicationController } from '../src'
-import { nextFrame, TestLogger } from './helpers'
+import { nextFrame, TestLogger, click } from './helpers'
 import { expect } from 'chai'
 
 const application = Application.start()
@@ -13,29 +13,32 @@ class LogController extends ApplicationController {
   }
 
   count() {
-    // TODO somehow in Karma environemnt the event does not Bubbles
-    const el = document.querySelector('[data-controller=application]')
-    this.dispatch('add', { target: el, detail: { quantity: 1 } })
+    this.dispatch('add', { quantity: 1 })
   }
 
   get id() {
     return this.element.dataset.id
   }
+
+  get options() {
+    // TODO somehow in Karma environemnt the event does not Bubbles
+    return { element: document.querySelector('#cart') }
+  }
 }
 
 class UseLogController extends Controller {
   initialize() {
-    useApplication(this)
+    // TODO somehow in Karma environemnt the event does not Bubbles
+    const element = document.querySelector('#cart')
+    useApplication(this, { element })
   }
 
   log(e) {
-    testLogger.log({ id: this.id, event: 'dispatch' })
+    testLogger.log({ id: this.id, event: 'dispatch', quantity: e.detail.quantity })
   }
 
   count() {
-    // TODO somehow in Karma environemnt the event does not Bubbles
-    const el = document.querySelector('[data-controller=application]')
-    this.dispatch('add', { target: el, detail: { quantity: 1 } })
+    this.dispatch('add', { quantity: 1 })
   }
 
   get id() {
@@ -56,7 +59,7 @@ controllers.forEach(Controller => {
 
     describe('click dispatch a count ', function () {
       it('parent controller receives the message', async function () {
-        fixture.el.querySelector('#children').click()
+        click('#children')
         await nextFrame()
 
         expect(testLogger.eventsById('1').length).to.equal(1)
