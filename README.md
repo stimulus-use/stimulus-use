@@ -41,9 +41,9 @@ yarn
 yarn add stimulus-use
 ```
 
-## Modules and Controllers
+## Mixins
 
-- **Observers**
+### Observers
 
   This set of mixins is built around the [`Observer APIs`](https://developer.mozilla.org/en-US/docs/Web/API) and custom events to enhance your controllers with new behaviors.
 
@@ -56,7 +56,7 @@ yarn add stimulus-use
   |[`useResize`](./docs/use-resize.md)|Tracks the element's size and adds a new lifecyle callback **resize**.|`resize`|
   |[`useWindowResize`](./docs/use-window-size.md)| Tracks the size of the `window` object and adds a new lifecyle callback **windowResize**.|`windowResize`|
 
-- **Optimization**
+### Optimization
 
   A set of mixin to optimize performances.
 
@@ -67,33 +67,19 @@ yarn add stimulus-use
   |[`useThrottle`](./docs/use-throttle.md)|Adds the ability to specify an array "throttles" of functions to throttle.|
 
 
-- **Application**
-  - [`useApplication, ApplicationController`](./docs/application-controller.md) &mdash; supercharged controller for your application.
+### Application
+  | Mixin| Description |
+  |[`useApplication, ApplicationController`](./docs/application-controller.md)| supercharged controller for your application.|
+  |[`useDispatch`](./docs/use-dispatch.md)|Adds a dispatch helper function to emit custom events. Useful to communicate between different controllers.|
 
 
 ## Extend or compose
 
-Stimulus-use can be used in two ways: **extending** or **composing**
+Stimulus-use can be used in two ways:  **composing* with mixins* or **extending built-in controllers**
 
-**Extending**
+**Composing with mixins**
 
-You can create your Stimulus controller from a pre-built Stimulus-use controller which offers the new behavior you're looking for.
-This method works perfectly when you only need a single behavior for your controller.
-
-```js
-import { IntersectionController } from 'stimulus-use'
-
-export default class extends IntersectionController {
-  appear(entry) {
-    // triggered when the element appears within the viewport
-  }
-}
-```
-
-**Composing**
-
-When you need multiple behaviors or you are already extending your controller from another one,
-you can easily add new behavior with the built-in `use` functions.
+This is the prefered approach as it bring the most flexibility. Simply import a mixin and apply it in the `connect` or `initialize` to adds new behaviors to you controller. You can combine several mixins within the same controller.
 
 ```js
 import { Controller } from 'stimulus'
@@ -115,29 +101,22 @@ export default class extends Controller {
 }
 ```
 
-## Launch a local playground
+**Extending built-in controllers**
 
-Play with Stimulus-use controllers locally before adding them to one of your projects.
+You can create your Stimulus controller from a pre-built Stimulus-use controller which offers the new behavior you're looking for.
+This method works perfectly when you only need a single behavior for your controller.
 
-Fork and clone the repo (SSH):
-```bash
-git clone git@github.com:stimulus-use/stimulus-use.git
+```js
+import { IntersectionController } from 'stimulus-use'
+
+export default class extends IntersectionController {
+  appear(entry) {
+    // triggered when the element appears within the viewport
+  }
+}
 ```
 
-Once in your local stimulus-use directory, run:
-```bash
-yarn install
-```
 
-Then, build the library locally
-```bash
-yarn build
-```
-
-Launch the playground locally (available at http://localhost:8080/ by default):
-```bash
-yarn start
-```
 
 ## Contributors ✨
 
@@ -177,12 +156,3 @@ Continuous integration and cross browser testing is generously provided Sauce La
 
 [![Testing Powered By SauceLabs](https://opensource.saucelabs.com/images/opensauce/powered-by-saucelabs-badge-white.png?sanitize=true "Testing Powered By SauceLabs")](https://saucelabs.com)
 
-## 🚧 in construction
-
-matrix
-
-[![Sauce Test Status](https://app.saucelabs.com/browser-matrix/adrienpoly.svg)](https://app.saucelabs.com/u/adrienpoly)
-
-badge
-
-[![Sauce Test Status](https://app.saucelabs.com/buildstatus/YOUR_SAUCE_USERNAME)](https://app.saucelabs.com/u/adrienpoly)

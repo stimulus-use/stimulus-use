@@ -1,6 +1,6 @@
 ## Application
 
-Mixin and controllers
+Global mixinw and controllers to enhance your application controller.
 
 | Mixin| Description |
 |------|-------------|
