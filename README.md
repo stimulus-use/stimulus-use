@@ -140,6 +140,7 @@ Made with :heart: by [@adrienpoly](https://twitter.com/adrienpoly) and all these
     <td align="center"><a href="https://lidqqq.dev/"><img src="https://avatars3.githubusercontent.com/u/39523918?v=4" width="80px;" alt=""/><br /><sub><b>lidqqq</b></sub></a><br /><a href="#infra-lidqqq" title="Infrastructure (Hosting, Build-Tools, etc)">🚇</a> <a href="https://github.com/stimulus-use/stimulus-use/issues?q=author%3Alidqqq" title="Bug reports">🐛</a></td>
     <td align="center"><a href="http://www.julianrubisch.at"><img src="https://avatars0.githubusercontent.com/u/4352208?v=4" width="80px;" alt=""/><br /><sub><b>Julian Rubisch</b></sub></a><br /><a href="https://github.com/stimulus-use/stimulus-use/commits?author=julianrubisch" title="Code">💻</a> <a href="https://github.com/stimulus-use/stimulus-use/pulls?q=is%3Apr+reviewed-by%3Ajulianrubisch" title="Reviewed Pull Requests">👀</a></td>
     <td align="center"><a href="https://github.com/chalkygames123"><img src="https://avatars1.githubusercontent.com/u/5608239?v=4" width="80px;" alt=""/><br /><sub><b>Takuya Fukuju</b></sub></a><br /><a href="https://github.com/stimulus-use/stimulus-use/commits?author=chalkygames123" title="Documentation">📖</a></td>
+    <td align="center"><a href="https://github.com/jcoyne"><img src="https://avatars2.githubusercontent.com/u/92044?v=4" width="80px;" alt=""/><br /><sub><b>Justin Coyne</b></sub></a><br /><a href="https://github.com/stimulus-use/stimulus-use/commits?author=jcoyne" title="Documentation">📖</a></td>
   </tr>
 </table>
 
