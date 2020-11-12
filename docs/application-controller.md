@@ -73,7 +73,7 @@ import { ApplicationController } from 'stimulus-use'
 
 export default class extends ApplicationController {
   add() {
-    this.dispatch('add', { detail: { quantity: 1 } })
+    this.dispatch('add', { quantity: 1 })
   }
 }
 ```
@@ -102,7 +102,7 @@ export default class extends ApplicationController {
   }
 
   get counter() {
-    return this.data.get('counter')
+    return parseInt(this.data.get('counter'))
   }
 }
 ```
