@@ -1,13 +1,20 @@
-import { ApplicationController, useDebounce } from 'stimulus-use'
+import { Controller } from 'stimulus'
+import { useDispatch, useDebounce } from 'stimulus-use'
 
-export default class extends ApplicationController {
+export default class extends Controller {
   static debounces = ['add']
 
   connect() {
-    useDebounce(this)
+    useDebounce(this, { wait: 100 })
+    useDispatch(this)
   }
 
   add() {
-    this.dispatch('add', { detail: { quantity: 1 } })
+    const { id } = this
+    this.dispatch('add', { quantity: 1, id })
+  }
+
+  get id() {
+    return this.data.has('id') ? this.data.get('id') : ''
   }
 }

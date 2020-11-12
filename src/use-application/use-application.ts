@@ -1,6 +1,7 @@
 import { Controller } from 'stimulus'
+import { useDispatch, DispatchOptions } from '../use-dispatch/index'
 
-export const useApplication = (controller: Controller) => {
+export const useApplication = (controller: Controller, options: DispatchOptions) => {
   // getter to detect Turbolink preview
   Object.defineProperty(controller, 'isPreview', {
     get(): boolean {
@@ -15,23 +16,9 @@ export const useApplication = (controller: Controller) => {
     },
   })
 
-  Object.assign(controller, {
-    dispatch(
-      eventName: String,
-      { target = controller.element, detail = {}, bubbles = true, cancelable = true } = {},
-    ): CustomEvent {
-      // include the emitting controller in the event detail
-      Object.assign(detail, { controller })
+  useDispatch(controller, options)
 
-      const type = `${controller.identifier}:${eventName}`
-      const event = new CustomEvent(type, {
-        detail,
-        bubbles,
-        cancelable,
-      })
-      target.dispatchEvent(event)
-      return event
-    },
+  Object.assign(controller, {
     metaValue(name: string) {
       const element = document.head.querySelector(`meta[name="${name}"]`)
       return element && element.getAttribute('content')
