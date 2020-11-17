@@ -68,7 +68,8 @@ yarn add stimulus-use
 
 
 ### Application
-  | Mixin| Description |
+  | Mixin | Description |
+  |------|-------------|
   |[`useApplication, ApplicationController`](./docs/application-controller.md)| supercharged controller for your application.|
   |[`useDispatch`](./docs/use-dispatch.md)|Adds a dispatch helper function to emit custom events. Useful to communicate between different controllers.|
 
