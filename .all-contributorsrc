@@ -116,6 +116,15 @@
       "contributions": [
         "doc"
       ]
+    },
+    {
+      "login": "asgerb",
+      "name": "Asger Behncke Jacobsen",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/1920077?v=4",
+      "profile": "http://www.asgerbehnckejacobsen.dk",
+      "contributions": [
+        "doc"
+      ]
     }
   ],
   "contributorsPerLine": 7,
