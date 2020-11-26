@@ -125,6 +125,15 @@
       "contributions": [
         "doc"
       ]
+    },
+    {
+      "login": "dancallaghan",
+      "name": "Dan Callaghan",
+      "avatar_url": "https://avatars1.githubusercontent.com/u/1025380?v=4",
+      "profile": "https://github.com/dancallaghan",
+      "contributions": [
+        "doc"
+      ]
     }
   ],
   "contributorsPerLine": 7,
