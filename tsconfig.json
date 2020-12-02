@@ -14,7 +14,7 @@
     "rootDir": "src",
     "baseUrl": ".",
     "paths": {
-      "scr/*": ["src/index.ts"]
+      "src/*": ["src/index.ts"]
     }
   },
   "include": ["./src/**/*.js", "./src/**/*.ts"]
