@@ -145,6 +145,9 @@ Made with :heart: by [@adrienpoly](https://twitter.com/adrienpoly) and all these
     <td align="center"><a href="http://www.asgerbehnckejacobsen.dk"><img src="https://avatars3.githubusercontent.com/u/1920077?v=4" width="80px;" alt=""/><br /><sub><b>Asger Behncke Jacobsen</b></sub></a><br /><a href="https://github.com/stimulus-use/stimulus-use/commits?author=asgerb" title="Documentation">📖</a></td>
     <td align="center"><a href="https://github.com/dancallaghan"><img src="https://avatars1.githubusercontent.com/u/1025380?v=4" width="80px;" alt=""/><br /><sub><b>Dan Callaghan</b></sub></a><br /><a href="https://github.com/stimulus-use/stimulus-use/commits?author=dancallaghan" title="Documentation">📖</a></td>
   </tr>
+  <tr>
+    <td align="center"><a href="https://Konnor.site"><img src="https://avatars2.githubusercontent.com/u/26425882?v=4" width="80px;" alt=""/><br /><sub><b>Konnor Rogers</b></sub></a><br /><a href="https://github.com/stimulus-use/stimulus-use/issues?q=author%3AParamagicDev" title="Bug reports">🐛</a></td>
+  </tr>
 </table>
 
 <!-- markdownlint-enable -->

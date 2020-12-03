@@ -134,6 +134,15 @@
       "contributions": [
         "doc"
       ]
+    },
+    {
+      "login": "ParamagicDev",
+      "name": "Konnor Rogers",
+      "avatar_url": "https://avatars2.githubusercontent.com/u/26425882?v=4",
+      "profile": "https://Konnor.site",
+      "contributions": [
+        "bug"
+      ]
     }
   ],
   "contributorsPerLine": 7,
