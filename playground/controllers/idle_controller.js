@@ -10,15 +10,19 @@ export default class extends Controller {
 
   away(event) {
     this.statusTarget.textContent = 'away'
-    this.isIdleTarget.textContent = this.isIdle
+    if (this.hasIsIdleTarget) {
+      this.isIdleTarget.textContent = this.isIdle
+    }
   }
 
   back(event) {
     this.statusTarget.textContent = 'active'
-    this.isIdleTarget.textContent = this.isIdle
+    if (this.hasIsIdleTarget) {
+      this.isIdleTarget.textContent = this.isIdle
+    }
   }
 
   log(event) {
-    console.log("state changed", event)
+    console.log('state changed', event)
   }
 }

@@ -5,158 +5,583 @@
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
     <script src="bundle.js" async></script>
   </head>
   <body>
-    <nav class="navbar fixed-top navbar-light bg-light" >
-      <div class="container">
-        <div data-controller="counter" data-action="appear@window->counter#increase disappear@window->counter#decrease">
-          <span class="navbar-text">Visible : </span>
-          <span class="navbar-text" data-target="counter.visibleCounter">0</span>
-        </div>
-        <div data-controller="counter" data-action="card:resize@window->counter#updateSize">
-          <span class="navbar-text">Width : </span>
-          <span class="navbar-text" data-target="counter.width">0</span>
+    <nav class="bg-white shadow">
+      <div class="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8">
+        <div class="relative flex justify-between h-16">
+          <div class="flex-1 flex items-stretch justify-start">
+            <div class="flex-shrink-0 flex items-center">
+              <img class="h-10 w-auto" src="./stimulus-use-logo.png" alt="Stimulus Use">
+            </div>
+          </div>
+          <div class="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
+            <button class="py-4 px-1 relative border-2 border-transparent text-gray-400 rounded-full hover:text-gray-500 focus:outline-none focus:ring-indigo-500"
+                    data-controller="cart"
+                    data-action="item:add@window->cart#refreshTotal"
+                    data-cart-counter="0"
+                    aria-label="Cart">
+              <span class="sr-only">View cart</span>
+              <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
+              </svg>
+              <span class="absolute inset-0 object-right-top -mr-6">
+                <span class="inline-flex items-center px-1.5 py-0.5 border-2 border-white rounded-full text-xs font-semibold leading-4 bg-red-500 text-white hidden" data-target="cart.counterView">
+                </span>
+              </span>
+            </button>
+
+            <!-- Profile dropdown -->
+            <div class="ml-3 relative"
+                 data-controller="dropdown"
+                 data-action="click->dropdown#toggle">
+              <div>
+                <button class="bg-white rounded-sm flex text-sm focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-400  text-gray-400 hover:text-gray-500" id="user-menu" aria-haspopup="true">
+                  <span class="sr-only">Open user menu</span>
+                  <svg class="h-8 w-8" data-target="dropdown.controlOpen" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                  </svg>
+                  <svg class="h-8 w-8 hidden" data-target="dropdown.controlClose" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                  </svg>
+                </button>
+              </div>
+              <div class="origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg py-1 bg-white ring-1 ring-black ring-opacity-5"
+                  data-target="dropdown.content"
+                  data-transition-enter="transition ease-out duration-700 delay-500"
+                  data-transition-enter-active="transform opacity-0 scale-95"
+                  data-transition-enter-to="transform opacity-100 scale-100"
+                  data-transition-leave="transition ease-in duration-75"
+                  data-transition-leave-active="transform opacity-100 scale-100"
+                  data-transition-leave-to="transform opacity-0 scale-95"
+                  role="menu"
+                  aria-orientation="vertical"
+                  aria-labelledby="user-menu">
+                <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem">Your Profile</a>
+                <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem">Settings</a>
+                <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem">Sign out</a>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </nav>
-    <div class="container mt-5">
-      <h1 class="mt-5">useClickOutside</h1>
-      <div data-controller="modal" data-action="modal:click:outside->modal#close" style="height: 3rem; width: 30rem; background-color: gray;">
-        Click outside
-        <button data-target="modal.content">Test</button>
-        <button data-action="modal#observe">Observe</button>
-        <button data-action="modal#unobserve">Unobserve</button>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div>
+        <h2 class="text-2xl text-center text-green-500 leading-6 font-medium my-8">
+          Stimulus Use examples
+        </h2>
+        <dl class="mt-5 grid grid-cols-1 gap-5 sm:grid-cols-3" ">
+          <div class="bg-white overflow-hidden shadow rounded-lg" data-controller="visibility">
+            <div class="px-4 py-5 sm:p-6">
+              <div class="font-semibold text-green-500">useVisibility</div>
+
+              <div class="text-sm text-gray-400 truncate">
+                Increments only when current tab is visible
+              </div>
+              <div class="grid grid-cols-2 mt-3">
+                <div class="mt-3 text-gray-500">
+                  Time : <span  data-target="visibility.standardCounter">0</span>s
+                </div>
+                <div class="mt-3 text-gray-500">
+                  Visible : <span  data-target="visibility.visibleCounter">0</span>s
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="bg-white overflow-hidden shadow rounded-lg" data-controller="idle">
+            <div class="px-4 py-5 sm:p-6">
+              <div class="font-semibold text-green-500">useIdle</div>
+              <div class="text-sm text-gray-400 truncate">
+                Do nothing for 2 seconds
+              </div>
+              <div class="grid grid-cols-2 mt-3">
+                <div class="mt-3 text-gray-500">
+                  User is:  <span  data-target="idle.status"></span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="bg-white overflow-hidden shadow rounded-lg" data-controller="resize">
+            <div class="px-4 py-5 sm:p-6">
+              <div class="font-semibold text-green-500">useResize</div>
+
+              <div class="text-sm text-gray-400 truncate">
+                Gets the element size on resize
+              </div>
+              <div class="grid grid-cols-2 mt-3">
+                <div class="mt-3 text-gray-500">
+                  <span>Width  : </span>
+                  <span data-target="resize.width"></span>
+                </div>
+                <div class="mt-3 text-gray-500">
+                  <span>Height : </span>
+                  <span data-target="resize.height"></span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="bg-white overflow-hidden shadow rounded-lg" data-controller="window-size">
+            <div class="px-4 py-5 sm:p-6">
+              <div class="font-semibold text-green-500">useWindowResize</div>
+
+              <div class="text-sm text-gray-400 truncate">
+                Gets the Window Size
+              </div>
+              <div class="grid grid-cols-2 mt-3">
+                <div class="mt-3 text-gray-500">
+                  <span>Width  : </span>
+                  <span data-target="window-size.width"></span>
+                </div>
+                <div class="mt-3 text-gray-500">
+                  <span>Height : </span>
+                  <span data-target="window-size.height"></span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+          <div class="bg-white overflow-hidden shadow rounded-lg">
+            <div class="px-4 py-5 sm:p-6">
+              <div class="font-semibold text-green-500">useDispatch</div>
+
+              <div class="text-sm text-gray-400 truncate">
+                Dispatch events with payload to other controllers
+              </div>
+              <div class="grid grid-cols-2 mt-3">
+
+                <div data-controller="item" >
+                  <button
+                    type="button"
+                    data-action="item#add"
+                    class="inline-flex items-center px-2.5 py-1.5 border border-transparent text-xs font-medium rounded text-indigo-700 bg-indigo-100 hover:bg-indigo-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                    Add
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+          <div class="bg-white shadow rounded-lg">
+            <div class="px-4 py-5 sm:p-6">
+              <div class="font-semibold text-green-500">useTransition</div>
+              <div class="text-sm text-gray-400 truncate">
+                Applies transitions to elements on show/hide
+              </div>
+              <div class="grid grid-cols-2 mt-3">
+
+                <div class="relative" data-controller="dropdown">
+                  <div>
+                    <button
+                      data-action="click->dropdown#toggle"
+                      type="button"
+                      class="inline-flex items-center px-2.5 py-1.5 border border-transparent text-xs font-medium rounded text-indigo-700 bg-indigo-100 hover:bg-indigo-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                      Dropdown
+                    </button>
+                  </div>
+                  <div class="origin-top-right absolute left-0 mt-2 w-48 rounded-md shadow-lg py-1 bg-white ring-1 ring-black ring-opacity-5"
+                  data-target="dropdown.content"
+                  data-transition-enter="transition ease-out duration-300"
+                  data-transition-enter-active="transform opacity-0 scale-95"
+                  data-transition-enter-to="transform opacity-100 scale-100"
+                  data-transition-leave="transition ease-in duration-300"
+                  data-transition-leave-active="transform opacity-100 scale-100"
+                  data-transition-leave-to="transform opacity-0 scale-95"
+                  role="menu"
+                  aria-orientation="vertical"
+                  aria-labelledby="user-menu">
+                    <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem">Your Profile</a>
+                    <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem">Settings</a>
+                    <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem">Sign out</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="bg-white shadow rounded-lg col-span-3">
+            <div class="px-4 py-5 sm:p-6">
+              <div class="font-semibold text-green-500">useMemo</div>
+              <div class="text-sm text-gray-400 truncate mb-5">
+                Memoizes getters
+                Watch the browser console.
+              </div>
+              <div class="text-xs text-gray-300" data-target="memo.longText">
+                Лорем ипсум долор сит амет, граецо ессент импедит ид хас, ат иус прима индоцтум, персиус пондерум яуи но. Ет ест яуод денияуе оффендит, про цу вивендо инвидунт. Сит волуптариа сигниферумяуе те, дицта фацилис волуптуа ан яуо. Ет вис мунди моллис еуисмод. Вим ут децоре цонтентионес делицатиссими. Цибо цоррумпит цонсеяуунтур вих ид, инани алтера еа при.
+                Ех тота иллум сенсибус яуо. Вих ид пауло денияуе, еи алии цетеро нам, зрил сенсерит улламцорпер но хас. Цетеро тимеам фацилисис ех еум, ехерци детрахит диссентиунт ат ест. Дуо ин пертинах цонсулату, ех утамур лобортис пер. При ех мутат алиенум медиоцритатем, ад меа лабитур мелиоре адолесценс.
+                Сеа аудиам аццусата еу, апеириан яуалисяуе меа ин. Яуи солум сапиентем модератиус ат, елитр проприае хис ут. Меа яуод иллуд ет, цум оптион апериам пондерум ин. Яуи дебет апеириан цонсететур но, меи яуас сцаевола ат, нолуиссе перфецто витуператорибус вис ад.
+                Пер аудире торяуатос цонцлусионемяуе ад. Цонгуе сцрипторем дефинитионем дуо ут, сеа агам саперет не. Но мовет фабулас либерависсе пер. Облияуе тациматес мел цу, вереар аццумсан яуи не.
+                Яуо не яуот лабитур аццоммодаре. Агам поссит тритани яуо ат, еи яуи иуварет сплендиде. Поссе цлита не дуо, ет еам иллуд партиендо интерессет. Орнатус детерруиссет ест те, еу зрил утамур хас, те харум цетерос про. Яуо цлита персиус ет, нам суас малис еверти но.
+                Ест ин иллум аццусамус десеруиссе. Фацете доценди садипсцинг меи ех, ностер реферрентур про цу. Ан мел яуот тамяуам пхаедрум, нисл цонцлусионемяуе цу дуо. Минимум инцидеринт еи хис, при виде тимеам вивендо еу, алии харум деленити цу сит. Иус сумо легимус интеллегам ех.
+                Пер еа юсто дицат фабулас, яуаеяуе проприае дуо не. Велит аццусам ехпетендис сит но, сцаевола лаборамус еи вих. Ид вим лудус нострум омиттантур, меа ан аутем еуисмод. Ет вел орнатус деленити ратионибус, про тота ассуеверит ат.
+                Видиссе патриояуе медиоцритатем еу меи, ат вих алияуам десеруиссе, еам миним лаборес ехпетенда ут. Цу популо адолесценс еам, иус еу дицунт цонституто. Дуо ех фугит нулла сигниферумяуе, симул луптатум репрехендунт но сед, еам яуот оффендит еу. Еу диам цомплецтитур нец. Пондерум антиопам цу мел, ет ест ерипуит суавитате ехпетендис. Не нибх маиестатис меа, тритани ассентиор еа при. Цу мел делицата праесент.
+                Дуо не уллум репудиаре неглегентур, цонсететур сигниферумяуе ин дуо. Модус цонвенире делицатиссими сед ид, вих нулла дебет алияуид ид, ид цлита инвенире трацтатос вел. Поссим интерессет не еос, пурто цлита ностро нам ат. Нец еу толлит нуллам, еи нам магна интегре. Вел алияуип индоцтум петентиум но.
+                Нумяуам неглегентур сит ад, ессе вереар меи те, вис еа рецтеяуе цонсеяуунтур. Еа примис лабитур еос, ид натум солута вис. Те дуо нуллам волуптатум, хас примис муциус деленити ут, ат ностро иисяуе албуциус мел.
+              </div>
+            </div>
+          </div>
+        </dl>
       </div>
-      <h1 class="mt-5">Example of using dispatch</h1>
-      <p>Communication between 2 controllers item_controller and cart_controller</p>
-      <div data-controller="cart" data-action="item:add->cart#refreshTotal" data-cart-counter="0" class="card">
-        <div class="card-body">
-          <div class="card card-body">
-            <ul>
-              <li data-controller="item" data-item-id="item-1" class="d-flex mb-3">
-                <span>item 1</span>
-                <button data-action="item#add" class="btn btn-primary btn-sm ml-3">Add</button>
-              </li>
-              <li data-controller="item" data-item-id="item-2" class="d-flex mb-3">
-                <span>item 2</span>
-                <button data-action="item#add" class="btn btn-primary btn-sm ml-3">Add</button>
-              </li>
-            </ul>
+
+
+
+      <div class="font-semibold text-green-500 mt-8">useIntersection</div>
+      <div class="text-sm text-gray-400 truncate mb-5">
+        Plays an animation when the element appears
+      </div>
+        <div class="grid grid-cols-5 gap-12">
+
+          <div></div>
+          <div data-controller="appear"
+               data-transition-enter="transition ease-out duration-700 delay-500"
+               class="opacity-0 flex items-center justify-center">
+            <svg class="h20 w-20 text-blue-700" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z" />
+            </svg>
+          </div>
+          <div></div>
+          <div data-controller="appear"
+               data-transition-enter="transition ease-out duration-1000"
+               class="opacity-0 flex items-center justify-center">
+            <svg class="h20 w-20 text-blue-700" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z" />
+            </svg>
+          </div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div data-controller="appear"
+               data-transition-enter="transition ease-out duration-500"
+               class="opacity-0 flex items-center justify-center">
+            <svg class="h20 w-20 text-blue-700" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z" />
+            </svg>
+          </div>
+          <div></div>
+          <div data-controller="appear"
+               data-transition-enter="transition ease-out duration-700 delay-500"
+               class="opacity-0 flex items-center justify-center">
+            <svg class="h20 w-20 text-blue-700" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z" />
+            </svg>
+          </div>
+          <div></div>
+          <div data-controller="appear"
+               data-transition-enter="transition ease-out duration-1000"
+               class="opacity-0 flex items-center justify-center">
+            <svg class="h20 w-20 text-blue-700" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z" />
+            </svg>
+          </div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div data-controller="appear"
+               data-transition-enter="transition ease-out duration-500"
+               class="opacity-0 flex items-center justify-center">
+            <svg class="h20 w-20 text-blue-700" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z" />
+            </svg>
+          </div>
+          <div></div>
+          <div data-controller="appear"
+               data-transition-enter="transition ease-out duration-700 delay-500"
+               class="opacity-0 flex items-center justify-center">
+            <svg class="h20 w-20 text-blue-700" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z" />
+            </svg>
+          </div>
+          <div></div>
+          <div data-controller="appear"
+               data-transition-enter="transition ease-out duration-1000"
+               class="opacity-0 flex items-center justify-center">
+            <svg class="h20 w-20 text-blue-700" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z" />
+            </svg>
+          </div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div data-controller="appear"
+               data-transition-enter="transition ease-out duration-500"
+               class="opacity-0 flex items-center justify-center">
+            <svg class="h20 w-20 text-blue-700" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z" />
+            </svg>
+          </div>
+          <div></div>
+          <div data-controller="appear"
+               data-transition-enter="transition ease-out duration-700 delay-500"
+               class="opacity-0 flex items-center justify-center">
+            <svg class="h20 w-20 text-blue-700" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z" />
+            </svg>
+          </div>
+          <div></div>
+          <div data-controller="appear"
+               data-transition-enter="transition ease-out duration-1000"
+               class="opacity-0 flex items-center justify-center">
+            <svg class="h20 w-20 text-blue-700" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z" />
+            </svg>
+          </div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div data-controller="appear"
+               data-transition-enter="transition ease-out duration-500"
+               class="opacity-0 flex items-center justify-center">
+            <svg class="h20 w-20 text-blue-700" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z" />
+            </svg>
+          </div>
+          <div></div>
+          <div data-controller="appear"
+               data-transition-enter="transition ease-out duration-700 delay-500"
+               class="opacity-0 flex items-center justify-center">
+            <svg class="h20 w-20 text-blue-700" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z" />
+            </svg>
+          </div>
+          <div></div>
+          <div data-controller="appear"
+               data-transition-enter="transition ease-out duration-1000"
+               class="opacity-0 flex items-center justify-center">
+            <svg class="h20 w-20 text-blue-700" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z" />
+            </svg>
+          </div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div data-controller="appear"
+               data-transition-enter="transition ease-out duration-500"
+               class="opacity-0 flex items-center justify-center">
+            <svg class="h20 w-20 text-blue-700" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z" />
+            </svg>
+          </div>
+          <div></div>
+          <div data-controller="appear"
+               data-transition-enter="transition ease-out duration-700 delay-500"
+               class="opacity-0 flex items-center justify-center">
+            <svg class="h20 w-20 text-blue-700" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z" />
+            </svg>
+          </div>
+          <div></div>
+          <div data-controller="appear"
+               data-transition-enter="transition ease-out duration-1000"
+               class="opacity-0 flex items-center justify-center">
+            <svg class="h20 w-20 text-blue-700" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z" />
+            </svg>
+          </div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div data-controller="appear"
+               data-transition-enter="transition ease-out duration-500"
+               class="opacity-0 flex items-center justify-center">
+            <svg class="h20 w-20 text-blue-700" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z" />
+            </svg>
+          </div>
+          <div></div>
+          <div data-controller="appear"
+               data-transition-enter="transition ease-out duration-700 delay-500"
+               class="opacity-0 flex items-center justify-center">
+            <svg class="h20 w-20 text-blue-700" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z" />
+            </svg>
+          </div>
+          <div></div>
+          <div data-controller="appear"
+               data-transition-enter="transition ease-out duration-1000"
+               class="opacity-0 flex items-center justify-center">
+            <svg class="h20 w-20 text-blue-700" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z" />
+            </svg>
+          </div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div data-controller="appear"
+               data-transition-enter="transition ease-out duration-500"
+               class="opacity-0 flex items-center justify-center">
+            <svg class="h20 w-20 text-blue-700" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z" />
+            </svg>
+          </div>
+          <div></div>
+          <div data-controller="appear"
+               data-transition-enter="transition ease-out duration-700 delay-500"
+               class="opacity-0 flex items-center justify-center">
+            <svg class="h20 w-20 text-blue-700" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z" />
+            </svg>
+          </div>
+          <div></div>
+          <div data-controller="appear"
+               data-transition-enter="transition ease-out duration-1000"
+               class="opacity-0 flex items-center justify-center">
+            <svg class="h20 w-20 text-blue-700" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z" />
+            </svg>
+          </div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div data-controller="appear"
+               data-transition-enter="transition ease-out duration-500"
+               class="opacity-0 flex items-center justify-center">
+            <svg class="h20 w-20 text-blue-700" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z" />
+            </svg>
+          </div>
+          <div></div>
+          <div data-controller="appear"
+               data-transition-enter="transition ease-out duration-700 delay-500"
+               class="opacity-0 flex items-center justify-center">
+            <svg class="h20 w-20 text-blue-700" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z" />
+            </svg>
+          </div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div data-controller="appear"
+               data-transition-enter="transition ease-out duration-1000"
+               class="opacity-0 flex items-center justify-center">
+            <svg class="h20 w-20 text-blue-700" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z" />
+            </svg>
+          </div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div data-controller="appear"
+               data-transition-enter="transition ease-out duration-500"
+               class="opacity-0 flex items-center justify-center">
+            <svg class="h20 w-20 text-blue-700" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z" />
+            </svg>
+          </div>
+          <div></div>
+          <div data-controller="appear"
+               data-transition-enter="transition ease-out duration-700 delay-500"
+               class="opacity-0 flex items-center justify-center">
+            <svg class="h20 w-20 text-blue-700" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z" />
+            </svg>
+          </div>
+          <div></div>
+          <div data-controller="appear"
+               data-transition-enter="transition ease-out duration-1000"
+               class="opacity-0 flex items-center justify-center">
+            <svg class="h20 w-20 text-blue-700" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z" />
+            </svg>
+          </div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div data-controller="appear"
+               data-transition-enter="transition ease-out duration-500"
+               class="opacity-0 flex items-center justify-center">
+            <svg class="h20 w-20 text-blue-700" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z" />
+            </svg>
+          </div>
+          <div></div>
+          <div data-controller="appear"
+               data-transition-enter="transition ease-out duration-700 delay-500"
+               class="opacity-0 flex items-center justify-center">
+            <svg class="h20 w-20 text-blue-700" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z" />
+            </svg>
+          </div>
+          <div></div>
+          <div></div>
+          <div data-controller="appear"
+               data-transition-enter="transition ease-out duration-1000"
+               class="opacity-0 flex items-center justify-center">
+            <svg class="h20 w-20 text-blue-700" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z" />
+            </svg>
+          </div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div data-controller="appear"
+               data-transition-enter="transition ease-out duration-500"
+               class="opacity-0 flex items-center justify-center">
+            <svg class="h20 w-20 text-blue-700" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z" />
+            </svg>
+          </div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div data-controller="appear"
+               data-transition-enter="transition ease-out duration-700 delay-500"
+               class="opacity-0 flex items-center justify-center">
+            <svg class="h20 w-20 text-blue-700" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z" />
+            </svg>
+          </div>
+          <div></div>
+          <div></div>
+          <div data-controller="appear"
+               data-transition-enter="transition ease-out duration-1000"
+               class="opacity-0 flex items-center justify-center">
+            <svg class="h20 w-20 text-blue-700" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z" />
+            </svg>
+          </div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div data-controller="appear"
+               data-transition-enter="transition ease-out duration-500"
+               class="opacity-0 flex items-center justify-center">
+            <svg class="h20 w-20 text-blue-700" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z" />
+            </svg>
           </div>
         </div>
-        <div class="card-footer">
-          <span>Nb of items : </span>
-          <span data-target="cart.counterView">0</span>
-        </div>
-      </div>
-
-      <h1 class="mt-5">useResize</h1>
-      <p>Resize your window</p>
-      <div data-controller="resize" class="card">
-        <div class="card-body">
-          <div>
-            <span>width : </span>
-            <span data-target="resize.width"></span>
-          </div>
-          <div>
-            <span>height : </span>
-            <span data-target="resize.height"></span>
-          </div>
-        </div>
-      </div>
-
-      <h1 class="mt-5">useWindowResize</h1>
-      <p>Resize your window</p>
-      <div data-controller="window-size" class="card">
-        <div class="card-body">
-          <div>
-            <span>width : </span>
-            <span data-target="window-size.width"></span>px
-          </div>
-          <div>
-            <span>height : </span>
-            <span data-target="window-size.height"></span>px
-          </div>
-        </div>
-      </div>
-
-      <h1 class="mt-5">useIdle</h1>
-      <p>Do nothing for 2 seconds</p>
-      <div data-controller="idle" class="card" data-action="idle:away->idle#log idle:back->idle#log">
-        <div class="card-body">
-          <span>User is: </span>
-          <span data-target="idle.status"></span>
-          <br />
-          <span><code>isIdle</code>: </span>
-          <span data-target="idle.isIdle"></span>
-        </div>
-      </div>
-
-      <h1 class="mt-5">useVisibility</h1>
-      <p>Counts only when tab is visible</p>
-      <div data-controller="visibility" class="card">
-        <div class="card-body">
-          <span>Standard counter: </span>
-          <span data-target="visibility.standardCounter"></span>
-          <br />
-          <span>Visible counter: </span>
-          <span data-target="visibility.visibleCounter"></span>
-        </div>
-      </div>
-
-      <h1 class="mt-5">useMemo</h1>
-      <p>Memoizes getters</p>
-      <div class="card" data-controller="memo">
-        <div class="card-body">
-          Watch the browser console.
-
-          <p data-target="memo.longText">
-            Лорем ипсум долор сит амет, граецо ессент импедит ид хас, ат иус прима индоцтум, персиус пондерум яуи но. Ет ест яуод денияуе оффендит, про цу вивендо инвидунт. Сит волуптариа сигниферумяуе те, дицта фацилис волуптуа ан яуо. Ет вис мунди моллис еуисмод. Вим ут децоре цонтентионес делицатиссими. Цибо цоррумпит цонсеяуунтур вих ид, инани алтера еа при.
-
-Ех тота иллум сенсибус яуо. Вих ид пауло денияуе, еи алии цетеро нам, зрил сенсерит улламцорпер но хас. Цетеро тимеам фацилисис ех еум, ехерци детрахит диссентиунт ат ест. Дуо ин пертинах цонсулату, ех утамур лобортис пер. При ех мутат алиенум медиоцритатем, ад меа лабитур мелиоре адолесценс.
-
-Сеа аудиам аццусата еу, апеириан яуалисяуе меа ин. Яуи солум сапиентем модератиус ат, елитр проприае хис ут. Меа яуод иллуд ет, цум оптион апериам пондерум ин. Яуи дебет апеириан цонсететур но, меи яуас сцаевола ат, нолуиссе перфецто витуператорибус вис ад.
-
-Пер аудире торяуатос цонцлусионемяуе ад. Цонгуе сцрипторем дефинитионем дуо ут, сеа агам саперет не. Но мовет фабулас либерависсе пер. Облияуе тациматес мел цу, вереар аццумсан яуи не.
-
-Яуо не яуот лабитур аццоммодаре. Агам поссит тритани яуо ат, еи яуи иуварет сплендиде. Поссе цлита не дуо, ет еам иллуд партиендо интерессет. Орнатус детерруиссет ест те, еу зрил утамур хас, те харум цетерос про. Яуо цлита персиус ет, нам суас малис еверти но.
-
-Ест ин иллум аццусамус десеруиссе. Фацете доценди садипсцинг меи ех, ностер реферрентур про цу. Ан мел яуот тамяуам пхаедрум, нисл цонцлусионемяуе цу дуо. Минимум инцидеринт еи хис, при виде тимеам вивендо еу, алии харум деленити цу сит. Иус сумо легимус интеллегам ех.
-
-Пер еа юсто дицат фабулас, яуаеяуе проприае дуо не. Велит аццусам ехпетендис сит но, сцаевола лаборамус еи вих. Ид вим лудус нострум омиттантур, меа ан аутем еуисмод. Ет вел орнатус деленити ратионибус, про тота ассуеверит ат.
-
-Видиссе патриояуе медиоцритатем еу меи, ат вих алияуам десеруиссе, еам миним лаборес ехпетенда ут. Цу популо адолесценс еам, иус еу дицунт цонституто. Дуо ех фугит нулла сигниферумяуе, симул луптатум репрехендунт но сед, еам яуот оффендит еу. Еу диам цомплецтитур нец. Пондерум антиопам цу мел, ет ест ерипуит суавитате ехпетендис. Не нибх маиестатис меа, тритани ассентиор еа при. Цу мел делицата праесент.
-
-Дуо не уллум репудиаре неглегентур, цонсететур сигниферумяуе ин дуо. Модус цонвенире делицатиссими сед ид, вих нулла дебет алияуид ид, ид цлита инвенире трацтатос вел. Поссим интерессет не еос, пурто цлита ностро нам ат. Нец еу толлит нуллам, еи нам магна интегре. Вел алияуип индоцтум петентиум но.
-
-Нумяуам неглегентур сит ад, ессе вереар меи те, вис еа рецтеяуе цонсеяуунтур. Еа примис лабитур еос, ид натум солута вис. Те дуо нуллам волуптатум, хас примис муциус деленити ут, ат ностро иисяуе албуциус мел.
-          </p>
-        </div>
-      </div>
-
-      <h1 class="mt-5">useLazyLoad</h1>
-      <div class="row">
-        <img data-controller="lazy-load" data-lazy-load-src="https://loremflickr.com/200/200" style="min-height: 200px" class="img-fluid col-6 mb-2">
-        <img data-controller="lazy-load" data-lazy-load-src="https://loremflickr.com/201/201" style="min-height: 200px" class="img-fluid col-6 mb-2">
-        <img data-controller="lazy-load" data-lazy-load-src="https://loremflickr.com/202/202" style="min-height: 200px" class="img-fluid col-6 mb-2">
-        <img data-controller="lazy-load" data-lazy-load-src="https://loremflickr.com/203/203" style="min-height: 200px" class="img-fluid col-6 mb-2">
-        <img data-controller="lazy-load" data-lazy-load-src="https://loremflickr.com/204/204" style="min-height: 200px" class="img-fluid col-6 mb-2">
-        <img data-controller="lazy-load" data-lazy-load-src="https://loremflickr.com/205/205" style="min-height: 200px" class="img-fluid col-6 mb-2">
-      </div>
-
-      <h1 class="mt-5">Example of Stimulus intersection</h1>
-      <div style="max-height: 50vh; overflow-y: scroll">
-        <div style="height: 60vh"></div>
-        <div data-controller="appear" style="height: 30vh" class="d-flex align-items-center justify-content-center bg-info">
-
-        </div>
-        <div style="height: 60vh"></div>
-        <div data-controller="appear" style="height: 30rem; background-color: red;">
-          hello
-        </div>
-      </div>
+      </div> -->
     </div>
   </body>
 </html>

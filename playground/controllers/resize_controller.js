@@ -5,7 +5,7 @@ export default class extends Controller {
   static targets = ['width', 'height']
 
   options = {
-    eventPrefix: 'card',
+    eventPrefix: 'card'
   }
 
   connect() {
@@ -13,7 +13,7 @@ export default class extends Controller {
   }
 
   resize({ width, height }) {
-    this.widthTarget.textContent = width
-    this.heightTarget.textContent = height
+    this.widthTarget.textContent = Math.round(width)
+    this.heightTarget.textContent = Math.round(height)
   }
 }
