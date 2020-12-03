@@ -1,27 +1,27 @@
 // intersection_controller.js
 import { Controller } from 'stimulus'
-import { useIntersection } from 'stimulus-use'
+import { useIntersection, useTransition } from 'stimulus-use'
 
 export default class extends Controller {
-  options = {
-    threshold: [0, 0.25, 0.5, 0.75, 1],
-  }
-
   connect() {
-    useIntersection(this, this.options)
+    useTransition(this, {
+      enter: 'transition ease-out duration-700',
+      enterActive: 'transform opacity-0 scale-0',
+      enterTo: 'transform opacity-1 scale-100',
+      leave: 'transition ease-in duration-100',
+      leaveActive: 'transform opacity-100 scale-100',
+      leaveTo: 'transform opacity-0 scale-0',
+      hiddenClass: false
+    })
+
+    useIntersection(this)
   }
 
-  appear({ intersectionRatio }) {
-    // callback automatically triggered when the element
-    // intersects with the viewport if several threshold
-    if (intersectionRatio === 1) {
-      this.element.textContent = 'Appeared'
-    } else {
-      this.element.textContent = 'Appearing'
-    }
+  appear() {
+    this.show()
   }
 
   disappear() {
-    this.element.textContent = 'Disapeared'
+    this.hide()
   }
 }
