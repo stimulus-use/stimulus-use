@@ -143,6 +143,15 @@
       "contributions": [
         "bug"
       ]
+    },
+    {
+      "login": "franciscop",
+      "name": "Francisco Presencia",
+      "avatar_url": "https://avatars2.githubusercontent.com/u/2801252?v=4",
+      "profile": "https://francisco.io/",
+      "contributions": [
+        "doc"
+      ]
     }
   ],
   "contributorsPerLine": 7,
