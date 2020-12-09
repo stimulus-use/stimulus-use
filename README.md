@@ -66,13 +66,12 @@ yarn add stimulus-use
   |[`useMemo`](./docs/use-memo.md)|Memoize expensive getters by mixing in `useMemo` and adding a static   `memos` array.|
   |[`useThrottle`](./docs/use-throttle.md)|Adds the ability to specify an array "throttles" of functions to throttle.|
 
-
 ### Application
   | Mixin | Description |
   |------|-------------|
   |[`useApplication, ApplicationController`](./docs/application-controller.md)| supercharged controller for your application.|
   |[`useDispatch`](./docs/use-dispatch.md)|Adds a dispatch helper function to emit custom events. Useful to communicate between different controllers.|
-
+  |[`useMeta`](./docs/use-meta.md)|Adds getters to easily access <head> meta values.|
 
 ## Extend or compose
 
