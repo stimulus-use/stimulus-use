@@ -30,15 +30,25 @@ import { Controller } from 'stimulus'
 import { useMeta } from 'stimulus-use'
 
 export default class extends Controller {
-  static metaNames = ['userId', 'admin', "snake_case_name"]
+  static metaNames = ['userId', 'admin', 'email', 'snake_case_name']
 
   connect() {
     useMeta(this)
 
+    // individual getters
     this.userId         // 123456
-    this.isAdmin        // true
+    this.admin          // true
     this.email          // "joe@doe.com"
     this.snakeCaseName  // "are camelized"
+
+    // get all metas in one object
+    this.metas
+    // {
+    //   userId: 123456,
+    //   admin: true,
+    //   email: "joe@doe.com",
+    //   snakeCaseName: "are camelized"
+    // }
   }
 }
 ```
