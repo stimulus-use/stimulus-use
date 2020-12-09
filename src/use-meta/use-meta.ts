@@ -1,7 +1,7 @@
 import { Controller } from 'stimulus'
 
 const defineMetaGetter = (controller: Controller, metaName: string) => {
-  Object.defineProperty(controller, metaName, {
+  Object.defineProperty(controller, camelize(metaName), {
     get(): any {
       return typeCast(metaValue(metaName))
     },
@@ -21,6 +21,10 @@ function typeCast(value: any): any {
   }
 }
 
+function camelize(value: string) {
+  return value.replace(/(?:[_-])([a-z0-9])/g, (_, char) => char.toUpperCase())
+}
+
 export const useMeta = (controller: Controller) => {
   const metaNames = (controller.constructor as any).metaNames
 
@@ -37,7 +41,7 @@ export const useMeta = (controller: Controller) => {
       metaNames?.forEach((metaName: string) => {
         const value = typeCast(metaValue(metaName))
         if (value !== undefined && value !== null) {
-          result[metaName] = value
+          result[camelize(metaName)] = value
         }
       })
       return result

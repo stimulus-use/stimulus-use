@@ -7,7 +7,7 @@ import { fixtureBase } from './fixtures'
 const application = Application.start()
 
 class UseLogController extends Controller {
-  static metaNames = ['userId', 'ko', 'true', 'false', 'email', 'object']
+  static metaNames = ['userId', 'ko', 'true', 'false', 'email', 'object', 'some_id', 'kebab-id']
 
   initialize() {
     useMeta(this)
@@ -15,7 +15,7 @@ class UseLogController extends Controller {
 }
 
 describe(`useMeta tests`, function () {
-  before('initialize controller', async function () {
+  beforeEach('initialize controller', async function () {
     fixture.set(fixtureBase)
     application.register('meta', UseLogController)
     await nextFrame()
@@ -23,6 +23,7 @@ describe(`useMeta tests`, function () {
 
   describe('test meta getters', function () {
     it('returns a cast value of the meta', function () {
+      const initalHead = document.head.innerHTML
       document.head.innerHTML += '<meta name="userId" content="12345678">'
       document.head.innerHTML += '<meta name="true" content="true">'
       document.head.innerHTML += '<meta name="false" content="false">'
@@ -32,11 +33,26 @@ describe(`useMeta tests`, function () {
       expect(application.controllers[0].false).to.equal(false)
       expect(application.controllers[0].ko).to.equal(null)
       expect(application.controllers[0].email).to.equal('joe@doe.com')
+      document.head.innerHTML = initalHead
+    })
+  })
+
+  describe('test lower snake case', function () {
+    it('the getter is camelized', function () {
+      const initalHead = document.head.innerHTML
+      document.head.innerHTML += '<meta name="some_id" content="12345678">'
+      document.head.innerHTML += '<meta name="kebab-id" content="12345678">'
+
+      expect(application.controllers[0].someId).to.equal(12345678)
+      expect(application.controllers[0].kebabId).to.equal(12345678)
+      document.head.innerHTML = initalHead
     })
   })
 
   describe('test metas getter', function () {
     it('returns an object with all metas', function () {
+      const initalHead = document.head.innerHTML
+
       document.head.innerHTML += '<meta name="userId" content="12345678">'
       document.head.innerHTML += '<meta name="true" content="true">'
       document.head.innerHTML += '<meta name="false" content="false">'
@@ -52,6 +68,7 @@ describe(`useMeta tests`, function () {
         }
       }
       expect(application.controllers[0].metas).to.deep.equal(metas)
+      document.head.innerHTML = initalHead
     })
   })
 })
