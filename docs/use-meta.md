@@ -1,6 +1,6 @@
 # useMeta
 
-Adds getters to easily retrieve meta value from the <head>.
+Adds getters to easily retrieve <head> meta value.
 
 Simply list at the top of your controller the list of meta name you need (static metaNames = [])
 
