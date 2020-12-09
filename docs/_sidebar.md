@@ -19,5 +19,6 @@
 * [**Application**](application.md)
   * [useApplication](application-controller.md)
   * [useDispatch](use-dispatch.md)
+  * [useMeta](use-meta.md)
 * [Playground](stu-playground.md)
 

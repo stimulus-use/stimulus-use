@@ -72,6 +72,7 @@ yarn add stimulus-use
   |------|-------------|
   |[`useApplication, ApplicationController`](./docs/application-controller.md)| supercharged controller for your application.|
   |[`useDispatch`](./docs/use-dispatch.md)|Adds a dispatch helper function to emit custom events. Useful to communicate between different controllers.|
+  |[`useMeta`](./docs/use-meta.md)|Adds getters to easily access to the meta values in the <head>.|
 
 
 ## Extend or compose
