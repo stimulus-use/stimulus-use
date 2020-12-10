@@ -28,11 +28,11 @@ describe(`useMeta tests`, function () {
       document.head.innerHTML += '<meta name="true" content="true">'
       document.head.innerHTML += '<meta name="false" content="false">'
       document.head.innerHTML += '<meta name="email" content="joe@doe.com">'
-      expect(application.controllers[0].userId).to.equal(12345678)
-      expect(application.controllers[0].true).to.equal(true)
-      expect(application.controllers[0].false).to.equal(false)
-      expect(application.controllers[0].ko).to.equal(null)
-      expect(application.controllers[0].email).to.equal('joe@doe.com')
+      expect(application.controllers[0].userIdMeta).to.equal(12345678)
+      expect(application.controllers[0].trueMeta).to.equal(true)
+      expect(application.controllers[0].falseMeta).to.equal(false)
+      expect(application.controllers[0].koMeta).to.equal(null)
+      expect(application.controllers[0].emailMeta).to.equal('joe@doe.com')
       document.head.innerHTML = initalHead
     })
   })
@@ -43,8 +43,8 @@ describe(`useMeta tests`, function () {
       document.head.innerHTML += '<meta name="some_id" content="12345678">'
       document.head.innerHTML += '<meta name="kebab-id" content="12345678">'
 
-      expect(application.controllers[0].someId).to.equal(12345678)
-      expect(application.controllers[0].kebabId).to.equal(12345678)
+      expect(application.controllers[0].someIdMeta).to.equal(12345678)
+      expect(application.controllers[0].kebabIdMeta).to.equal(12345678)
       document.head.innerHTML = initalHead
     })
   })

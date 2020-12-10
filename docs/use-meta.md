@@ -5,8 +5,19 @@ Adds getters to easily retrieve <head> meta value.
 Simply list at the top of your controller the list of meta name you need (static metaNames = [])
 
 Getters are then automatically defined by the mixin.
-- Getter name is a camelized converstion of the meta name. `user_id`  becomes `userId`
-- Values are automaticaly cast so getters return : String, Number, Boolean or Object
+- Getter name is a camelized conversion of the meta name with an optional `Meta` suffix. `user_id`  becomes `userIdMeta`
+- Values are automatically cast so getters return: String, Number, Boolean or Object
+
+**Options:**
+
+| Option| Description | Default value |
+|-----------------------|-------------|---------------------|
+| `suffix` | prepend or not `Meta` to the getter name. Default is true to remain consistent with `Value` and `Class` API |true|
+
+**Example**
+```js
+useMeta(this, { suffix: false })
+```
 
 ## Usage
 
@@ -36,10 +47,10 @@ export default class extends Controller {
     useMeta(this)
 
     // individual getters
-    this.userId         // 123456
-    this.admin          // true
-    this.email          // "joe@doe.com"
-    this.snakeCaseName  // "are camelized"
+    this.userIdMeta         // 123456 -> Number
+    this.adminMeta          // true -> Boolean
+    this.emailMeta          // "joe@doe.com" -> String
+    this.snakeCaseNameMeta  // "are camelized"
 
     // get all metas in one object
     this.metas
