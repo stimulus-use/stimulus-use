@@ -1,7 +1,13 @@
 import { Controller } from 'stimulus'
 
-const defineMetaGetter = (controller: Controller, metaName: string) => {
-  Object.defineProperty(controller, camelize(metaName), {
+export interface MetaOptions {
+  suffix: boolean
+}
+
+const defineMetaGetter = (controller: Controller, metaName: string, suffix: boolean) => {
+  const getterName = suffix ? `${camelize(metaName)}Meta` : camelize(metaName)
+
+  Object.defineProperty(controller, getterName, {
     get(): any {
       return typeCast(metaValue(metaName))
     },
@@ -25,12 +31,13 @@ function camelize(value: string) {
   return value.replace(/(?:[_-])([a-z0-9])/g, (_, char) => char.toUpperCase())
 }
 
-export const useMeta = (controller: Controller) => {
+export const useMeta = (controller: Controller, options: MetaOptions = { suffix: true }) => {
   const metaNames = (controller.constructor as any).metaNames
+  const suffix = options.suffix
 
   // defines the individual meta getters
   metaNames?.forEach((metaName: string) => {
-    defineMetaGetter(controller, metaName)
+    defineMetaGetter(controller, metaName, suffix)
   })
 
   // define the metas getter to retreive an object with all metas
