@@ -1,7 +1,6 @@
 import { Controller } from 'stimulus'
 import { Logger } from "./logger"
 
-
 export interface StimulusUseOptions {
   debug: boolean
   logger: Logger
