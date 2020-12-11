@@ -51,7 +51,7 @@ export class UseDispatch extends StimulusUse {
       // dispatch the event from the given element or by default from the root element of the controller
       targetElement.dispatchEvent(event)
 
-      log("useDisatch", { eventName: eventNameWithPrefix, detail, bubbles, cancelable })
+      log("useDispatch", { eventName: eventNameWithPrefix, detail, bubbles, cancelable })
 
       return event
     }

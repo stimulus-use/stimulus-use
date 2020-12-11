@@ -39,7 +39,7 @@ export class StimulusUse {
 
     const idString = this.id ? `id: ${this.id}` : ""
     this.logger.group(`${functionName}`)
-    this.logger.log(`called from ${this.controller.identifier} ${idString}`, {
+    this.logger.log(`called from controller: ${this.controller.identifier} ${idString}`, {
       ...args
     })
     this.logger.groupEnd()
