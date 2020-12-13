@@ -18,13 +18,13 @@ export class StimulusUse {
   controllerDisconnect: Function
   debug: boolean
   logger: Logger
-  id: string | undefined
+  controllerId: string | undefined
 
   constructor(controller: Controller, options?: StimulusUseOptions) {
     this.debug = options?.debug || (controller.application as any).stimulusUseDebug || defaultOptions.debug
     this.logger = options?.logger || defaultOptions.logger
     this.controller = controller
-    this.id = controller.element.id
+    this.controllerId = controller.element.id || (controller.element as HTMLElement).dataset.id
 
     // make copies of lifecycle functions
     this.controllerInitialize = controller.initialize.bind(controller)
@@ -32,16 +32,14 @@ export class StimulusUse {
     this.controllerDisconnect = controller.disconnect.bind(controller)
   }
 
-  // private
   log = (functionName: string, args: any): void => {
     if (!this.debug) return
 
-    const idString = this.id ? `id: ${this.id}` : ""
-    this.logger.group(`${functionName}`)
-    this.logger.log(`called from controller: ${this.controller.identifier} ${idString}`, {
+    const idString = this.controllerId ? `, id: ${this.controllerId}` : ""
+    this.logger.groupCollapsed(`%c${this.controller.identifier}#%c${functionName}${idString}`, 'color: #3B82F6', 'color: unset')
+    this.logger.log({
       ...args
     })
     this.logger.groupEnd()
   }
 }
-
