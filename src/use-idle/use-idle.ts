@@ -21,7 +21,7 @@ const defaultOptions = {
 }
 
 export const useIdle = (controller: IdleController, options: IdleOptions = {}) => {
-  const { ms, initialState, events, dispatchEvent, eventPrefix } = Object.assign(defaultOptions, options)
+  const { ms, initialState, events, dispatchEvent, eventPrefix } = Object.assign({}, defaultOptions, options)
 
   let isIdle = initialState
   let timeout = setTimeout(() => {
