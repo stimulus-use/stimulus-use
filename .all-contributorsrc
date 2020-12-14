@@ -152,6 +152,15 @@
       "contributions": [
         "doc"
       ]
+    },
+    {
+      "login": "tsmd",
+      "name": "Takayuki Shimada",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/490085?v=4",
+      "profile": "https://github.com/tsmd",
+      "contributions": [
+        "bug"
+      ]
     }
   ],
   "contributorsPerLine": 7,
