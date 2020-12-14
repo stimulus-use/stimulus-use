@@ -147,6 +147,7 @@ Made with :heart: by [@adrienpoly](https://twitter.com/adrienpoly) and all these
   <tr>
     <td align="center"><a href="https://Konnor.site"><img src="https://avatars2.githubusercontent.com/u/26425882?v=4" width="80px;" alt=""/><br /><sub><b>Konnor Rogers</b></sub></a><br /><a href="https://github.com/stimulus-use/stimulus-use/issues?q=author%3AParamagicDev" title="Bug reports">🐛</a></td>
     <td align="center"><a href="https://francisco.io/"><img src="https://avatars2.githubusercontent.com/u/2801252?v=4" width="80px;" alt=""/><br /><sub><b>Francisco Presencia</b></sub></a><br /><a href="https://github.com/stimulus-use/stimulus-use/commits?author=franciscop" title="Documentation">📖</a></td>
+    <td align="center"><a href="https://github.com/tsmd"><img src="https://avatars3.githubusercontent.com/u/490085?v=4" width="80px;" alt=""/><br /><sub><b>Takayuki Shimada</b></sub></a><br /><a href="https://github.com/stimulus-use/stimulus-use/issues?q=author%3Atsmd" title="Bug reports">🐛</a></td>
   </tr>
 </table>
 
