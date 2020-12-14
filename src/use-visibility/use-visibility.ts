@@ -17,7 +17,7 @@ export class UseVisibility {
   dispatchEvent!: boolean
 
   constructor(controller: VisibilityController, options: VisibilityOptions = {}) {
-    const { dispatchEvent, eventPrefix } = Object.assign(defaultOptions, options)
+    const { dispatchEvent, eventPrefix } = Object.assign({}, defaultOptions, options)
     Object.assign(this, { dispatchEvent, eventPrefix })
 
     this.controller = controller
