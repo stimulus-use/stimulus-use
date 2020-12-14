@@ -21,7 +21,7 @@ export class UseDispatch extends StimulusUse {
   bubbles: boolean
   cancelable: boolean
 
-  constructor(controller: Controller, options: DispatchOptions) {
+  constructor(controller: Controller, options?: DispatchOptions) {
     super(controller, options)
 
     this.targetElement = options?.element || controller.element
@@ -60,6 +60,6 @@ export class UseDispatch extends StimulusUse {
   }
 }
 
-export const useDispatch = (controller: Controller, options: DispatchOptions) => {
+export const useDispatch = (controller: Controller, options?: DispatchOptions) => {
   return new UseDispatch(controller, options)
 }
