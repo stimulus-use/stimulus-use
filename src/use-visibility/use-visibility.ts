@@ -22,7 +22,7 @@ export class UseVisibility {
 
     this.controller = controller
 
-    // make a copy as tthis.unobserve is not available within Object.assign ??
+    // make a copy as this.unobserve is not available within Object.assign ??
     const unobserve = this.unobserve
     const controllerDisconnect = controller.disconnect.bind(controller)
 
