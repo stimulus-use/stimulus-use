@@ -47,13 +47,13 @@ export class UseVisibility extends StimulusUse {
   }
 
   // private
-  private beacomesInvisible = (event?: Event) => {
+  private becomesInvisible = (event?: Event) => {
     const eventName = composeEventName('invisible', this.controller, this.eventPrefix)
 
     this.controller.isVisible = false
     this.controller.invisible && method(this.controller, 'invisible').call(this.controller, event)
 
-    this.log("invisibile", { isVisible: false })
+    this.log("invisible", { isVisible: false })
 
     this.dispatch(eventName, event)
   }
@@ -80,7 +80,7 @@ export class UseVisibility extends StimulusUse {
 
   private handleVisibilityChange = (event?: Event) => {
     if (document.hidden) {
-      this.beacomesInvisible(event)
+      this.becomesInvisible(event)
     } else {
       this.becomesVisible(event)
     }
