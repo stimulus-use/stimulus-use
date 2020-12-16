@@ -17,9 +17,8 @@
 <br />
 
 - **New lifecycle behaviors**: adds new standard behaviors to your Stimulus controllers.
-- **Composable**: compose at will different behaviors in a single controller.
+- **Composable**: compose at will different behaviors in a single controller with mixins.
 - **Modular**: built as ES6 modules, just import what you need and tree shaking will remove the rest.
-- **Tiny**: 2.8k gzip and tree shakable
-- **Typscript**: Types available, better autocompletion.
-- **MIT Licensed**: free for personal and commercial use.
+- **Typescript**: Types available, better autocompletion.
+- **Tiny**: 3k gzip + tree shaking 🌳🌳🌳
 
