@@ -1,6 +1,6 @@
 # Debug
 
-Some `stimulus-use` mixins and controller have built in logging capabilities to help. By default all debugging features are disabled. Debug can be enabled
+Some `stimulus-use` mixins and controller have built in logging capabilities to help. By default all debugging features are disabled. Debug can be enabled globally or just for one specific mixin.
 
 ## Global setting
 
@@ -24,7 +24,7 @@ application.stimulusUseDebug = process.env.NODE_ENV === 'development'
 
 ## Per mixin
 
-Some mixin have a debug option. For those, debug can be turned on locally.
+Some mixin have a debug option. For those, debug can be turned on locally using the debug option.
 
 Example:
 
