@@ -17,7 +17,7 @@ export class UseVisibility extends StimulusUse {
   eventPrefix!: boolean | string
   dispatchEvent!: boolean
 
-  constructor(controller: VisibilityController, options?: VisibilityOptions) {
+  constructor(controller: VisibilityController, options: VisibilityOptions = {}) {
     super(controller, options)
     const { dispatchEvent, eventPrefix } = Object.assign({}, defaultOptions, options)
     Object.assign(this, { dispatchEvent, eventPrefix })
@@ -87,7 +87,7 @@ export class UseVisibility extends StimulusUse {
   }
 }
 
-export const useVisibility = (controller: VisibilityController, options?: VisibilityOptions) => {
+export const useVisibility = (controller: VisibilityController, options: VisibilityOptions = {}) => {
   const observer = new UseVisibility(controller, options)
   return [observer.observe, observer.unobserve] as const
 }
