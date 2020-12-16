@@ -35,9 +35,9 @@ export class StimulusUse {
   log = (functionName: string, args: any): void => {
     if (!this.debug) return
 
-    const idString = this.controllerId ? `, controller id: ${this.controllerId}` : ""
-    this.logger.groupCollapsed(`%c${this.controller.identifier}#%c${functionName}${idString}`, 'color: #3B82F6', 'color: unset')
+    this.logger.groupCollapsed(`%c${this.controller.identifier}#%c${functionName}`, 'color: #3B82F6', 'color: unset')
     this.logger.log({
+      controllerId: this.controllerId,
       ...args
     })
     this.logger.groupEnd()
