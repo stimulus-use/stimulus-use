@@ -21,7 +21,7 @@ export class UseDispatch extends StimulusUse {
   bubbles: boolean
   cancelable: boolean
 
-  constructor(controller: Controller, options?: DispatchOptions) {
+  constructor(controller: Controller, options: DispatchOptions = {}) {
     super(controller, options)
 
     this.targetElement = options?.element || controller.element
@@ -32,34 +32,34 @@ export class UseDispatch extends StimulusUse {
     this.enhanceController()
   }
 
-  private enhanceController() {
+  dispatch = (eventName: string, detail = {}): CustomEvent => {
     const { controller, targetElement, eventPrefix, bubbles, cancelable, log } = this
-    const dispatch = (eventName: string, detail = {}): CustomEvent => {
 
-      // includes the emitting controller in the event detail
-      Object.assign(detail, { controller })
+    // includes the emitting controller in the event detail
+    Object.assign(detail, { controller })
 
-      const eventNameWithPrefix = composeEventName(eventName, controller, eventPrefix)
+    const eventNameWithPrefix = composeEventName(eventName, this.controller, eventPrefix)
 
-      // creates the custom event
-      const event = new CustomEvent(eventNameWithPrefix, {
-        detail,
-        bubbles,
-        cancelable,
-      })
+    // creates the custom event
+    const event = new CustomEvent(eventNameWithPrefix, {
+      detail,
+      bubbles,
+      cancelable,
+    })
 
-      // dispatch the event from the given element or by default from the root element of the controller
-      targetElement.dispatchEvent(event)
+    // dispatch the event from the given element or by default from the root element of the controller
+    targetElement.dispatchEvent(event)
 
-      log("dispatch", { eventName: eventNameWithPrefix, detail, bubbles, cancelable })
+    log("dispatch", { eventName: eventNameWithPrefix, detail, bubbles, cancelable })
 
-      return event
-    }
+    return event
+  }
 
-    Object.assign(this.controller, { dispatch })
+  private enhanceController() {
+    Object.assign(this.controller, { dispatch: this.dispatch })
   }
 }
 
-export const useDispatch = (controller: Controller, options?: DispatchOptions) => {
+export const useDispatch = (controller: Controller, options: DispatchOptions = {}): UseDispatch => {
   return new UseDispatch(controller, options)
 }
