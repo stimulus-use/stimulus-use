@@ -24,10 +24,10 @@ export class UseDispatch extends StimulusUse {
   constructor(controller: Controller, options: DispatchOptions = {}) {
     super(controller, options)
 
-    this.targetElement = options?.element || controller.element
-    this.eventPrefix = options?.eventPrefix || defaultOptions.eventPrefix
-    this.bubbles = options?.bubbles || defaultOptions.bubbles
-    this.cancelable = options?.cancelable || defaultOptions.cancelable
+    this.targetElement = options.element ?? controller.element
+    this.eventPrefix = options.eventPrefix ?? defaultOptions.eventPrefix
+    this.bubbles = options.bubbles ?? defaultOptions.bubbles
+    this.cancelable = options.cancelable ?? defaultOptions.cancelable
 
     this.enhanceController()
   }
