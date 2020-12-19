@@ -21,8 +21,8 @@ export class StimulusUse {
   controllerId: string | undefined
 
   constructor(controller: Controller, options: StimulusUseOptions = {}) {
-    this.debug = options?.debug || (controller.application as any).stimulusUseDebug || defaultOptions.debug
-    this.logger = options?.logger || defaultOptions.logger
+    this.debug = options?.debug ?? (controller.application as any).stimulusUseDebug ?? defaultOptions.debug
+    this.logger = options?.logger ?? defaultOptions.logger
     this.controller = controller
     this.controllerId = controller.element.id || (controller.element as HTMLElement).dataset.id
 
@@ -35,7 +35,7 @@ export class StimulusUse {
   log = (functionName: string, args: any): void => {
     if (!this.debug) return
 
-    this.logger.groupCollapsed(`%c${this.controller.identifier}#%c${functionName}`, 'color: #3B82F6', 'color: unset')
+    this.logger.groupCollapsed(`%c${this.controller.identifier} %c#${functionName}`, 'color: #3B82F6', 'color: unset')
     this.logger.log({
       controllerId: this.controllerId,
       ...args
