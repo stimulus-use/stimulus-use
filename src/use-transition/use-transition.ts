@@ -3,7 +3,7 @@ import { TransitionController } from "./transition-controller"
 export interface TransitionOptions {
   element?: Element
   dispatchEvent?: boolean
-  open?: boolean
+  transitioned?: boolean
   eventPrefix?: boolean | string
   enter?: string
   enterActive?: string
@@ -26,7 +26,7 @@ const alpineNames: object = {
 const defaultOptions = {
   dispatchEvent: true,
   eventPrefix: true,
-  open: false,
+  transitioned: false,
   hiddenClass: "hidden"
 }
 
@@ -37,16 +37,16 @@ export const useTransition = (controller: TransitionController, options: Transit
   if (!((targetElement instanceof HTMLElement) || (targetElement instanceof SVGElement))) return
   const dataset = targetElement.dataset
 
-  const { open, hiddenClass } = Object.assign(defaultOptions, options)
+  const { transitioned, hiddenClass } = Object.assign(defaultOptions, options)
 
   const controllerEnter: Function = controller.enter?.bind(controller)
   const controllerLeave: Function = controller.leave?.bind(controller)
   const controllerToggleTransition: Function = controller.toggleTransition?.bind(controller)
 
   async function enter(event?: Event) {
-    if (controller.isOpen) return
+    if (controller.transitioned) return
 
-    controller.isOpen = true
+    controller.transitioned = true
     controllerEnter && controllerEnter(event)
 
     const enterClass = getAttribute("enter", options, dataset)
@@ -62,8 +62,8 @@ export const useTransition = (controller: TransitionController, options: Transit
   }
 
   async function leave(event?: Event) {
-    if (!controller.isOpen) return
-    controller.isOpen = false
+    if (!controller.transitioned) return
+    controller.transitioned = false
     controllerLeave && controllerLeave(event)
 
     const leaveClass = getAttribute("leave", options, dataset)
@@ -80,7 +80,7 @@ export const useTransition = (controller: TransitionController, options: Transit
   function toggleTransition(event: Event) {
     controllerToggleTransition && controllerToggleTransition(event)
 
-    if (controller.isOpen) {
+    if (controller.transitioned) {
       leave()
     } else {
       enter()
@@ -101,8 +101,8 @@ export const useTransition = (controller: TransitionController, options: Transit
   }
 
   function initialState() {
-    controller.isOpen = open
-    if (open) {
+    controller.transitioned = transitioned
+    if (transitioned) {
       if (!!hiddenClass) {
         targetElement.classList.remove(hiddenClass)
       }

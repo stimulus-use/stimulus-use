@@ -19,10 +19,10 @@ export default class extends Controller {
   }
 
   toggle() {
-    this.hasControlCloseTarget && this.controlCloseTarget.classList.toggle('hidden', this.isOpen)
-    this.hasControlOpenTarget && this.controlOpenTarget.classList.toggle('hidden', !this.isOpen)
+    this.hasControlCloseTarget && this.controlCloseTarget.classList.toggle('hidden', this.transitioned)
+    this.hasControlOpenTarget && this.controlOpenTarget.classList.toggle('hidden', !this.transitioned)
 
-    if (this.isOpen) {
+    if (this.transitioned) {
       this.leave()
     } else {
       this.enter()
