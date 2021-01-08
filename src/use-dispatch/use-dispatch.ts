@@ -1,7 +1,8 @@
-import { Controller } from 'stimulus'
 import { composeEventName } from '../support/index'
+import { Controller } from 'stimulus'
+import { StimulusUse, StimulusUseOptions } from '../stimulus_use'
 
-export interface DispatchOptions {
+export interface DispatchOptions extends StimulusUseOptions {
   element?: Element
   eventPrefix?: boolean | string
   bubbles?: boolean
@@ -11,32 +12,54 @@ export interface DispatchOptions {
 const defaultOptions = {
   eventPrefix: true,
   bubbles: true,
-  cancelable: true
+  cancelable: true,
 }
 
-export const useDispatch = (controller: Controller, options?: DispatchOptions) => {
-  const targetElement: Element = options?.element || controller.element
-  const { eventPrefix, bubbles, cancelable } = Object.assign(defaultOptions, options)
+export class UseDispatch extends StimulusUse {
+  targetElement: Element
+  eventPrefix: boolean | string
+  bubbles: boolean
+  cancelable: boolean
 
-  Object.assign(controller, {
-    dispatch(eventName: string, detail = {}): CustomEvent {
+  constructor(controller: Controller, options: DispatchOptions = {}) {
+    super(controller, options)
 
-      // includes the emitting controller in the event detail
-      Object.assign(detail, { controller })
+    this.targetElement = options.element ?? controller.element
+    this.eventPrefix = options.eventPrefix ?? defaultOptions.eventPrefix
+    this.bubbles = options.bubbles ?? defaultOptions.bubbles
+    this.cancelable = options.cancelable ?? defaultOptions.cancelable
 
-      const eventNameWithPrefix = composeEventName(eventName, controller, eventPrefix)
+    this.enhanceController()
+  }
 
-      // creates the custom event
-      const event = new CustomEvent(eventNameWithPrefix, {
-        detail,
-        bubbles,
-        cancelable,
-      })
+  dispatch = (eventName: string, detail = {}): CustomEvent => {
+    const { controller, targetElement, eventPrefix, bubbles, cancelable, log } = this
 
-      // dispatch it from the given element or by default from the root element of the controller
-      targetElement.dispatchEvent(event)
+    // includes the emitting controller in the event detail
+    Object.assign(detail, { controller })
 
-      return event
-    }
-  })
+    const eventNameWithPrefix = composeEventName(eventName, this.controller, eventPrefix)
+
+    // creates the custom event
+    const event = new CustomEvent(eventNameWithPrefix, {
+      detail,
+      bubbles,
+      cancelable,
+    })
+
+    // dispatch the event from the given element or by default from the root element of the controller
+    targetElement.dispatchEvent(event)
+
+    log("dispatch", { eventName: eventNameWithPrefix, detail, bubbles, cancelable })
+
+    return event
+  }
+
+  private enhanceController() {
+    Object.assign(this.controller, { dispatch: this.dispatch })
+  }
+}
+
+export const useDispatch = (controller: Controller, options: DispatchOptions = {}): UseDispatch => {
+  return new UseDispatch(controller, options)
 }

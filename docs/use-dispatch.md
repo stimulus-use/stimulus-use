@@ -20,6 +20,9 @@ useDispatch(controller, options = {})
 | `eventPrefix` | Whether to prefix or not the emitted event. Can be a **boolean** or a **string**.<br>- **true** prefix the event with the controller identifier `item:add` <br>- **someString** prefix the event with the given string `someString:add` <br>- **false** to remove prefix  |true|
 | `bubbles` | Whether the event should bubble.| true|
 | `cancelable` | Whether the event is cancelable.| true|
+| `debug` | Whether to log debug informations. See [debug](debug.md) for more information on the debuging tools| false|
+
+
 
 
 

@@ -49,7 +49,7 @@ export default class extends ApplicationController {
   static debounces = [
     'click',
     {
-      name: 'fecth',
+      name: 'fetch',
       wait: 500
     }
   ]

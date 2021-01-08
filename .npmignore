@@ -24,3 +24,6 @@ cypress.json
 *.tsbuildinfo
 *.log
 .all-contributorsrc
+postcss.config.js
+tailwind.config.js
+/src

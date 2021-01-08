@@ -21,7 +21,7 @@ const defaultOptions = {
 }
 
 export const useClickOutside = (controller: ClickOutsideController, options: ClickOutsideOptions = {}) => {
-  const { onlyVisible, dispatchEvent, events, eventPrefix } = Object.assign(defaultOptions, options)
+  const { onlyVisible, dispatchEvent, events, eventPrefix } = Object.assign({}, defaultOptions, options)
 
   const onEvent = (event: Event) => {
     const targetElement: Element = options?.element || controller.element

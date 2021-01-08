@@ -13,7 +13,7 @@ const defaultOptions = {
 }
 
 export const useIntersection = (controller: IntersectionController, options: IntersectionOptions = {}) => {
-  const { dispatchEvent, eventPrefix } = Object.assign(defaultOptions, options)
+  const { dispatchEvent, eventPrefix } = Object.assign({}, defaultOptions, options)
   const targetElement: Element = options?.element || controller.element
 
   const callback = (entries: IntersectionObserverEntry[]) => {

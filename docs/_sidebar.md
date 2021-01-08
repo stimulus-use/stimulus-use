@@ -2,6 +2,7 @@
 * [Getting Started](getting_started.md)
 * [Usage](usage.md)
 * [Events](events.md)
+* [Debug](debug.md)
 
 * [**Observers**](observers.md)
   * [useClickOutside](use-click-outside.md)
@@ -19,5 +20,6 @@
 * [**Application**](application.md)
   * [useApplication](application-controller.md)
   * [useDispatch](use-dispatch.md)
+  * [useMeta](use-meta.md)
 * [Playground](stu-playground.md)
 

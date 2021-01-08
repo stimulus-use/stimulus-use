@@ -70,10 +70,10 @@ scenarios.forEach(scenario => {
       let testLogger
       beforeEach('initialize controller', async function () {
         application = new Application()
-        await application.start()
         testLogger = new TestLogger()
         application.testLogger = testLogger
         application.options = scenario.options
+        await application.start()
         fixture.set(scenario.fixture)
         application.register('intersection', Controller.controller)
         await nextFrame()

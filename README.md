@@ -23,11 +23,10 @@
 <br />
 
 - **New lifecycle behaviors**: adds new standard behaviors to your Stimulus controllers.
-- **Composable**: compose at will different behaviors in a single controller.
+- **Composable**: compose at will different behaviors in a single controller with mixins.
 - **Modular**: built as ES6 modules, just import what you need and tree shaking will remove the rest.
 - **Typescript**: Types available, better autocompletion.
-- **Tiny**: 1k gzip
-- **MIT Licensed**: free for personal and commercial use.
+- **Tiny**: 3k gzip + tree shaking 🌳🌳🌳
 
 ## Getting Started
 
@@ -40,6 +39,9 @@ yarn
 ```bash
 yarn add stimulus-use
 ```
+## Documentation
+
+We got you covered 👉 [stimulus-use.github.io/stimulus-use](https://stimulus-use.github.io/stimulus-use/#/)
 
 ## Mixins
 
@@ -66,13 +68,12 @@ yarn add stimulus-use
   |[`useMemo`](./docs/use-memo.md)|Memoize expensive getters by mixing in `useMemo` and adding a static   `memos` array.|
   |[`useThrottle`](./docs/use-throttle.md)|Adds the ability to specify an array "throttles" of functions to throttle.|
 
-
 ### Application
   | Mixin | Description |
   |------|-------------|
   |[`useApplication, ApplicationController`](./docs/application-controller.md)| supercharged controller for your application.|
   |[`useDispatch`](./docs/use-dispatch.md)|Adds a dispatch helper function to emit custom events. Useful to communicate between different controllers.|
-
+  |[`useMeta`](./docs/use-meta.md)|Adds getters to easily access <head> meta values.|
 
 ## Extend or compose
 
@@ -144,6 +145,11 @@ Made with :heart: by [@adrienpoly](https://twitter.com/adrienpoly) and all these
     <td align="center"><a href="https://github.com/jcoyne"><img src="https://avatars2.githubusercontent.com/u/92044?v=4" width="80px;" alt=""/><br /><sub><b>Justin Coyne</b></sub></a><br /><a href="https://github.com/stimulus-use/stimulus-use/commits?author=jcoyne" title="Documentation">📖</a></td>
     <td align="center"><a href="http://www.asgerbehnckejacobsen.dk"><img src="https://avatars3.githubusercontent.com/u/1920077?v=4" width="80px;" alt=""/><br /><sub><b>Asger Behncke Jacobsen</b></sub></a><br /><a href="https://github.com/stimulus-use/stimulus-use/commits?author=asgerb" title="Documentation">📖</a></td>
     <td align="center"><a href="https://github.com/dancallaghan"><img src="https://avatars1.githubusercontent.com/u/1025380?v=4" width="80px;" alt=""/><br /><sub><b>Dan Callaghan</b></sub></a><br /><a href="https://github.com/stimulus-use/stimulus-use/commits?author=dancallaghan" title="Documentation">📖</a></td>
+  </tr>
+  <tr>
+    <td align="center"><a href="https://Konnor.site"><img src="https://avatars2.githubusercontent.com/u/26425882?v=4" width="80px;" alt=""/><br /><sub><b>Konnor Rogers</b></sub></a><br /><a href="https://github.com/stimulus-use/stimulus-use/issues?q=author%3AParamagicDev" title="Bug reports">🐛</a></td>
+    <td align="center"><a href="https://francisco.io/"><img src="https://avatars2.githubusercontent.com/u/2801252?v=4" width="80px;" alt=""/><br /><sub><b>Francisco Presencia</b></sub></a><br /><a href="https://github.com/stimulus-use/stimulus-use/commits?author=franciscop" title="Documentation">📖</a></td>
+    <td align="center"><a href="https://github.com/tsmd"><img src="https://avatars3.githubusercontent.com/u/490085?v=4" width="80px;" alt=""/><br /><sub><b>Takayuki Shimada</b></sub></a><br /><a href="https://github.com/stimulus-use/stimulus-use/issues?q=author%3Atsmd" title="Bug reports">🐛</a></td>
   </tr>
 </table>
 
