@@ -31,7 +31,14 @@ const defaultOptions = {
 }
 
 export const useTransition = (controller: TransitionController, options: TransitionOptions = {}) => {
-  const targetElement = options?.element || controller.element
+  const targetName = (controller.element as HTMLElement).dataset.transitionTarget
+  let targetFromAttribute
+
+  if (targetName) {
+    targetFromAttribute = (controller as any)[`${targetName}Target`]
+  }
+
+  const targetElement = options?.element || targetFromAttribute || controller.element
 
   // data attributes are only available on HTMLElement and SVGElement
   if (!((targetElement instanceof HTMLElement) || (targetElement instanceof SVGElement))) return

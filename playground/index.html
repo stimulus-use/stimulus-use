@@ -36,6 +36,7 @@
             <!-- Profile dropdown -->
             <div class="ml-3 relative"
                  data-controller="dropdown"
+                 data-transition-target="content"
                  data-action="click->dropdown#toggle dropdown:click:outside->dropdown#leave">
               <div>
                 <button class="bg-white rounded-sm flex text-sm focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-400  text-gray-400 hover:text-gray-500" id="user-menu" aria-haspopup="true">
@@ -172,7 +173,7 @@
               </div>
               <div class="grid grid-cols-2 mt-3">
 
-                <div class="relative" data-controller="dropdown" data-action="dropdown:click:outside->dropdown#leave">
+                <div class="relative" data-controller="dropdown" data-transition-target="content" data-action="dropdown:click:outside->dropdown#leave">
                   <div>
                     <button
                       data-action="click->dropdown#toggle"
