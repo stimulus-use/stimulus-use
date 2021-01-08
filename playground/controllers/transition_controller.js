@@ -1,6 +1,5 @@
-// intersection_controller.js
 import { Controller } from 'stimulus'
-import { useIntersection, useTransition } from 'stimulus-use'
+import { useTransition } from 'stimulus-use'
 
 export default class extends Controller {
   connect() {
@@ -13,15 +12,5 @@ export default class extends Controller {
       leaveTo: 'transform opacity-0 scale-0',
       hiddenClass: false
     })
-
-    useIntersection(this)
-  }
-
-  appear() {
-    this.show()
-  }
-
-  disappear() {
-    this.hide()
   }
 }
