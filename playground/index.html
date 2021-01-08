@@ -36,7 +36,7 @@
             <!-- Profile dropdown -->
             <div class="ml-3 relative"
                  data-controller="dropdown"
-                 data-action="click->dropdown#toggle">
+                 data-action="click->dropdown#toggle dropdown:click:outside->dropdown#leave">
               <div>
                 <button class="bg-white rounded-sm flex text-sm focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-400  text-gray-400 hover:text-gray-500" id="user-menu" aria-haspopup="true">
                   <span class="sr-only">Open user menu</span>
@@ -50,12 +50,6 @@
               </div>
               <div class="origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg py-1 bg-white ring-1 ring-black ring-opacity-5"
                   data-target="dropdown.content"
-                  data-transition-enter="transition ease-out duration-700 delay-500"
-                  data-transition-enter-active="transform opacity-0 scale-95"
-                  data-transition-enter-to="transform opacity-100 scale-100"
-                  data-transition-leave="transition ease-in duration-75"
-                  data-transition-leave-active="transform opacity-100 scale-100"
-                  data-transition-leave-to="transform opacity-0 scale-95"
                   role="menu"
                   aria-orientation="vertical"
                   aria-labelledby="user-menu">
@@ -178,7 +172,7 @@
               </div>
               <div class="grid grid-cols-2 mt-3">
 
-                <div class="relative" data-controller="dropdown">
+                <div class="relative" data-controller="dropdown" data-action="dropdown:click:outside->dropdown#leave">
                   <div>
                     <button
                       data-action="click->dropdown#toggle"
@@ -189,12 +183,6 @@
                   </div>
                   <div class="origin-top-right absolute left-0 mt-2 w-48 rounded-md shadow-lg py-1 bg-white ring-1 ring-black ring-opacity-5"
                   data-target="dropdown.content"
-                  data-transition-enter="transition ease-out duration-300"
-                  data-transition-enter-active="transform opacity-0 scale-95"
-                  data-transition-enter-to="transform opacity-100 scale-100"
-                  data-transition-leave="transition ease-in duration-300"
-                  data-transition-leave-active="transform opacity-100 scale-100"
-                  data-transition-leave-to="transform opacity-0 scale-95"
                   role="menu"
                   aria-orientation="vertical"
                   aria-labelledby="user-menu">
@@ -239,15 +227,8 @@
         <div class="grid grid-cols-5 gap-12">
 
           <div></div>
-          <div data-controller="appear"
-               data-transition-enter="transition ease-out duration-700 delay-500"
-               class="opacity-0 flex items-center justify-center">
-            <svg class="h20 w-20 text-blue-700" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z" />
-            </svg>
-          </div>
-          <div></div>
-          <div data-controller="appear"
+          <div data-controller="intersection transition"
+               data-action="intersection:appear->transition#enter intersection:disappear->transition#leave"
                data-transition-enter="transition ease-out duration-1000"
                class="opacity-0 flex items-center justify-center">
             <svg class="h20 w-20 text-blue-700" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -259,7 +240,8 @@
           <div></div>
           <div></div>
           <div></div>
-          <div data-controller="appear"
+          <div data-controller="intersection transition"
+               data-action="intersection:appear->transition#enter intersection:disappear->transition#leave"
                data-transition-enter="transition ease-out duration-500"
                class="opacity-0 flex items-center justify-center">
             <svg class="h20 w-20 text-blue-700" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -267,7 +249,8 @@
             </svg>
           </div>
           <div></div>
-          <div data-controller="appear"
+          <div data-controller="intersection transition"
+               data-action="intersection:appear->transition#enter intersection:disappear->transition#leave"
                data-transition-enter="transition ease-out duration-700 delay-500"
                class="opacity-0 flex items-center justify-center">
             <svg class="h20 w-20 text-blue-700" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -275,7 +258,8 @@
             </svg>
           </div>
           <div></div>
-          <div data-controller="appear"
+          <div data-controller="intersection transition"
+               data-action="intersection:appear->transition#enter intersection:disappear->transition#leave"
                data-transition-enter="transition ease-out duration-1000"
                class="opacity-0 flex items-center justify-center">
             <svg class="h20 w-20 text-blue-700" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -287,7 +271,8 @@
           <div></div>
           <div></div>
           <div></div>
-          <div data-controller="appear"
+          <div data-controller="intersection transition"
+               data-action="intersection:appear->transition#enter intersection:disappear->transition#leave"
                data-transition-enter="transition ease-out duration-500"
                class="opacity-0 flex items-center justify-center">
             <svg class="h20 w-20 text-blue-700" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -295,7 +280,8 @@
             </svg>
           </div>
           <div></div>
-          <div data-controller="appear"
+          <div data-controller="intersection transition"
+               data-action="intersection:appear->transition#enter intersection:disappear->transition#leave"
                data-transition-enter="transition ease-out duration-700 delay-500"
                class="opacity-0 flex items-center justify-center">
             <svg class="h20 w-20 text-blue-700" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -303,7 +289,8 @@
             </svg>
           </div>
           <div></div>
-          <div data-controller="appear"
+          <div data-controller="intersection transition"
+               data-action="intersection:appear->transition#enter intersection:disappear->transition#leave"
                data-transition-enter="transition ease-out duration-1000"
                class="opacity-0 flex items-center justify-center">
             <svg class="h20 w-20 text-blue-700" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -315,7 +302,8 @@
           <div></div>
           <div></div>
           <div></div>
-          <div data-controller="appear"
+          <div data-controller="intersection transition"
+               data-action="intersection:appear->transition#enter intersection:disappear->transition#leave"
                data-transition-enter="transition ease-out duration-500"
                class="opacity-0 flex items-center justify-center">
             <svg class="h20 w-20 text-blue-700" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -323,7 +311,8 @@
             </svg>
           </div>
           <div></div>
-          <div data-controller="appear"
+          <div data-controller="intersection transition"
+               data-action="intersection:appear->transition#enter intersection:disappear->transition#leave"
                data-transition-enter="transition ease-out duration-700 delay-500"
                class="opacity-0 flex items-center justify-center">
             <svg class="h20 w-20 text-blue-700" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -331,7 +320,8 @@
             </svg>
           </div>
           <div></div>
-          <div data-controller="appear"
+          <div data-controller="intersection transition"
+               data-action="intersection:appear->transition#enter intersection:disappear->transition#leave"
                data-transition-enter="transition ease-out duration-1000"
                class="opacity-0 flex items-center justify-center">
             <svg class="h20 w-20 text-blue-700" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -343,7 +333,8 @@
           <div></div>
           <div></div>
           <div></div>
-          <div data-controller="appear"
+          <div data-controller="intersection transition"
+               data-action="intersection:appear->transition#enter intersection:disappear->transition#leave"
                data-transition-enter="transition ease-out duration-500"
                class="opacity-0 flex items-center justify-center">
             <svg class="h20 w-20 text-blue-700" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -351,7 +342,8 @@
             </svg>
           </div>
           <div></div>
-          <div data-controller="appear"
+          <div data-controller="intersection transition"
+               data-action="intersection:appear->transition#enter intersection:disappear->transition#leave"
                data-transition-enter="transition ease-out duration-700 delay-500"
                class="opacity-0 flex items-center justify-center">
             <svg class="h20 w-20 text-blue-700" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -359,7 +351,8 @@
             </svg>
           </div>
           <div></div>
-          <div data-controller="appear"
+          <div data-controller="intersection transition"
+               data-action="intersection:appear->transition#enter intersection:disappear->transition#leave"
                data-transition-enter="transition ease-out duration-1000"
                class="opacity-0 flex items-center justify-center">
             <svg class="h20 w-20 text-blue-700" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -371,7 +364,8 @@
           <div></div>
           <div></div>
           <div></div>
-          <div data-controller="appear"
+          <div data-controller="intersection transition"
+               data-action="intersection:appear->transition#enter intersection:disappear->transition#leave"
                data-transition-enter="transition ease-out duration-500"
                class="opacity-0 flex items-center justify-center">
             <svg class="h20 w-20 text-blue-700" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -379,7 +373,8 @@
             </svg>
           </div>
           <div></div>
-          <div data-controller="appear"
+          <div data-controller="intersection transition"
+               data-action="intersection:appear->transition#enter intersection:disappear->transition#leave"
                data-transition-enter="transition ease-out duration-700 delay-500"
                class="opacity-0 flex items-center justify-center">
             <svg class="h20 w-20 text-blue-700" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -387,7 +382,8 @@
             </svg>
           </div>
           <div></div>
-          <div data-controller="appear"
+          <div data-controller="intersection transition"
+               data-action="intersection:appear->transition#enter intersection:disappear->transition#leave"
                data-transition-enter="transition ease-out duration-1000"
                class="opacity-0 flex items-center justify-center">
             <svg class="h20 w-20 text-blue-700" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -399,7 +395,9 @@
           <div></div>
           <div></div>
           <div></div>
-          <div data-controller="appear"
+          <div></div>
+          <div data-controller="intersection transition"
+               data-action="intersection:appear->transition#enter intersection:disappear->transition#leave"
                data-transition-enter="transition ease-out duration-500"
                class="opacity-0 flex items-center justify-center">
             <svg class="h20 w-20 text-blue-700" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -407,7 +405,8 @@
             </svg>
           </div>
           <div></div>
-          <div data-controller="appear"
+          <div data-controller="intersection transition"
+               data-action="intersection:appear->transition#enter intersection:disappear->transition#leave"
                data-transition-enter="transition ease-out duration-700 delay-500"
                class="opacity-0 flex items-center justify-center">
             <svg class="h20 w-20 text-blue-700" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -415,7 +414,8 @@
             </svg>
           </div>
           <div></div>
-          <div data-controller="appear"
+          <div data-controller="intersection transition"
+               data-action="intersection:appear->transition#enter intersection:disappear->transition#leave"
                data-transition-enter="transition ease-out duration-1000"
                class="opacity-0 flex items-center justify-center">
             <svg class="h20 w-20 text-blue-700" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -425,10 +425,8 @@
           <div></div>
           <div></div>
           <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div data-controller="appear"
+          <div data-controller="intersection transition"
+               data-action="intersection:appear->transition#enter intersection:disappear->transition#leave"
                data-transition-enter="transition ease-out duration-500"
                class="opacity-0 flex items-center justify-center">
             <svg class="h20 w-20 text-blue-700" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -436,7 +434,8 @@
             </svg>
           </div>
           <div></div>
-          <div data-controller="appear"
+          <div data-controller="intersection transition"
+               data-action="intersection:appear->transition#enter intersection:disappear->transition#leave"
                data-transition-enter="transition ease-out duration-700 delay-500"
                class="opacity-0 flex items-center justify-center">
             <svg class="h20 w-20 text-blue-700" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -444,7 +443,10 @@
             </svg>
           </div>
           <div></div>
-          <div data-controller="appear"
+          <div></div>
+          <div></div>
+          <div data-controller="intersection transition"
+               data-action="intersection:appear->transition#enter intersection:disappear->transition#leave"
                data-transition-enter="transition ease-out duration-1000"
                class="opacity-0 flex items-center justify-center">
             <svg class="h20 w-20 text-blue-700" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -454,7 +456,11 @@
           <div></div>
           <div></div>
           <div></div>
-          <div data-controller="appear"
+          <div></div>
+          <div></div>
+          <div></div>
+          <div data-controller="intersection transition"
+               data-action="intersection:appear->transition#enter intersection:disappear->transition#leave"
                data-transition-enter="transition ease-out duration-500"
                class="opacity-0 flex items-center justify-center">
             <svg class="h20 w-20 text-blue-700" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -462,7 +468,8 @@
             </svg>
           </div>
           <div></div>
-          <div data-controller="appear"
+          <div data-controller="intersection transition"
+               data-action="intersection:appear->transition#enter intersection:disappear->transition#leave"
                data-transition-enter="transition ease-out duration-700 delay-500"
                class="opacity-0 flex items-center justify-center">
             <svg class="h20 w-20 text-blue-700" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -470,9 +477,8 @@
             </svg>
           </div>
           <div></div>
-          <div></div>
-          <div></div>
-          <div data-controller="appear"
+          <div data-controller="intersection transition"
+               data-action="intersection:appear->transition#enter intersection:disappear->transition#leave"
                data-transition-enter="transition ease-out duration-1000"
                class="opacity-0 flex items-center justify-center">
             <svg class="h20 w-20 text-blue-700" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -485,7 +491,9 @@
           <div></div>
           <div></div>
           <div></div>
-          <div data-controller="appear"
+          <div></div>
+          <div data-controller="intersection transition"
+               data-action="intersection:appear->transition#enter intersection:disappear->transition#leave"
                data-transition-enter="transition ease-out duration-500"
                class="opacity-0 flex items-center justify-center">
             <svg class="h20 w-20 text-blue-700" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -493,7 +501,8 @@
             </svg>
           </div>
           <div></div>
-          <div data-controller="appear"
+          <div data-controller="intersection transition"
+               data-action="intersection:appear->transition#enter intersection:disappear->transition#leave"
                data-transition-enter="transition ease-out duration-700 delay-500"
                class="opacity-0 flex items-center justify-center">
             <svg class="h20 w-20 text-blue-700" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -501,7 +510,9 @@
             </svg>
           </div>
           <div></div>
-          <div data-controller="appear"
+          <div></div>
+          <div data-controller="intersection transition"
+               data-action="intersection:appear->transition#enter intersection:disappear->transition#leave"
                data-transition-enter="transition ease-out duration-1000"
                class="opacity-0 flex items-center justify-center">
             <svg class="h20 w-20 text-blue-700" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -513,38 +524,8 @@
           <div></div>
           <div></div>
           <div></div>
-          <div></div>
-          <div></div>
-          <div data-controller="appear"
-               data-transition-enter="transition ease-out duration-500"
-               class="opacity-0 flex items-center justify-center">
-            <svg class="h20 w-20 text-blue-700" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z" />
-            </svg>
-          </div>
-          <div></div>
-          <div data-controller="appear"
-               data-transition-enter="transition ease-out duration-700 delay-500"
-               class="opacity-0 flex items-center justify-center">
-            <svg class="h20 w-20 text-blue-700" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z" />
-            </svg>
-          </div>
-          <div></div>
-          <div></div>
-          <div data-controller="appear"
-               data-transition-enter="transition ease-out duration-1000"
-               class="opacity-0 flex items-center justify-center">
-            <svg class="h20 w-20 text-blue-700" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z" />
-            </svg>
-          </div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div data-controller="appear"
+          <div data-controller="intersection transition"
+               data-action="intersection:appear->transition#enter intersection:disappear->transition#leave"
                data-transition-enter="transition ease-out duration-500"
                class="opacity-0 flex items-center justify-center">
             <svg class="h20 w-20 text-blue-700" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -554,7 +535,8 @@
           <div></div>
           <div></div>
           <div></div>
-          <div data-controller="appear"
+          <div data-controller="intersection transition"
+               data-action="intersection:appear->transition#enter intersection:disappear->transition#leave"
                data-transition-enter="transition ease-out duration-700 delay-500"
                class="opacity-0 flex items-center justify-center">
             <svg class="h20 w-20 text-blue-700" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -563,7 +545,8 @@
           </div>
           <div></div>
           <div></div>
-          <div data-controller="appear"
+          <div data-controller="intersection transition"
+               data-action="intersection:appear->transition#enter intersection:disappear->transition#leave"
                data-transition-enter="transition ease-out duration-1000"
                class="opacity-0 flex items-center justify-center">
             <svg class="h20 w-20 text-blue-700" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -573,7 +556,8 @@
           <div></div>
           <div></div>
           <div></div>
-          <div data-controller="appear"
+          <div data-controller="intersection transition"
+               data-action="intersection:appear->transition#enter intersection:disappear->transition#leave"
                data-transition-enter="transition ease-out duration-500"
                class="opacity-0 flex items-center justify-center">
             <svg class="h20 w-20 text-blue-700" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">

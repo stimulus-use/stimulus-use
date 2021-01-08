@@ -1,12 +1,4 @@
-import { Controller } from 'stimulus'
-// import { method, extendedEvent, isElementInViewport, composeEventName } from '../support/index'
-
-interface TransitionController extends Controller {
-  show: (event: Event) => void
-  hide: (event: Event) => void
-  toggle: (event: Event) => void
-  isOpen: boolean
-}
+import { TransitionController } from "./transition-controller"
 
 export interface TransitionOptions {
   element?: Element
@@ -39,20 +31,23 @@ const defaultOptions = {
 }
 
 export const useTransition = (controller: TransitionController, options: TransitionOptions = {}) => {
-  const { open, hiddenClass } = Object.assign(defaultOptions, options)
   const targetElement = options?.element || controller.element
+
+  // data attributes are only available on HTMLElement and SVGElement
   if (!((targetElement instanceof HTMLElement) || (targetElement instanceof SVGElement))) return
   const dataset = targetElement.dataset
 
-  const controllerShow: Function = controller.show?.bind(controller)
-  const controllerHide: Function = controller.hide?.bind(controller)
-  const controllerToggle: Function = controller.toggle?.bind(controller)
+  const { open, hiddenClass } = Object.assign(defaultOptions, options)
 
-  async function show(event?: Event) {
+  const controllerEnter: Function = controller.enter?.bind(controller)
+  const controllerLeave: Function = controller.leave?.bind(controller)
+  const controllerToggleTransition: Function = controller.toggleTransition?.bind(controller)
+
+  async function enter(event?: Event) {
     if (controller.isOpen) return
 
     controller.isOpen = true
-    controllerShow && controllerShow(event)
+    controllerEnter && controllerEnter(event)
 
     const enterClass = getAttribute("enter", options, dataset)
     const enterActiveClass = getAttribute("enterActive", options, dataset)
@@ -66,11 +61,10 @@ export const useTransition = (controller: TransitionController, options: Transit
 
   }
 
-  async function hide(event?: Event) {
+  async function leave(event?: Event) {
     if (!controller.isOpen) return
-
     controller.isOpen = false
-    controllerHide && controllerHide(event)
+    controllerLeave && controllerLeave(event)
 
     const leaveClass = getAttribute("leave", options, dataset)
     const leaveActiveClass = getAttribute("leaveActive", options, dataset)
@@ -83,12 +77,13 @@ export const useTransition = (controller: TransitionController, options: Transit
     }
   }
 
-  function toggle(event: Event) {
-    controllerToggle && controllerToggle(event)
+  function toggleTransition(event: Event) {
+    controllerToggleTransition && controllerToggleTransition(event)
+
     if (controller.isOpen) {
-      hide()
+      leave()
     } else {
-      show()
+      enter()
     }
   }
 
@@ -106,21 +101,23 @@ export const useTransition = (controller: TransitionController, options: Transit
   }
 
   function initialState() {
+    controller.isOpen = open
     if (open) {
       if (!!hiddenClass) {
         targetElement.classList.remove(hiddenClass)
       }
-      show()
+      enter()
     } else {
       if (!!hiddenClass) {
         targetElement.classList.add(hiddenClass)
       }
-      hide()
+      leave()
     }
   }
 
   initialState()
-  Object.assign(controller, { show, hide, toggle })
+  Object.assign(controller, { enter, leave, toggleTransition })
+  return [enter, leave, toggleTransition]
 }
 
 function getAttribute(name: string, options: TransitionOptions, dataset: DOMStringMap) {
@@ -130,7 +127,7 @@ function getAttribute(name: string, options: TransitionOptions, dataset: DOMStri
   return classes.split(" ")
 }
 
-async function afterTransition(element: Element): Promise<Function> {
+async function afterTransition(element: Element): Promise<number> {
   return new Promise(resolve => {
     const duration = Number(
       getComputedStyle(element)
@@ -140,7 +137,7 @@ async function afterTransition(element: Element): Promise<Function> {
     ) * 1000
 
     setTimeout(() => {
-      resolve()
+      resolve(duration)
     }, duration)
   });
 }
