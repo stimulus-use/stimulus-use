@@ -8,5 +8,6 @@ This set of mixins is built around the [`Observer APIs`](https://developer.mozil
 |[`useIdle`](./docs/use-idle.md)| Tracks if the user is idle on your page and adds **away** and **back** callbacks to your controller.|`away`</br> `back`|
 |[`useIntersection`](./docs/use-intersection.md) | Tracks the element's intersection and adds **appear**, **disappear** callbacks to your controller.|`appear`</br> `disappear`|
 |[`useVisibility`](./docs/use-visibility.md) </br>| Tracks the page visibility and adds **visible**, **invisible** callbacks to your controller.|`visible`</br> `invisible`|
+|[`useHover`](./docs/use-hover.md)|Tracks the user's mouse movements over an element adds **mouseEnter** and **mouseLeave** callbacks to your controller**.|`mouseEnter` `mouseLeave`|
 |[`useResize`](./docs/use-resize.md)|Tracks the element's size and adds a new lifecyle callback **resize**.|`resize`|
 |[`useWindowResize`](./docs/use-window-resize.md)| Tracks the size of the `window` object and adds a new lifecyle callback **windowResize**.|`windowResize`|
