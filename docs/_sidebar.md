@@ -8,6 +8,7 @@
   * [useClickOutside](use-click-outside.md)
   * [useIdle](use-idle.md)
   * [useIntersection](use-intersection.md)
+  * [useHover](use-hover.md)
   * [useResize](use-resize.md)
   * [useVisibility](use-visibility.md)
   * [useWindowResize](use-window-resize.md)
