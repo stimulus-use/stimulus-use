@@ -1,5 +1,5 @@
 import { StimulusUse, StimulusUseOptions } from '../stimulus_use'
-import { method } from '../support'
+import { method } from '../support/index'
 import { HoverController } from './hover-controller'
 
 export interface HoverOptions extends StimulusUseOptions {
