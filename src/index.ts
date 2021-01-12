@@ -5,6 +5,7 @@ export { useClickOutside, ClickOutsideController } from './use-click-outside/ind
 export { useApplication, ApplicationController } from './use-application/index'
 export { useIdle, IdleController } from './use-idle/index'
 export { useVisibility, UseVisibility, VisibilityController } from './use-visibility/index'
+export { useHover, UseHover, HoverController } from './use-hover/index'
 export { useWindowResize, WindowResizeController } from './use-window-resize/index'
 export { useMemo } from './use-memo/index'
 export { useDebounce } from './use-debounce/index'

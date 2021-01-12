@@ -1,1 +1,2 @@
-export { useHover } from './use-hover'
+export { useHover, UseHover } from './use-hover'
+export { HoverController } from './hover-controller'
