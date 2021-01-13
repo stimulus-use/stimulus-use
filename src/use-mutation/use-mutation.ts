@@ -36,8 +36,8 @@ export class UseMutation extends StimulusUse {
   }
 
   private mutation = (entries: MutationRecord[]) => {
-    this.controller.mutated && method(this.controller, 'mutated').call(this.controller, entries)
-    this.log('mutated', { entries })
+    this.controller.mutate && method(this.controller, 'mutate').call(this.controller, entries)
+    this.log('mutate', { entries })
   }
 
   private enhanceController() {

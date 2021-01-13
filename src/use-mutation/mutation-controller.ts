@@ -15,5 +15,5 @@ export class MutationController extends Controller {
   observe!: () => {}
   unobserve!: () => {}
 
-  mutated!: (entries: MutationRecord[]) => {}
+  mutate!: (entries: MutationRecord[]) => {}
 }

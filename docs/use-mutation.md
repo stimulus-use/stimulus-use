@@ -1,10 +1,10 @@
 # useMutation
 
-`useMutation` tracks mutations that happen to your element, or its subtree, depending how you configure it.
+`useMutation` tracks mutations that happen to your element, or its subtree, depending on how you configure it.
 
 This controller is a convenience wrapper around [MutationObservers](https://developer.mozilla.org/en-US/docs/Web/API/MutationObserver). 
 
-It adds one new behavior to your Stimulus controller: `mutated`, 
+It adds one new behavior to your Stimulus controller: `mutate`, 
 which receives an array of `MutationRecord`s every time the observed elements change according to the configuration.
 
 ## Reference
@@ -33,8 +33,7 @@ See https://developer.mozilla.org/en-US/docs/Web/API/MutationObserverInit
 | `characterData`| Set to true to monitor the specified target node (and, if subtree is true, its descendants) for changes to the character data contained within the node or nodes. | The default value is true if characterDataOldValue is specified, otherwise the default value is false.|
 | `characterDataOldValue`| Set to true to record the previous value of a node's text whenever the text changes on nodes being monitored. For details and an example, see Monitoring text content changes in MutationObserver. | false |
 
-
-The `mutated` method defined on your controller will receive an array of type `MutationRecord`, 
+The `mutate` method defined on your controller will receive an array of type `MutationRecord`, 
 
 See https://developer.mozilla.org/en-US/docs/Web/API/MutationRecord for full usage instructions
 
@@ -46,7 +45,7 @@ export default class extends Controller {
     useMutation(this, { attributes: true, childList: true, subtree: true })
   }
 
-  mutated(entries) {
+  mutate(entries) {
     for (const mutation of entries) {
       if (mutation.type === 'childList') {
         console.log('A child node has been added or removed.');
@@ -74,7 +73,7 @@ export default class extends Controller {
     useMutation(this, { childList: true })
   }
 
-  mutated(entries) {
+  mutate(entries) {
     // triggered when the observed element is changed
   }
 }
@@ -91,7 +90,7 @@ export default class extends MutationController {
     childList: true
   }
   
-  mutated(entries) {
+  mutate(entries) {
     // triggered when the observed element is changed
   }
 
