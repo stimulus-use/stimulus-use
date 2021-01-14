@@ -13,8 +13,10 @@ export class UseTargetMutation extends StimulusUse {
   identifier: string
   identifierPrefix: string
   targets: string[]
+  prefixedTargets: string[]
   options: TargetMutationOptions
   targetSelector: string
+  scopedTargetSelector: string
 
   constructor(controller: TargetMutationController, options: TargetMutationOptions = {}) {
     super(controller, options)
@@ -25,12 +27,10 @@ export class UseTargetMutation extends StimulusUse {
     this.identifier = controller.scope.identifier
     this.identifierPrefix = `${this.identifier}.`
     this.targetSelector = controller.scope.schema.targetAttribute
+    this.scopedTargetSelector = `data-${this.identifier}-target` //TODO: If/When stimulus 2.0 adds the identifier scoped targetAttribute to the schema, use that here instead
     // @ts-ignore
-    this.targets = options.targets || controller.constructor.targets as string[]
-    // If the user is using the old Stimulus target format
-    if (this.targetSelector == `data-target`) {
-      this.targets = this.targets.map((target) => `${this.identifierPrefix}${target}`)
-    }
+    this.targets = options.targets || controller.constructor.targets
+    this.prefixedTargets = this.targets.map((target) => `${this.identifierPrefix}${target}`)
     this.observer = new MutationObserver(this.mutation)
 
     this.enhanceController()
@@ -45,7 +45,7 @@ export class UseTargetMutation extends StimulusUse {
         childList: true,
         attributes: true,
         attributeOldValue: true,
-        attributeFilter: [this.targetSelector]
+        attributeFilter: [this.targetSelector, this.scopedTargetSelector]
       }
     )
   }
@@ -62,15 +62,15 @@ export class UseTargetMutation extends StimulusUse {
           let oldValue = mutation.oldValue
 
           // If this was an attribute change, and the attribute change resulted in a target changing
-          if (mutation.attributeName === this.targetSelector) {
+          if (mutation.attributeName === this.targetSelector || mutation.attributeName === this.scopedTargetSelector) {
             // Filter out any targets that don't belong to this controller
             let oldTargets = this.targetsUsedByThisController(oldValue)
             let newTargets = this.targetsUsedByThisController(newValue)
-            let changedOldTargets = oldTargets.filter(target => !newTargets.includes(target)) // Get only the oldTargets that dont occur in newTargets
-            let changedNewTargets = newTargets.filter(target => !oldTargets.includes(target)) // Get only the newTargets that dont occur in oldTargets
+            let removedTargets = oldTargets.filter(target => !newTargets.includes(target)) // Get only the oldTargets that dont occur in newTargets, thus, removed
+            let addedTargets = newTargets.filter(target => !oldTargets.includes(target)) // Get only the newTargets that dont occur in oldTargets - thus, added
             // Fire updates for each changed target on the controller
-            changedOldTargets.forEach(target => this.targetRemoved(this.stripIdentifierPrefix(target), mutation.target, 'attributeChange'))
-            changedNewTargets.forEach(target => this.targetAdded(this.stripIdentifierPrefix(target), mutation.target, 'attributeChange'))
+            removedTargets.forEach(target => this.targetRemoved(this.stripIdentifierPrefix(target), mutation.target, 'attributeChange'))
+            addedTargets.forEach(target => this.targetAdded(this.stripIdentifierPrefix(target), mutation.target, 'attributeChange'))
           }
 
           break
@@ -106,16 +106,15 @@ export class UseTargetMutation extends StimulusUse {
   }
 
   private targetsUsedByThisControllerFromNode(node: Node) {
+    // Extracts from the node, the target string, targetsUsedByThisController filters it, returns the array of supported target names
     let nodeElement = node as Element
-    if (!nodeElement.hasAttribute(this.targetSelector)) {
-      return []
-    }
-    return this.targetsUsedByThisController(nodeElement.getAttribute(this.targetSelector)!)// Filter out any targets that don't belong to this controller
+    return this.targetsUsedByThisController(nodeElement.getAttribute(this.scopedTargetSelector) || nodeElement.getAttribute(this.targetSelector))
   }
 
-  private targetsUsedByThisController(targetStr: string | null): string[] {
+  private targetsUsedByThisController(targetStr: string | null) {
+    // Filters out any targets that don't belong to this  controller and returns the array of supported target names
     targetStr = targetStr || ''
-    let targetsToCheck = targetStr.split(' ')
+    let targetsToCheck = this.stripIdentifierPrefix(targetStr).split(' ')
     return this.targets.filter((n) => targetsToCheck.indexOf(n) !== -1)
   }
 
