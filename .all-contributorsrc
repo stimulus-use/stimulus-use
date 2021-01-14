@@ -170,6 +170,15 @@
       "contributions": [
         "code"
       ]
+    },
+    {
+      "login": "mtomov",
+      "name": "Martin Tomov",
+      "avatar_url": "https://avatars0.githubusercontent.com/u/1651750?v=4",
+      "profile": "https://www.howtoruby.com",
+      "contributions": [
+        "doc"
+      ]
     }
   ],
   "contributorsPerLine": 7,
