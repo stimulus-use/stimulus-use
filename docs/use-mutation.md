@@ -23,8 +23,8 @@ See https://developer.mozilla.org/en-US/docs/Web/API/MutationObserverInit
 
 | Option| Description |&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Default value&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;|
 |-----------------------|-------------|---------------------|
-| `debug` | Whether to log debug information. See [debug](debug.md) for more information on the debuging tools|false|
-| `element` | The element which the controller will listen for hover on  | The controller element|
+| `debug` | Whether to log debug information. See [debug](debug.md) for more information on the debugging tools|false|
+| `element` | The element which the controller will listen for mutation on/under | The controller element|
 | `subtree`| Set to true to extend monitoring to the entire subtree of nodes rooted at target. All of the other MutationObserverInit properties are then extended to all of the nodes in the subtree instead of applying solely to the target node. | false |
 | `childList`| Set to true to monitor the target node (and, if subtree is true, its descendants) for the addition of new child nodes or removal of existing child nodes. | false |
 | `attributes`| Set to true to watch for changes to the value of attributes on the node or nodes being monitored. | The default value is true if either of attributeFilter or attributeOldValue is specified, otherwise the default value is false.|
