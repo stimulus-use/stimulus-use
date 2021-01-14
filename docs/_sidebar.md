@@ -11,6 +11,7 @@
   * [useHover](use-hover.md)
   * [useMutation](use-mutation.md)
   * [useResize](use-resize.md)
+  * [useTargetMutation](use-target-mutation.md)
   * [useVisibility](use-visibility.md)
   * [useWindowResize](use-window-resize.md)
 
