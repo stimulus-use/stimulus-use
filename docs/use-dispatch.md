@@ -102,7 +102,7 @@ import { useDispatch } from 'stimulus-use'
 
 export default class extends Controller {
   connect() {
-    usedispatch(this)
+    useDispatch(this)
   }
 
   add() {
