@@ -1,6 +1,6 @@
-# useTargetChanges
+# useTargetMutation
 
-`useTargetChanges` tracks when targets are added and removed to your controller.
+`useTargetMutation` tracks when targets are added and removed to your controller.
 
 It adds two new behaviors to your Stimulus controller for each target you specify: `[target]TargetAdded` and `[target]TargetRemoved`, which will get triggered when targets get added to your
 controller, either by adding the `data-[controller]-target="[target]"`/`data-target="[controller].[target]"` to an existing element in the controller's scope, or by adding a new element with those
@@ -11,7 +11,7 @@ attributes to the controller's scope.
 ## Reference
 
 ```javascript
-useTargetChanges(controller, targets, options)
+useTargetMutation(controller, targets, options)
 ```
 
 **controller** : a Stimulus Controller (usually `'this'`)
@@ -22,7 +22,8 @@ useTargetChanges(controller, targets, options)
 
 | Option| Description |&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Default value&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;|
 |-----------------------|-------------|---------------------|
-| `debug` | Whether to log debug information. See [debug](debug.md) for more information on the debuging tools| false|
+| `debug` | Whether to log debug information. See [debug](debug.md) for more information on the debugging tools| false|
+| `targets` | An array of target names to track for mutations | all |
 
 ```js
 export default class extends Controller {
@@ -30,7 +31,7 @@ export default class extends Controller {
   static targets = ["location"]
 
   connect() {
-    useTargetChanges(this, ["location"])
+    useTargetMutation(this)
   }
 
   locationTargetAdded(element) {
@@ -50,14 +51,14 @@ export default class extends Controller {
 
 ```js
 import { Controller } from 'stimulus'
-import { useTargetChanges } from 'stimulus-use'
+import { useTargetMutation } from 'stimulus-use'
 
 export default class extends Controller {
 
   static targets = ["location"]
 
   connect() {
-    useTargetChanges(this, ["location"])
+    useTargetMutation(this, ["location"])
   }
 
   locationTargetAdded(element) {
