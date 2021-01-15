@@ -71,3 +71,23 @@ export default class extends Controller {
 }
 ```
 
+
+**Extending a controller**
+
+```js
+import { TargetMutationController } from 'stimulus-use'
+
+export default class extends TargetMutationController {
+
+  static targets = ["location"]
+
+  locationTargetAdded(element) {
+    // triggered when a locationTarget is added
+  }
+
+  locationTargetRemoved(element) {
+    // triggered when a locationTarget is removed
+  }
+
+}
+```
