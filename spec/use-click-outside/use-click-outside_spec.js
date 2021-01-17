@@ -3,7 +3,7 @@ import { nextFrame, TestLogger, click, remove } from '../helpers'
 import { expect } from 'chai'
 import LogController from './log_controller'
 import UseLogController from './use_log_controller'
-import { fixtureBase, fixtureCustomPrefix, fixtureWithoutPrefix } from './fixtures'
+import { fixtureBase, fixtureCustomPrefix, fixtureWithoutPrefix, fixturePartiallyVisible } from './fixtures'
 
 const controllers = [
   {
@@ -72,6 +72,16 @@ const scenarios = [
       eventCount: 0,
       callbackCounts: 0
     }
+  },
+  {
+    name: 'partially visible element',
+    fixture: fixturePartiallyVisible,
+    options: {},
+    answers: {
+      eventCount: 1,
+      callbackCounts: 1,
+      eventName: 'modal:click:outside'
+    }
   }
 ]
 
@@ -96,11 +106,9 @@ scenarios.forEach(scenario => {
       })
 
       describe(`clicking outside and inside of the div`, function () {
-        before('perform the clicks', async function () {
-          click('#outside-1')
-          click('#inside-1')
-        })
         it('it triggers the outsideClick function', async function () {
+          await click('#outside-1')
+          await click('#inside-1')
           expect(
             testLogger.eventsFilter({
               id: ['1'],
@@ -119,20 +127,15 @@ scenarios.forEach(scenario => {
       })
 
       describe(`clicking outside invisible div`, async function () {
-        before('perform the clicks', function () {
-          click('#outside-1')
-        })
-        it('it triggers the outsideClick function', function () {
+        it('it triggers the outsideClick function', async function () {
+          await click('#outside-1')
           expect(testLogger.eventsFilter({ id: ['2'], event: ['clickOutside', 'click:outside'] }).length).to.equal(0)
         })
       })
 
       describe(`Preserve connect and disconnect lifecycles`, async function () {
-        before('perform a full lifecycle', async function () {
-          click('#outside-1')
-          await remove('#modal-1')
-        })
         it('initialize connect and disconnect are recorded with this context', async function () {
+          await remove('#modal-1')
           expect(testLogger.eventsFilter({ id: ['1'], event: ['initialize'] }).length).to.equal(1)
           expect(testLogger.eventsFilter({ id: ['1'], event: ['connect'] }).length).to.equal(1)
           expect(testLogger.eventsFilter({ id: ['1'], event: ['disconnect'] }).length).to.equal(1)
