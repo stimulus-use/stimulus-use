@@ -3,9 +3,7 @@ import { useApplication } from './use-application'
 import { DispatchOptions } from "../use-dispatch"
 
 export class ApplicationController extends Controller {
-  options!: DispatchOptions
-  dispatch!: (eventName: String, detail: any) => void
-  metaValue!: (name: string) => string
+  options?: DispatchOptions
   readonly isPreview: boolean = false
   readonly csrfToken: string = ''
 
@@ -14,4 +12,8 @@ export class ApplicationController extends Controller {
     super(context)
     useApplication(this, this.options)
   }
+
+  declare metaValue: (name: string) => string
+  declare dispatch: (eventName: String, detail: any) => void
+
 }

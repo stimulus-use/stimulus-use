@@ -20,7 +20,7 @@ const defaultOptions = {
   eventPrefix: true,
 }
 
-export const useIdle = (controller: IdleController, options: IdleOptions = {}) => {
+export const useIdle = (controller: Omit<IdleController, "options"|"observe"|"unobserve">, options: IdleOptions = {}) => {
   const { ms, initialState, events, dispatchEvent, eventPrefix } = Object.assign({}, defaultOptions, options)
 
   let isIdle = initialState

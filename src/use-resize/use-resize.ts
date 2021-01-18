@@ -12,7 +12,7 @@ const defaultOptions = {
   eventPrefix: true,
 }
 
-export const useResize = (controller: ResizeController, options: ResizeOptions = {}) => {
+export const useResize = (controller: Omit<ResizeController, "options"|"observe"|"unobserve">, options: ResizeOptions = {}) => {
   const { dispatchEvent, eventPrefix } = Object.assign({}, defaultOptions, options)
   const targetElement: Element = options?.element || controller.element
 

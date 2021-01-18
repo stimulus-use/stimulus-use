@@ -5,8 +5,6 @@ export class LazyLoadController extends Controller {
   isLoading: boolean = false
   isLoaded: boolean = false
   options: IntersectionObserverInit = { rootMargin: '10%' }
-  observe!: () => void
-  unobserve!: () => void
 
   constructor(context: Context) {
     super(context)
@@ -16,7 +14,9 @@ export class LazyLoadController extends Controller {
     })
   }
 
-  loading(src: string) {}
+  declare observe?: () => void
+  declare unobserve?: () => void
+  declare loading: (src: string) => void
+  declare loaded: (src: string) => void
 
-  loaded(src: string) {}
 }

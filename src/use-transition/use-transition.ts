@@ -30,7 +30,7 @@ const defaultOptions = {
   hiddenClass: "hidden"
 }
 
-export const useTransition = (controller: TransitionController, options: TransitionOptions = {}) => {
+export const useTransition = (controller: Omit<TransitionController, "options">, options: TransitionOptions = {}) => {
   const targetName = (controller.element as HTMLElement).dataset.transitionTarget
   let targetFromAttribute
 

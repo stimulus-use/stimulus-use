@@ -12,7 +12,7 @@ const defaultOptions = {
   eventPrefix: true,
 }
 
-export const useIntersection = (controller: IntersectionController, options: IntersectionOptions = {}) => {
+export const useIntersection = (controller: Omit<IntersectionController, "options"|"observe"|"unobserve">, options: IntersectionOptions = {}) => {
   const { dispatchEvent, eventPrefix } = Object.assign({}, defaultOptions, options)
   const targetElement: Element = options?.element || controller.element
 

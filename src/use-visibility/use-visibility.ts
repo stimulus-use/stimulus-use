@@ -87,7 +87,7 @@ export class UseVisibility extends StimulusUse {
   }
 }
 
-export const useVisibility = (controller: VisibilityController, options: VisibilityOptions = {}) => {
+export const useVisibility = (controller: Omit<VisibilityController, "options"|"observe"|"unobserve">, options: VisibilityOptions = {}) => {
   const observer = new UseVisibility(controller, options)
   return [observer.observe, observer.unobserve] as const
 }

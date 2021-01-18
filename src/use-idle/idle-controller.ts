@@ -3,9 +3,7 @@ import { useIdle, IdleOptions } from './use-idle'
 
 export class IdleController extends Controller {
   isIdle: boolean = false
-  options!: IdleOptions
-  observe!: () => void
-  unobserve!: () => void
+  options?: IdleOptions
 
   constructor(context: Context) {
     super(context)
@@ -15,7 +13,9 @@ export class IdleController extends Controller {
     })
   }
 
-  away() {}
+  declare observe?: () => void
+  declare unobserve?: () => void
+  declare away: () => void
+  declare back: () => void
 
-  back() {}
 }

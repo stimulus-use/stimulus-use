@@ -50,7 +50,7 @@ export class UseHover extends StimulusUse {
   }
 }
 
-export const useHover = (controller: HoverController, options: HoverOptions = {}) => {
+export const useHover = (controller: Omit<HoverController, 'options' | 'observe' | 'unobserve'>, options: HoverOptions = {}) => {
   const observer = new UseHover(controller, options)
   return [observer.observe, observer.unobserve] as const
 }

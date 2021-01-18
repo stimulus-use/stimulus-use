@@ -7,7 +7,7 @@ export interface WindowResizePayload {
   event?: Event
 }
 
-export const useWindowResize = (controller: WindowResizeController) => {
+export const useWindowResize = (controller: Omit<WindowResizeController, "observe"|"unobserve">) => {
 
   const callback = (event?: Event) => {
     const { innerWidth, innerHeight } = window

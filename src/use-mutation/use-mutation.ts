@@ -15,7 +15,7 @@ export class UseMutation extends StimulusUse {
   targetElement: Element
   options: MutationOptions
 
-  constructor(controller: MutationController, options: MutationOptions = {}) {
+  constructor(controller: Omit<MutationController, "options"|"observe"|"unobserve">, options: MutationOptions = {}) {
     super(controller, options)
 
     this.targetElement = options?.element || controller.element

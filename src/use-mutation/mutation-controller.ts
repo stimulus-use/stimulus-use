@@ -2,7 +2,7 @@ import { Context, Controller } from 'stimulus'
 import { MutationOptions, useMutation } from './use-mutation'
 
 export class MutationController extends Controller {
-  options!: MutationOptions
+  options?: MutationOptions
 
   constructor(context: Context) {
     super(context)
@@ -12,8 +12,8 @@ export class MutationController extends Controller {
     })
   }
 
-  observe!: () => {}
-  unobserve!: () => {}
+  declare observe?: () => void
+  declare unobserve?: () => void
+  declare mutate?: (entries: MutationRecord[]) => void
 
-  mutate!: (entries: MutationRecord[]) => {}
 }

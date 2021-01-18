@@ -3,10 +3,7 @@ import { useTransition, TransitionOptions } from './use-transition'
 
 export class TransitionController extends Controller {
   transitioned: boolean = false
-  options!: TransitionOptions
-  enter!: (event: Event) => void
-  leave!: (event: Event) => void
-  toggleTransition!: (event: Event) => void
+  options?: TransitionOptions
 
   constructor(context: Context) {
     super(context)
@@ -14,4 +11,9 @@ export class TransitionController extends Controller {
       useTransition(this, this.options)
     })
   }
+
+  declare enter: (event: Event) => void
+  declare leave: (event: Event) => void
+  declare toggleTransition: (event: Event) => void
+
 }
