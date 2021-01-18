@@ -6,7 +6,7 @@ export interface ThrottleOptions {
 }
 
 class ThrottleController extends Controller {
-  static trottles: string[] | ThrottleOptions[] = []
+  static throttles: string[] | ThrottleOptions[] = []
 }
 
 const defaultWait = 200
