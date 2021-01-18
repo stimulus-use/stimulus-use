@@ -70,6 +70,14 @@ We got you covered 👉 [stimulus-use.github.io/stimulus-use](https://stimulus-u
   |[`useMemo`](./docs/use-memo.md)|Memoize expensive getters by mixing in `useMemo` and adding a static   `memos` array.|
   |[`useThrottle`](./docs/use-throttle.md)|Adds the ability to specify an array "throttles" of functions to throttle.|
 
+### Animation
+
+  A set of mixin and controllers to build animations.
+
+  | Mixin| Description |
+  |------|-------------|
+  |[`useTransition`](./docs/use-transition.md)|Mixin or controller to apply classes to various stages of an element's transition.|
+
 ### Application
   | Mixin | Description |
   |------|-------------|

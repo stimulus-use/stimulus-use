@@ -19,6 +19,9 @@
   * [useMemo](use-memo.md)
   * [useThrottle](use-throttle.md)
 
+* [**Animation**](animation.md)
+  * [useTransition](transition.md)
+
 * [**Application**](application.md)
   * [useApplication](application-controller.md)
   * [useDispatch](use-dispatch.md)
