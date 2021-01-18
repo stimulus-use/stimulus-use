@@ -1,4 +1,4 @@
-import { IdleController } from './idle-controller'
+import { IdleComposableController, IdleController } from './idle-controller'
 import { extendedEvent, method, composeEventName } from '../support/index'
 
 const defaultEvents = ['mousemove', 'mousedown', 'resize', 'keydown', 'touchstart', 'wheel']
@@ -20,7 +20,7 @@ const defaultOptions = {
   eventPrefix: true,
 }
 
-export const useIdle = (controller: Omit<IdleController, "options"|"observe"|"unobserve">, options: IdleOptions = {}) => {
+export const useIdle = (controller: IdleComposableController, options: IdleOptions = {}) => {
   const { ms, initialState, events, dispatchEvent, eventPrefix } = Object.assign({}, defaultOptions, options)
 
   let isIdle = initialState
@@ -33,7 +33,7 @@ export const useIdle = (controller: Omit<IdleController, "options"|"observe"|"un
     const eventName = composeEventName('away', controller, eventPrefix)
 
     controller.isIdle = true
-    controller.away && method(controller, 'away').call(controller, event)
+    method(controller, 'away').call(controller, event)
 
     if (dispatchEvent) {
       const clickOutsideEvent = extendedEvent(eventName, event || null, { controller })
@@ -45,7 +45,7 @@ export const useIdle = (controller: Omit<IdleController, "options"|"observe"|"un
     const eventName = composeEventName('back', controller, eventPrefix)
 
     controller.isIdle = false
-    controller.back && method(controller, 'back').call(controller, event)
+    method(controller, 'back').call(controller, event)
 
     if (dispatchEvent) {
       const clickOutsideEvent = extendedEvent(eventName, event || null, { controller })

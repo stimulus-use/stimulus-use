@@ -1,16 +1,16 @@
 import { StimulusUse, StimulusUseOptions } from '../stimulus_use'
 import { method } from '../support/index'
-import { HoverController } from './hover-controller'
+import { HoverComposableController, HoverController } from './hover-controller'
 
 export interface HoverOptions extends StimulusUseOptions {
   element?: Element
 }
 
 export class UseHover extends StimulusUse {
-  controller: HoverController
+  controller: HoverComposableController
   targetElement: Element
 
-  constructor(controller: HoverController, options: HoverOptions = {}) {
+  constructor(controller: HoverComposableController, options: HoverOptions = {}) {
     super(controller, options)
     this.targetElement = options?.element || controller.element
     this.controller = controller
@@ -29,12 +29,12 @@ export class UseHover extends StimulusUse {
   }
 
   private onEnter = () => {
-    this.controller.mouseEnter && method(this.controller, 'mouseEnter').call(this.controller)
+    method(this.controller, 'mouseEnter').call(this.controller)
     this.log('mouseEnter', { hover: true })
   }
 
   private onLeave = () => {
-    this.controller.mouseLeave && method(this.controller, 'mouseLeave').call(this.controller)
+    method(this.controller, 'mouseLeave').call(this.controller)
     this.log('mouseLeave', { hover: false })
   }
 
@@ -50,7 +50,7 @@ export class UseHover extends StimulusUse {
   }
 }
 
-export const useHover = (controller: Omit<HoverController, 'options' | 'observe' | 'unobserve'>, options: HoverOptions = {}) => {
+export const useHover = (controller: HoverComposableController, options: HoverOptions = {}) => {
   const observer = new UseHover(controller, options)
   return [observer.observe, observer.unobserve] as const
 }

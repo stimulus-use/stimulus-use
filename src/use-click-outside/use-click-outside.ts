@@ -1,9 +1,5 @@
-import { Controller } from 'stimulus'
-import { method, extendedEvent, isElementInViewport, composeEventName } from '../support/index'
-
-interface ClickOutsideController extends Controller {
-  clickOutside?: (event: Event) => void
-}
+import { composeEventName, extendedEvent, isElementInViewport } from '../support/index'
+import { ClickOutsideComposableController } from './click-outside-controller'
 
 export interface ClickOutsideOptions {
   element?: Element
@@ -20,7 +16,7 @@ const defaultOptions = {
   eventPrefix: true,
 }
 
-export const useClickOutside = (controller: Omit<ClickOutsideController, "options"|"observe"|"unobserve">, options: ClickOutsideOptions = {}) => {
+export const useClickOutside = (controller: ClickOutsideComposableController, options: ClickOutsideOptions = {}) => {
   const { onlyVisible, dispatchEvent, events, eventPrefix } = Object.assign({}, defaultOptions, options)
 
   const onEvent = (event: Event) => {
@@ -31,7 +27,9 @@ export const useClickOutside = (controller: Omit<ClickOutsideController, "option
     }
 
     // call the clickOutside method of the Stimulus controller
-    controller.clickOutside && method(controller, 'clickOutside').call(controller, event)
+    if (controller.clickOutside) {
+      controller.clickOutside(event)
+    }
 
     // emit a custom event
     if (dispatchEvent) {

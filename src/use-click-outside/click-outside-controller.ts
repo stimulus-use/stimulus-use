@@ -1,8 +1,11 @@
-import { Controller, Context } from 'stimulus'
-import { useClickOutside, ClickOutsideOptions } from './use-click-outside'
+import { Context, Controller } from 'stimulus'
+import { ClickOutsideOptions, useClickOutside } from './use-click-outside'
 
-export class ClickOutsideController extends Controller {
+export class ClickOutsideComposableController extends Controller {
+  declare clickOutside: (event: Event) => void
+}
 
+export class ClickOutsideController extends ClickOutsideComposableController {
   options?: ClickOutsideOptions
 
   constructor(context: Context) {
@@ -13,8 +16,6 @@ export class ClickOutsideController extends Controller {
     })
   }
 
-  declare observe?: () => void
-  declare unobserve?: () => void
-  declare clickOutside: (event: Event) => void
-
+  declare observe: () => void
+  declare unobserve: () => void
 }

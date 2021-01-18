@@ -1,8 +1,13 @@
 import { Controller, Context } from 'stimulus'
 import { useVisibility, VisibilityOptions } from './use-visibility'
 
-export class VisibilityController extends Controller {
-  isVisible!: boolean
+export class VisibilityComposableController extends Controller {
+  isVisible: boolean = false
+  declare visible?: () => void
+  declare invisible?: () => void
+}
+
+export class VisibilityController extends VisibilityComposableController {
   options?: VisibilityOptions
 
   constructor(context: Context) {
@@ -13,9 +18,7 @@ export class VisibilityController extends Controller {
     })
   }
 
-  declare observe?: () => void
-  declare unobserve?: () => void
-  declare visible: () => void
-  declare invisible: () => void
+  declare observe: () => void
+  declare unobserve: () => void
 
 }

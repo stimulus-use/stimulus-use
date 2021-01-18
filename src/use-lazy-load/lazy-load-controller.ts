@@ -1,9 +1,14 @@
 import { Controller, Context } from 'stimulus'
 import { useLazyLoad } from './useLazyLoad'
 
-export class LazyLoadController extends Controller {
+export class LazyLoadComposableController extends Controller {
   isLoading: boolean = false
   isLoaded: boolean = false
+  declare loading: (src: string) => void
+  declare loaded: (src: string) => void
+}
+
+export class LazyLoadController extends LazyLoadComposableController {
   options: IntersectionObserverInit = { rootMargin: '10%' }
 
   constructor(context: Context) {
@@ -14,9 +19,7 @@ export class LazyLoadController extends Controller {
     })
   }
 
-  declare observe?: () => void
-  declare unobserve?: () => void
-  declare loading: (src: string) => void
-  declare loaded: (src: string) => void
+  declare observe: () => void
+  declare unobserve: () => void
 
 }

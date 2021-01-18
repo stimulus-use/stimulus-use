@@ -1,6 +1,6 @@
-import { extendedEvent, method, composeEventName } from '../support/index'
 import { StimulusUse, StimulusUseOptions } from '../stimulus_use'
-import { VisibilityController } from './visibility-controller'
+import { composeEventName, extendedEvent, method } from '../support/index'
+import { VisibilityComposableController } from './visibility-controller'
 
 export interface VisibilityOptions extends StimulusUseOptions {
   dispatchEvent?: boolean
@@ -9,15 +9,15 @@ export interface VisibilityOptions extends StimulusUseOptions {
 
 const defaultOptions = {
   dispatchEvent: true,
-  eventPrefix: true
+  eventPrefix: true,
 }
 
 export class UseVisibility extends StimulusUse {
-  controller: VisibilityController
+  controller: VisibilityComposableController
   eventPrefix!: boolean | string
   dispatchEvent!: boolean
 
-  constructor(controller: VisibilityController, options: VisibilityOptions = {}) {
+  constructor(controller: VisibilityComposableController, options: VisibilityOptions = {}) {
     super(controller, options)
     const { dispatchEvent, eventPrefix } = Object.assign({}, defaultOptions, options)
     Object.assign(this, { dispatchEvent, eventPrefix })
@@ -51,9 +51,8 @@ export class UseVisibility extends StimulusUse {
     const eventName = composeEventName('invisible', this.controller, this.eventPrefix)
 
     this.controller.isVisible = false
-    this.controller.invisible && method(this.controller, 'invisible').call(this.controller, event)
-
-    this.log("invisible", { isVisible: false })
+    method(this.controller, 'invisible').call(this.controller)
+    this.log('invisible', { isVisible: false })
 
     this.dispatch(eventName, event)
   }
@@ -62,9 +61,8 @@ export class UseVisibility extends StimulusUse {
     const eventName = composeEventName('visible', this.controller, this.eventPrefix)
 
     this.controller.isVisible = true
-    this.controller.visible && method(this.controller, 'visible').call(this.controller, event)
-
-    this.log("visible", { isVisible: true })
+    method(this.controller, 'visible').call(this.controller)
+    this.log('visible', { isVisible: true })
 
     this.dispatch(eventName, event)
   }
@@ -74,7 +72,7 @@ export class UseVisibility extends StimulusUse {
       const detail = { controller: this.controller, isVisible: this.controller.isVisible }
       const visibilityEvent = extendedEvent(eventName, event || null, detail)
       this.controller.element.dispatchEvent(visibilityEvent)
-      this.log("dispatchEvent", { eventName, ...detail })
+      this.log('dispatchEvent', { eventName, ...detail })
     }
   }
 
@@ -87,7 +85,7 @@ export class UseVisibility extends StimulusUse {
   }
 }
 
-export const useVisibility = (controller: Omit<VisibilityController, "options"|"observe"|"unobserve">, options: VisibilityOptions = {}) => {
+export const useVisibility = (controller: VisibilityComposableController, options: VisibilityOptions = {}) => {
   const observer = new UseVisibility(controller, options)
   return [observer.observe, observer.unobserve] as const
 }

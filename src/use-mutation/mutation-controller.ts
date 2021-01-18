@@ -1,7 +1,11 @@
 import { Context, Controller } from 'stimulus'
 import { MutationOptions, useMutation } from './use-mutation'
 
-export class MutationController extends Controller {
+export class MutationComposableController extends Controller {
+  declare mutate: (entries: MutationRecord[]) => void
+}
+
+export class MutationController extends MutationComposableController {
   options?: MutationOptions
 
   constructor(context: Context) {
@@ -12,8 +16,7 @@ export class MutationController extends Controller {
     })
   }
 
-  declare observe?: () => void
-  declare unobserve?: () => void
-  declare mutate?: (entries: MutationRecord[]) => void
+  declare observe: () => void
+  declare unobserve: () => void
 
 }

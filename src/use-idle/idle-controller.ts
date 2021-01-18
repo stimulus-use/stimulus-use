@@ -1,8 +1,13 @@
 import { Controller, Context } from 'stimulus'
-import { useIdle, IdleOptions } from './use-idle'
+import { IdleOptions, useIdle } from './use-idle'
 
-export class IdleController extends Controller {
+export class IdleComposableController extends Controller {
   isIdle: boolean = false
+  declare away: () => void
+  declare back: () => void
+}
+
+export class IdleController extends IdleComposableController {
   options?: IdleOptions
 
   constructor(context: Context) {
@@ -13,9 +18,7 @@ export class IdleController extends Controller {
     })
   }
 
-  declare observe?: () => void
-  declare unobserve?: () => void
-  declare away: () => void
-  declare back: () => void
+  declare observe: () => void
+  declare unobserve: () => void
 
 }
