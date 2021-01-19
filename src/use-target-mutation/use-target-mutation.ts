@@ -42,6 +42,7 @@ export class UseTargetMutation extends StimulusUse {
       this.targetElement,
       {
         subtree: true,
+        characterData: true,
         childList: true,
         attributes: true,
         attributeOldValue: true,
@@ -73,6 +74,17 @@ export class UseTargetMutation extends StimulusUse {
             addedTargets.forEach(target => this.targetAdded(this.stripIdentifierPrefix(target), mutation.target, 'attributeChange'))
           }
 
+          break
+        case 'characterData':
+          let nodule = this.findTargetInAncestry(mutation.target)
+          if (nodule == null) {
+            return
+          } else {
+            let supportedTargets = this.targetsUsedByThisControllerFromNode(nodule)
+            supportedTargets.forEach((target: string) => {
+              this.targetChanged(this.stripIdentifierPrefix(target), nodule!, 'domMutation')
+            })
+          }
           break
         case 'childList':
           let { addedNodes, removedNodes } = mutation
