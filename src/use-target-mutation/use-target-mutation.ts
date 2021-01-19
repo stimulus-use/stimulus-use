@@ -1,13 +1,13 @@
 import { StimulusUse, StimulusUseOptions } from '../stimulus_use'
 import { method } from '../support/index'
-import { TargetMutationController } from './target-mutation-controller'
+import { TargetMutationComposableController } from './target-mutation-controller'
 
 export interface TargetMutationOptions extends StimulusUseOptions {
   targets?: string[]
 }
 
 export class UseTargetMutation extends StimulusUse {
-  controller: TargetMutationController
+  controller: TargetMutationComposableController
   observer: MutationObserver
   targetElement: Node
   identifier: string
@@ -18,7 +18,7 @@ export class UseTargetMutation extends StimulusUse {
   targetSelector: string
   scopedTargetSelector: string
 
-  constructor(controller: TargetMutationController, options: TargetMutationOptions = {}) {
+  constructor(controller: TargetMutationComposableController, options: TargetMutationOptions = {}) {
     super(controller, options)
 
     this.controller = controller
@@ -132,7 +132,7 @@ export class UseTargetMutation extends StimulusUse {
   }
 }
 
-export const useTargetMutation = (controller: TargetMutationController, options: TargetMutationOptions = {}) => {
+export const useTargetMutation = (controller: TargetMutationComposableController, options: TargetMutationOptions = {}) => {
   const observer = new UseTargetMutation(controller, options)
   return [observer.observe, observer.unobserve]
 }
