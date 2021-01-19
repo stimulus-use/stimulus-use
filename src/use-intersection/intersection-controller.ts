@@ -1,13 +1,14 @@
 import { Controller, Context } from 'stimulus'
 import { useIntersection, IntersectionOptions } from './use-intersection'
 
-export class IntersectionController extends Controller {
+export class IntersectionComposableController extends Controller {
   isVisible: boolean = false
-  options!: IntersectionOptions
-  observe!: () => void
-  unobserve!: () => void
-  appear!: (entry: IntersectionObserverEntry) => void
-  disappear!: (entry: IntersectionObserverEntry) => void
+  declare appear?: (entry: IntersectionObserverEntry) => void
+  declare disappear?: (entry: IntersectionObserverEntry) => void
+}
+
+export class IntersectionController extends IntersectionComposableController {
+  options?: IntersectionOptions
 
   constructor(context: Context) {
     super(context)
@@ -16,4 +17,8 @@ export class IntersectionController extends Controller {
       Object.assign(this, { observe, unobserve })
     })
   }
+
+  declare observe: () => void
+  declare unobserve: () => void
+
 }

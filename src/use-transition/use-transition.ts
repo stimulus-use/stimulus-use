@@ -1,4 +1,4 @@
-import { TransitionController } from "./transition-controller"
+import { TransitionComposableController, TransitionController } from './transition-controller'
 
 export interface TransitionOptions {
   element?: Element
@@ -30,7 +30,7 @@ const defaultOptions = {
   hiddenClass: "hidden"
 }
 
-export const useTransition = (controller: TransitionController, options: TransitionOptions = {}) => {
+export const useTransition = (controller: TransitionComposableController, options: TransitionOptions = {}) => {
   const targetName = (controller.element as HTMLElement).dataset.transitionTarget
   let targetFromAttribute
 

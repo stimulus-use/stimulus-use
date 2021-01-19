@@ -12,14 +12,16 @@ class DebounceController extends Controller {
 const defaultWait = 200
 
 const debounce = (fn: Function, wait: number = defaultWait) => {
-  let timeoutId: NodeJS.Timeout | number | null = null;
+  let timeoutId: ReturnType<typeof setTimeout> | null = null
 
   return function (this: any): any {
     const args = arguments;
     const context = this;
 
     const callback = () => fn.apply(context, args)
-    clearTimeout(<number>timeoutId)
+    if (timeoutId) {
+      clearTimeout(timeoutId)
+    }
     timeoutId = setTimeout(callback, wait)
   }
 }

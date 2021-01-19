@@ -1,6 +1,6 @@
 import { StimulusUse, StimulusUseOptions } from '../stimulus_use'
 import { method } from '../support/index'
-import { MutationController } from './mutation-controller'
+import { MutationComposableController } from './mutation-controller'
 
 export interface MutationControllerOptions {
   element?: Element
@@ -10,12 +10,12 @@ export interface MutationOptions extends MutationObserverInit, MutationControlle
 }
 
 export class UseMutation extends StimulusUse {
-  controller: MutationController
+  controller: MutationComposableController
   observer: MutationObserver
   targetElement: Element
   options: MutationOptions
 
-  constructor(controller: MutationController, options: MutationOptions = {}) {
+  constructor(controller: MutationComposableController, options: MutationOptions = {}) {
     super(controller, options)
 
     this.targetElement = options?.element || controller.element
@@ -40,7 +40,7 @@ export class UseMutation extends StimulusUse {
   }
 
   private mutation = (entries: MutationRecord[]) => {
-    this.controller.mutate && method(this.controller, 'mutate').call(this.controller, entries)
+    method(this.controller, 'mutate').call(this.controller, entries)
     this.log('mutate', { entries })
   }
 
@@ -54,7 +54,7 @@ export class UseMutation extends StimulusUse {
   }
 }
 
-export const useMutation = (controller: MutationController, options: MutationOptions = {}) => {
+export const useMutation = (controller: MutationComposableController, options: MutationOptions = {}) => {
   const observer = new UseMutation(controller, options)
   return [observer.observe, observer.unobserve] as const
 }

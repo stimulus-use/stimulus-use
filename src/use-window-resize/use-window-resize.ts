@@ -1,4 +1,4 @@
-import { WindowResizeController } from './window-resize-controller'
+import { WindowResizeComposableController } from './window-resize-controller'
 import { method } from '../support/index'
 
 export interface WindowResizePayload {
@@ -7,7 +7,7 @@ export interface WindowResizePayload {
   event?: Event
 }
 
-export const useWindowResize = (controller: WindowResizeController) => {
+export const useWindowResize = (controller: WindowResizeComposableController) => {
 
   const callback = (event?: Event) => {
     const { innerWidth, innerHeight } = window
@@ -18,7 +18,7 @@ export const useWindowResize = (controller: WindowResizeController) => {
       event
     }
 
-    controller.windowResize && method(controller, 'windowResize').call(controller, payload)
+    method(controller, 'windowResize').call(controller, payload)
   }
 
   const controllerDisconnect = controller.disconnect.bind(controller)

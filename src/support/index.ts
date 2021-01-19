@@ -4,8 +4,9 @@ export const method = (controller: Controller, methodName: string): Function => 
   const method = (controller as any)[methodName]
   if (typeof method == 'function') {
     return method
+  } else {
+    return (...args: any[]) => {}
   }
-  throw new Error(`undefined method "${methodName}"`)
 }
 
 export const composeEventName = (name: string, controller: Controller, eventPrefix: boolean | string) => {
@@ -35,14 +36,14 @@ export const extendedEvent = (type: string, event: Event | null, detail: object)
 }
 
 export function isElementInViewport(el: Element) {
-  const rect = el.getBoundingClientRect();
+  const rect = el.getBoundingClientRect()
 
-  const windowHeight = (window.innerHeight || document.documentElement.clientHeight);
-  const windowWidth = (window.innerWidth || document.documentElement.clientWidth);
+  const windowHeight = (window.innerHeight || document.documentElement.clientHeight)
+  const windowWidth = (window.innerWidth || document.documentElement.clientWidth)
 
-  const vertInView = (rect.top <= windowHeight) && ((rect.top + rect.height) >= 0);
-  const horInView = (rect.left <= windowWidth) && ((rect.left + rect.width) >= 0);
+  const vertInView = (rect.top <= windowHeight) && ((rect.top + rect.height) >= 0)
+  const horInView = (rect.left <= windowWidth) && ((rect.left + rect.width) >= 0)
 
-  return (vertInView && horInView);
+  return (vertInView && horInView)
 }
 

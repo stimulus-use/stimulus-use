@@ -1,10 +1,12 @@
 import { Controller, Context } from 'stimulus'
 import { useResize, ResizeOptions } from './use-resize'
 
-export class ResizeController extends Controller {
-  options!: ResizeOptions
-  observe!: () => void
-  unobserve!: () => void
+export class ResizeComposableController extends Controller {
+  declare resize: (contentRect: DOMRectReadOnly) => void
+}
+
+export class ResizeController extends ResizeComposableController {
+  options?: ResizeOptions
 
   constructor(context: Context) {
     super(context)
@@ -14,5 +16,6 @@ export class ResizeController extends Controller {
     })
   }
 
-  resize(contentRect: DOMRectReadOnly) {}
+  declare observe: () => void
+  declare unobserve: () => void
 }

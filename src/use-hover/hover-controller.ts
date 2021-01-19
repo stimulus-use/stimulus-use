@@ -1,8 +1,12 @@
 import { Context, Controller } from 'stimulus'
 import { HoverOptions, useHover } from './use-hover'
 
-export class HoverController extends Controller {
-  options!: HoverOptions
+export class HoverComposableController extends Controller {
+  declare mouseEnter?: () => void;
+  declare mouseLeave?: () => void;
+}
+export class HoverController extends HoverComposableController {
+  options?: HoverOptions
 
   constructor(context: Context) {
     super(context)
@@ -12,9 +16,6 @@ export class HoverController extends Controller {
     })
   }
 
-  observe!: () => {}
-  unobserve!: () => {}
-
-  mouseEnter!: () => {}
-  mouseLeave!: () => {}
+  declare observe: () => void;
+  declare unobserve: () => void;
 }

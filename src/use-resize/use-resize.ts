@@ -1,5 +1,5 @@
-import { ResizeController } from './resize-controller'
-import { method, extendedEvent, composeEventName } from '../support/index'
+import { composeEventName, extendedEvent, method } from '../support/index'
+import { ResizeComposableController } from './resize-controller'
 
 export interface ResizeOptions {
   element?: Element
@@ -12,13 +12,13 @@ const defaultOptions = {
   eventPrefix: true,
 }
 
-export const useResize = (controller: ResizeController, options: ResizeOptions = {}) => {
+export const useResize = (controller: ResizeComposableController, options: ResizeOptions = {}) => {
   const { dispatchEvent, eventPrefix } = Object.assign({}, defaultOptions, options)
   const targetElement: Element = options?.element || controller.element
 
   const callback = (entries: ResizeObserverEntry[]) => {
     const [entry] = entries
-    controller.resize && method(controller, 'resize').call(controller, entry.contentRect)
+    method(controller, 'resize').call(controller, entry.contentRect)
 
     // emit a custom "controllerIdentifier:resize" event
     if (dispatchEvent) {
