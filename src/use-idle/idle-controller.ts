@@ -3,8 +3,8 @@ import { IdleOptions, useIdle } from './use-idle'
 
 export class IdleComposableController extends Controller {
   isIdle: boolean = false
-  declare away: () => void
-  declare back: () => void
+  declare away?: () => void
+  declare back?: () => void
 }
 
 export class IdleController extends IdleComposableController {

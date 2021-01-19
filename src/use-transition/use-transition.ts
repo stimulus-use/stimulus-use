@@ -46,9 +46,9 @@ export const useTransition = (controller: TransitionComposableController, option
 
   const { transitioned, hiddenClass } = Object.assign(defaultOptions, options)
 
-  const controllerEnter: Function = controller.enter?.bind(controller)
-  const controllerLeave: Function = controller.leave?.bind(controller)
-  const controllerToggleTransition: Function = controller.toggleTransition?.bind(controller)
+  const controllerEnter = controller.enter?.bind(controller)
+  const controllerLeave = controller.leave?.bind(controller)
+  const controllerToggleTransition = controller.toggleTransition?.bind(controller)
 
   async function enter(event?: Event) {
     if (controller.transitioned) return

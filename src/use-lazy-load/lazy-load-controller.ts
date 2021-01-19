@@ -4,8 +4,8 @@ import { useLazyLoad } from './useLazyLoad'
 export class LazyLoadComposableController extends Controller {
   isLoading: boolean = false
   isLoaded: boolean = false
-  declare loading: (src: string) => void
-  declare loaded: (src: string) => void
+  declare loading?: (src: string) => void
+  declare loaded?: (src: string) => void
 }
 
 export class LazyLoadController extends LazyLoadComposableController {

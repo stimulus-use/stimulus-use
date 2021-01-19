@@ -2,7 +2,7 @@ import { Controller, Context } from 'stimulus'
 import { useWindowResize, WindowResizePayload } from './use-window-resize'
 
 export class WindowResizeComposableController extends Controller {
-  declare windowResize: (payload: WindowResizePayload) => void
+  declare windowResize?: (payload: WindowResizePayload) => void
 }
 
 export class WindowResizeController extends WindowResizeComposableController {
