@@ -136,10 +136,17 @@ export class UseTargetMutation extends StimulusUse {
         }
       }
     }
+    if (nodule.nodeName == '#text') {
+      return null
+    }
     if (nodule.parentNode == null) {
       return null
     }
     if (nodule.parentNode == this.targetElement) {
+      // Double and triple check that we aren't throwing away a target just because it's parent is the controller root
+      if (this.targetsUsedByThisControllerFromNode(nodule).length > 0) {
+        return nodule
+      }
       return null
     }
     return null
@@ -163,7 +170,11 @@ export class UseTargetMutation extends StimulusUse {
     this.log('targetChanged', { target: name, node, trigger })
   }
 
-  private targetsUsedByThisControllerFromNode(node: Node) {
+  private targetsUsedByThisControllerFromNode(node: Node): string[] {
+    if (node.nodeName == "#text") {
+      // Failsafe, just in case we try processing a text node
+      return []
+    }
     // Extracts from the node, the target string, targetsUsedByThisController filters it, returns the array of supported target names
     let nodeElement = node as Element
     return this.targetsUsedByThisController(nodeElement.getAttribute(this.scopedTargetSelector) || nodeElement.getAttribute(this.targetSelector))
