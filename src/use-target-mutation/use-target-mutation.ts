@@ -76,21 +76,81 @@ export class UseTargetMutation extends StimulusUse {
           break
         case 'childList':
           let { addedNodes, removedNodes } = mutation
+
           addedNodes.forEach((node: Node) => {
-            let supportedTargets = this.targetsUsedByThisControllerFromNode(node)
-            supportedTargets.forEach((target) => {
-              this.targetAdded(this.stripIdentifierPrefix(target), mutation.target, 'domMutation')
+            let nodule: Node | null = node
+            let change = this.targetAdded
+            let supportedTargets: string[] = []
+
+            if (nodule.nodeName == '#text' || this.targetsUsedByThisControllerFromNode(nodule).length == 0) {
+              change = this.targetChanged
+              nodule = this.findTargetInAncestry(node)
+            } else {
+              supportedTargets = this.targetsUsedByThisControllerFromNode(nodule)
+            }
+            if (nodule == null) {
+              return
+            } else {
+              supportedTargets = this.targetsUsedByThisControllerFromNode(nodule)
+            }
+
+            supportedTargets.forEach((target: string) => {
+              change.call(this, this.stripIdentifierPrefix(target), nodule!, 'domMutation')
             })
           })
           removedNodes.forEach((node: Node) => {
-            let supportedTargets = this.targetsUsedByThisControllerFromNode(node)
-            supportedTargets.forEach((target) => {
-              this.targetRemoved(this.stripIdentifierPrefix(target), mutation.target, 'domMutation')
+            let nodule: Node | null = node
+            let change = this.targetRemoved
+            let supportedTargets: string[] = []
+            if (nodule.nodeName == '#text' || this.targetsUsedByThisControllerFromNode(nodule).length == 0) {
+              change = this.targetChanged
+              nodule = this.findTargetInAncestry(node)
+            } else {
+              supportedTargets = this.targetsUsedByThisControllerFromNode(nodule)
+            }
+            if (nodule == null) {
+              return
+            } else if (supportedTargets.length == 0) {
+              supportedTargets = this.targetsUsedByThisControllerFromNode(nodule)
+            }
+
+            supportedTargets.forEach((target: string) => {
+              change.call(this, this.stripIdentifierPrefix(target), nodule!, 'domMutation')
             })
           })
           break
       }
     }
+  }
+
+  private findTargetInAncestry(node: Node): Node | null {
+    let nodule = node
+    let supportedTargets: string[] = []
+    if (nodule.nodeName != '#text') {
+      supportedTargets = this.targetsUsedByThisControllerFromNode(nodule)
+    } else {
+    }
+
+    // Traverse up the node tree until we find a target, or the controller root element
+    while (nodule.parentNode !== null && nodule.parentNode != this.targetElement && supportedTargets.length == 0) {
+      nodule = nodule.parentNode
+      if (nodule.nodeName !== '#text') {
+        let supportedTargets = this.targetsUsedByThisControllerFromNode(nodule)
+        if (supportedTargets.length > 0) {
+          // If this node has one of the watched targets on it, it's the one we want
+          return nodule
+        } else {
+        }
+      } else {
+      }
+    }
+    if (nodule.parentNode == null) {
+      return null
+    }
+    if (nodule.parentNode == this.targetElement) {
+      return null
+    }
+    return null
   }
 
   private targetAdded(name: string, node: Node, trigger: string) {
@@ -103,6 +163,12 @@ export class UseTargetMutation extends StimulusUse {
     let targetCallback = `${name}TargetRemoved`
     this.controller[targetCallback] && method(this.controller, targetCallback).call(this.controller, node)
     this.log('targetRemoved', { target: name, node, trigger })
+  }
+
+  private targetChanged(name: string, node: Node, trigger: string) {
+    let targetCallback = `${name}TargetChanged`
+    this.controller[targetCallback] && method(this.controller, targetCallback).call(this.controller, node)
+    this.log('targetChanged', { target: name, node, trigger })
   }
 
   private targetsUsedByThisControllerFromNode(node: Node) {
