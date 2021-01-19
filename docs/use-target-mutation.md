@@ -11,24 +11,22 @@ attributes to the controller's scope.
 ## Reference
 
 ```javascript
-useTargetMutation(controller, targets, options)
+useTargetMutation(controller, options)
 ```
 
 **controller** : a Stimulus Controller (usually `'this'`)
-
-**targets** : an array of the targets you wish to watch additions and removals of
 
 **options** :
 
 | Option| Description |&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Default value&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;|
 |-----------------------|-------------|---------------------|
 | `debug` | Whether to log debug information. See [debug](debug.md) for more information on the debugging tools| false|
-| `targets` | An array of target names to track for mutations | all |
+| `targets` | An array of target names to track for mutations | all targets |
 
 ```js
 export default class extends Controller {
 
-  static targets = ["location"]
+  static targets = ["location", "content", "view"]
 
   connect() {
     useTargetMutation(this)
@@ -40,6 +38,22 @@ export default class extends Controller {
 
   locationTargetRemoved(element) {
     console.log('A location was removed!')
+  }
+  
+  contentTargetAdded(element) {
+    console.log('A content target was added!')
+  }
+
+  contentTargetRemoved(element) {
+    console.log('A content target was removed!')
+  }
+  
+  viewTargetAdded(element) {
+    console.log('A view target was added!')
+  }
+
+  viewTargetRemoved(element) {
+    console.log('A view target was removed!')
   }
 
 }
@@ -55,10 +69,10 @@ import { useTargetMutation } from 'stimulus-use'
 
 export default class extends Controller {
 
-  static targets = ["location"]
+  static targets = ["location", "content", "view"];
 
   connect() {
-    useTargetMutation(this, ["location"])
+    useTargetMutation(this, { targets: ["location"] }) // only track mutations of "location" target
   }
 
   locationTargetAdded(element) {
