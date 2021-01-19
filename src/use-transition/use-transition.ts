@@ -1,4 +1,4 @@
-import { TransitionComposableController, TransitionController } from './transition-controller'
+import { TransitionComposableController } from './transition-controller'
 
 export interface TransitionOptions {
   element?: Element

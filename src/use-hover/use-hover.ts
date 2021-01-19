@@ -1,6 +1,6 @@
 import { StimulusUse, StimulusUseOptions } from '../stimulus_use'
 import { method } from '../support/index'
-import { HoverComposableController, HoverController } from './hover-controller'
+import { HoverComposableController } from './hover-controller'
 
 export interface HoverOptions extends StimulusUseOptions {
   element?: Element

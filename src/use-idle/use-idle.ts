@@ -1,4 +1,4 @@
-import { IdleComposableController, IdleController } from './idle-controller'
+import { IdleComposableController } from './idle-controller'
 import { extendedEvent, method, composeEventName } from '../support/index'
 
 const defaultEvents = ['mousemove', 'mousedown', 'resize', 'keydown', 'touchstart', 'wheel']
