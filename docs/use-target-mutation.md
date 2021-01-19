@@ -2,11 +2,13 @@
 
 `useTargetMutation` tracks when targets are added and removed to your controller.
 
-It adds two new behaviors to your Stimulus controller for each target you specify: `[target]TargetAdded` and `[target]TargetRemoved`, which will get triggered when targets get added to your
-controller, either by adding the `data-[controller]-target="[target]"`/`data-target="[controller].[target]"` to an existing element in the controller's scope, or by adding a new element with those
-attributes to the controller's scope.
+It adds three new behaviors to your Stimulus controller for each target you specify:
 
-`[target]TargetAdded` and `[target]TargetRemoved` only receive one parameter, the target node that was added or removed.
+- `[target]TargetAdded`  triggered when targets get added to your controller, either by adding the target attribute to an existing element in the controller's scope, or by adding a new element with those attributes to the controller's scope.
+- `[target]TargetRemoved` triggered when targets get removed from your controller, either by removing the target attribute from an existing element in the controller's scope, or by removing an existing element with those attributes to the controller's scope.
+- `[target]TargetChanged` triggered when the contents of a target change, adding text/elements to its subtree.
+
+`[target]TargetAdded`, `[target]TargetRemoved`, and  `[target]TargetChanged` only receive one parameter, the target node that was added, removed, or changed.
 
 ## Reference
 
@@ -39,7 +41,11 @@ export default class extends Controller {
   locationTargetRemoved(element) {
     console.log('A location was removed!')
   }
-  
+
+  locationTargetChanged(element) {
+    console.log('A location was changed!')
+  }
+
   contentTargetAdded(element) {
     console.log('A content target was added!')
   }
@@ -47,13 +53,21 @@ export default class extends Controller {
   contentTargetRemoved(element) {
     console.log('A content target was removed!')
   }
-  
+
+  contentTargetChanged(element) {
+    console.log('A content target was changed!')
+  }
+
   viewTargetAdded(element) {
     console.log('A view target was added!')
   }
 
   viewTargetRemoved(element) {
     console.log('A view target was removed!')
+  }
+
+  viewTargetChanged(element) {
+    console.log('A view target was changed!')
   }
 
 }
@@ -82,9 +96,13 @@ export default class extends Controller {
   locationTargetRemoved(element) {
     // triggered when a locationTarget is removed
   }
+
+  locationTargetChanged(element) {
+    // triggered when a locationTarget is changed
+  }
+
 }
 ```
-
 
 **Extending a controller**
 
@@ -100,6 +118,34 @@ export default class extends TargetMutationController {
   }
 
   locationTargetRemoved(element) {
+    // triggered when a locationTarget is removed
+  }
+
+  locationTargetChanged(element) {
+    // triggered when a locationTarget is removed
+  }
+
+}
+```
+**Extending a controller with options **
+
+```js
+import { TargetMutationController } from 'stimulus-use'
+
+export default class extends TargetMutationController {
+
+  static targets = ["location", "view", "content"]
+  static options = { targets: ["location"] }
+
+  locationTargetAdded(element) {
+    // triggered when a locationTarget is added
+  }
+
+  locationTargetRemoved(element) {
+    // triggered when a locationTarget is removed
+  }
+
+  locationTargetChanged(element) {
     // triggered when a locationTarget is removed
   }
 
