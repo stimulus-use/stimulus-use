@@ -76,51 +76,32 @@ export class UseTargetMutation extends StimulusUse {
           break
         case 'childList':
           let { addedNodes, removedNodes } = mutation
-
-          addedNodes.forEach((node: Node) => {
-            let nodule: Node | null = node
-            let change = this.targetAdded
-            let supportedTargets: string[] = []
-
-            if (nodule.nodeName == '#text' || this.targetsUsedByThisControllerFromNode(nodule).length == 0) {
-              change = this.targetChanged
-              nodule = this.findTargetInAncestry(node)
-            } else {
-              supportedTargets = this.targetsUsedByThisControllerFromNode(nodule)
-            }
-            if (nodule == null) {
-              return
-            } else {
-              supportedTargets = this.targetsUsedByThisControllerFromNode(nodule)
-            }
-
-            supportedTargets.forEach((target: string) => {
-              change.call(this, this.stripIdentifierPrefix(target), nodule!, 'domMutation')
-            })
-          })
-          removedNodes.forEach((node: Node) => {
-            let nodule: Node | null = node
-            let change = this.targetRemoved
-            let supportedTargets: string[] = []
-            if (nodule.nodeName == '#text' || this.targetsUsedByThisControllerFromNode(nodule).length == 0) {
-              change = this.targetChanged
-              nodule = this.findTargetInAncestry(node)
-            } else {
-              supportedTargets = this.targetsUsedByThisControllerFromNode(nodule)
-            }
-            if (nodule == null) {
-              return
-            } else if (supportedTargets.length == 0) {
-              supportedTargets = this.targetsUsedByThisControllerFromNode(nodule)
-            }
-
-            supportedTargets.forEach((target: string) => {
-              change.call(this, this.stripIdentifierPrefix(target), nodule!, 'domMutation')
-            })
-          })
+          addedNodes.forEach((node: Node) => this.processNodeDOMMutation(node, this.targetAdded))
+          removedNodes.forEach((node: Node) => this.processNodeDOMMutation(node, this.targetRemoved))
           break
       }
     }
+  }
+
+  private processNodeDOMMutation(node: Node, initialChangeModeAssumption: (name: string, node: Node, trigger: string) => void) {
+    let nodule: Node | null = node
+    let change = initialChangeModeAssumption
+    let supportedTargets: string[] = []
+    if (nodule.nodeName == '#text' || this.targetsUsedByThisControllerFromNode(nodule).length == 0) {
+      change = this.targetChanged
+      nodule = this.findTargetInAncestry(node)
+    } else {
+      supportedTargets = this.targetsUsedByThisControllerFromNode(nodule)
+    }
+    if (nodule == null) {
+      return
+    } else if (supportedTargets.length == 0) {
+      supportedTargets = this.targetsUsedByThisControllerFromNode(nodule)
+    }
+
+    supportedTargets.forEach((target: string) => {
+      change.call(this, this.stripIdentifierPrefix(target), nodule!, 'domMutation')
+    })
   }
 
   private findTargetInAncestry(node: Node): Node | null {
@@ -141,7 +122,6 @@ export class UseTargetMutation extends StimulusUse {
           return nodule
         } else {
         }
-      } else {
       }
     }
     if (nodule.parentNode == null) {
