@@ -78,7 +78,7 @@ export default class extends IntersectionController {
 
 This module adds two new events `appear` and `disapear` event that you may use to triggers stimulus actions
 
-By example to count all visible elements on a page we could listen to individual appear/disappear events to update a counter
+For example, to count all visible elements on a page we could listen to individual appear/disappear events to update a counter
 
 ```html
 <div class="modal" data-controller="counter" data-action="appear@window->counter#increase disappear@window->counter#decrease" >

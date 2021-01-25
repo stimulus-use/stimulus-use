@@ -80,7 +80,7 @@ export default class extends IdleController {
 
 ## Events
 
-This module adds `away` and `back` events that you may use to triggers stimulus actions
+This module adds `away` and `back` events that you may use to trigger stimulus actions
 
 ```html
 <div data-controller="user" data-action="user:away->user#logout">
