@@ -59,12 +59,13 @@ export const useTransition = (controller: TransitionComposableController, option
     const enterClass = getAttribute("enter", options, dataset)
     const enterActiveClass = getAttribute("enterActive", options, dataset)
     const enterToClass = getAttribute("enterTo", options, dataset)
+    const leaveToClass = getAttribute("leaveTo", options, dataset)
 
     if (!!hiddenClass) {
       targetElement.classList.remove(hiddenClass)
     }
 
-    await transition(targetElement, enterClass, enterActiveClass, enterToClass)
+    await transition(targetElement, enterClass, enterActiveClass, enterToClass, leaveToClass)
 
   }
 
@@ -76,8 +77,9 @@ export const useTransition = (controller: TransitionComposableController, option
     const leaveClass = getAttribute("leave", options, dataset)
     const leaveActiveClass = getAttribute("leaveActive", options, dataset)
     const leaveToClass = getAttribute("leaveTo", options, dataset)
+    const enterToClass = getAttribute("enterTo", options, dataset)
 
-    await transition(targetElement, leaveClass, leaveActiveClass, leaveToClass)
+    await transition(targetElement, leaveClass, leaveActiveClass, leaveToClass, enterToClass)
 
     if (!!hiddenClass) {
       targetElement.classList.add(hiddenClass)
@@ -94,9 +96,10 @@ export const useTransition = (controller: TransitionComposableController, option
     }
   }
 
-  async function transition(element: Element, initialClass: string[], activeClass: string[], toClass: string[]) {
+  async function transition(element: Element, initialClass: string[], activeClass: string[], toClass: string[], oppositeToClass: string[]) {
     element.classList.add(...initialClass);
     element.classList.add(...activeClass);
+    element.classList.remove(...oppositeToClass);
     await nextFrame();
 
     element.classList.remove(...activeClass);
