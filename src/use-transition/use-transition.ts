@@ -2,9 +2,7 @@ import { TransitionComposableController } from './transition-controller'
 
 export interface TransitionOptions {
   element?: Element
-  dispatchEvent?: boolean
   transitioned?: boolean
-  eventPrefix?: boolean | string
   enter?: string
   enterActive?: string
   enterTo?: string
@@ -24,8 +22,6 @@ const alpineNames: object = {
 }
 
 const defaultOptions = {
-  dispatchEvent: true,
-  eventPrefix: true,
   transitioned: false,
   hiddenClass: "hidden"
 }
