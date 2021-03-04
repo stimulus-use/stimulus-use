@@ -3,11 +3,11 @@ import { TransitionComposableController } from './transition-controller'
 export interface TransitionOptions {
   element?: Element
   transitioned?: boolean
-  enter?: string
   enterActive?: string
+  enterFrom?: string
   enterTo?: string
-  leave?: string
   leaveActive?: string
+  leaveFrom?: string
   leaveTo?: string
   hiddenClass?: string
   leaveAfter?: number
@@ -16,10 +16,10 @@ export interface TransitionOptions {
 }
 
 const alpineNames: object = {
-  enterClass: "enter",
+  enterFromClass: "enter",
   enterActiveClass: "enterStart",
   enterToClass: "enterEnd",
-  leaveClass: "leave",
+  leaveFromClass: "leave",
   leaveActiveClass: "leaveStart",
   leaveToClass: "leaveEnd",
 }
@@ -59,7 +59,7 @@ export const useTransition = (controller: TransitionComposableController, option
     controller.transitioned = true
     controllerEnter && controllerEnter(event)
 
-    const enterClasses = getAttribute("enter", options, dataset)
+    const enterFromClasses = getAttribute("enterFrom", options, dataset)
     const enterActiveClasses = getAttribute("enterActive", options, dataset)
     const enterToClasses = getAttribute("enterTo", options, dataset)
     const leaveToClasses = getAttribute("leaveTo", options, dataset)
@@ -71,12 +71,11 @@ export const useTransition = (controller: TransitionComposableController, option
     if (!removeToClasses) {
       removeClasses(targetElement, leaveToClasses)
     }
-    await transition(targetElement, enterClasses, enterActiveClasses, enterToClasses, hiddenClass, preserveOriginalClass, removeToClasses)
+    await transition(targetElement, enterFromClasses, enterActiveClasses, enterToClasses, hiddenClass, preserveOriginalClass, removeToClasses)
 
     if (leaveAfter > 0) {
       setTimeout(() => {
         leave(event)
-        console.log("after");
       }, leaveAfter)
     }
   }
@@ -86,7 +85,7 @@ export const useTransition = (controller: TransitionComposableController, option
     controller.transitioned = false
     controllerLeave && controllerLeave(event)
 
-    const leaveClasses = getAttribute("leave", options, dataset)
+    const leaveFromClasses = getAttribute("leaveFrom", options, dataset)
     const leaveActiveClasses = getAttribute("leaveActive", options, dataset)
     const leaveToClasses = getAttribute("leaveTo", options, dataset)
     const enterToClasses = getAttribute("enterTo", options, dataset)
@@ -95,7 +94,7 @@ export const useTransition = (controller: TransitionComposableController, option
       removeClasses(targetElement, enterToClasses)
     }
 
-    await transition(targetElement, leaveClasses, leaveActiveClasses, leaveToClasses, hiddenClass, preserveOriginalClass, removeToClasses)
+    await transition(targetElement, leaveFromClasses, leaveActiveClasses, leaveToClasses, hiddenClass, preserveOriginalClass, removeToClasses)
 
     if (!!hiddenClass) {
       targetElement.classList.add(hiddenClass)
