@@ -21,7 +21,7 @@
   * [useThrottle](use-throttle.md)
 
 * [**Animation**](animation.md)
-  * [useTransition](transition.md)
+  * [useTransition](use-transition.md)
 
 * [**Application**](application.md)
   * [useApplication](application-controller.md)
