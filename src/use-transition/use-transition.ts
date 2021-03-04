@@ -137,7 +137,7 @@ export const useTransition = (controller: TransitionComposableController, option
     // remove the initial class on frame after the beginning of the transition
     removeClasses(element, initialClasses)
 
-    // add the endDlass on frame after the beginning of the transition
+    // add the endClass on frame after the beginning of the transition
     addClasses(element, endClasses);
 
     // dynamically comput the duration of the transition from the style of the element
