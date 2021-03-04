@@ -119,17 +119,18 @@ scenarios.forEach(scenario => {
         })
       })
 
-      describe('scroll down', function () {
-        it('it fires one more "appear" for the second element and one disappear for the first', async function () {
-          await nextFrame()
-          await click('#scroll-down')
+      // lets move it to cypress
+      // describe('scroll down', function () {
+      //   it('it fires one more "appear" for the second element and one disappear for the first', async function () {
+      //     await nextFrame()
+      //     await click('#scroll-down')
 
-          expect(testLogger.eventsFilter({ id: ['1'], type: ['disappear'] }).length).to.equal(1)
-          expect(testLogger.eventsFilter({ id: ['2'], type: ['appear'] }).length).to.equal(1)
-          expect(testLogger.eventsFilter({ id: ['2'], type: ['disappear'] }).length).to.equal(0)
-          await click('#scroll-top')
-        })
-      })
+      //     expect(testLogger.eventsFilter({ id: ['1'], type: ['disappear'] }).length).to.equal(1)
+      //     expect(testLogger.eventsFilter({ id: ['2'], type: ['appear'] }).length).to.equal(1)
+      //     expect(testLogger.eventsFilter({ id: ['2'], type: ['disappear'] }).length).to.equal(0)
+      //     await click('#scroll-top')
+      //   })
+      // })
     })
   })
 })
