@@ -1,5 +1,5 @@
 export const nextFrame = async () => {
-  return await new Promise(resolve => requestAnimationFrame(resolve))
+  return new Promise(resolve => requestAnimationFrame(resolve))
 }
 
 export function delay(ms = 1) {
@@ -14,6 +14,14 @@ export const click = async selector => {
 export const remove = async selector => {
   document.querySelector(selector).remove()
   return nextFrame()
+}
+
+export const classList = selector => {
+  return document.querySelector(selector).classList.toString()
+}
+
+export const addAttribute = selector => {
+  return document.querySelector(selector).classList.toString()
 }
 
 export class TestLogger {
