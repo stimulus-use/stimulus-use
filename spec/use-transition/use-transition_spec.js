@@ -50,7 +50,7 @@ controllers.forEach(Controller => {
         // enter
         expect(classList('#transitionable-element')).to.equal('hidden')
         await click('#transitionable-element')
-        expect(classList('#transitionable-element')).to.equal('enter-class enter-active-class')
+        expect(classList('#transitionable-element')).to.equal('enter-from-class enter-active-class')
 
         await nextFrame()
         expect(classList('#transitionable-element')).to.equal('enter-active-class enter-to-class')
@@ -60,7 +60,7 @@ controllers.forEach(Controller => {
 
         // leave
         await click('#transitionable-element')
-        expect(classList('#transitionable-element')).to.equal('leave-class leave-active-class')
+        expect(classList('#transitionable-element')).to.equal('leave-from-class leave-active-class')
 
         await nextFrame()
         expect(classList('#transitionable-element')).to.equal('leave-active-class leave-to-class')
@@ -78,7 +78,7 @@ controllers.forEach(Controller => {
         // enter
         await click('#transitionable-element')
         expect(sortClasses(classList('#transitionable-element'))).to.equal(
-          sortClasses('to-preserve enter-class enter-active-class')
+          sortClasses('to-preserve enter-from-class enter-active-class')
         )
 
         await nextFrame()
