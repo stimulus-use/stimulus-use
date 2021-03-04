@@ -119,7 +119,7 @@ scenarios.forEach(scenario => {
         })
       })
 
-      // lets move it to e2e tests
+      // lets move it to cypress
       // describe('scroll down', function () {
       //   it('it fires one more "appear" for the second element and one disappear for the first', async function () {
       //     await nextFrame()

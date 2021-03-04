@@ -7,11 +7,11 @@ export default class extends Controller {
   connect() {
     useClickOutside(this)
     const transitionOptions = {
-      enter: 'transition ease-out duration-300',
-      enterActive: 'transform opacity-0 scale-95',
+      enter: 'transform opacity-0 scale-95',
+      enterActive: 'transition ease-out duration-300',
       enterTo: 'transform opacity-100 scale-100',
-      leave: 'transition ease-in duration-300',
-      leaveActive: 'transform opacity-100 scale-100',
+      leave: 'transform opacity-100 scale-100',
+      leaveActive: 'transition ease-in duration-300',
       leaveTo: 'transform opacity-0 scale-95'
     }
     useTransition(this, transitionOptions)
