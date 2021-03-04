@@ -1,11 +1,13 @@
 export const fixtureBase = `
-  <div data-controller="transition" data-action="click->transition#toggle" id="transitionable-element"
-        data-transition-enter="transition ease-out duration-300"
-        data-transition-enter-active="transform opacity-0 scale-95"
-        data-transition-enter-to="transform opacity-100 scale-100"
-        data-transition-leave="transition ease-in duration-300"
-        data-transition-leave-active="transform opacity-100 scale-100"
-        data-transition-leave-to="transform opacity-0 scale-95" >
+  <div data-controller="transition" data-action="click->transition#toggleTransition" id="transitionable-element"
+        data-transition-enter="enter-class"
+        data-transition-enter-active="enter-active-class"
+        data-transition-enter-to="enter-to-class"
+        data-transition-leave="leave-class"
+        data-transition-leave-active="leave-active-class"
+        data-transition-leave-to="leave-to-class"
+        class="hidden"
+        style="transition-duration: 30ms" >
     <div>Content</div>
   </div>
 `
