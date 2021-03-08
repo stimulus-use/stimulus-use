@@ -31,7 +31,7 @@ useTransition(controller, options = {})
 
 ## Directives
 
-Both Vue JS naming and Alpine are supported
+Both Vue JS naming and Alpine are supported (these examples show classes from Tailwind, like `transition` and `ease-out` where no custom CSS is needed).
 
 #### Vue JS directive style
 
@@ -46,7 +46,7 @@ data-transition-leave-to="transform opacity-0 scale-95"
 
 #### Alpine JS directive style
 
-````html
+```html
 data-transition-enter-class="transform opacity-0 scale-95"
 data-transition-enter-start-class="transition ease-out duration-300"
 data-transition-enter-end-class="transform opacity-100 scale-100"
@@ -63,7 +63,7 @@ Here is a typical dropdown component from Tailwind.
 <div class="relative"
      data-controller="transition click-outside"
      data-transition-target="content"
-     data-action="click-outside:click:ouside->">
+     data-action="click-outside:click:outside->transition#leave">
   <div>
     <button
       data-action="click->dropdown#toggle"
@@ -88,4 +88,75 @@ Here is a typical dropdown component from Tailwind.
     <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem">Sign out</a>
   </div>
 </div>
+```
+
+**Example in a Controller without Tailwind :**
+
+If you're not using Tailwind, you'll need to create custom CSS classes. Here's an example that also uses the mixin style:
+
+```html
+<div data-controller="custom-close">
+    <div data-custom-close-target="boxToClose">
+        This element will fade out and in!
+    </div>
+
+    <button data-action="custom-close#close">Close Box</button>
+    <button data-action="custom-close#open">Open Box</button>
+    <button data-action="custom-close#toggle">Toggle Box</button>
+</div>
+```
+
+The controller for `custom-close`:
+
+```js
+import { Controller } from 'stimulus';
+import { useTransition } from 'stimulus-use';
+
+export default class extends Controller {
+    static targets = ['boxToClose']
+
+    connect() {
+        useTransition(this, {
+            element: this.boxToCloseTarget,
+            enterActive: 'fade-enter-active',
+            enterFrom: 'fade-enter-from',
+            enterTo: 'fade-enter-to',
+            leaveActive: 'fade-leave-active',
+            leaveFrom: 'fade-leave-from',
+            leaveTo: 'fade-leave-to',
+            hiddenClass: 'd-none',
+            // set this, because the item *starts* in an open state
+            transitioned: true,
+        });
+    }
+
+    close() {
+        this.leave();
+    }
+
+    open() {
+        this.enter();
+    }
+
+    toggle() {
+        this.toggleTransition();
+    }
+}
+```
+
+Finally, you'll need custom CSS to add your transition behavior. This will cause a fade in and fade out behavior that lasts 500 milliseconds:
+
+```css
+.fade-enter-active, .fade-leave-active {
+    transition: opacity 500ms;
+}
+.fade-enter-from, .fade-leave-to {
+    opacity: 0;
+}
+.fade-enter-to, .fade-leave-from {
+    opacity: 1;
+}
+.d-none {
+    display: none;
+}
 ```
