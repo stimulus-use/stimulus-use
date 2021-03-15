@@ -8,25 +8,17 @@ export class UseVisibility extends StimulusUse {
 
   constructor(controller: VisibilityComposableController, options: VisibilityOptions = {}) {
     super(controller, options)
-
     this.controller = controller
-
-    const disconnect = () => {
-      this.unobserve()
-      this.controllerDisconnect()
-    }
-
-    Object.assign(controller, { disconnect })
-
-    // triggers initial callback on connect
-    this.handleVisibilityChange()
-
+    this.enhanceController()
     this.observe()
   }
 
   observe = () => {
     this.controller.isVisible = !document.hidden
     document.addEventListener('visibilitychange', this.handleVisibilityChange)
+
+    // triggers initial callback on observe
+    this.handleVisibilityChange()
   }
 
   unobserve = () => {
@@ -37,16 +29,18 @@ export class UseVisibility extends StimulusUse {
   private becomesInvisible = (event?: Event) => {
     this.controller.isVisible = false
 
-    this.call('invisible')
+    this.call('invisible', event)
     this.log('invisible', { isVisible: false })
+
     this.dispatch('invisible', { event, isVisible: false })
   }
 
   private becomesVisible = (event?: Event) => {
     this.controller.isVisible = true
 
-    this.call('visible')
+    this.call('visible', event)
     this.log('visible', { isVisible: true })
+
     this.dispatch('visible', { event, isVisible: true })
   }
 
@@ -56,6 +50,17 @@ export class UseVisibility extends StimulusUse {
     } else {
       this.becomesVisible(event)
     }
+  }
+
+  private enhanceController() {
+    const controllerDisconnect = this.controllerDisconnect
+
+    const disconnect = () => {
+      this.unobserve()
+      controllerDisconnect()
+    }
+
+    Object.assign(this.controller, { disconnect })
   }
 }
 
