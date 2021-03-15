@@ -1,79 +1,66 @@
+import { StimulusUse, StimulusUseOptions } from '../stimulus-use'
 import { IntersectionComposableController } from './intersection-controller'
-import { method, extendedEvent, composeEventName } from '../support/index'
 
-export interface IntersectionOptions extends IntersectionObserverInit {
-  element?: Element
-  dispatchEvent?: boolean
-  eventPrefix?: boolean | string
-}
+export interface IntersectionOptions extends IntersectionObserverInit, StimulusUseOptions { }
 
-const defaultOptions = {
-  dispatchEvent: true,
-  eventPrefix: true,
+export class UseIntersection extends StimulusUse {
+  controller: IntersectionComposableController
+  observer: IntersectionObserver
+
+  constructor(controller: IntersectionComposableController, options: IntersectionOptions = {}) {
+    super(controller, options)
+    this.controller = controller
+    this.enhanceController()
+    this.observer = new IntersectionObserver(this.callback, options)
+    this.observe()
+  }
+
+  observe = () => {
+    this.observer.observe(this.targetElement)
+  }
+
+  unobserve = () => {
+    this.observer.unobserve(this.targetElement)
+  }
+
+  private callback = (entries: IntersectionObserverEntry[]) => {
+    const [entry] = entries
+    if (entry.isIntersecting) {
+      this.dispatchAppear(entry)
+    } else if (this.controller.isVisible) {
+      this.dispatchDisappear(entry)
+    }
+  }
+
+  private dispatchAppear = (entry: IntersectionObserverEntry) => {
+    this.controller.isVisible = true
+    this.call('appear', entry)
+    this.log('appear', { isVisible: true })
+
+    this.dispatch("appear", { isVisible: true })
+  }
+
+  private dispatchDisappear = (entry: IntersectionObserverEntry) => {
+    this.controller.isVisible = false
+    this.call('disappear', entry)
+    this.log('disappear', { isVisible: false })
+
+    this.dispatch("disappear", { isVisible: false })
+  }
+
+  private enhanceController() {
+    const controllerDisconnect = this.controllerDisconnect
+
+    const disconnect = () => {
+      this.unobserve()
+      controllerDisconnect()
+    }
+
+    Object.assign(this.controller, { isVisible: false, disconnect })
+  }
 }
 
 export const useIntersection = (controller: IntersectionComposableController, options: IntersectionOptions = {}) => {
-  const { dispatchEvent, eventPrefix } = Object.assign({}, defaultOptions, options)
-  const targetElement: Element = options?.element || controller.element
-
-  const callback = (entries: IntersectionObserverEntry[]) => {
-    const [entry] = entries
-    if (entry.isIntersecting) {
-      dispatchAppear(entry)
-    } else if (controller.isVisible) {
-      dispatchDisappear(entry)
-    }
-  }
-
-  const dispatchAppear = (entry: IntersectionObserverEntry) => {
-    controller.isVisible = true
-    method(controller, 'appear').call(controller, entry)
-
-    // emit a custom "appear" event
-    if (dispatchEvent) {
-      const eventName = composeEventName('appear', controller, eventPrefix)
-
-      const appearEvent = extendedEvent(eventName, null, { controller, entry })
-      targetElement.dispatchEvent(appearEvent)
-    }
-  }
-
-  const dispatchDisappear = (entry: IntersectionObserverEntry) => {
-    controller.isVisible = false
-    method(controller, 'disappear').call(controller, entry)
-
-    // emit a custom "disappear" event
-    if (dispatchEvent) {
-      const eventName = composeEventName('disappear', controller, eventPrefix)
-
-      const disappearEvent = extendedEvent(eventName, null, { controller, entry })
-      targetElement.dispatchEvent(disappearEvent)
-    }
-  }
-
-  // keep a copy of the current disconnect() function of the controller
-  // to support composing several behaviors
-  const controllerDisconnect = controller.disconnect.bind(controller)
-
-  const observer = new IntersectionObserver(callback, options)
-
-  const observe = () => {
-    observer.observe(targetElement)
-  }
-
-  const unobserve = () => {
-    observer.unobserve(targetElement)
-  }
-
-  Object.assign(controller, {
-    isVisible: false,
-    disconnect() {
-      unobserve()
-      controllerDisconnect()
-    },
-  })
-
-  observe()
-
-  return [observe, unobserve] as const
+  const observer = new UseIntersection(controller, options)
+  return [observer.observe, observer.unobserve] as const
 }
