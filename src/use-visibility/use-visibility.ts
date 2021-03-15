@@ -1,26 +1,13 @@
-import { StimulusUse, StimulusUseOptions } from '../stimulus_use'
-import { composeEventName, extendedEvent, method } from '../support/index'
+import { StimulusUse, StimulusUseOptions } from '../stimulus-use'
 import { VisibilityComposableController } from './visibility-controller'
 
-export interface VisibilityOptions extends StimulusUseOptions {
-  dispatchEvent?: boolean
-  eventPrefix?: boolean | string
-}
-
-const defaultOptions = {
-  dispatchEvent: true,
-  eventPrefix: true,
-}
+export interface VisibilityOptions extends StimulusUseOptions { }
 
 export class UseVisibility extends StimulusUse {
   controller: VisibilityComposableController
-  eventPrefix!: boolean | string
-  dispatchEvent!: boolean
 
   constructor(controller: VisibilityComposableController, options: VisibilityOptions = {}) {
     super(controller, options)
-    const { dispatchEvent, eventPrefix } = Object.assign({}, defaultOptions, options)
-    Object.assign(this, { dispatchEvent, eventPrefix })
 
     this.controller = controller
 
@@ -48,32 +35,19 @@ export class UseVisibility extends StimulusUse {
 
   // private
   private becomesInvisible = (event?: Event) => {
-    const eventName = composeEventName('invisible', this.controller, this.eventPrefix)
-
     this.controller.isVisible = false
-    method(this.controller, 'invisible').call(this.controller)
-    this.log('invisible', { isVisible: false })
 
-    this.dispatch(eventName, event)
+    this.call('invisible')
+    this.log('invisible', { isVisible: false })
+    this.dispatch('invisible', { event, isVisible: false })
   }
 
   private becomesVisible = (event?: Event) => {
-    const eventName = composeEventName('visible', this.controller, this.eventPrefix)
-
     this.controller.isVisible = true
-    method(this.controller, 'visible').call(this.controller)
+
+    this.call('visible')
     this.log('visible', { isVisible: true })
-
-    this.dispatch(eventName, event)
-  }
-
-  private dispatch = (eventName: string, event?: Event) => {
-    if (this.dispatchEvent) {
-      const detail = { controller: this.controller, isVisible: this.controller.isVisible }
-      const visibilityEvent = extendedEvent(eventName, event || null, detail)
-      this.controller.element.dispatchEvent(visibilityEvent)
-      this.log('dispatchEvent', { eventName, ...detail })
-    }
+    this.dispatch('visible', { event, isVisible: true })
   }
 
   private handleVisibilityChange = (event?: Event) => {
