@@ -18,5 +18,4 @@ export class TransitionController extends TransitionComposableController {
       useTransition(this, this.options)
     })
   }
-
 }

@@ -20,5 +20,4 @@ export class VisibilityController extends VisibilityComposableController {
 
   declare observe: () => void
   declare unobserve: () => void
-
 }
