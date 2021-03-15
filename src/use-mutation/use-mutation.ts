@@ -1,4 +1,4 @@
-import { StimulusUse, StimulusUseOptions } from '../stimulus_use'
+import { StimulusUse, StimulusUseOptions } from '../stimulus-use'
 import { method } from '../support/index'
 import { MutationComposableController } from './mutation-controller'
 
@@ -28,10 +28,10 @@ export class UseMutation extends StimulusUse {
   }
 
   observe = () => {
-   try {
+    try {
       this.observer.observe(this.targetElement, this.options)
     } catch (error) {
-      this.controller.application.handleError(error,"At a minimum, one of childList, attributes, and/or characterData must be true",{})
+      this.controller.application.handleError(error, "At a minimum, one of childList, attributes, and/or characterData must be true", {})
     }
   }
 

@@ -1,4 +1,4 @@
-import { StimulusUse, StimulusUseOptions } from '../stimulus_use'
+import { StimulusUse, StimulusUseOptions } from '../stimulus-use'
 import { composeEventName, extendedEvent, method } from '../support/index'
 import { VisibilityComposableController } from './visibility-controller'
 
