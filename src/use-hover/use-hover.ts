@@ -1,5 +1,4 @@
 import { StimulusUse, StimulusUseOptions } from '../stimulus-use'
-import { method } from '../support/index'
 import { HoverComposableController } from './hover-controller'
 
 export interface HoverOptions extends StimulusUseOptions {
@@ -28,14 +27,16 @@ export class UseHover extends StimulusUse {
 
   private onEnter = (event: Event) => {
     this.call("mouseEnter", event)
-    this.dispatch('mouseEnter', { hover: false })
     this.log('mouseEnter', { hover: true })
+
+    this.dispatch('mouseEnter', { hover: false })
   }
 
   private onLeave = (event: Event) => {
     this.call("mouseLeave", event)
-    this.dispatch('mouseLeave', { hover: false })
     this.log('mouseLeave', { hover: false })
+
+    this.dispatch('mouseLeave', { hover: false })
   }
 
   private enhanceController() {

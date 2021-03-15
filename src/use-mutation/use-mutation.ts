@@ -1,5 +1,4 @@
 import { StimulusUse, StimulusUseOptions } from '../stimulus-use'
-import { method } from '../support/index'
 import { MutationComposableController } from './mutation-controller'
 
 export interface MutationControllerOptions {
@@ -40,8 +39,10 @@ export class UseMutation extends StimulusUse {
   }
 
   private mutation = (entries: MutationRecord[]) => {
-    method(this.controller, 'mutate').call(this.controller, entries)
+    this.call('mutate', entries)
     this.log('mutate', { entries })
+
+    this.dispatch("mutate", { entries })
   }
 
   private enhanceController() {
