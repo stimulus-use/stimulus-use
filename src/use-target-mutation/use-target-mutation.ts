@@ -9,7 +9,6 @@ export interface TargetMutationOptions extends StimulusUseOptions {
 export class UseTargetMutation extends StimulusUse {
   controller: TargetMutationComposableController
   observer: MutationObserver
-  targetElement: Node
   identifier: string
   identifierPrefix: string
   targets: string[]

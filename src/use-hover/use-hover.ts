@@ -1,5 +1,4 @@
 import { StimulusUse, StimulusUseOptions } from '../stimulus-use'
-import { method } from '../support/index'
 import { HoverComposableController } from './hover-controller'
 
 export interface HoverOptions extends StimulusUseOptions {
@@ -8,11 +7,9 @@ export interface HoverOptions extends StimulusUseOptions {
 
 export class UseHover extends StimulusUse {
   controller: HoverComposableController
-  targetElement: Element
 
   constructor(controller: HoverComposableController, options: HoverOptions = {}) {
     super(controller, options)
-    this.targetElement = options?.element || controller.element
     this.controller = controller
     this.enhanceController()
     this.observe()
@@ -28,14 +25,18 @@ export class UseHover extends StimulusUse {
     this.targetElement.removeEventListener('mouseleave', this.onLeave)
   }
 
-  private onEnter = () => {
-    method(this.controller, 'mouseEnter').call(this.controller)
+  private onEnter = (event: Event) => {
+    this.call("mouseEnter", event)
     this.log('mouseEnter', { hover: true })
+
+    this.dispatch('mouseEnter', { hover: false })
   }
 
-  private onLeave = () => {
-    method(this.controller, 'mouseLeave').call(this.controller)
+  private onLeave = (event: Event) => {
+    this.call("mouseLeave", event)
     this.log('mouseLeave', { hover: false })
+
+    this.dispatch('mouseLeave', { hover: false })
   }
 
   private enhanceController() {
