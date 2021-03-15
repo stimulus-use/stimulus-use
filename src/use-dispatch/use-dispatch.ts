@@ -1,6 +1,6 @@
 import { composeEventName } from '../support/index'
 import { Controller } from 'stimulus'
-import { StimulusUse, StimulusUseOptions } from '../stimulus_use'
+import { StimulusUse, StimulusUseOptions } from '../stimulus-use'
 
 export interface DispatchOptions extends StimulusUseOptions {
   element?: Element

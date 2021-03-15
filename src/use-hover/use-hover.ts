@@ -1,4 +1,4 @@
-import { StimulusUse, StimulusUseOptions } from '../stimulus_use'
+import { StimulusUse, StimulusUseOptions } from '../stimulus-use'
 import { method } from '../support/index'
 import { HoverComposableController } from './hover-controller'
 

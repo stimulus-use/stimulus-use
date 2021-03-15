@@ -1,4 +1,4 @@
-import { StimulusUse, StimulusUseOptions } from '../stimulus_use'
+import { StimulusUse, StimulusUseOptions } from '../stimulus-use'
 import { method } from '../support/index'
 import { TargetMutationComposableController } from './target-mutation-controller'
 
@@ -9,7 +9,6 @@ export interface TargetMutationOptions extends StimulusUseOptions {
 export class UseTargetMutation extends StimulusUse {
   controller: TargetMutationComposableController
   observer: MutationObserver
-  targetElement: Node
   identifier: string
   identifierPrefix: string
   targets: string[]
