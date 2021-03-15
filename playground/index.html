@@ -195,6 +195,27 @@
               </div>
             </div>
           </div>
+          <div class="bg-white shadow rounded-lg" data-controller="hover">
+            <div class="px-4 py-5 sm:p-6">
+              <div class="font-semibold text-green-500">useHover</div>
+              <div class="text-sm text-gray-400 truncate">
+                Supercharge a controller with a hover function
+              </div>
+              <div class="grid grid-cols-2 mt-3">
+                <div class="relative" data-hover-target="content">
+                  <div class="origin-top-right absolute left-0 mt-2 w-48 rounded-md shadow-lg py-1 bg-white ring-1 ring-black ring-opacity-5"
+                  data-target="dropdown.content"
+                  role="menu"
+                  aria-orientation="vertical"
+                  aria-labelledby="user-menu">
+                    <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem">Your Profile</a>
+                    <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem">Settings</a>
+                    <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem">Sign out</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
           <div class="bg-white shadow rounded-lg col-span-3">
             <div class="px-4 py-5 sm:p-6">
               <div class="font-semibold text-green-500">useMemo</div>
