@@ -18,5 +18,4 @@ export class MutationController extends MutationComposableController {
 
   declare observe: () => void
   declare unobserve: () => void
-
 }

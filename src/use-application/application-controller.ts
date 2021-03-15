@@ -15,5 +15,4 @@ export class ApplicationController extends Controller {
 
   declare metaValue: (name: string) => string
   declare dispatch: (eventName: String, detail: any) => void
-
 }

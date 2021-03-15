@@ -5,6 +5,7 @@ export class HoverComposableController extends Controller {
   declare mouseEnter?: () => void;
   declare mouseLeave?: () => void;
 }
+
 export class HoverController extends HoverComposableController {
   options?: HoverOptions
 
