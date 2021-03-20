@@ -56,14 +56,25 @@ export class UseBreakpoints extends StimulusUse {
     const width = innerWidth || Infinity
 
     let currentBreakpoint
+    let currentBreakpointValue
 
     for (const breakpoint in this.breakpoints) {
       const breakpointValue = this.breakpoints[breakpoint]
 
       if (this.minWidth) {
-        if (width >= breakpointValue) currentBreakpoint = breakpoint
+        if (!currentBreakpointValue) currentBreakpointValue = 0
+
+        if (width >= breakpointValue && breakpointValue >= currentBreakpointValue) {
+          currentBreakpoint = breakpoint
+          currentBreakpointValue = breakpointValue
+        }
       } else {
-        if (width < breakpointValue) currentBreakpoint = breakpoint
+        if (!currentBreakpointValue) currentBreakpointValue = Infinity
+
+        if (width < breakpointValue && breakpointValue < currentBreakpointValue) {
+          currentBreakpoint = breakpoint
+          currentBreakpointValue = breakpointValue
+        }
       }
     }
 
