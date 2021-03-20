@@ -1,6 +1,6 @@
 # useBreakpoints
 
-Adds new behaviors to your Stimulus controller when the breakpoint changes or when a specific breakpoint is active. 
+Adds new behaviors to your Stimulus controller when the breakpoint changes or when a specific breakpoint is active.
 
 ## Reference
 
@@ -61,7 +61,7 @@ export default class extends Controller {
 
 The `breakpoints` option is used to configure the breakpoints in your app. `stimulus-use` defines some default breakpoints for you, so you don't need to configure all the breakpoints yourself.
 
-Currently there are three exports available: 
+Currently there are three exports available:
 
 * `Breakpoints.default` (which is Bootstrap)
 * `Breakpoints.bootstrap`
@@ -82,7 +82,7 @@ export default class extends Controller {
     // or
     useBreakpoints(this, { breakpoints: Breakpoints.bootstrap })
     // or
-    useBreakpoints(this, { breakpoints: Breakpoints.taildinw })
+    useBreakpoints(this, { breakpoints: Breakpoints.tailwind })
   }
 
   // ...
