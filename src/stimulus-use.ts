@@ -61,7 +61,7 @@ export class StimulusUse {
       const { event, ...eventDetails } = details
       const customEvent = this.extendedEvent(eventName, event || null, eventDetails)
       this.targetElement.dispatchEvent(customEvent)
-      this.log('dispatchEvent', { eventName, ...eventDetails })
+      this.log('dispatchEvent', { eventName: customEvent.type, ...eventDetails })
     }
   }
 
