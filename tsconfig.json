@@ -3,7 +3,7 @@
     "lib": ["dom", "es2015", "scripthost"],
     "noUnusedLocals": false,
     "strict": true,
-    "target": "es2017",
+    "target": "es2019",
     "composite": true,
     "declaration": true,
     "declarationMap": true,
