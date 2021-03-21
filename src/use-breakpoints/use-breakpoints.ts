@@ -2,6 +2,8 @@ import { Controller } from 'stimulus'
 import { StimulusUse, StimulusUseOptions } from '../stimulus-use'
 import Breakpoints from './breakpoints'
 
+type BreakpointDefinitions = Record<string, number>
+
 export interface BreakpointsPayload {
   previousBreakpoint: string | undefined
   breakpoint: string | undefined
@@ -10,7 +12,7 @@ export interface BreakpointsPayload {
 }
 
 export interface BreakpointsOptions extends StimulusUseOptions {
-  breakpoints?: Record<string, number>
+  breakpoints?: BreakpointDefinitions
   callbackPrefix?: string
   changedCallbackName?: string
   callbackName?: Function
@@ -18,7 +20,9 @@ export interface BreakpointsOptions extends StimulusUseOptions {
 }
 
 const defaultOptions = {
-  breakpoints: Breakpoints.default,
+  breakpoints: () => {
+    return Breakpoints.default
+  },
   callbackPrefix: 'breakpoint',
   changedCallbackName: 'breakpointChanged',
   minWidth: true,
@@ -26,7 +30,7 @@ const defaultOptions = {
     return prefix + breakpoint.toUpperCase()
   },
   eventPrefix: 'breakpoint',
-  debug: true
+  debug: false
 }
 
 export class UseBreakpoints extends StimulusUse {
@@ -40,7 +44,7 @@ export class UseBreakpoints extends StimulusUse {
   constructor(controller: Controller, options: BreakpointsOptions = {}) {
     super(controller, options)
 
-    this.breakpoints = options.breakpoints ?? defaultOptions.breakpoints
+    this.breakpoints = options.breakpoints ?? defaultOptions.breakpoints()
     this.callbackPrefix = options.callbackPrefix ?? defaultOptions.callbackPrefix
     this.changedCallbackName = options.changedCallbackName ?? defaultOptions.changedCallbackName
     this.callbackName = options.callbackName ?? defaultOptions.callbackName

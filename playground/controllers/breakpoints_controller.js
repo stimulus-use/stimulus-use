@@ -1,6 +1,11 @@
 import { Controller } from 'stimulus'
 import { useBreakpoints, Breakpoints } from 'stimulus-use'
 
+// Breakpoints.default = {
+//   'md': 50,
+//   'xxl': 1200
+// }
+
 export default class extends Controller {
   static targets = ['breakpoint', 'counter']
   static values = { counter: Number }

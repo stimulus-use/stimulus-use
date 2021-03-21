@@ -1,4 +1,6 @@
-const bootstrapBreakpoints: Record<string, number> = {
+type BreakpointDefinitions = Record<string, number>
+
+const bootstrapBreakpoints: BreakpointDefinitions = {
   'xs': 0,
   'sm': 576,
   'md': 768,
@@ -7,7 +9,7 @@ const bootstrapBreakpoints: Record<string, number> = {
   'xxl': 1400
 }
 
-const tailwindBreakpoints: Record<string, number> = {
+const tailwindBreakpoints: BreakpointDefinitions = {
   'xs': 0,
   'sm': 640,
   'md': 768,
@@ -16,8 +18,19 @@ const tailwindBreakpoints: Record<string, number> = {
   '2xl': 1536
 }
 
+let defaultBreakpoints: BreakpointDefinitions = bootstrapBreakpoints;
+
+const setBreakpoints = (breakpoints: BreakpointDefinitions) => {
+  defaultBreakpoints = breakpoints
+}
+
 export default {
-  default: bootstrapBreakpoints,
   bootstrap: bootstrapBreakpoints,
-  tailwind: tailwindBreakpoints
+  tailwind: tailwindBreakpoints,
+  get default(): BreakpointDefinitions {
+    return defaultBreakpoints
+  },
+  set default(breakpoints: BreakpointDefinitions) {
+    setBreakpoints(breakpoints)
+  }
 }
