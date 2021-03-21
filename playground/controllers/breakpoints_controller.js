@@ -6,40 +6,40 @@ export default class extends Controller {
   static values = { counter: Number }
 
   connect() {
-    useBreakpoints(this, { breakpoints: Breakpoints.default })
+    useBreakpoints(this)
     this.counterValue = 0
   }
 
-  breakpointChanged({ breakpoint, width }) {
+  breakpointChanged({ breakpoint, previousBreakpoint, width }) {
     this.counterValue += 1
   }
 
-  breakpointXS() {
-    this.breakpointTarget.textContent = 'xs'
+  breakpointXS({ previousBreakpoint }) {
+    this.breakpointTarget.textContent = `xs (from ${previousBreakpoint})`
   }
 
-  breakpointSM() {
-    this.breakpointTarget.textContent = 'sm'
+  breakpointSM({ previousBreakpoint }) {
+    this.breakpointTarget.textContent = `sm (from ${previousBreakpoint})`
   }
 
-  breakpointMD() {
-    this.breakpointTarget.textContent = 'md'
+  breakpointMD({ previousBreakpoint }) {
+    this.breakpointTarget.textContent = `md (from ${previousBreakpoint})`
   }
 
-  breakpointLG() {
-    this.breakpointTarget.textContent = 'lg'
+  breakpointLG({ previousBreakpoint }) {
+    this.breakpointTarget.textContent = `lg (from ${previousBreakpoint})`
   }
 
-  breakpointXL() {
-    this.breakpointTarget.textContent = 'xl'
+  breakpointXL({ previousBreakpoint }) {
+    this.breakpointTarget.textContent = `xl (from ${previousBreakpoint})`
   }
 
-  breakpointXXL() {
-    this.breakpointTarget.textContent = 'xxl'
+  breakpointXXL({ previousBreakpoint }) {
+    this.breakpointTarget.textContent = `xxl (from ${previousBreakpoint})`
   }
 
-  breakpoint2XL() {
-    this.breakpointTarget.textContent = '2xl'
+  breakpoint2XL({ previousBreakpoint }) {
+    this.breakpointTarget.textContent = `2xl (from ${previousBreakpoint})`
   }
 
   counterValueChanged() {

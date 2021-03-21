@@ -3,6 +3,7 @@ import { StimulusUse, StimulusUseOptions } from '../stimulus-use'
 import Breakpoints from './breakpoints'
 
 export interface BreakpointsPayload {
+  previousBreakpoint: string | undefined
   breakpoint: string | undefined
   width: number
   originalEvent: Event | undefined
@@ -80,15 +81,19 @@ export class UseBreakpoints extends StimulusUse {
 
     const breakpointChanged = this.currentBreakpoint !== currentBreakpoint
 
+    if (!breakpointChanged) return
+
+    const previousBreakpoint = this.currentBreakpoint
     this.currentBreakpoint = currentBreakpoint
 
     const payload: BreakpointsPayload = {
       width,
+      previousBreakpoint,
       breakpoint: currentBreakpoint,
       originalEvent: event || undefined
     }
 
-    if (breakpointChanged) this.breakpointChanged(payload)
+    this.breakpointChanged(payload)
   }
 
   breakpointChanged (payload: BreakpointsPayload) {
