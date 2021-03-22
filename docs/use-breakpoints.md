@@ -19,10 +19,11 @@ useBreakpoints(controller, options = {})
 | `breakpoints` | The definition of your breakpoints. |  `Breakpoints.default` |
 | `callbackPrefix` | The prefix name of the breakpoint callback function to be called when a specific breakpoints is active | `breakpoint` |
 | `changedCallbackName` | The name of the function to be called when a breakpoint changes. | `breakpointChanged` |
-| `callbackName` | This function defines how your callback functions are named. The function takes two argumentes: `(prefix, currentBreakpoint)` | `(prefix, breakpoint) => return prefix + breakpoint.toUpperCase()` |
-| `minWidth` | Whether to use `min-width: <value>` to evaluate the current breakpoint or not. For `max-width: <value>` pass in `false` | `true` |
+| `callbackName` | This function defines how your callback functions are named. The function takes two arguments: `(prefix, currentBreakpoint)` | `(prefix, breakpoint) => return prefix + breakpoint.toUpperCase()` |
+| `minWidth` | Whether to evaluate the current breakpoint with min-value or not. For max-width pass in `false` | `true` |
+| `dispatchEvent` | Whether to dispatch `breakpoint:changed` and `breakpoint:<breakpoint>` events on `element` or not. | `true` |
 | `element` | The element the event will be emitted on. | The controller element |
-| `eventPrefix` | Whether to prefix or not the emitted event. Can be a **boolean** or a **string**.<br>- **true** prefix the event with the controller identifier `item:add` <br>- **someString** prefix the event with the given string `someString:add` <br>- **false** to remove prefix  | `breakpoint`|
+| `eventPrefix` | Whether to prefix the emitted event or not. Can be a **boolean** or a **string**.<br>- **true** prefix the event with the controller identifier `item:add` <br>- **someString** prefix the event with the given string `someString:add` <br>- **false** to remove prefix  | `breakpoint`|
 | `debug` | Whether to log debug information. See [debug](debug.md) for more information on the debugging tools| `false`|
 
 
@@ -78,7 +79,8 @@ import { Breakpoints } from 'stimulus-use'
 
 export default class extends Controller {
   connect() {
-    useBreakpoints(this, { breakpoints: Breakpoints.default }) // <-- implict
+    useBreakpoints(this) // <-- implict
+    useBreakpoints(this, { breakpoints: Breakpoints.default }) // <-- equivalent to this
     // or
     useBreakpoints(this, { breakpoints: Breakpoints.bootstrap })
     // or
@@ -112,17 +114,30 @@ useBreakpoints(this, {
 })
 ```
 
+If you like to override the default breakpoints globally you can do so:
+
+```js
+import { Breakpoints } from 'stimulus-use'
+
+Breakpoints.default = {
+  'sm': 576,
+  'lg': 992,
+  'xxl': 1400
+}
+```
+
+Every `useBreakpoints(this)` call now uses the default breakpoints specified above if nothing else is specified via arguments.
 
 
 ## Emitting events
 
-By default the `useBreakpoints()` mixin emits events for every breakpoint change or whenever a specify breakpoint is active. This can be useful if you want to annotate some behaviour in your HTML markup which is dependend on the current breakpoint.
+By default the `useBreakpoints()` mixin emits events for every breakpoint change or whenever a specify breakpoint is active. This can be useful if you want to annotate some behaviour in your HTML markup which is depended on the current breakpoint.
 
 Set `dispatchEvent` to `false` if you don't want to emit events.
 
 ### Events for the default breakpoints
 
-If you use the default breakpoints the following events get emmited on the `element` and will bubble up the DOM tree:
+If you use the default breakpoints the following events get emitted on the `element` and will bubble up the DOM tree:
 
 * `breakpoint:changed`
 * `breakpoint:xs`
@@ -138,7 +153,7 @@ The breakpoint in the event name is always lowercased. If you define a `2XL` bre
 
 ### The `eventPrefix` option
 
-You can also prefix the event names by speciyfing the `eventPrefix` option:
+You can also prefix the event names by specifying the `eventPrefix` option:
 
 
 | Option | Value | Event name (for the breakpoint `lg`) |
@@ -153,7 +168,7 @@ You can also prefix the event names by speciyfing the `eventPrefix` option:
 The emitted event will bubble up the DOM tree. Therefore all parent elements can listen to it directly.
 
 ```html
-<nav data-controller="navigation" data-action="breakpoint:sm->navigation#hide">
+<nav data-controller="navigation" data-action="breakpoint:sm->navigation#animateOut">
   <div data-controller="breakpoints"></div>
 </nav>
 ```
@@ -169,7 +184,7 @@ If both controllers at the on level or even nested within the controller, you sh
 
   <aside
     data-controller="sidebar"
-    data-action="breakpoint:sm@window->sidebar#hide breakpoint:md->sidebar#show">
+    data-action="breakpoint:sm@window->sidebar#animateOut breakpoint:md->sidebar#animateIn">
   </aside>
 </body>
 ```
