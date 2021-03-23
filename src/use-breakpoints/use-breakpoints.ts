@@ -35,7 +35,7 @@ const defaultOptions = {
 
 export class UseBreakpoints extends StimulusUse {
   currentBreakpoint: string | undefined
-  breakpoints: Record<string, number>
+  breakpoints: BreakpointDefinitions
   callbackPrefix: string
   changedCallbackName: string
   callbackName: Function
