@@ -8,7 +8,7 @@ export interface MatchMediaPayload {
   name: string
   media: string
   matches: boolean
-  originalEvent: Event
+  originalEvent?: MediaQueryListEvent
 }
 
 export interface MatchMediaOptions extends StimulusUseOptions {
@@ -34,50 +34,55 @@ export class UseMatchMedia extends StimulusUse {
     this.eventPrefix = options.eventPrefix ?? defaultOptions.eventPrefix
     this.debug = options.debug ?? defaultOptions.debug
 
+    if (!window.matchMedia) {
+      console.error('window.matchMedia() is not available')
+      return
+    }
+
     this.enhanceController()
     this.observe()
   }
 
   callback = (event: MediaQueryListEvent) => {
-    const query = Object.keys(this.mediaQueries).find(name => this.mediaQueries[name] === event.media)
+    const name = Object.keys(this.mediaQueries).find(name => this.mediaQueries[name] === event.media)
+    if (!name) return
 
-    if (!query) return
+    const { media, matches } = event
+    this.changed({ name, media, matches, originalEvent: event })
+  }
 
-    const payload: MatchMediaPayload = {
-      name: query,
-      media: event.media,
-      matches: event.matches,
-      originalEvent: event
+  changed = (payload: MatchMediaPayload) => {
+    const { name } = payload
+
+    if (payload.originalEvent) {
+      this.call(camelize(`${name}_changed`), payload)
+      this.dispatch('changed', payload)
+      this.log(`media query "${name}" changed`, payload)
     }
 
-    this.call(camelize(`${query}_changed`), payload)
-    this.dispatch('changed', payload)
-    this.log(`media query "${query}" changed`, payload)
-
     if (payload.matches) {
-      this.call(camelize(`is_${query}`), payload)
-      this.dispatch(`is:${query}`, payload)
+      this.call(camelize(`is_${name}`), payload)
+      this.dispatch(`is:${name}`, payload)
     } else {
-      this.call(camelize(`not_${query}`), payload)
-      this.dispatch(`not:${query}`, payload)
+      this.call(camelize(`not_${name}`), payload)
+      this.dispatch(`not:${name}`, payload)
     }
   }
 
   observe = () => {
-    const matches = this.matches
-    Object.values(this.mediaQueries).forEach(query => {
-      const match = window.matchMedia(query)
-      match.addListener(this.callback)
-      matches.push(match)
+    Object.keys(this.mediaQueries).forEach(name => {
+      const media = this.mediaQueries[name]
+      const match = window.matchMedia(media)
 
-      // TODO: invoke initial callback
-      // const event = new MediaQueryListEvent({ media: query, matches: match.matches })
-      // this.callback(event)
+      match.addListener(this.callback)
+      this.matches.push(match)
+
+      this.changed({ name, media, matches: match.matches })
     })
   }
 
   unobserve = () => {
-    this.matches.forEach((match) => match.removeListener(this.callback))
+    this.matches.forEach(match => match.removeListener(this.callback))
   }
 
   private enhanceController() {
