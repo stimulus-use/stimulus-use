@@ -42,7 +42,7 @@ const customLaunchers = {
     browserName: 'safari',
     platform: 'macOS 10.13',
     version: 'latest'
-  }
+  },
   // sl_edge_17: {
   //   base: 'SauceLabs',
   //   browserName: 'microsoftedge',
@@ -55,12 +55,12 @@ const customLaunchers = {
   //   platform: 'Windows 10',
   //   version: '18.17763',
   // },
-  // sl_ie_11: {
-  //   base: 'SauceLabs',
-  //   browserName: 'internet explorer',
-  //   platform: 'Windows 8.1',
-  //   version: '11',
-  // },
+  sl_ie_11: {
+    base: 'SauceLabs',
+    browserName: 'internet explorer',
+    platform: 'Windows 8.1',
+    version: '11',
+  }
   // sl_ios_latest: {
   //   base: 'SauceLabs',
   //   browserName: 'safari',
