@@ -170,8 +170,8 @@ export class UseTargetMutation extends StimulusUse {
   }
 
   private targetsUsedByThisControllerFromNode(node: Node): string[] {
-    if (node.nodeName == "#text") {
-      // Failsafe, just in case we try processing a text node
+    if (node.nodeName == "#text" || node.nodeName == "#comment") {
+      // Failsafe, just in case we try processing a text or comment node
       return []
     }
     // Extracts from the node, the target string, targetsUsedByThisController filters it, returns the array of supported target names
