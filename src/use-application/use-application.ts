@@ -2,10 +2,10 @@ import { Controller } from 'stimulus'
 import { useDispatch, DispatchOptions } from '../use-dispatch/index'
 
 export const useApplication = (controller: Controller, options: DispatchOptions= {}) => {
-  // getter to detect Turbolink preview
+  // getter to detect Turbolinks preview
   Object.defineProperty(controller, 'isPreview', {
     get(): boolean {
-      return document.documentElement.hasAttribute('data-turbolinks-preview')
+      return document.documentElement.hasAttribute('data-turbolinks-preview') || document.documentElement.hasAttribute('data-turbo-preview')
     },
   })
 
