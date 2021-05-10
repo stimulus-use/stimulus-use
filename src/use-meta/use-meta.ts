@@ -1,4 +1,5 @@
 import { Controller } from 'stimulus'
+import { camelize } from '../support/index'
 
 export interface MetaOptions {
   suffix: boolean
@@ -25,10 +26,6 @@ function typeCast(value: any): any {
   } catch (o_O) {
     return value
   }
-}
-
-function camelize(value: string) {
-  return value.replace(/(?:[_-])([a-z0-9])/g, (_, char) => char.toUpperCase())
 }
 
 export const useMeta = (controller: Controller, options: MetaOptions = { suffix: true }) => {
