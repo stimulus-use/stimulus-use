@@ -24,6 +24,11 @@ export const addAttribute = selector => {
   return document.querySelector(selector).classList.toString()
 }
 
+export const keyPress = (selector, keyboardEventInit) => {
+  document.querySelector(selector).dispatchEvent(new KeyboardEvent('keydown', { bubbles: true, ...keyboardEventInit }))
+  return nextFrame()
+}
+
 export class TestLogger {
   logs = []
 
