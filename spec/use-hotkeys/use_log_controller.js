@@ -1,15 +1,15 @@
 import { Controller } from 'stimulus'
-import { bindHotkeys, unbindHotkeys } from '../../src'
+import { useHotkeys, unuseHotkeys } from '../../src'
 
 export default class UseLogController extends Controller {
   static hotkeys = { '/': 'singleKeyHandler', 'cmd+a': 'metaKeyHandler' }
 
   connect() {
-    bindHotkeys(this)
+    useHotkeys(this)
   }
 
   disconnect() {
-    unbindHotkeys(this)
+    unuseHotkeys(this)
   }
 
   singleKeyHandler(event) {
