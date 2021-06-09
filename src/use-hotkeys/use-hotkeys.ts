@@ -1,5 +1,6 @@
 import { Controller } from 'stimulus'
 import hotkeys from 'hotkeys-js'
+import { StimulusUse, StimulusUseOptions } from '../stimulus-use'
 
 // from https://github.com/jaywcjlove/hotkeys/blob/master/index.d.ts
 type Options = {
@@ -19,19 +20,52 @@ export interface HotkeyDefinitions {
   [hotkey: string]: HotkeyDefinition
 }
 
-export interface HotkeysOptions {
+export interface HotkeysOptions extends StimulusUseOptions {
   hotkeys: HotkeyDefinitions
   filter?: (e: KeyboardEvent) => boolean
 }
 
-export const useHotkeys = (controller: Controller, hotkeysOptions: HotkeysOptions) => {
-  if (hotkeysOptions.filter) {
-    hotkeys.filter = hotkeysOptions.filter
+export class UseHotkeys extends StimulusUse {
+  controller: Controller
+  hotkeysOptions: HotkeysOptions
+
+  constructor(controller: Controller, hotkeysOptions: HotkeysOptions) {
+    super(controller, hotkeysOptions)
+    this.controller = controller
+    this.hotkeysOptions = hotkeysOptions
+    this.enhanceController()
+    this.bind()
   }
 
-  for (const [hotkey, definition] of Object.entries(hotkeysOptions.hotkeys as any)) {
-    hotkeys(hotkey, (definition as HotkeyDefinition).options, (e: KeyboardEvent) =>
-      (controller as { [key: string]: any })[(definition as HotkeyDefinition).handler](e)
-    )
+  bind = () => {
+    for (const [hotkey, definition] of Object.entries(this.hotkeysOptions.hotkeys as any)) {
+      hotkeys(hotkey, (definition as HotkeyDefinition).options, (e: KeyboardEvent) =>
+        (this.controller as { [key: string]: any })[(definition as HotkeyDefinition).handler](e)
+      )
+    }
+  }
+
+  unbind = () => {
+    for (const hotkey in this.hotkeysOptions.hotkeys as any) {
+      hotkeys.unbind(hotkey)
+    }
+  }
+
+  private enhanceController() {
+    if (this.hotkeysOptions.filter) {
+      hotkeys.filter = this.hotkeysOptions.filter
+    }
+
+    const controllerDisconnect = this.controller.disconnect.bind(this.controller)
+
+    const disconnect = () => {
+      this.unbind()
+      controllerDisconnect()
+    }
+
+    Object.assign(this.controller, { disconnect })
   }
 }
+
+export const useHotkeys = (controller: Controller, hotkeysOptions: HotkeysOptions) =>
+  new UseHotkeys(controller, hotkeysOptions)
