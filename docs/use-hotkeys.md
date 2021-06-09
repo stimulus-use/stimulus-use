@@ -1,6 +1,6 @@
 # useHotkeys
 
-Adds one new behavior to your Stimulus controller : `hotkeysmemo`
+Adds one new behavior to your Stimulus controller : `useHotkeys`
 
 This behavior can be used to register hotkeys using the [hotkeys-js](https://wangchujiang.com/hotkeys/) library. To use it, do the following:
 
@@ -10,7 +10,7 @@ This behavior can be used to register hotkeys using the [hotkeys-js](https://wan
 $ yarn add hotkeys-js
 ```
 
-2. Define hotkeys and respective handlers in a static `hotkeys` object.
+2. Define hotkeys and respective handlers and pass them as an argument to `useHotkeys`.
 
 ## Reference
 
@@ -29,13 +29,43 @@ import { Controller } from 'stimulus'
 import { useHotkeys } from 'stimulus-use'
 
 export default class extends Controller {
-  static hotkeys = {'cmd+a': 'handler'}
-
   connect() {
-    useHotkeys(this)
+    useHotkeys(this, {
+      hotkeys: {
+        '/': {
+          handler: 'singleKeyHandler'
+        },
+        'cmd+a': {
+          handler: 'metaKeyHandler'
+        },
+        f: {
+          handler: 'scopeHandler',
+          options: {
+            scope: 'files'
+          }
+        },
+        b: {
+          handler: 'inputHandler'
+        },
+        c: {
+          handler: 'keyUpHandler',
+          options: {
+            keydown: false,
+            keyup: true
+          }
+        },
+        'ctrl-d': {
+          handler: 'splitKeyHandler',
+          options: {
+            splitKey: '-'
+          }
+        }
+      },
+      filter: this.filter
+    })
   }
 
-  handler(e) {
+  singleKeyHandler(e) {
     // ...
   }
 }
