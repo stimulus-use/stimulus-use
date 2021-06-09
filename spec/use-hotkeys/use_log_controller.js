@@ -1,5 +1,5 @@
 import { Controller } from 'stimulus'
-import { useHotkeys, unuseHotkeys } from '../../src'
+import { useHotkeys } from '../../src'
 
 export default class UseLogController extends Controller {
   static hotkeys = { '/': 'singleKeyHandler', 'cmd+a': 'metaKeyHandler' }

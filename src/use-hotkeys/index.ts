@@ -1,1 +1,1 @@
-export { useHotkeys, unuseHotkeys } from './use-hotkeys'
+export { useHotkeys } from './use-hotkeys'

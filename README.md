@@ -52,7 +52,7 @@ We got you covered 👉 [stimulus-use.github.io/stimulus-use](https://stimulus-u
   | Mixin | Description | NEW Callbacks |
   |-----------------------|-------------|---------------------|
   |[`useClickOutside`](./docs/use-click-outside.md)|Tracks the clicks outside of the element and adds a new lifecycle callback **clickOutside**.|`clickOutside`|
-  |[`useHotkeys, unuseHotkeys`](./docs/use-hotkeys.md)|Registers hotkeys using the [hotkeys-js](https://wangchujiang.com/hotkeys/) library and binds them to handler methods||
+  |[`useHotkeys`](./docs/use-hotkeys.md)|Registers hotkeys using the [hotkeys-js](https://wangchujiang.com/hotkeys/) library and binds them to handler methods||
   |[`useHover`](./docs/use-hover.md)|Tracks the user's mouse movements over an element and adds **mouseEnter** and **mouseLeave** callbacks to your controller.|`mouseEnter` `mouseLeave`|
   |[`useIdle`](./docs/use-idle.md)| Tracks if the user is idle on your page and adds **away** and **back** callbacks to your controller.|`away`</br> `back`|
   |[`useIntersection`](./docs/use-intersection.md) | Tracks the element's intersection and adds **appear**, **disappear** callbacks to your controller.|`appear`</br> `disappear`|

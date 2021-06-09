@@ -16,7 +16,6 @@ $ yarn add hotkeys-js
 
 ```javascript
 useHotkeys(controller)
-unuseHotkeys(controller)
 ```
 
 **controller** : a Stimulus Controller (usually `'this'`)
@@ -27,17 +26,13 @@ unuseHotkeys(controller)
 
 ```js
 import { Controller } from 'stimulus'
-import { useHotkeys, unuseHotkeys } from 'stimulus-use'
+import { useHotkeys } from 'stimulus-use'
 
 export default class extends Controller {
   static hotkeys = {'cmd+a': 'handler'}
 
   connect() {
     useHotkeys(this)
-  }
-
-  disconnect() {
-    unuseHotkeys(this)
   }
 
   handler(e) {
