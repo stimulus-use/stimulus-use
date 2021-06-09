@@ -21,7 +21,7 @@ export interface HotkeyDefinitions {
 
 export interface HotkeysOptions {
   hotkeys: HotkeyDefinitions
-  filter?: any
+  filter?: (e: KeyboardEvent) => boolean
 }
 
 export const useHotkeys = (controller: Controller, hotkeysOptions: HotkeysOptions) => {
