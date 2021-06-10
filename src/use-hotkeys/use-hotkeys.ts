@@ -39,8 +39,9 @@ export class UseHotkeys extends StimulusUse {
 
   bind = () => {
     for (const [hotkey, definition] of Object.entries(this.hotkeysOptions.hotkeys as any)) {
+      const handler = (definition as HotkeyDefinition).handler.bind(this.controller)
       hotkeys(hotkey, (definition as HotkeyDefinition).options, (e: KeyboardEvent) =>
-        (definition as HotkeyDefinition).handler(e, (e as unknown) as HotkeysEvent)
+        handler(e, (e as unknown) as HotkeysEvent)
       )
     }
   }

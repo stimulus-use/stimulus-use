@@ -8,7 +8,7 @@ export default class extends Controller {
     useHotkeys(this, {
       hotkeys: {
         '/': {
-          handler: this.showOverlay.bind(this)
+          handler: this.showOverlay
         }
       }
     })

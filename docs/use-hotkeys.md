@@ -33,29 +33,29 @@ export default class extends Controller {
     useHotkeys(this, {
       hotkeys: {
         '/': {
-          handler: this.singleKeyHandler.bind(this)
+          handler: this.singleKeyHandler
         },
         'cmd+a': {
-          handler: this.metaKeyHandler.bind(this)
+          handler: this.metaKeyHandler
         },
         f: {
-          handler: this.scopeHandler.bind(this),
+          handler: this.scopeHandler,
           options: {
             scope: 'files'
           }
         },
         b: {
-          handler: this.inputHandler.bind(this)
+          handler: this.inputHandler
         },
         c: {
-          handler: this.keyUpHandler.bind(this),
+          handler: this.keyUpHandler,
           options: {
             keydown: false,
             keyup: true
           }
         },
         'ctrl-d': {
-          handler: this.splitKeyHandler.bind(this),
+          handler: this.splitKeyHandler,
           options: {
             splitKey: '-'
           }
