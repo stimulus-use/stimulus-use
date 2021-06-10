@@ -9,29 +9,29 @@ export default class UseLogController extends Controller {
     useHotkeys(this, {
       hotkeys: {
         '/': {
-          handler: 'singleKeyHandler'
+          handler: this.singleKeyHandler.bind(this)
         },
         'cmd+a': {
-          handler: 'metaKeyHandler'
+          handler: this.metaKeyHandler.bind(this)
         },
         f: {
-          handler: 'scopeHandler',
+          handler: this.scopeHandler.bind(this),
           options: {
             scope: 'files'
           }
         },
         b: {
-          handler: 'inputHandler'
+          handler: this.inputHandler.bind(this)
         },
         c: {
-          handler: 'keyUpHandler',
+          handler: this.keyUpHandler.bind(this),
           options: {
             keydown: false,
             keyup: true
           }
         },
         'ctrl-d': {
-          handler: 'splitKeyHandler',
+          handler: this.splitKeyHandler.bind(this),
           options: {
             splitKey: '-'
           }

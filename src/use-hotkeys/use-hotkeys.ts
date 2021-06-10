@@ -1,5 +1,5 @@
 import { Controller } from 'stimulus'
-import hotkeys from 'hotkeys-js'
+import hotkeys, { KeyHandler, HotkeysEvent } from 'hotkeys-js'
 import { StimulusUse, StimulusUseOptions } from '../stimulus-use'
 
 // from https://github.com/jaywcjlove/hotkeys/blob/master/index.d.ts
@@ -12,7 +12,7 @@ type Options = {
 }
 
 type HotkeyDefinition = {
-  handler: string
+  handler: KeyHandler
   options: Options
 }
 
@@ -40,7 +40,7 @@ export class UseHotkeys extends StimulusUse {
   bind = () => {
     for (const [hotkey, definition] of Object.entries(this.hotkeysOptions.hotkeys as any)) {
       hotkeys(hotkey, (definition as HotkeyDefinition).options, (e: KeyboardEvent) =>
-        (this.controller as { [key: string]: any })[(definition as HotkeyDefinition).handler](e)
+        (definition as HotkeyDefinition).handler(e, (e as unknown) as HotkeysEvent)
       )
     }
   }
