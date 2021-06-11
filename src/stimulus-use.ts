@@ -1,5 +1,5 @@
 import { Controller } from 'stimulus'
-import { Logger } from "./logger"
+import { Logger } from './logger'
 
 export interface StimulusUseOptions {
   debug?: boolean
@@ -13,7 +13,7 @@ const defaultOptions = {
   debug: false,
   logger: console,
   dispatchEvent: true,
-  eventPrefix: true,
+  eventPrefix: true
 }
 
 export class StimulusUse {
@@ -27,7 +27,6 @@ export class StimulusUse {
   dispatchEvent?: Boolean
   eventPrefix?: boolean | string
   targetElement: Element
-
 
   constructor(controller: Controller, options: StimulusUseOptions = {}) {
     this.debug = options?.debug ?? (controller.application as any).stimulusUseDebug ?? defaultOptions.debug
@@ -83,7 +82,7 @@ export class StimulusUse {
       bubbles,
       cancelable,
       composed,
-      detail,
+      detail
     })
     return customEvent
   }

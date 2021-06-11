@@ -4,7 +4,7 @@ import { ClickOutsideController } from 'stimulus-use'
 export default class extends ClickOutsideController {
   static targets = ['content']
   options = {
-    dispatchEvent: false,
+    dispatchEvent: false
   }
 
   clickOutside(e) {

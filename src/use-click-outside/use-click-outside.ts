@@ -13,7 +13,7 @@ const defaultOptions = {
   events: ['click', 'touchend'],
   onlyVisible: true,
   dispatchEvent: true,
-  eventPrefix: true,
+  eventPrefix: true
 }
 
 export const useClickOutside = (controller: ClickOutsideComposableController, options: ClickOutsideOptions = {}) => {
@@ -60,7 +60,7 @@ export const useClickOutside = (controller: ClickOutsideComposableController, op
     disconnect() {
       unobserve()
       controllerDisconnect()
-    },
+    }
   })
 
   observe()

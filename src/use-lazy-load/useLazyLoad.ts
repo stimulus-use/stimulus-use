@@ -47,7 +47,7 @@ export const useLazyLoad = (controller: LazyLoadComposableController, options?: 
     disconnect() {
       unobserve()
       controllerDisconnect()
-    },
+    }
   })
 
   observe()

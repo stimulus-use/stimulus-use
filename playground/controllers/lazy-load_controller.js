@@ -3,7 +3,7 @@ import { LazyLoadController } from 'stimulus-use'
 
 export default class extends LazyLoadController {
   options = {
-    rootMargin: '150px',
+    rootMargin: '150px'
   }
 
   loading(src) {

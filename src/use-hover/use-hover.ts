@@ -26,14 +26,14 @@ export class UseHover extends StimulusUse {
   }
 
   private onEnter = (event: Event) => {
-    this.call("mouseEnter", event)
+    this.call('mouseEnter', event)
     this.log('mouseEnter', { hover: true })
 
     this.dispatch('mouseEnter', { hover: false })
   }
 
   private onLeave = (event: Event) => {
-    this.call("mouseLeave", event)
+    this.call('mouseLeave', event)
     this.log('mouseLeave', { hover: false })
 
     this.dispatch('mouseLeave', { hover: false })
