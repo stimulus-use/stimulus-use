@@ -16,12 +16,14 @@ type HotkeyDefinition = {
   options: Options
 }
 
+type SimpleHotkeyDefinition = (KeyHandler | HTMLElement)[]
+
 export interface HotkeyDefinitions {
-  [hotkey: string]: HotkeyDefinition
+  [hotkey: string]: HotkeyDefinition | SimpleHotkeyDefinition
 }
 
 export interface HotkeysOptions extends StimulusUseOptions {
-  hotkeys: HotkeyDefinitions
+  hotkeys?: HotkeyDefinitions
   filter?: (e: KeyboardEvent) => boolean
 }
 
@@ -68,5 +70,35 @@ export class UseHotkeys extends StimulusUse {
   }
 }
 
-export const useHotkeys = (controller: Controller, hotkeysOptions: HotkeysOptions) =>
-  new UseHotkeys(controller, hotkeysOptions)
+const convertSimpleHotkeyDefinition = (definition: SimpleHotkeyDefinition): HotkeyDefinition => {
+  return {
+    handler: definition[0] as KeyHandler,
+    options: {
+      element: definition[1] as HTMLElement
+    }
+  }
+}
+
+const coerceOptions = (options: HotkeysOptions | HotkeyDefinitions): HotkeysOptions => {
+  if (!options.hotkeys) {
+    const hotkeys = {}
+
+    Object.entries(options as HotkeyDefinitions).forEach(([hotkey, definition]) => {
+      Object.defineProperty(hotkeys, hotkey, {
+        value: convertSimpleHotkeyDefinition(definition as SimpleHotkeyDefinition),
+        writable: false,
+        enumerable: true
+      })
+    })
+
+    options = {
+      hotkeys
+    }
+  }
+
+  return options
+}
+
+export const useHotkeys = (controller: Controller, options: HotkeysOptions | HotkeyDefinitions) => {
+  return new UseHotkeys(controller, coerceOptions(options))
+}

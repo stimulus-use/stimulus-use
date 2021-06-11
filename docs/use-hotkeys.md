@@ -15,15 +15,59 @@ $ yarn add hotkeys-js
 ## Reference
 
 ```javascript
-useHotkeys(controller)
+useHotkeys(controller, options)
 ```
 
 **controller** : a Stimulus Controller (usually `'this'`)
 
+**options** : Hotkey definitions, in simple or advanced format (see examples below)
+
+*simple:* 
+
+```typescript
+{ [hotkey: string]: [handler: KeyHandler, element: HTMLElement] }
+```
+
+*advanced:* 
+```typescript
+{
+  hotkeys?: {
+    [hotkey: string]: {
+      handler: Keyhandler
+      options: {
+        scope?: string
+        element?: HTMLElement
+        keyup?: boolean
+        keydown?: boolean
+        splitKey?: string
+      }
+    }
+  }
+  filter?: (e: KeyboardEvent) => boolean
+}
+```
+
 ## Usage
 
-**Composing**
+### Simple Hotkey Definition
+```js
+import { Controller } from 'stimulus'
+import { useHotkeys } from 'stimulus-use'
 
+export default class extends Controller {
+  connect() {
+    useHotkeys(this, {
+      '/': [this.singleKeyHandler],
+      'cmd+a': [this.metaKeyHandler],
+      b: [this.inputHandler],
+      e: [this.inputHandler, this.inputTarget]
+    })
+  }
+}
+```
+    
+    
+### Advanced Hotkey Definition
 ```js
 import { Controller } from 'stimulus'
 import { useHotkeys } from 'stimulus-use'

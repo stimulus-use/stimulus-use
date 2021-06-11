@@ -2,13 +2,19 @@ import { Application } from 'stimulus'
 import hotkeys from 'hotkeys-js'
 import { nextFrame, TestLogger, keyDown, keyUp } from '../helpers'
 import { expect } from 'chai'
-import UseLogController from './use_log_controller'
+import { UseSimpleLogController, UseAdvancedLogController } from './use_log_controller'
 import { fixtureBase, fixtureWithFilter } from './fixtures'
 
 const controllers = [
   {
-    type: 'mixin',
-    controller: UseLogController
+    type: 'simple mixin',
+    controller: UseSimpleLogController,
+    advanced: false
+  },
+  {
+    type: 'advanced mixin',
+    controller: UseAdvancedLogController,
+    advanced: true
   }
 ]
 
@@ -33,6 +39,7 @@ const scenarios = [
     keyboardEventInit: { keyCode: 70, which: 70 },
     handler: 'scopeHandler',
     scope: 'files',
+    advanced: true,
     triggerCount: 1
   },
   {
@@ -49,6 +56,7 @@ const scenarios = [
     keyboardEventInit: { keyCode: 66, which: 66 },
     handler: 'inputHandler',
     selector: '#input',
+    advanced: true,
     triggerCount: 1
   },
   {
@@ -57,6 +65,7 @@ const scenarios = [
     keyboardEventInit: { keyCode: 67, which: 67 },
     handler: 'keyUpHandler',
     type: 'keyup',
+    advanced: true,
     triggerCount: 1
   },
   {
@@ -64,6 +73,7 @@ const scenarios = [
     fixture: fixtureBase,
     keyboardEventInit: { ctrlKey: true, keyCode: 68, which: 68 },
     handler: 'splitKeyHandler',
+    advanced: true,
     triggerCount: 1
   }
 ]
@@ -94,9 +104,12 @@ scenarios.forEach(scenario => {
           scope,
           selector = 'body',
           triggerCount,
-          filter,
-          type = 'keydown'
+          type = 'keydown',
+          advanced = false
         } = scenario
+
+        if (advanced && !Controller.advanced) return
+
         if (scope) hotkeys.setScope(scope)
 
         keyDown(selector, keyboardEventInit)
