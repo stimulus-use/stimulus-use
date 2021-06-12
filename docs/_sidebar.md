@@ -13,6 +13,7 @@
   * [useResize](use-resize.md)
   * [useTargetMutation](use-target-mutation.md)
   * [useVisibility](use-visibility.md)
+  * [useWindowFocus](use-window-focus.md)
   * [useWindowResize](use-window-resize.md)
 
 * [**Optimization**](optimization.md)
@@ -28,4 +29,3 @@
   * [useDispatch](use-dispatch.md)
   * [useMeta](use-meta.md)
 * [Playground](stu-playground.md)
-

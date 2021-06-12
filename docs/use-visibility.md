@@ -22,13 +22,14 @@ useVisibility(controller, options)
 
 **Example :**
 
-typical use case would be to pause a video when the user navigate tabs.
+A typical use case would be to pause a video when the user navigate tabs.
 
 ```js
-//video_controller
+// video_controller.js
+
 export default class extends Controller {
   connect() {
-    useVisible(this)
+    useVisibility(this)
     this.player = new VideoPlayer()
   }
 
@@ -52,15 +53,15 @@ import { useVisibility } from 'stimulus-use'
 
 export default class extends Controller {
   connect() {
-    useVisible(this)
+    useVisibility(this)
   }
 
   visible() {
-    //triggered when the page is visible
+    // triggered when the page is visible
   }
 
   invisible() {
-    //triggered when the page is invisible
+    // triggered when the page is invisible
   }
 }
 ```
@@ -72,27 +73,28 @@ import { VisibilityController } from 'stimulus-use'
 
 export default class extends VisibilityController {
   visible() {
-    //triggered when the page is visible
+    // triggered when the page is visible
   }
 
   invisible() {
-    //triggered when the page is invisible
+    // triggered when the page is invisible
   }
 }
 ```
 
 ## Events
 
-This module adds two new events `visible` and `invisible` (prefixed by the controller identifier by default) event that you may use to triggers stimulus actions
+This module adds two new events `visible` and `invisible` (prefixed by the controller identifier by default) event that you may use to triggers Stimulus actions
 
 ```html
-<div class="player" data-controller="player" data-action="visible@document->player#play" >
+<div class="player" data-controller="player" data-action="visible@document->player#play invisible@document->player#pause">
   ...
 </div>
 ```
 
 ```js
 // application_controller.js
+
 export default class extends Controller {
 
   connect() {
