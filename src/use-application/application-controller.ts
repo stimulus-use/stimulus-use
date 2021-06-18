@@ -5,6 +5,7 @@ import { DispatchOptions } from "../use-dispatch"
 export class ApplicationController extends Controller {
   options?: DispatchOptions
   readonly isPreview: boolean = false
+  readonly isConnected: boolean = false
   readonly csrfToken: string = ''
 
 

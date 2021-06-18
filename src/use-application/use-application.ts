@@ -9,6 +9,13 @@ export const useApplication = (controller: Controller, options: DispatchOptions=
     },
   })
 
+  // getter to detect if a Stimulus controller is connected
+  Object.defineProperty(controller, 'isConnected', {
+    get(): boolean {
+      return !!Array.from(this.context.module.connectedContexts).find(c => c === this.context)
+    },
+  })
+
   // getter to get the csrf token
   Object.defineProperty(controller, 'csrfToken', {
     get(): boolean {
