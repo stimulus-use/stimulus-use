@@ -8,6 +8,7 @@
   * [useClickOutside](use-click-outside.md)
   * [useIdle](use-idle.md)
   * [useIntersection](use-intersection.md)
+  * [useHotkeys](use-hotkeys.md)
   * [useHover](use-hover.md)
   * [useMutation](use-mutation.md)
   * [useResize](use-resize.md)
