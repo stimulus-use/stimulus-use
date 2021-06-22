@@ -80,11 +80,11 @@ const scenarios = [
 
 scenarios.forEach(scenario => {
   controllers.forEach(Controller => {
-    describe(`HotkeysController tests scenario : ${scenario.name} controller type ${Controller.type}`, function() {
+    describe(`HotkeysController tests scenario : ${scenario.name} controller type ${Controller.type}`, function () {
       let application
       let testLogger
 
-      before('initialize controller', async function() {
+      before('initialize controller', async function () {
         application = Application.start()
         testLogger = new TestLogger()
         application.testLogger = testLogger
@@ -93,11 +93,11 @@ scenarios.forEach(scenario => {
         await nextFrame()
       })
 
-      after('stop application', async function() {
+      after('stop application', async function () {
         await application.stop()
       })
 
-      it('perform a keypress', async function() {
+      it('perform a keypress', async function () {
         const {
           keyboardEventInit,
           handler,

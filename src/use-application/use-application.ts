@@ -16,7 +16,7 @@ export const useApplication = (controller: Controller, options: DispatchOptions 
   Object.defineProperty(controller, 'isConnected', {
     get(): boolean {
       return !!Array.from(this.context.module.connectedContexts).find(c => c === this.context)
-    },
+    }
   })
 
   // getter to get the csrf token
