@@ -10,7 +10,7 @@ const defineMetaGetter = (controller: Controller, metaName: string, suffix: bool
   Object.defineProperty(controller, getterName, {
     get(): any {
       return typeCast(metaValue(metaName))
-    },
+    }
   })
 }
 
@@ -41,7 +41,7 @@ export const useMeta = (controller: Controller, options: MetaOptions = { suffix:
   })
 
   // define the metas getter to retreive an object with all metas
-  Object.defineProperty(controller, "metas", {
+  Object.defineProperty(controller, 'metas', {
     get(): Record<string, any> {
       const result: Record<string, any> = {}
 
@@ -52,6 +52,6 @@ export const useMeta = (controller: Controller, options: MetaOptions = { suffix:
         }
       })
       return result
-    },
+    }
   })
 }

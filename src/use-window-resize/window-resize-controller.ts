@@ -6,7 +6,6 @@ export class WindowResizeComposableController extends Controller {
 }
 
 export class WindowResizeController extends WindowResizeComposableController {
-
   constructor(context: Context) {
     super(context)
     requestAnimationFrame(() => {
@@ -17,5 +16,4 @@ export class WindowResizeController extends WindowResizeComposableController {
 
   declare observe: () => void
   declare unobserve: () => void
-
 }

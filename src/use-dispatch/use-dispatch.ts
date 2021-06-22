@@ -12,7 +12,7 @@ export interface DispatchOptions extends StimulusUseOptions {
 const defaultOptions = {
   eventPrefix: true,
   bubbles: true,
-  cancelable: true,
+  cancelable: true
 }
 
 export class UseDispatch extends StimulusUse {
@@ -44,13 +44,13 @@ export class UseDispatch extends StimulusUse {
     const event = new CustomEvent(eventNameWithPrefix, {
       detail,
       bubbles,
-      cancelable,
+      cancelable
     })
 
     // dispatch the event from the given element or by default from the root element of the controller
     targetElement.dispatchEvent(event)
 
-    log("dispatch", { eventName: eventNameWithPrefix, detail, bubbles, cancelable })
+    log('dispatch', { eventName: eventNameWithPrefix, detail, bubbles, cancelable })
 
     return event
   }

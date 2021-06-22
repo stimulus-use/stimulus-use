@@ -21,5 +21,4 @@ export class LazyLoadController extends LazyLoadComposableController {
 
   declare observe: () => void
   declare unobserve: () => void
-
 }

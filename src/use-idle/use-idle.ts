@@ -17,7 +17,7 @@ const defaultOptions = {
   initialState: false,
   events: defaultEvents,
   dispatchEvent: true,
-  eventPrefix: true,
+  eventPrefix: true
 }
 
 export const useIdle = (controller: IdleComposableController, options: IdleOptions = {}) => {
@@ -94,7 +94,7 @@ export const useIdle = (controller: IdleComposableController, options: IdleOptio
     disconnect() {
       unobserve()
       controllerDisconnect()
-    },
+    }
   })
 
   observe()

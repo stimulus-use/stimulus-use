@@ -29,7 +29,7 @@ export class UseTargetMutation extends StimulusUse {
     this.scopedTargetSelector = `data-${this.identifier}-target` //TODO: If/When stimulus 2.0 adds the identifier scoped targetAttribute to the schema, use that here instead
     // @ts-ignore
     this.targets = options.targets || controller.constructor.targets
-    this.prefixedTargets = this.targets.map((target) => `${this.identifierPrefix}${target}`)
+    this.prefixedTargets = this.targets.map(target => `${this.identifierPrefix}${target}`)
     this.observer = new MutationObserver(this.mutation)
 
     this.enhanceController()
@@ -37,17 +37,14 @@ export class UseTargetMutation extends StimulusUse {
   }
 
   observe = () => {
-    this.observer.observe(
-      this.targetElement,
-      {
-        subtree: true,
-        characterData: true,
-        childList: true,
-        attributes: true,
-        attributeOldValue: true,
-        attributeFilter: [this.targetSelector, this.scopedTargetSelector]
-      }
-    )
+    this.observer.observe(this.targetElement, {
+      subtree: true,
+      characterData: true,
+      childList: true,
+      attributes: true,
+      attributeOldValue: true,
+      attributeFilter: [this.targetSelector, this.scopedTargetSelector]
+    })
   }
 
   unobserve = () => {
@@ -69,8 +66,12 @@ export class UseTargetMutation extends StimulusUse {
             let removedTargets = oldTargets.filter(target => !newTargets.includes(target)) // Get only the oldTargets that dont occur in newTargets, thus, removed
             let addedTargets = newTargets.filter(target => !oldTargets.includes(target)) // Get only the newTargets that dont occur in oldTargets - thus, added
             // Fire updates for each changed target on the controller
-            removedTargets.forEach(target => this.targetRemoved(this.stripIdentifierPrefix(target), mutation.target, 'attributeChange'))
-            addedTargets.forEach(target => this.targetAdded(this.stripIdentifierPrefix(target), mutation.target, 'attributeChange'))
+            removedTargets.forEach(target =>
+              this.targetRemoved(this.stripIdentifierPrefix(target), mutation.target, 'attributeChange')
+            )
+            addedTargets.forEach(target =>
+              this.targetAdded(this.stripIdentifierPrefix(target), mutation.target, 'attributeChange')
+            )
           }
 
           break
@@ -94,7 +95,10 @@ export class UseTargetMutation extends StimulusUse {
     }
   }
 
-  private processNodeDOMMutation(node: Node, initialChangeModeAssumption: (name: string, node: Node, trigger: string) => void) {
+  private processNodeDOMMutation(
+    node: Node,
+    initialChangeModeAssumption: (name: string, node: Node, trigger: string) => void
+  ) {
     let nodule: Node | null = node
     let change = initialChangeModeAssumption
     let supportedTargets: string[] = []
@@ -170,20 +174,22 @@ export class UseTargetMutation extends StimulusUse {
   }
 
   private targetsUsedByThisControllerFromNode(node: Node): string[] {
-    if (node.nodeName == "#text" || node.nodeName == "#comment") {
+    if (node.nodeName == '#text' || node.nodeName == '#comment') {
       // Failsafe, just in case we try processing a text or comment node
       return []
     }
     // Extracts from the node, the target string, targetsUsedByThisController filters it, returns the array of supported target names
     let nodeElement = node as Element
-    return this.targetsUsedByThisController(nodeElement.getAttribute(this.scopedTargetSelector) || nodeElement.getAttribute(this.targetSelector))
+    return this.targetsUsedByThisController(
+      nodeElement.getAttribute(this.scopedTargetSelector) || nodeElement.getAttribute(this.targetSelector)
+    )
   }
 
   private targetsUsedByThisController(targetStr: string | null) {
     // Filters out any targets that don't belong to this  controller and returns the array of supported target names
     targetStr = targetStr || ''
     let targetsToCheck = this.stripIdentifierPrefix(targetStr).split(' ')
-    return this.targets.filter((n) => targetsToCheck.indexOf(n) !== -1)
+    return this.targets.filter(n => targetsToCheck.indexOf(n) !== -1)
   }
 
   private stripIdentifierPrefix(target: string): string {
@@ -200,7 +206,10 @@ export class UseTargetMutation extends StimulusUse {
   }
 }
 
-export const useTargetMutation = (controller: TargetMutationComposableController, options: TargetMutationOptions = {}) => {
+export const useTargetMutation = (
+  controller: TargetMutationComposableController,
+  options: TargetMutationOptions = {}
+) => {
   const observer = new UseTargetMutation(controller, options)
   return [observer.observe, observer.unobserve]
 }

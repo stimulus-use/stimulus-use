@@ -2,11 +2,10 @@ import { Context, Controller } from 'stimulus'
 import { TargetMutationOptions, useTargetMutation } from './use-target-mutation'
 
 export class TargetMutationComposableController extends Controller {
-  [index: string]: any;
+  [index: string]: any
 }
 
 export class TargetMutationController extends TargetMutationComposableController {
-
   options!: TargetMutationOptions
 
   constructor(context: Context) {
@@ -19,5 +18,4 @@ export class TargetMutationController extends TargetMutationComposableController
 
   declare observe: () => void
   declare unobserve: () => void
-
 }
