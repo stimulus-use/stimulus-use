@@ -1,6 +1,6 @@
 {
   "name": "stimulus-use",
-  "version": "0.25.1",
+  "version": "0.25.2",
   "description": "A collection of standard controllers and utilities for Stimulus",
   "main": "dist/index.umd.js",
   "module": "dist/index.js",
