@@ -83,5 +83,10 @@
     "hotkeys-js": ">3",
     "stimulus": ">=1.1.1 <3"
   },
+  "peerDependenciesMeta": {
+    "hotkeys-js": {
+      "optional": true
+    }
+  },
   "dependencies": {}
 }
