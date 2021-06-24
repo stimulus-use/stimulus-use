@@ -38,7 +38,6 @@
     "chai-dom": "^1.8.2",
     "css-loader": "^5.0.1",
     "cypress": "^5.4.0",
-    "hotkeys-js": "^3.8.5",
     "html2js": "^0.2.0",
     "intersection-observer": "^0.11.0",
     "karma": "^6.1.0",
@@ -88,5 +87,7 @@
       "optional": true
     }
   },
-  "dependencies": {}
+  "dependencies": {
+    "hotkeys-js": ">3"
+  }
 }
