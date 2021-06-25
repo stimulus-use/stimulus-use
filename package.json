@@ -2,8 +2,10 @@
   "name": "stimulus-use",
   "version": "0.25.2",
   "description": "A collection of standard controllers and utilities for Stimulus",
-  "main": "dist/index.umd.js",
+  "sideEffects": false,
+  "main": "dist/index.js",
   "module": "dist/index.js",
+  "unpkg": "dist/index.umd.js",
   "types": "dist/index.d.ts",
   "amdName": "StimulusUse",
   "author": "@adrienpoly",
@@ -38,6 +40,7 @@
     "chai-dom": "^1.8.2",
     "css-loader": "^5.0.1",
     "cypress": "^5.4.0",
+    "hotkeys-js": ">=3",
     "html2js": "^0.2.0",
     "intersection-observer": "^0.11.0",
     "karma": "^6.1.0",
@@ -86,8 +89,5 @@
     "hotkeys-js": {
       "optional": true
     }
-  },
-  "dependencies": {
-    "hotkeys-js": ">=3"
   }
 }
