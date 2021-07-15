@@ -167,6 +167,9 @@ Made with :heart: by [@adrienpoly](https://twitter.com/adrienpoly) and all these
     <td align="center"><a href="https://symfonycasts.com"><img src="https://avatars.githubusercontent.com/u/121003?v=4?s=80" width="80px;" alt=""/><br /><sub><b>Ryan Weaver</b></sub></a><br /><a href="https://github.com/stimulus-use/stimulus-use/commits?author=weaverryan" title="Documentation">📖</a> <a href="https://github.com/stimulus-use/stimulus-use/issues?q=author%3Aweaverryan" title="Bug reports">🐛</a></td>
     <td align="center"><a href="https://github.com/Intrepidd"><img src="https://avatars.githubusercontent.com/u/803765?v=4?s=80" width="80px;" alt=""/><br /><sub><b>Adrien S</b></sub></a><br /><a href="https://github.com/stimulus-use/stimulus-use/issues?q=author%3AIntrepidd" title="Bug reports">🐛</a></td>
   </tr>
+  <tr>
+    <td align="center"><a href="https://github.com/FlxAlbroscheit"><img src="https://avatars.githubusercontent.com/u/2439195?v=4?s=80" width="80px;" alt=""/><br /><sub><b>Felix Albroscheit</b></sub></a><br /><a href="https://github.com/stimulus-use/stimulus-use/issues?q=author%3AFlxAlbroscheit" title="Bug reports">🐛</a></td>
+  </tr>
 </table>
 
 <!-- markdownlint-restore -->
