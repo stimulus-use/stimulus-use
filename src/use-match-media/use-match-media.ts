@@ -8,7 +8,7 @@ export interface MatchMediaPayload {
   name: string
   media: string
   matches: boolean
-  originalEvent?: MediaQueryListEvent
+  event?: MediaQueryListEvent
 }
 
 export interface MatchMediaOptions extends StimulusUseOptions {
@@ -17,18 +17,20 @@ export interface MatchMediaOptions extends StimulusUseOptions {
 
 const defaultOptions = {
   mediaQueries: {},
-  dispatchEvent: false,
-  eventPrefix: false,
+  dispatchEvent: true,
+  eventPrefix: true,
   debug: false
 }
 
 export class UseMatchMedia extends StimulusUse {
   mediaQueries: MediaQueryDefinitions
   matches: Array<MediaQueryList> = []
+  controller: Controller
 
   constructor(controller: Controller, options: MatchMediaOptions = {}) {
     super(controller, options)
 
+    this.controller = controller
     this.mediaQueries = options.mediaQueries ?? defaultOptions.mediaQueries
     this.dispatchEvent = options.dispatchEvent ?? defaultOptions.dispatchEvent
     this.eventPrefix = options.eventPrefix ?? defaultOptions.eventPrefix
@@ -48,15 +50,15 @@ export class UseMatchMedia extends StimulusUse {
     if (!name) return
 
     const { media, matches } = event
-    this.changed({ name, media, matches, originalEvent: event })
+    this.changed({ name, media, matches, event })
   }
 
   changed = (payload: MatchMediaPayload) => {
     const { name } = payload
 
-    if (payload.originalEvent) {
+    if (payload.event) {
       this.call(camelize(`${name}_changed`), payload)
-      this.dispatch('changed', payload)
+      this.dispatch(`${name}:changed`, payload)
       this.log(`media query "${name}" changed`, payload)
     }
 
