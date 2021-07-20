@@ -2,16 +2,7 @@ import { Controller } from 'stimulus'
 import { useMatchMedia } from 'stimulus-use'
 
 export default class extends Controller {
-  static targets = [
-    'small',
-    'tall',
-    'light',
-    'landscape',
-    'smallCount',
-    'tallCount',
-    'lightCount',
-    'landscapeCount'
-  ]
+  static targets = ['small', 'tall', 'light', 'landscape', 'smallCount', 'tallCount', 'lightCount', 'landscapeCount']
 
   static values = {
     smallCount: Number,
