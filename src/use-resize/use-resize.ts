@@ -9,7 +9,7 @@ export interface ResizeOptions {
 
 const defaultOptions = {
   dispatchEvent: true,
-  eventPrefix: true,
+  eventPrefix: true
 }
 
 export const useResize = (controller: ResizeComposableController, options: ResizeOptions = {}) => {
@@ -25,7 +25,7 @@ export const useResize = (controller: ResizeComposableController, options: Resiz
       const eventName = composeEventName('resize', controller, eventPrefix)
       const appearEvent = extendedEvent(eventName, null, {
         controller,
-        entry,
+        entry
       })
       targetElement.dispatchEvent(appearEvent)
     }
@@ -46,7 +46,7 @@ export const useResize = (controller: ResizeComposableController, options: Resiz
     disconnect() {
       unobserve()
       controllerDisconnect()
-    },
+    }
   })
 
   observe()

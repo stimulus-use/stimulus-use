@@ -74,6 +74,9 @@ controllers.forEach(Controller => {
         document.documentElement.setAttribute('data-turbolinks-preview', true)
         expect(application.controllers[0].isPreview).to.equal(true)
         document.documentElement.removeAttribute('data-turbolinks-preview')
+        document.documentElement.setAttribute('data-turbo-preview', true)
+        expect(application.controllers[0].isPreview).to.equal(true)
+        document.documentElement.removeAttribute('data-turbo-preview')
       })
 
       it('csrf token is correctly updated', async function () {

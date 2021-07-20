@@ -5,8 +5,7 @@ export interface MutationControllerOptions {
   element?: Element
 }
 
-export interface MutationOptions extends MutationObserverInit, MutationControllerOptions, StimulusUseOptions {
-}
+export interface MutationOptions extends MutationObserverInit, MutationControllerOptions, StimulusUseOptions {}
 
 export class UseMutation extends StimulusUse {
   controller: MutationComposableController
@@ -30,7 +29,11 @@ export class UseMutation extends StimulusUse {
     try {
       this.observer.observe(this.targetElement, this.options)
     } catch (error) {
-      this.controller.application.handleError(error, "At a minimum, one of childList, attributes, and/or characterData must be true", {})
+      this.controller.application.handleError(
+        error,
+        'At a minimum, one of childList, attributes, and/or characterData must be true',
+        {}
+      )
     }
   }
 
@@ -42,7 +45,7 @@ export class UseMutation extends StimulusUse {
     this.call('mutate', entries)
     this.log('mutate', { entries })
 
-    this.dispatch("mutate", { entries })
+    this.dispatch('mutate', { entries })
   }
 
   private enhanceController() {

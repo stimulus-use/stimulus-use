@@ -20,5 +20,4 @@ export class IntersectionController extends IntersectionComposableController {
 
   declare observe: () => void
   declare unobserve: () => void
-
 }

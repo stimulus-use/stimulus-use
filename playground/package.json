@@ -9,6 +9,7 @@
   },
   "dependencies": {
     "stimulus": "^1.1.1",
-    "stimulus-use": "^0.1.5"
+    "stimulus-use": "^0.1.5",
+    "hotkeys-js": ">=3"
   }
 }

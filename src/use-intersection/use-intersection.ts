@@ -9,7 +9,7 @@ export interface IntersectionOptions extends IntersectionObserverInit {
 
 const defaultOptions = {
   dispatchEvent: true,
-  eventPrefix: true,
+  eventPrefix: true
 }
 
 export const useIntersection = (controller: IntersectionComposableController, options: IntersectionOptions = {}) => {
@@ -70,7 +70,7 @@ export const useIntersection = (controller: IntersectionComposableController, op
     disconnect() {
       unobserve()
       controllerDisconnect()
-    },
+    }
   })
 
   observe()

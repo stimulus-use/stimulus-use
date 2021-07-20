@@ -1,7 +1,7 @@
 import { StimulusUse, StimulusUseOptions } from '../stimulus-use'
 import { VisibilityComposableController } from './visibility-controller'
 
-export interface VisibilityOptions extends StimulusUseOptions { }
+export interface VisibilityOptions extends StimulusUseOptions {}
 
 export class UseVisibility extends StimulusUse {
   controller: VisibilityComposableController

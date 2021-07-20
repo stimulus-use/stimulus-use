@@ -52,6 +52,7 @@ We got you covered 👉 [stimulus-use.github.io/stimulus-use](https://stimulus-u
   | Mixin | Description | NEW Callbacks |
   |-----------------------|-------------|---------------------|
   |[`useClickOutside`](./docs/use-click-outside.md)|Tracks the clicks outside of the element and adds a new lifecycle callback **clickOutside**.|`clickOutside`|
+  |[`useHotkeys`](./docs/use-hotkeys.md)|Registers hotkeys using the [hotkeys-js](https://wangchujiang.com/hotkeys/) library and binds them to handler methods||
   |[`useHover`](./docs/use-hover.md)|Tracks the user's mouse movements over an element and adds **mouseEnter** and **mouseLeave** callbacks to your controller.|`mouseEnter` `mouseLeave`|
   |[`useIdle`](./docs/use-idle.md)| Tracks if the user is idle on your page and adds **away** and **back** callbacks to your controller.|`away`</br> `back`|
   |[`useIntersection`](./docs/use-intersection.md) | Tracks the element's intersection and adds **appear**, **disappear** callbacks to your controller.|`appear`</br> `disappear`|
@@ -158,12 +159,16 @@ Made with :heart: by [@adrienpoly](https://twitter.com/adrienpoly) and all these
     <td align="center"><a href="https://github.com/dancallaghan"><img src="https://avatars1.githubusercontent.com/u/1025380?v=4?s=80" width="80px;" alt=""/><br /><sub><b>Dan Callaghan</b></sub></a><br /><a href="https://github.com/stimulus-use/stimulus-use/commits?author=dancallaghan" title="Documentation">📖</a></td>
   </tr>
   <tr>
-    <td align="center"><a href="https://Konnor.site"><img src="https://avatars2.githubusercontent.com/u/26425882?v=4?s=80" width="80px;" alt=""/><br /><sub><b>Konnor Rogers</b></sub></a><br /><a href="https://github.com/stimulus-use/stimulus-use/issues?q=author%3AParamagicDev" title="Bug reports">🐛</a></td>
+    <td align="center"><a href="https://Konnor.site"><img src="https://avatars2.githubusercontent.com/u/26425882?v=4?s=80" width="80px;" alt=""/><br /><sub><b>Konnor Rogers</b></sub></a><br /><a href="https://github.com/stimulus-use/stimulus-use/issues?q=author%3AParamagicDev" title="Bug reports">🐛</a> <a href="https://github.com/stimulus-use/stimulus-use/commits?author=ParamagicDev" title="Code">💻</a></td>
     <td align="center"><a href="https://francisco.io/"><img src="https://avatars2.githubusercontent.com/u/2801252?v=4?s=80" width="80px;" alt=""/><br /><sub><b>Francisco Presencia</b></sub></a><br /><a href="https://github.com/stimulus-use/stimulus-use/commits?author=franciscop" title="Documentation">📖</a></td>
     <td align="center"><a href="https://github.com/tsmd"><img src="https://avatars3.githubusercontent.com/u/490085?v=4?s=80" width="80px;" alt=""/><br /><sub><b>Takayuki Shimada</b></sub></a><br /><a href="https://github.com/stimulus-use/stimulus-use/issues?q=author%3Atsmd" title="Bug reports">🐛</a></td>
     <td align="center"><a href="https://github.com/Sub-Xaero"><img src="https://avatars0.githubusercontent.com/u/9960703?v=4?s=80" width="80px;" alt=""/><br /><sub><b>Dylan Clarke</b></sub></a><br /><a href="https://github.com/stimulus-use/stimulus-use/commits?author=Sub-Xaero" title="Code">💻</a> <a href="https://github.com/stimulus-use/stimulus-use/commits?author=Sub-Xaero" title="Documentation">📖</a></td>
     <td align="center"><a href="https://www.howtoruby.com"><img src="https://avatars0.githubusercontent.com/u/1651750?v=4?s=80" width="80px;" alt=""/><br /><sub><b>Martin Tomov</b></sub></a><br /><a href="https://github.com/stimulus-use/stimulus-use/commits?author=mtomov" title="Documentation">📖</a></td>
     <td align="center"><a href="https://symfonycasts.com"><img src="https://avatars.githubusercontent.com/u/121003?v=4?s=80" width="80px;" alt=""/><br /><sub><b>Ryan Weaver</b></sub></a><br /><a href="https://github.com/stimulus-use/stimulus-use/commits?author=weaverryan" title="Documentation">📖</a> <a href="https://github.com/stimulus-use/stimulus-use/issues?q=author%3Aweaverryan" title="Bug reports">🐛</a></td>
+    <td align="center"><a href="https://github.com/Intrepidd"><img src="https://avatars.githubusercontent.com/u/803765?v=4?s=80" width="80px;" alt=""/><br /><sub><b>Adrien S</b></sub></a><br /><a href="https://github.com/stimulus-use/stimulus-use/issues?q=author%3AIntrepidd" title="Bug reports">🐛</a></td>
+  </tr>
+  <tr>
+    <td align="center"><a href="https://github.com/FlxAlbroscheit"><img src="https://avatars.githubusercontent.com/u/2439195?v=4?s=80" width="80px;" alt=""/><br /><sub><b>Felix Albroscheit</b></sub></a><br /><a href="https://github.com/stimulus-use/stimulus-use/issues?q=author%3AFlxAlbroscheit" title="Bug reports">🐛</a></td>
   </tr>
 </table>
 

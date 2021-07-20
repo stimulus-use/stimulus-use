@@ -20,5 +20,4 @@ export class IdleController extends IdleComposableController {
 
   declare observe: () => void
   declare unobserve: () => void
-
 }

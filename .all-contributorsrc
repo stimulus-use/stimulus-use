@@ -142,7 +142,8 @@
       "avatar_url": "https://avatars2.githubusercontent.com/u/26425882?v=4",
       "profile": "https://Konnor.site",
       "contributions": [
-        "bug"
+        "bug",
+        "code"
       ]
     },
     {
@@ -189,6 +190,24 @@
       "profile": "https://symfonycasts.com",
       "contributions": [
         "doc",
+        "bug"
+      ]
+    },
+    {
+      "login": "Intrepidd",
+      "name": "Adrien S",
+      "avatar_url": "https://avatars.githubusercontent.com/u/803765?v=4",
+      "profile": "https://github.com/Intrepidd",
+      "contributions": [
+        "bug"
+      ]
+    },
+    {
+      "login": "FlxAlbroscheit",
+      "name": "Felix Albroscheit",
+      "avatar_url": "https://avatars.githubusercontent.com/u/2439195?v=4",
+      "profile": "https://github.com/FlxAlbroscheit",
+      "contributions": [
         "bug"
       ]
     }
