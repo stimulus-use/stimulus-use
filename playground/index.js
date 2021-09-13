@@ -1,7 +1,6 @@
 import 'intersection-observer'
-import { Application } from 'stimulus'
-import { IntersectionController } from 'stimulus-use'
-import { definitionsFromContext } from 'stimulus/webpack-helpers'
+import { Application } from '@hotwired/stimulus'
+import { IntersectionController, definitionsFromContext } from 'stimulus-use'
 
 const application = Application.start()
 const context = require.context('./controllers', true, /\.js$/)
