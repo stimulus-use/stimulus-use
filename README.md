@@ -30,6 +30,8 @@
 
 ## Getting Started
 
+⚠️ Stimulus 3 has several breaking changes. If you want to use Stimulus-Use with Stimulus 3 you can use the current beta version of Stimulus-Use `yarn add stimulus-use@beta`. All contribution to Stimulus 3 features are now on the [stimulus-3 branch](https://github.com/stimulus-use/stimulus-use/tree/stimulus-3)
+
 npm
 ```bash
 npm i stimulus-use
