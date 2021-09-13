@@ -61,6 +61,7 @@ We got you covered 👉 [stimulus-use.github.io/stimulus-use](https://stimulus-u
   |[`useResize`](./docs/use-resize.md)|Tracks the element's size and adds a new lifecycle callback **resize**.|`resize`|
   |[`useTargetMutation`](./docs/use-target-mutation.md) | Tracks when targets are added or removed from the controller's scope, or their contents changed. Adds **[target]TargetAdded** , **[target]TargetRemoved** and **[target]TargetChanged** callback to your controller for each specified target.| `[target]TargetAdded` `[target]TargetRemoved` `[target]TargetChanged`|
   |[`useVisibility`](./docs/use-visibility.md) </br>| Tracks the page visibility and adds **visible**, **invisible** callbacks to your controller.|`visible`</br> `invisible`|
+  |[`useWindowFocus`](./docs/use-window-focus.md) </br>| Tracks the window focus and adds **focus**, **unfocs** callbacks to your controller.|`focus`</br> `unfocus`|
   |[`useWindowResize`](./docs/use-window-resize.md)| Tracks the size of the `window` object and adds a new lifecycle callback **windowResize**.|`windowResize`|
 
 ### Optimization
