@@ -1,5 +1,5 @@
 import 'intersection-observer'
-import { Application } from 'stimulus'
+import { Application } from '@hotwired/stimulus'
 import { IntersectionController } from 'stimulus-use'
 import { definitionsFromContext } from 'stimulus/webpack-helpers'
 

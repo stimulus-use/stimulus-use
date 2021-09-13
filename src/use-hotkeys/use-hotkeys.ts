@@ -1,4 +1,4 @@
-import { Controller } from 'stimulus'
+import { Controller } from '@hotwired/stimulus'
 import hotkeys, { KeyHandler, HotkeysEvent } from 'hotkeys-js'
 import { StimulusUse, StimulusUseOptions } from '../stimulus-use'
 

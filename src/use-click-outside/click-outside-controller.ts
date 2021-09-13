@@ -1,4 +1,4 @@
-import { Context, Controller } from 'stimulus'
+import { Context, Controller } from '@hotwired/stimulus'
 import { ClickOutsideOptions, useClickOutside } from './use-click-outside'
 
 export class ClickOutsideComposableController extends Controller {

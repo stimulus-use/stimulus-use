@@ -1,4 +1,4 @@
-import { Controller, Context } from 'stimulus'
+import { Controller, Context } from '@hotwired/stimulus'
 import { useWindowFocus, WindowFocusOptions } from './use-window-focus'
 
 export class WindowFocusComposableController extends Controller {

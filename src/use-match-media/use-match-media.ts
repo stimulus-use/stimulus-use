@@ -1,4 +1,4 @@
-import { Controller } from 'stimulus'
+import { Controller } from '@hotwired/stimulus'
 import { StimulusUse, StimulusUseOptions } from '../stimulus-use'
 import { camelize } from '../support/index'
 

@@ -1,4 +1,4 @@
-import { Controller } from 'stimulus'
+import { Controller } from '@hotwired/stimulus'
 import { useIntersection, useResize } from 'stimulus-use'
 
 export default class extends Controller {
@@ -22,7 +22,7 @@ export default class extends Controller {
 }
 
 //user_controller.js
-import { Controller } from 'stimulus'
+import { Controller } from '@hotwired/stimulus'
 import { useIdle } from 'stimulus-use'
 
 export default class extends Controller {

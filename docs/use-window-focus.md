@@ -49,7 +49,7 @@ export default class extends Controller {
 **Composing**
 
 ```js
-import { Controller } from 'stimulus'
+import { Controller } from '@hotwired/stimulus'
 import { useWindowFocus } from 'stimulus-use'
 
 export default class extends Controller {

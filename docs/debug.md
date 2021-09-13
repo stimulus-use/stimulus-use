@@ -5,7 +5,7 @@ Some `stimulus-use` mixins and controller have built in logging capabilities to 
 ## Global setting
 
 ```js
-import { Application } from 'stimulus'
+import { Application } from '@hotwired/stimulus'
 import { definitionsFromContext } from 'stimulus/webpack-helpers'
 
 const application = Application.start()

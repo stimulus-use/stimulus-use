@@ -1,4 +1,4 @@
-import { Controller, Context } from 'stimulus'
+import { Controller, Context } from '@hotwired/stimulus'
 import { useVisibility, VisibilityOptions } from './use-visibility'
 
 export class VisibilityComposableController extends Controller {

@@ -10,11 +10,11 @@
   "amdName": "StimulusUse",
   "author": "@adrienpoly",
   "license": "MIT",
-  "external": "stimulus",
+  "external": "@hotwired/stimulus",
   "scripts": {
     "start": "webpack-dev-server --mode development --open",
     "prebuild": "$npm_execpath run clean",
-    "build": "tsc -b && microbundle src/index.ts -f umd --globals stimulus=Stimulus",
+    "build": "tsc -b && microbundle src/index.ts -f umd --globals @hotwired/stimulus=Stimulus",
     "test": "NODE_ENV=test karma start",
     "test:watch": "NODE_ENV=test karma start --auto-watch --no-single-run",
     "test:treeshake": "$npm_execpath run agadoo",
@@ -67,7 +67,6 @@
     "sinon": "^9.0.3",
     "sinon-chai": "^3.5.0",
     "sourcemap": "^0.1.0",
-    "stimulus": ">=1.1.1 <3",
     "style-loader": "^2.0.0",
     "tailwindcss": "^2.0.1",
     "ts-loader": "^8.0.3",
@@ -80,10 +79,9 @@
     "type": "git",
     "url": "https://github.com/stimulus-use/stimulus-use"
   },
-  "peerDependencies": {
-    "stimulus": ">=1.1.1 <3"
-  },
+  "peerDependencies": {},
   "dependencies": {
+    "@hotwired/stimulus": "^3.0.0-beta.2",
     "hotkeys-js": ">=3"
   }
 }

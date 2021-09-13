@@ -1,4 +1,4 @@
-import { Controller } from 'stimulus'
+import { Controller } from '@hotwired/stimulus'
 import { useVisibility } from '../../src'
 
 export class UseLogController extends Controller {

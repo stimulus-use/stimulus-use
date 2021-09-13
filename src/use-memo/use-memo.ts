@@ -1,4 +1,4 @@
-import { Controller } from 'stimulus'
+import { Controller } from '@hotwired/stimulus'
 
 const memoize = (controller: Controller, name: string, value: any) => {
   Object.defineProperty(controller, name, { value })

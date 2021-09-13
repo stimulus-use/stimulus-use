@@ -1,4 +1,4 @@
-import { Controller } from 'stimulus'
+import { Controller } from '@hotwired/stimulus'
 import { useDispatch, DispatchOptions } from '../use-dispatch/index'
 
 export const useApplication = (controller: Controller, options: DispatchOptions = {}) => {

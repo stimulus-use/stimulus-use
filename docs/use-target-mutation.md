@@ -78,7 +78,7 @@ export default class extends Controller {
 **Composing**
 
 ```js
-import { Controller } from 'stimulus'
+import { Controller } from '@hotwired/stimulus'
 import { useTargetMutation } from 'stimulus-use'
 
 export default class extends Controller {
