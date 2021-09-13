@@ -110,7 +110,7 @@ If you're not using Tailwind, you'll need to create custom CSS classes. Here's a
 The controller for `custom-close`:
 
 ```js
-import { Controller } from 'stimulus';
+import { Controller } from '@hotwired/stimulus';
 import { useTransition } from 'stimulus-use';
 
 export default class extends Controller {

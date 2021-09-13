@@ -1,4 +1,4 @@
-import { Controller, Application } from 'stimulus'
+import { Controller, Application } from '@hotwired/stimulus'
 import { useApplication, ApplicationController } from '../src'
 import { nextFrame, TestLogger, click } from './helpers'
 import { expect } from 'chai'

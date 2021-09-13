@@ -1,4 +1,4 @@
-import { Context, Controller } from 'stimulus'
+import { Context, Controller } from '@hotwired/stimulus'
 import { MutationOptions, useMutation } from './use-mutation'
 
 export class MutationComposableController extends Controller {

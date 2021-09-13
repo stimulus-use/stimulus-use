@@ -1,4 +1,4 @@
-import { Controller } from 'stimulus'
+import { Controller } from '@hotwired/stimulus'
 
 export const method = (controller: Controller, methodName: string): Function => {
   const method = (controller as any)[methodName]

@@ -1,4 +1,4 @@
-import { Controller, Context } from 'stimulus'
+import { Controller, Context } from '@hotwired/stimulus'
 import { useIntersection, IntersectionOptions } from './use-intersection'
 
 export class IntersectionComposableController extends Controller {

@@ -1,4 +1,4 @@
-import { Context, Controller } from 'stimulus'
+import { Context, Controller } from '@hotwired/stimulus'
 import { HoverOptions, useHover } from './use-hover'
 
 export class HoverComposableController extends Controller {

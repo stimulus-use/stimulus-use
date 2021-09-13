@@ -1,5 +1,5 @@
 // intersection_controller.js
-import { Controller } from 'stimulus'
+import { Controller } from '@hotwired/stimulus'
 import { useIntersection, useTransition } from 'stimulus-use'
 
 export default class extends Controller {

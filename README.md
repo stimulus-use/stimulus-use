@@ -96,7 +96,7 @@ Stimulus-use can be used in two ways:  **composing* with mixins* or **extending 
 This is the prefered approach as it bring the most flexibility. Simply import a mixin and apply it in the `connect` or `initialize` to adds new behaviors to you controller. You can combine several mixins within the same controller.
 
 ```js
-import { Controller } from 'stimulus'
+import { Controller } from '@hotwired/stimulus'
 import { useIntersection, useResize } from 'stimulus-use'
 
 export default class extends Controller {

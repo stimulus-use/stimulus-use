@@ -1,4 +1,4 @@
-import { Controller, Context } from 'stimulus'
+import { Controller, Context } from '@hotwired/stimulus'
 import { IdleOptions, useIdle } from './use-idle'
 
 export class IdleComposableController extends Controller {

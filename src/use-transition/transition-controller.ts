@@ -1,4 +1,4 @@
-import { Controller, Context } from 'stimulus'
+import { Controller, Context } from '@hotwired/stimulus'
 import { useTransition, TransitionOptions } from './use-transition'
 
 export class TransitionComposableController extends Controller {

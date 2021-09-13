@@ -1,5 +1,5 @@
 import { composeEventName } from '../support/index'
-import { Controller } from 'stimulus'
+import { Controller } from '@hotwired/stimulus'
 import { StimulusUse, StimulusUseOptions } from '../stimulus-use'
 
 export interface DispatchOptions extends StimulusUseOptions {

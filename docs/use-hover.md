@@ -20,7 +20,7 @@ useHover(controller, options = {})
 **Composing**
 
 ```js
-import { Controller } from 'stimulus'
+import { Controller } from '@hotwired/stimulus'
 import { useHover } from 'stimulus-use'
 
 export default class extends Controller {
@@ -65,7 +65,7 @@ This module adds two new callbacks `mouseEnter` and `mouseLeave` that you may us
 For example to add an 'active' class when the user moves the mouse over an element: 
 
 ```js
-import { Controller } from 'stimulus'
+import { Controller } from '@hotwired/stimulus'
 import { useHover } from 'stimulus-use'
 
 export default class extends Controller {
