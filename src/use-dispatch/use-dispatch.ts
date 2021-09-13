@@ -16,7 +16,6 @@ const defaultOptions = {
 }
 
 export class UseDispatch extends StimulusUse {
-  targetElement: Element
   eventPrefix: boolean | string
   bubbles: boolean
   cancelable: boolean

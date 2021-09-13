@@ -10,7 +10,6 @@ export interface MutationOptions extends MutationObserverInit, MutationControlle
 export class UseMutation extends StimulusUse {
   controller: MutationComposableController
   observer: MutationObserver
-  targetElement: Element
   options: MutationOptions
 
   constructor(controller: MutationComposableController, options: MutationOptions = {}) {
