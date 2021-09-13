@@ -9,10 +9,10 @@ export default class extends Controller {
   }
 
   focus() {
-    this.visibilityTarget.textContent = "focused"
+    this.visibilityTarget.textContent = 'focused'
   }
 
   unfocus() {
-    this.visibilityTarget.textContent = "not focused"
+    this.visibilityTarget.textContent = 'not focused'
   }
 }

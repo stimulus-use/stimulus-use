@@ -7,17 +7,17 @@ context('useWindowFocus', () => {
   it('should adjust if the window get focused and unfocused', () => {
     cy.visit('http://localhost:8080')
 
-    cy.window().then((win) => {
+    cy.window().then(win => {
       win.document.hasFocus = () => false
       cy.get('[data-controller="window-focus"]').contains('Window : not focused')
     })
 
-    cy.window().then((win) => {
+    cy.window().then(win => {
       win.document.hasFocus = () => true
       cy.get('[data-controller="window-focus"]').contains('Window : focused')
     })
 
-    cy.window().then((win) => {
+    cy.window().then(win => {
       win.document.hasFocus = () => false
       cy.get('[data-controller="window-focus"]').contains('Window : not focused')
     })
