@@ -216,6 +216,39 @@
               </div>
             </div>
           </div>
+          <div class="bg-white shadow rounded-lg" data-controller="match-media">
+            <div class="px-4 py-5 sm:p-6">
+              <div class="font-semibold text-green-500">useMatchMedia</div>
+
+              <div class="text-sm text-gray-400 truncate">
+                Matches any media query
+
+                <table class="mt-2 table-auto">
+                  <tr>
+                    <th class="text-left">Media</th>
+                    <th class="p-3">No. Changed</th>
+                  </tr>
+                  <tr>
+                    <td><span data-match-media-target="small"></span></td>
+                    <td><span data-match-media-target="smallCount" class="p-3">0</span></td>
+                  </tr>
+                  <tr>
+                    <td><span data-match-media-target="tall"></span></td>
+                    <td><span data-match-media-target="tallCount" class="p-3">0</span></td>
+                  </tr>
+                  <tr>
+                    <td><span data-match-media-target="light"></span></td>
+                    <td><span data-match-media-target="lightCount" class="p-3">0</span></td>
+                  </tr>
+                  <tr>
+                    <td><span data-match-media-target="landscape"></span></td>
+                    <td><span data-match-media-target="landscapeCount" class="p-3">0</span></td>
+                  </tr>
+                </table>
+              </div>
+              <div class="grid grid-cols-1 mt-3"></div>
+            </div>
+          </div>
           <div class="bg-white shadow rounded-lg">
             <div class="px-4 py-5 sm:p-6">
               <div class="font-semibold text-green-500">useHotkeys</div>

@@ -10,6 +10,7 @@
   * [useIntersection](use-intersection.md)
   * [useHotkeys](use-hotkeys.md)
   * [useHover](use-hover.md)
+  * [useMatchMedia](use-match-media.md)
   * [useMutation](use-mutation.md)
   * [useResize](use-resize.md)
   * [useTargetMutation](use-target-mutation.md)
@@ -29,4 +30,3 @@
   * [useDispatch](use-dispatch.md)
   * [useMeta](use-meta.md)
 * [Playground](stu-playground.md)
-
