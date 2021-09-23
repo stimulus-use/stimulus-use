@@ -30,5 +30,4 @@
   * [useApplication](application-controller.md)
   * [useDispatch](use-dispatch.md)
   * [useMeta](use-meta.md)
-  * [Webpack helpers](webpack-helpers.md)
 * [Playground](stu-playground.md)
