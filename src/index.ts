@@ -18,4 +18,3 @@ export { useTransition, TransitionOptions, TransitionController } from './use-tr
 export { useHotkeys } from './use-hotkeys'
 export { useMatchMedia, MatchMediaOptions } from './use-match-media/index'
 export { useWindowFocus, WindowFocusController } from './use-window-focus/index'
-export { definitionsFromContext } from './webpack-helpers'
