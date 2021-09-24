@@ -30,6 +30,8 @@
 
 ## Getting Started
 
+⚠️ Stimulus 3 has several breaking changes. If you want to use Stimulus-Use with Stimulus 3 you can use the current beta version of Stimulus-Use `yarn add stimulus-use@beta`. All contribution to Stimulus 3 features are now on the [stimulus-3 branch](https://github.com/stimulus-use/stimulus-use/tree/stimulus-3)
+
 npm
 ```bash
 npm i stimulus-use
@@ -171,6 +173,7 @@ Made with :heart: by [@adrienpoly](https://twitter.com/adrienpoly) and all these
   </tr>
   <tr>
     <td align="center"><a href="https://github.com/FlxAlbroscheit"><img src="https://avatars.githubusercontent.com/u/2439195?v=4?s=80" width="80px;" alt=""/><br /><sub><b>Felix Albroscheit</b></sub></a><br /><a href="https://github.com/stimulus-use/stimulus-use/issues?q=author%3AFlxAlbroscheit" title="Bug reports">🐛</a></td>
+    <td align="center"><a href="https://guillaumebriday.fr"><img src="https://avatars.githubusercontent.com/u/8252238?v=4?s=80" width="80px;" alt=""/><br /><sub><b>Guillaume Briday</b></sub></a><br /><a href="https://github.com/stimulus-use/stimulus-use/commits?author=guillaumebriday" title="Code">💻</a></td>
   </tr>
 </table>
 
