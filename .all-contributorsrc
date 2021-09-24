@@ -210,6 +210,15 @@
       "contributions": [
         "bug"
       ]
+    },
+    {
+      "login": "guillaumebriday",
+      "name": "Guillaume Briday",
+      "avatar_url": "https://avatars.githubusercontent.com/u/8252238?v=4",
+      "profile": "https://guillaumebriday.fr",
+      "contributions": [
+        "code"
+      ]
     }
   ],
   "contributorsPerLine": 7,
