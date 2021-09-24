@@ -82,6 +82,7 @@
   "peerDependencies": {},
   "dependencies": {
     "@hotwired/stimulus": "^3.0.0",
+    "stimulus": ">=3",
     "hotkeys-js": ">=3"
   }
 }
