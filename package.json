@@ -1,6 +1,6 @@
 {
   "name": "stimulus-use",
-  "version": "0.40.0-0",
+  "version": "0.40.0-1",
   "description": "A collection of standard controllers and utilities for Stimulus",
   "sideEffects": false,
   "main": "dist/index.js",
