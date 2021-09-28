@@ -33,6 +33,7 @@
     "@babel/plugin-proposal-class-properties": "^7.10.4",
     "@babel/plugin-transform-runtime": "^7.11.5",
     "@babel/preset-modules": "^0.1.4",
+    "@hotwired/stimulus": ">=3",
     "@hotwired/stimulus-webpack-helpers": "^1.0.1",
     "@rollup/plugin-node-resolve": "^13.0.5",
     "@rollup/plugin-typescript": "^8.2.5",
@@ -83,10 +84,11 @@
     "type": "git",
     "url": "https://github.com/stimulus-use/stimulus-use"
   },
-  "peerDependencies": {},
+  "peerDependencies": {
+    "stimulus": ">=3",
+    "@hotwired/stimulus": ">=3"
+  },
   "dependencies": {
-    "@hotwired/stimulus": "^3.0.0",
-    "hotkeys-js": ">=3",
-    "stimulus": ">=3"
+    "hotkeys-js": ">=3"
   }
 }
