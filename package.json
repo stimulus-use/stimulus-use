@@ -1,6 +1,6 @@
 {
   "name": "stimulus-use",
-  "version": "0.50.0-1",
+  "version": "0.50.0-2",
   "description": "A collection of standard controllers and utilities for Stimulus",
   "sideEffects": false,
   "main": "dist/index.js",
@@ -85,8 +85,8 @@
     "url": "https://github.com/stimulus-use/stimulus-use"
   },
   "peerDependencies": {
-    "stimulus": ">=3",
-    "@hotwired/stimulus": ">=3"
+    "@hotwired/stimulus": ">=3",
+    "stimulus": ">=3"
   },
   "dependencies": {
     "hotkeys-js": ">=3"
