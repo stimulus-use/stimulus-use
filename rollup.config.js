@@ -10,7 +10,6 @@ export default [
   {
     input: 'src/index.ts',
     external: ['@hotwired/stimulus', 'hotkeys-js'],
-
     output: [
       {
         name: 'StimulusUse',
@@ -19,7 +18,7 @@ export default [
         banner,
         globals: {
           '@hotwired/stimulus': 'Stimulus',
-          'hotkeys-js': 'Hotkeys'
+          'hotkeys-js': 'hotkeys'
         }
       },
       {
