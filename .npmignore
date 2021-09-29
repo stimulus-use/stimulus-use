@@ -27,3 +27,4 @@ cypress.json
 postcss.config.js
 tailwind.config.js
 /src
+rollup.config.js
