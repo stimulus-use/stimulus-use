@@ -78,10 +78,10 @@ const customLaunchers = {
 }
 
 module.exports = function (config) {
-  if ((!process.env.SAUCE_USERNAME || !process.env.SAUCE_ACCESS_KEY) && process.env.CI) {
-    console.log('Make sure the SAUCE_USERNAME and SAUCE_ACCESS_KEY environment variables are set.')
-    process.exit(1)
-  }
+  // if ((!process.env.SAUCE_USERNAME || !process.env.SAUCE_ACCESS_KEY) && process.env.CI) {
+  //   console.log('Make sure the SAUCE_USERNAME and SAUCE_ACCESS_KEY environment variables are set.')
+  //   process.exit(1)
+  // }
 
   config.set({
     // base path that will be used to resolve all patterns (eg. files, exclude)
@@ -197,14 +197,14 @@ module.exports = function (config) {
     singleRun: true
   })
 
-  if (process.env.CI) {
-    config.customLaunchers = customLaunchers
-    config.browsers = Object.keys(customLaunchers)
-    config.sauceLabs = {
-      region: 'eu',
-      testName: 'Stimulus Browser Tests',
-      build: process.env.CIRCLE_BUILD_NUM
-    }
-    config.reporters = ['dots', 'saucelabs']
-  }
+  // if (process.env.CI) {
+  //   config.customLaunchers = customLaunchers
+  //   config.browsers = Object.keys(customLaunchers)
+  //   config.sauceLabs = {
+  //     region: 'eu',
+  //     testName: 'Stimulus Browser Tests',
+  //     build: process.env.CIRCLE_BUILD_NUM
+  //   }
+  //   config.reporters = ['dots', 'saucelabs']
+  // }
 }
