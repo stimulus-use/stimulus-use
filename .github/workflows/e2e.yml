@@ -4,12 +4,11 @@ on: [push, pull_request]
 
 jobs:
   cypress-run:
-    runs-on: ubuntu-16.04
+    runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v1
-      # Install NPM dependencies, cache them correctly
-      # and run all Cypress tests
+        uses: actions/checkout@master
+
       - name: Cypress run
         uses: cypress-io/github-action@v2
         with:
