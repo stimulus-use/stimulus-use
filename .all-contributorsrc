@@ -219,6 +219,16 @@
       "contributions": [
         "code"
       ]
+    },
+    {
+      "login": "craisp",
+      "name": "craisp",
+      "avatar_url": "https://avatars.githubusercontent.com/u/16748711?v=4",
+      "profile": "https://github.com/craisp",
+      "contributions": [
+        "bug",
+        "code"
+      ]
     }
   ],
   "contributorsPerLine": 7,
