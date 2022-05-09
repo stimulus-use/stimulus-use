@@ -84,6 +84,7 @@ export const useIdle = (controller: IdleComposableController, options: IdleOptio
   }
 
   const unobserve = () => {
+    clearTimeout(timeout)
     events.forEach(event => {
       window.removeEventListener(event, onEvent)
     })
