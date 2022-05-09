@@ -85,8 +85,7 @@
     "url": "https://github.com/stimulus-use/stimulus-use"
   },
   "peerDependencies": {
-    "@hotwired/stimulus": ">=3",
-    "stimulus": ">=3"
+    "@hotwired/stimulus": ">= 3"
   },
   "dependencies": {
     "hotkeys-js": ">=3"
