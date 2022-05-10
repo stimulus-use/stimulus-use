@@ -30,17 +30,37 @@
 
 ## Getting Started
 
-⚠️ Stimulus 3 has several breaking changes. If you want to use Stimulus-Use with Stimulus 3 you can use the current beta version of Stimulus-Use `yarn add stimulus-use@beta`. All contribution to Stimulus 3 features are now on the [stimulus-3 branch](https://github.com/stimulus-use/stimulus-use/tree/stimulus-3)
+### Stimulus 3
 
-npm
+If you want to use `stimulus-use` with Stimulus 3 you can use the version `0.50.0+`. This and all future versions are designed to work with the `@hotwired/stimulus` npm package. 
+
+**Note:** If other packages still depend on the `stimulus` npm package you can safely keep that in your `package.json`, this won't break the `stimulus-use` compability.
+
+#### Using npm
 ```bash
-npm i stimulus-use
+npm i stimulus-use @hotwired/stimulus
 ```
 
-yarn
+#### Using yarn
 ```bash
-yarn add stimulus-use
+yarn add stimulus-use @hotwired/stimulus
 ```
+
+### Stimulus 2 and below
+
+If you want to use `stimulus-use` with Stimulus 2 (or below) you can use version `0.41.0`. This version is designed to work with the `stimulus` npm package.
+
+#### Using npm
+```bash
+npm i stimulus-use@0.41.0 stimulus@2.0.0
+```
+
+#### Using yarn
+```bash
+yarn add stimulus-use@0.41.0 stimulus@2.0.0
+```
+
+
 ## Documentation
 
 We got you covered 👉 [stimulus-use.github.io/stimulus-use](https://stimulus-use.github.io/stimulus-use/#/)
