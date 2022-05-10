@@ -1,4 +1,4 @@
-import { Controller, Context } from 'stimulus'
+import { Controller, Context } from '@hotwired/stimulus'
 import { useApplication } from './use-application'
 import { DispatchOptions } from '../use-dispatch'
 
@@ -14,5 +14,5 @@ export class ApplicationController extends Controller {
   }
 
   declare metaValue: (name: string) => string
-  declare dispatch: (eventName: String, detail: any) => void
+  declare dispatch: (eventName: String, detail: any) => CustomEvent
 }

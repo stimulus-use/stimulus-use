@@ -51,7 +51,7 @@ useHotkeys(controller, options)
 
 ### Simple Hotkey Definition
 ```js
-import { Controller } from 'stimulus'
+import { Controller } from '@hotwired/stimulus'
 import { useHotkeys } from 'stimulus-use'
 
 export default class extends Controller {
@@ -69,7 +69,7 @@ export default class extends Controller {
     
 ### Advanced Hotkey Definition
 ```js
-import { Controller } from 'stimulus'
+import { Controller } from '@hotwired/stimulus'
 import { useHotkeys } from 'stimulus-use'
 
 export default class extends Controller {

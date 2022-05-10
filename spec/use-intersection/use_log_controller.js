@@ -1,4 +1,4 @@
-import { Controller } from 'stimulus'
+import { Controller } from '@hotwired/stimulus'
 import { useIntersection } from '../../src'
 
 export class UseLogController extends Controller {

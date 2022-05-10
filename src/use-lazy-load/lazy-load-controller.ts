@@ -1,4 +1,4 @@
-import { Controller, Context } from 'stimulus'
+import { Controller, Context } from '@hotwired/stimulus'
 import { useLazyLoad } from './useLazyLoad'
 
 export class LazyLoadComposableController extends Controller {

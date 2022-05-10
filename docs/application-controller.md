@@ -7,7 +7,7 @@ This is a supercharged Stimulus Controller. You can extend all of your Stimulus 
 **Composing**
 
 ```js
-import { Controller } from 'stimulus'
+import { Controller } from '@hotwired/stimulus'
 import { useApplication } from 'stimulus-use'
 
 export default class extends Controller {

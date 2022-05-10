@@ -1,4 +1,4 @@
-import { Controller, Context } from 'stimulus'
+import { Controller, Context } from '@hotwired/stimulus'
 import { useResize, ResizeOptions } from './use-resize'
 
 export class ResizeComposableController extends Controller {

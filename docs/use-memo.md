@@ -17,7 +17,7 @@ useMemo(controller)
 **Composing**
 
 ```js
-import { Controller } from 'stimulus'
+import { Controller } from '@hotwired/stimulus'
 import { useMemo } from 'stimulus-use'
 
 export default class extends Controller {

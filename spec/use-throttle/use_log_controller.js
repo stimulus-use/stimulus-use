@@ -1,4 +1,4 @@
-import { Controller } from 'stimulus'
+import { Controller } from '@hotwired/stimulus'
 import { useThrottle } from '../../src'
 
 export default class UseLogController extends Controller {

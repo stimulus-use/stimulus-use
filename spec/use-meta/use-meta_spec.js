@@ -1,4 +1,4 @@
-import { Controller, Application } from 'stimulus'
+import { Controller, Application } from '@hotwired/stimulus'
 import { useMeta } from '../../src'
 import { nextFrame } from '../helpers'
 import { expect } from 'chai'

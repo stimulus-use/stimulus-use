@@ -1,4 +1,4 @@
-import { Controller, Context } from 'stimulus'
+import { Controller, Context } from '@hotwired/stimulus'
 import { useWindowResize, WindowResizePayload } from './use-window-resize'
 
 export class WindowResizeComposableController extends Controller {

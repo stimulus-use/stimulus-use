@@ -1,4 +1,4 @@
-import { Controller } from 'stimulus'
+import { Controller } from '@hotwired/stimulus'
 import { camelize } from '../support/index'
 
 export interface MetaOptions {

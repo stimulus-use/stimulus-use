@@ -21,7 +21,7 @@ export default class extends IntersectionController {
 When you need multiple behaviors or you are already extending your controller from another one. You can easily add new behavior with the `use` functions.
 
 ```js
-import { Controller } from 'stimulus'
+import { Controller } from '@hotwired/stimulus'
 import { useIntersection, useResize } from 'stimulus-use'
 
 export default class extends Controller {

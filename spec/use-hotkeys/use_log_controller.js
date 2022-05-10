@@ -1,4 +1,4 @@
-import { Controller } from 'stimulus'
+import { Controller } from '@hotwired/stimulus'
 import { useHotkeys } from '../../src'
 
 class UseLogController extends Controller {
