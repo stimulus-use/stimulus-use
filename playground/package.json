@@ -7,9 +7,9 @@
   "repository": "https://github.com/stimulus-use/stimulus-use",
   "scripts": {
     "start": "yarn dev",
-    "dev": "vite",
-    "build": "vite build",
-    "preview": "vite preview"
+    "dev": "yarn vite",
+    "build": "yarn vite build",
+    "preview": "yarn vite preview"
   },
   "devDependencies": {
     "@hotwired/stimulus-webpack-helpers": "^1.0.1",
