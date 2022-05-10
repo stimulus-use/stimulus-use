@@ -229,6 +229,16 @@
         "bug",
         "code"
       ]
+    },
+    {
+      "login": "gahia",
+      "name": "Gabriel",
+      "avatar_url": "https://avatars.githubusercontent.com/u/8942202?v=4",
+      "profile": "https://github.com/gahia",
+      "contributions": [
+        "bug",
+        "code"
+      ]
     }
   ],
   "contributorsPerLine": 7,
