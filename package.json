@@ -12,6 +12,7 @@
   "license": "MIT",
   "external": "@hotwired/stimulus",
   "scripts": {
+    "prestart": "cd playground && yarn install && cd -",
     "start": "cd playground && yarn start",
     "prebuild": "$npm_execpath run clean",
     "build": "tsc --noEmit false --declaration true --emitDeclarationOnly true --outDir dist/types && rollup -c",
