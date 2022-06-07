@@ -26,7 +26,7 @@ const debounce = (fn: Function, wait: number = defaultWait) => {
   }
 }
 
-export const useDebounce = (controller: DebounceController, options: DebounceOptions = {}) => {
+export const useDebounce = (controller: DebounceController, options?: DebounceOptions) => {
   const constructor = controller.constructor as typeof DebounceController
 
   constructor.debounces.forEach((func: string | DebounceOptions) => {
