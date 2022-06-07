@@ -6,7 +6,7 @@ export interface DebounceOptions {
 }
 
 class DebounceController extends Controller {
-  static debounces: string[] | DebounceOptions[] = []
+  static debounces: (string | DebounceOptions)[] = []  
 }
 
 const defaultWait = 200
@@ -26,10 +26,10 @@ const debounce = (fn: Function, wait: number = defaultWait) => {
   }
 }
 
-export const useDebounce = (controller: DebounceController, options: DebounceOptions) => {
-  const constructor = controller.constructor as any
+export const useDebounce = (controller: DebounceController, options: DebounceOptions = {}) => {
+  const constructor = controller.constructor as typeof DebounceController
 
-  constructor.debounces?.forEach((func: string | DebounceOptions) => {
+  constructor.debounces.forEach((func: string | DebounceOptions) => {
     if (typeof func === 'string') {
       ;(controller as any)[func] = debounce((controller as any)[func] as Function, options?.wait)
     }
