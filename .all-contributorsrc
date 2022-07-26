@@ -239,6 +239,15 @@
         "bug",
         "code"
       ]
+    },
+    {
+      "login": "gremo",
+      "name": "Marco Polichetti",
+      "avatar_url": "https://avatars.githubusercontent.com/u/1532616?v=4",
+      "profile": "https://github.com/gremo",
+      "contributions": [
+        "code"
+      ]
     }
   ],
   "contributorsPerLine": 7,
