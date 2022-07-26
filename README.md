@@ -196,6 +196,7 @@ Made with :heart: by [@adrienpoly](https://twitter.com/adrienpoly) and all these
     <td align="center"><a href="https://guillaumebriday.fr"><img src="https://avatars.githubusercontent.com/u/8252238?v=4?s=80" width="80px;" alt=""/><br /><sub><b>Guillaume Briday</b></sub></a><br /><a href="https://github.com/stimulus-use/stimulus-use/commits?author=guillaumebriday" title="Code">💻</a></td>
     <td align="center"><a href="https://github.com/craisp"><img src="https://avatars.githubusercontent.com/u/16748711?v=4?s=80" width="80px;" alt=""/><br /><sub><b>craisp</b></sub></a><br /><a href="https://github.com/stimulus-use/stimulus-use/issues?q=author%3Acraisp" title="Bug reports">🐛</a> <a href="https://github.com/stimulus-use/stimulus-use/commits?author=craisp" title="Code">💻</a></td>
     <td align="center"><a href="https://github.com/gahia"><img src="https://avatars.githubusercontent.com/u/8942202?v=4?s=80" width="80px;" alt=""/><br /><sub><b>Gabriel</b></sub></a><br /><a href="https://github.com/stimulus-use/stimulus-use/issues?q=author%3Agahia" title="Bug reports">🐛</a> <a href="https://github.com/stimulus-use/stimulus-use/commits?author=gahia" title="Code">💻</a></td>
+    <td align="center"><a href="https://github.com/gremo"><img src="https://avatars.githubusercontent.com/u/1532616?v=4?s=80" width="80px;" alt=""/><br /><sub><b>Marco Polichetti</b></sub></a><br /><a href="https://github.com/stimulus-use/stimulus-use/commits?author=gremo" title="Code">💻</a></td>
   </tr>
 </table>
 
