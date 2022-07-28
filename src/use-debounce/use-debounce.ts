@@ -6,7 +6,7 @@ export interface DebounceOptions {
 }
 
 class DebounceController extends Controller {
-  static debounces: (string | DebounceOptions)[] = []  
+  static debounces: (string | DebounceOptions)[] = []
 }
 
 const defaultWait = 200
