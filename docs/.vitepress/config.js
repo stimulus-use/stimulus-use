@@ -9,18 +9,21 @@ export default {
     sidebar: [
       {
         text: "Documentation",
+        collapsible: true,
         items: [
           { text: "Home", link: "/" },
           { text: "Getting Started", link: "/getting_started" },
           { text: "Usage", link: "/usage" },
           { text: "Events", link: "/events" },
           { text: "Debug", link: "/debug" },
+          { text: "Playground", link: "/stu-playground" },
         ]
       },
       {
         text: "Observers",
+        collapsible: true,
         items: [
-          { text: "Observers", link: "/observers" },
+          { text: "Overview", link: "/observers" },
           { text: "useClickOutside", link: "/use-click-outside" },
           { text: "useIdle", link: "use-idle" },
           { text: "useIntersection", link: "use-intersection" },
@@ -37,8 +40,9 @@ export default {
       },
       {
         text: "Optimization",
+        collapsible: true,
         items: [
-          { text: "Optimization", link: "/optimization" },
+          { text: "Overview", link: "/optimization" },
           { text: "useDebounce", link: "/use-debounce" },
           { text: "useMemo", link: "use-memo" },
           { text: "useThrottle", link: "use-throttle" },
@@ -46,26 +50,22 @@ export default {
       },
       {
         text: "Animation",
+        collapsible: true,
         items: [
-          { text: "Animation", link: "/animation" },
+          { text: "Overview", link: "/animation" },
           { text: "useTransition", link: "/use-transition" },
         ]
       },
       {
         text: "Application",
+        collapsible: true,
         items: [
-          { text: "Application", link: "/application" },
+          { text: "Overview", link: "/application" },
           { text: "useApplication", link: "/application-controller" },
           { text: "useDispatch", link: "/use-dispatch" },
           { text: "useMeta", link: "/use-meta" },
         ]
-      },
-      {
-        text: "Playground",
-        items: [
-          { text: "Playground", link: "/stu-playground" },
-        ]
-      },
+      }
     ]
   }
 }
