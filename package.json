@@ -23,7 +23,9 @@
     "lint": "prettier --check *.js **/*.js **/*.ts src/**/*.ts spec/**/*.js playground/**/*.js",
     "format": "prettier --write *.js **/*.js **/*.ts src/**/*.ts spec/**/*.js playground/**/*.js",
     "clean": "rimraf dist *.tsbuildinfo coverage",
-    "doc": "docsify serve ./docs",
+    "docs:dev": "vitepress dev docs",
+    "docs:build": "vitepress build docs",
+    "docs:serve": "vitepress serve docs",
     "prerelease": "$npm_execpath run build && $npm_execpath run test:treeshake",
     "release": "np",
     "cypress:open": "cypress open",
@@ -69,6 +71,8 @@
     "sinon-chai": "^3.5.0",
     "ts-loader": "^8.0.3",
     "typescript": "^3.9.7",
+    "vitepress": "^1.0.0-alpha.4",
+    "vue": "^3.2.37",
     "webpack": "^4.44.1"
   },
   "repository": {

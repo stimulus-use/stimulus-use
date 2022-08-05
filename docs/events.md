@@ -6,13 +6,13 @@ Here is a list of all additional events:
 
 | Event |Module | Description |
 |-------|-------|-------------|
-|`appear`|[`useIntersection`](./docs/use-intersection.md)| New event being triggered whenever the controller element appears. the detail contains the `entry` object and the controller|
-|`away`|[`useIdle`](./docs/use-idle.md)| New event being triggered whenever the user is idle on the page. |
-|`back`|[`useIdle`](./docs/use-idle.md)| New event being triggered whenever the user returns back from an idle state. |
-|`click:outside`|[`useClickOutside`](./docs/use-click-outside.md)| New event being triggered whenever the user clicks outside of the controller element|
-|`disappear`|[`useIntersection`](./docs/use-intersection.md)| New event being triggered whenever the controller element disappears. the detail contains the `entry` object and the controller|
-|`invisible`|[`useVisibility`](./docs/use-visibility.md)| New event being triggered whenever the page visibility change and the browser tab becomes invisible|
-|`visible`|[`useVisibility`](./docs/use-visibility.md)| New event being triggered whenever the page visibility change and the browser tab becomes visible|
+|`appear`|[`useIntersection`](./use-intersection.md)| New event being triggered whenever the controller element appears. the detail contains the `entry` object and the controller|
+|`away`|[`useIdle`](./use-idle.md)| New event being triggered whenever the user is idle on the page. |
+|`back`|[`useIdle`](./use-idle.md)| New event being triggered whenever the user returns back from an idle state. |
+|`click:outside`|[`useClickOutside`](./use-click-outside.md)| New event being triggered whenever the user clicks outside of the controller element|
+|`disappear`|[`useIntersection`](./use-intersection.md)| New event being triggered whenever the controller element disappears. the detail contains the `entry` object and the controller|
+|`invisible`|[`useVisibility`](./use-visibility.md)| New event being triggered whenever the page visibility change and the browser tab becomes invisible|
+|`visible`|[`useVisibility`](./use-visibility.md)| New event being triggered whenever the page visibility change and the browser tab becomes visible|
 
 ## Event Prefix
 

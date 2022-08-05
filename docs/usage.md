@@ -1,4 +1,4 @@
-## Usage
+# Usage
 
 Stimulus-use can be used in two manners: extending or composing
 
