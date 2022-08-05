@@ -5,7 +5,7 @@ export default {
   lastUpdated: true,
   themeConfig: {
     siteTitle: "",
-    logo: "/assets/stimulus-use-logo@2x.png",
+    logo: "/stimulus-use-logo.png",
     sidebar: [
       {
         text: "Documentation",
