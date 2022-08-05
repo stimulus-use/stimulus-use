@@ -1,5 +1,5 @@
 export default {
-  title: "",
+  title: "StimulusUse Docs",
   description: "A collection of composable behaviors for your Stimulus Controllers",
   ignoreDeadLinks: true,
   lastUpdated: true,
