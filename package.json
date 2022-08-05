@@ -71,9 +71,11 @@
     "sinon-chai": "^3.5.0",
     "ts-loader": "^8.0.3",
     "typescript": "^3.9.7",
-    "vitepress": "^1.0.0-alpha.4",
-    "vue": "^3.2.37",
     "webpack": "^4.44.1"
+  },
+  "optionalDependencies": {
+    "vitepress": "^1.0.0-alpha.4",
+    "vue": "^3.2.37"
   },
   "repository": {
     "type": "git",
