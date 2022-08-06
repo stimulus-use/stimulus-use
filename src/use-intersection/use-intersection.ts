@@ -20,13 +20,13 @@ export const useIntersection = (controller: IntersectionComposableController, op
     const [entry] = entries
     if (entry.isIntersecting) {
       dispatchAppear(entry)
-    } else if (controller.isVisible) {
+    } else if (targetElement.hasAttribute("isVisible")) {
       dispatchDisappear(entry)
     }
   }
 
   const dispatchAppear = (entry: IntersectionObserverEntry) => {
-    controller.isVisible = true
+    targetElement.setAttribute("isVisible", "true")
     method(controller, 'appear').call(controller, entry)
 
     // emit a custom "appear" event
@@ -39,7 +39,7 @@ export const useIntersection = (controller: IntersectionComposableController, op
   }
 
   const dispatchDisappear = (entry: IntersectionObserverEntry) => {
-    controller.isVisible = false
+    targetElement.removeAttribute('isVisible')
     method(controller, 'disappear').call(controller, entry)
 
     // emit a custom "disappear" event
@@ -66,7 +66,6 @@ export const useIntersection = (controller: IntersectionComposableController, op
   }
 
   Object.assign(controller, {
-    isVisible: false,
     disconnect() {
       unobserve()
       controllerDisconnect()
