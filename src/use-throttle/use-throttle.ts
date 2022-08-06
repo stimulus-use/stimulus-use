@@ -26,7 +26,8 @@ export function throttle(func: Function, wait: number = defaultWait): Function {
   }
 }
 
-export const useThrottle = (controller: ThrottleController, options: ThrottleOptions = {}) => {
+export const useThrottle = (composableController: Controller, options: ThrottleOptions = {}) => {
+  const controller = composableController as ThrottleController
   const constructor = controller.constructor as any
 
   constructor.throttles?.forEach((func: string | ThrottleOptions) => {

@@ -1,3 +1,4 @@
+import { Controller } from '@hotwired/stimulus'
 import { IntersectionComposableController } from './intersection-controller'
 import { method, extendedEvent, composeEventName } from '../support/index'
 
@@ -12,7 +13,8 @@ const defaultOptions = {
   eventPrefix: true
 }
 
-export const useIntersection = (controller: IntersectionComposableController, options: IntersectionOptions = {}) => {
+export const useIntersection = (composableController: Controller, options: IntersectionOptions = {}) => {
+  const controller = composableController as IntersectionComposableController
   const { dispatchEvent, eventPrefix } = Object.assign({}, defaultOptions, options)
   const targetElement: Element = options?.element || controller.element
 

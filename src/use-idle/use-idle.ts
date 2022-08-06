@@ -1,3 +1,4 @@
+import { Controller } from '@hotwired/stimulus'
 import { IdleComposableController } from './idle-controller'
 import { extendedEvent, method, composeEventName } from '../support/index'
 
@@ -20,7 +21,8 @@ const defaultOptions = {
   eventPrefix: true
 }
 
-export const useIdle = (controller: IdleComposableController, options: IdleOptions = {}) => {
+export const useIdle = (composableController: Controller, options: IdleOptions = {}) => {
+  const controller = composableController as IdleComposableController
   const { ms, initialState, events, dispatchEvent, eventPrefix } = Object.assign({}, defaultOptions, options)
 
   let isIdle = initialState

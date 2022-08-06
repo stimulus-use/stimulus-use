@@ -1,3 +1,4 @@
+import { Controller } from '@hotwired/stimulus'
 import { StimulusUse, StimulusUseOptions } from '../stimulus-use'
 import { HoverComposableController } from './hover-controller'
 
@@ -51,7 +52,8 @@ export class UseHover extends StimulusUse {
   }
 }
 
-export const useHover = (controller: HoverComposableController, options: HoverOptions = {}) => {
+export const useHover = (composableController: Controller, options: HoverOptions = {}) => {
+  const controller = composableController as HoverComposableController
   const observer = new UseHover(controller, options)
   return [observer.observe, observer.unobserve] as const
 }
