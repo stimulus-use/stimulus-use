@@ -20,13 +20,13 @@ export const useIntersection = (controller: IntersectionComposableController, op
     const [entry] = entries
     if (entry.isIntersecting) {
       dispatchAppear(entry)
-    } else if (targetElement.hasAttribute("isVisible")) {
+    } else if (targetElement.hasAttribute('isVisible')) {
       dispatchDisappear(entry)
     }
   }
 
   const dispatchAppear = (entry: IntersectionObserverEntry) => {
-    targetElement.setAttribute("isVisible", "true")
+    targetElement.setAttribute('isVisible', 'true')
     method(controller, 'appear').call(controller, entry)
 
     // emit a custom "appear" event
