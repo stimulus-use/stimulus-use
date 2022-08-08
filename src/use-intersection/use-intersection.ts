@@ -16,6 +16,10 @@ export const useIntersection = (controller: IntersectionComposableController, op
   const { dispatchEvent, eventPrefix } = Object.assign({}, defaultOptions, options)
   const targetElement: Element = options?.element || controller.element
 
+  if (!controller.intersectionElements) controller.intersectionElements = []
+
+  controller.intersectionElements.push(targetElement)
+
   const callback = (entries: IntersectionObserverEntry[]) => {
     const [entry] = entries
     if (entry.isIntersecting) {
@@ -66,6 +70,25 @@ export const useIntersection = (controller: IntersectionComposableController, op
   }
 
   Object.assign(controller, {
+    get isVisible() {
+      if (controller.intersectionElements.length === 1) {
+        return controller.intersectionElements[0].hasAttribute('isVisible')
+      } else {
+        return controller.intersectionElements.every(element => element.hasAttribute('isVisible'))
+      }
+    },
+    get noneVisible() {
+      return controller.intersectionElements.filter(element => element.hasAttribute('isVisible')).length === 0
+    },
+    get oneVisible() {
+      return controller.intersectionElements.filter(element => element.hasAttribute('isVisible')).length === 1
+    },
+    get atLeastOneVisible() {
+      return controller.intersectionElements.some(element => element.hasAttribute('isVisible'))
+    },
+    get allVisible() {
+      return controller.intersectionElements.every(element => element.hasAttribute('isVisible'))
+    },
     disconnect() {
       unobserve()
       controllerDisconnect()

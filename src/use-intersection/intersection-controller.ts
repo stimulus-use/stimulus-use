@@ -4,6 +4,7 @@ import { useIntersection, IntersectionOptions } from './use-intersection'
 export class IntersectionComposableController extends Controller {
   declare appear?: (entry: IntersectionObserverEntry) => void
   declare disappear?: (entry: IntersectionObserverEntry) => void
+  declare intersectionElements: Element[]
 }
 
 export class IntersectionController extends IntersectionComposableController {
