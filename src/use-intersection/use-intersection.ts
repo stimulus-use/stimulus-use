@@ -71,11 +71,7 @@ export const useIntersection = (controller: IntersectionComposableController, op
 
   Object.assign(controller, {
     get isVisible() {
-      if (controller.intersectionElements.length === 1) {
-        return controller.intersectionElements[0].hasAttribute('isVisible')
-      } else {
-        return controller.intersectionElements.every(element => element.hasAttribute('isVisible'))
-      }
+      return controller.intersectionElements.every(element => element.hasAttribute('isVisible'))
     },
     get noneVisible() {
       return controller.intersectionElements.filter(element => element.hasAttribute('isVisible')).length === 0
