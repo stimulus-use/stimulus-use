@@ -5,15 +5,17 @@ export interface IntersectionOptions extends IntersectionObserverInit {
   element?: Element
   dispatchEvent?: boolean
   eventPrefix?: boolean | string
+  visibleAttribute?: string
 }
 
 const defaultOptions = {
   dispatchEvent: true,
-  eventPrefix: true
+  eventPrefix: true,
+  visibleAttribute: 'isVisible'
 }
 
 export const useIntersection = (controller: IntersectionComposableController, options: IntersectionOptions = {}) => {
-  const { dispatchEvent, eventPrefix } = Object.assign({}, defaultOptions, options)
+  const { dispatchEvent, eventPrefix, visibleAttribute } = Object.assign({}, defaultOptions, options)
   const targetElement: Element = options?.element || controller.element
 
   if (!controller.intersectionElements) controller.intersectionElements = []
@@ -24,13 +26,13 @@ export const useIntersection = (controller: IntersectionComposableController, op
     const [entry] = entries
     if (entry.isIntersecting) {
       dispatchAppear(entry)
-    } else if (targetElement.hasAttribute('isVisible')) {
+    } else if (targetElement.hasAttribute(visibleAttribute)) {
       dispatchDisappear(entry)
     }
   }
 
   const dispatchAppear = (entry: IntersectionObserverEntry) => {
-    targetElement.setAttribute('isVisible', 'true')
+    targetElement.setAttribute(visibleAttribute, 'true')
     method(controller, 'appear').call(controller, entry)
 
     // emit a custom "appear" event
@@ -43,7 +45,7 @@ export const useIntersection = (controller: IntersectionComposableController, op
   }
 
   const dispatchDisappear = (entry: IntersectionObserverEntry) => {
-    targetElement.removeAttribute('isVisible')
+    targetElement.removeAttribute(visibleAttribute)
     method(controller, 'disappear').call(controller, entry)
 
     // emit a custom "disappear" event
@@ -71,19 +73,19 @@ export const useIntersection = (controller: IntersectionComposableController, op
 
   Object.assign(controller, {
     get isVisible() {
-      return controller.intersectionElements.every(element => element.hasAttribute('isVisible'))
+      return controller.intersectionElements.every(element => element.hasAttribute(visibleAttribute))
     },
     get noneVisible() {
-      return controller.intersectionElements.filter(element => element.hasAttribute('isVisible')).length === 0
+      return controller.intersectionElements.filter(element => element.hasAttribute(visibleAttribute)).length === 0
     },
     get oneVisible() {
-      return controller.intersectionElements.filter(element => element.hasAttribute('isVisible')).length === 1
+      return controller.intersectionElements.filter(element => element.hasAttribute(visibleAttribute)).length === 1
     },
     get atLeastOneVisible() {
-      return controller.intersectionElements.some(element => element.hasAttribute('isVisible'))
+      return controller.intersectionElements.some(element => element.hasAttribute(visibleAttribute))
     },
     get allVisible() {
-      return controller.intersectionElements.every(element => element.hasAttribute('isVisible'))
+      return controller.intersectionElements.every(element => element.hasAttribute(visibleAttribute))
     },
     disconnect() {
       unobserve()
