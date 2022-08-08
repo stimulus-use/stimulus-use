@@ -5,6 +5,11 @@ export class IntersectionComposableController extends Controller {
   declare appear?: (entry: IntersectionObserverEntry) => void
   declare disappear?: (entry: IntersectionObserverEntry) => void
   declare intersectionElements: Element[]
+  declare isVisible: () => boolean
+  declare noneVisible: () => boolean
+  declare oneVisible: () => boolean
+  declare atLeastOneVisible: () => boolean
+  declare allVisible: () => boolean
 }
 
 export class IntersectionController extends IntersectionComposableController {

@@ -71,22 +71,30 @@ export const useIntersection = (controller: IntersectionComposableController, op
     observer.unobserve(targetElement)
   }
 
+  const noneVisible = () => {
+    return controller.intersectionElements.filter(element => element.hasAttribute(visibleAttribute)).length === 0
+  }
+
+  const oneVisible = () => {
+    return controller.intersectionElements.filter(element => element.hasAttribute(visibleAttribute)).length === 1
+  }
+
+  const atLeastOneVisible = () => {
+    return controller.intersectionElements.some(element => element.hasAttribute(visibleAttribute))
+  }
+
+  const allVisible = () => {
+    return controller.intersectionElements.every(element => element.hasAttribute(visibleAttribute))
+  }
+
+  const isVisible = allVisible
+
   Object.assign(controller, {
-    get isVisible() {
-      return controller.intersectionElements.every(element => element.hasAttribute(visibleAttribute))
-    },
-    get noneVisible() {
-      return controller.intersectionElements.filter(element => element.hasAttribute(visibleAttribute)).length === 0
-    },
-    get oneVisible() {
-      return controller.intersectionElements.filter(element => element.hasAttribute(visibleAttribute)).length === 1
-    },
-    get atLeastOneVisible() {
-      return controller.intersectionElements.some(element => element.hasAttribute(visibleAttribute))
-    },
-    get allVisible() {
-      return controller.intersectionElements.every(element => element.hasAttribute(visibleAttribute))
-    },
+    isVisible,
+    noneVisible,
+    oneVisible,
+    atLeastOneVisible,
+    allVisible,
     disconnect() {
       unobserve()
       controllerDisconnect()
