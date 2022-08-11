@@ -122,16 +122,42 @@ count(event) {
 If you are tracking multiple events in your controller you might find these helper functions handy:
 
 | Helper | Description |
-| -------- | ----------- |
+| --- | --- |
 | `this.isVisible()` / `this.allVisible()` | Returns `true` if **all** of the tracked elements are visible. |
 | `this.noneVisible()` | Returns `true` if **none** of the tracked elements are visible. |
 | `this.oneVisible()` | Returns `true` if **exactly one** of the tracked elements is visible. |
 | `this.atLeastOneVisible()` | Returns `true` if **at least one** of the tracked elements is visible. |
 
+### Using Helper functions
+
+```js
+import { Controller } from '@hotwired/stimulus'
+import { useIntersection } from 'stimulus-use'
+
+export default class extends Controller {
+  static targets = [ 'menu' ]
+
+  connect() {
+    useIntersection(this)
+  }
+
+  appear() {
+    if (this.atLeastOneVisible()) {
+      this.menuTarget.show()
+    }
+  }
+
+  disappear() {
+    if (this.noneVisible()) {
+      this.menuTarget.hide()
+    }
+  }
+}
+```
 
 ## Example
 
-Rails Infinite scroll : https://github.com/adrienpoly/infinite-scroll-stimulus-js
+Rails Infinite scroll: https://github.com/adrienpoly/infinite-scroll-stimulus-js
 
 
 ## Polyfill
