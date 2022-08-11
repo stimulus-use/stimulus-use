@@ -31,7 +31,7 @@ import { useIntersection } from 'stimulus-use'
 
 export default class extends Controller {
   connect() {
-    useIntersection(this, { element: this.element })
+    useIntersection(this)
   }
 
   appear(entry) {
