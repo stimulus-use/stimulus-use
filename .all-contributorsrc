@@ -256,7 +256,8 @@
       "profile": "http://ocarreterom.github.io",
       "contributions": [
         "code",
-        "review"
+        "review",
+        "bug"
       ]
     }
   ],
