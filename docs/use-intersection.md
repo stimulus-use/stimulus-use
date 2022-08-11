@@ -81,6 +81,9 @@ export default class extends Controller {
   connect() {
     useIntersection(this, { eventPrefix: false })
   }
+
+  increase() { /* ... */ }
+  decrease() { /* ... */ }
 }
 ```
 
@@ -104,7 +107,7 @@ Since the `data-controller` and the `data-action` are on the same element you ca
 </div>
 ```
 
-### Event Details
+### Event Details
 
 Get the emitting controller and entry object for an appear event
 
