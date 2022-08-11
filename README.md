@@ -198,6 +198,7 @@ Made with :heart: by [@adrienpoly](https://twitter.com/adrienpoly) and all these
     <td align="center"><a href="https://github.com/gahia"><img src="https://avatars.githubusercontent.com/u/8942202?v=4?s=80" width="80px;" alt=""/><br /><sub><b>Gabriel</b></sub></a><br /><a href="https://github.com/stimulus-use/stimulus-use/issues?q=author%3Agahia" title="Bug reports">🐛</a> <a href="https://github.com/stimulus-use/stimulus-use/commits?author=gahia" title="Code">💻</a></td>
     <td align="center"><a href="https://github.com/floodfx"><img src="https://avatars.githubusercontent.com/u/35109?v=4?s=80" width="80px;" alt=""/><br /><sub><b>Donnie Flood</b></sub></a><br /><a href="https://github.com/stimulus-use/stimulus-use/commits?author=floodfx" title="Code">💻</a></td>
     <td align="center"><a href="http://ocarreterom.github.io"><img src="https://avatars.githubusercontent.com/u/11599942?v=4?s=80" width="80px;" alt=""/><br /><sub><b>Óscar Carretero</b></sub></a><br /><a href="https://github.com/stimulus-use/stimulus-use/pulls?q=is%3Apr+reviewed-by%3Aocarreterom" title="Reviewed Pull Requests">👀</a> <a href="https://github.com/stimulus-use/stimulus-use/issues?q=author%3Aocarreterom" title="Bug reports">🐛</a></td>
+    <td align="center"><a href="https://bandism.net/"><img src="https://avatars.githubusercontent.com/u/22633385?v=4?s=80" width="80px;" alt=""/><br /><sub><b>Ikko Ashimine</b></sub></a><br /><a href="https://github.com/stimulus-use/stimulus-use/commits?author=eltociear" title="Documentation">📖</a></td>
   </tr>
 </table>
 
