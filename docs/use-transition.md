@@ -28,7 +28,7 @@ useTransition(controller, options = {})
 |`hiddenClass`| Conditionally add a hidden class after `leave`, default is `hidden`, Set it to `false` to ignore it  |`hidden`|
 |`preserveOriginalClass`| Boolean value whether to preserve original class, if some classes from the transition overlap with the initial classes of the element.|`true`|
 |`removeToClasses`| Boolean value whether to remove the `To` classsed (`enterTo`, `leaveTo`) at the end of the transition|`true`|
-|`transitioned`| whether the element has transitioned or not. Useful to set a default transtion state if your element starts with an `enter` state|`false`|
+|`transitioned`| whether the element has transitioned or not. Useful to set a default transition state if your element starts with an `enter` state|`false`|
 
 ## Directives
 

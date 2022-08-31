@@ -248,6 +248,25 @@
       "contributions": [
         "code"
       ]
+    },
+    {
+      "login": "ocarreterom",
+      "name": "Óscar Carretero",
+      "avatar_url": "https://avatars.githubusercontent.com/u/11599942?v=4",
+      "profile": "http://ocarreterom.github.io",
+      "contributions": [
+        "review",
+        "bug"
+      ]
+    },
+    {
+      "login": "eltociear",
+      "name": "Ikko Ashimine",
+      "avatar_url": "https://avatars.githubusercontent.com/u/22633385?v=4",
+      "profile": "https://bandism.net/",
+      "contributions": [
+        "doc"
+      ]
     }
   ],
   "contributorsPerLine": 7,
