@@ -73,7 +73,7 @@ This module adds two new events `appear` and `disapear` event that you may use t
 
 For example, to count all visible elements on a page we could listen to individual appear/disappear events to update a counter
 
-```js{6}
+```js
 import { Controller } from '@hotwired/stimulus'
 import { useIntersection } from 'stimulus-use'
 
@@ -87,7 +87,7 @@ export default class extends Controller {
 }
 ```
 
-```html{4}
+```html
 <div
   class="modal"
   data-controller="counter"
@@ -98,7 +98,7 @@ export default class extends Controller {
 
 Since the `data-controller` and the `data-action` are on the same element you can even leave out the `@window` because you don't need to wait for the event to bubble up the DOM tree to the `window`. The event gets dispatched on the controller element (if not overridden by the `element` option).
 
-```html{4}
+```html
 <div
   class="modal"
   data-controller="counter"
