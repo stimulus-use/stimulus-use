@@ -267,6 +267,15 @@
       "contributions": [
         "doc"
       ]
+    },
+    {
+      "login": "mjc-gh",
+      "name": "Michael Coyne",
+      "avatar_url": "https://avatars.githubusercontent.com/u/82063?v=4",
+      "profile": "https://michaeljcoyne.me",
+      "contributions": [
+        "bug"
+      ]
     }
   ],
   "contributorsPerLine": 7,
@@ -274,5 +283,6 @@
   "projectOwner": "stimulus-use",
   "repoType": "github",
   "repoHost": "https://github.com",
-  "skipCi": true
+  "skipCi": true,
+  "commitConvention": "angular"
 }
