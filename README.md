@@ -203,6 +203,7 @@ Made with :heart: by [@adrienpoly](https://twitter.com/adrienpoly) and all these
     </tr>
     <tr>
       <td align="center"><a href="https://michaeljcoyne.me"><img src="https://avatars.githubusercontent.com/u/82063?v=4?s=80" width="80px;" alt="Michael Coyne"/><br /><sub><b>Michael Coyne</b></sub></a><br /><a href="https://github.com/stimulus-use/stimulus-use/issues?q=author%3Amjc-gh" title="Bug reports">🐛</a></td>
+      <td align="center"><a href="http://oll.ie"><img src="https://avatars.githubusercontent.com/u/342090?v=4?s=80" width="80px;" alt="Ollie Harridge"/><br /><sub><b>Ollie Harridge</b></sub></a><br /><a href="https://github.com/stimulus-use/stimulus-use/commits?author=ollietb" title="Documentation">📖</a></td>
     </tr>
   </tbody>
 </table>
