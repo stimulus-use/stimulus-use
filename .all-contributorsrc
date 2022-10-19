@@ -276,6 +276,15 @@
       "contributions": [
         "bug"
       ]
+    },
+    {
+      "login": "ollietb",
+      "name": "Ollie Harridge",
+      "avatar_url": "https://avatars.githubusercontent.com/u/342090?v=4",
+      "profile": "http://oll.ie",
+      "contributions": [
+        "doc"
+      ]
     }
   ],
   "contributorsPerLine": 7,
