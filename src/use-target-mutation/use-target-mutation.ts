@@ -1,3 +1,4 @@
+import { Controller } from '@hotwired/stimulus'
 import { StimulusUse, StimulusUseOptions } from '../stimulus-use'
 import { method } from '../support/index'
 import { TargetMutationComposableController } from './target-mutation-controller'
@@ -206,10 +207,8 @@ export class UseTargetMutation extends StimulusUse {
   }
 }
 
-export const useTargetMutation = (
-  controller: TargetMutationComposableController,
-  options: TargetMutationOptions = {}
-) => {
+export const useTargetMutation = (composableController: Controller, options: TargetMutationOptions = {}) => {
+  const controller = composableController as TargetMutationComposableController
   const observer = new UseTargetMutation(controller, options)
   return [observer.observe, observer.unobserve]
 }

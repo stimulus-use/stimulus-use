@@ -1,3 +1,4 @@
+import { Controller } from '@hotwired/stimulus'
 import { composeEventName, extendedEvent, isElementInViewport } from '../support/index'
 import { ClickOutsideComposableController } from './click-outside-controller'
 
@@ -16,7 +17,8 @@ const defaultOptions = {
   eventPrefix: true
 }
 
-export const useClickOutside = (controller: ClickOutsideComposableController, options: ClickOutsideOptions = {}) => {
+export const useClickOutside = (composableController: Controller, options: ClickOutsideOptions = {}) => {
+  const controller = composableController as ClickOutsideComposableController
   const { onlyVisible, dispatchEvent, events, eventPrefix } = Object.assign({}, defaultOptions, options)
 
   const onEvent = (event: Event) => {

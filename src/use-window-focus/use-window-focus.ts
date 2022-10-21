@@ -1,3 +1,4 @@
+import { Controller } from '@hotwired/stimulus'
 import { StimulusUse, StimulusUseOptions } from '../stimulus-use'
 import { WindowFocusComposableController } from './window-focus-controller'
 
@@ -76,7 +77,8 @@ export class UseWindowFocus extends StimulusUse {
   }
 }
 
-export const useWindowFocus = (controller: WindowFocusComposableController, options: WindowFocusOptions = {}) => {
+export const useWindowFocus = (composableController: Controller, options: WindowFocusOptions = {}) => {
+  const controller = composableController as WindowFocusComposableController
   const observer = new UseWindowFocus(controller, options)
   return [observer.observe, observer.unobserve] as const
 }

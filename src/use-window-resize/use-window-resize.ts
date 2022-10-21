@@ -1,3 +1,4 @@
+import { Controller } from '@hotwired/stimulus'
 import { WindowResizeComposableController } from './window-resize-controller'
 import { method } from '../support/index'
 
@@ -7,7 +8,8 @@ export interface WindowResizePayload {
   event?: Event
 }
 
-export const useWindowResize = (controller: WindowResizeComposableController) => {
+export const useWindowResize = (composableController: Controller) => {
+  const controller = composableController as WindowResizeComposableController
   const callback = (event?: Event) => {
     const { innerWidth, innerHeight } = window
 

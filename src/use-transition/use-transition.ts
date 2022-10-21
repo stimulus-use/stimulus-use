@@ -1,3 +1,4 @@
+import { Controller } from '@hotwired/stimulus'
 import { TransitionComposableController } from './transition-controller'
 
 export interface TransitionOptions {
@@ -31,7 +32,8 @@ const defaultOptions = {
   removeToClasses: true
 }
 
-export const useTransition = (controller: TransitionComposableController, options: TransitionOptions = {}) => {
+export const useTransition = (composableController: Controller, options: TransitionOptions = {}) => {
+  const controller = composableController as TransitionComposableController
   const targetName = (controller.element as HTMLElement).dataset.transitionTarget
   let targetFromAttribute
 
