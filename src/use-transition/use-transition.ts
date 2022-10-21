@@ -49,7 +49,11 @@ export const useTransition = (composableController: Controller, options: Transit
 
   const leaveAfter = parseInt(dataset.leaveAfter || '') || options.leaveAfter || 0
 
-  const { transitioned, hiddenClass, preserveOriginalClass, removeToClasses } = Object.assign(defaultOptions, options)
+  const { transitioned, hiddenClass, preserveOriginalClass, removeToClasses } = Object.assign(
+    {},
+    defaultOptions,
+    options
+  )
 
   const controllerEnter = controller.enter?.bind(controller)
   const controllerLeave = controller.leave?.bind(controller)
