@@ -1,0 +1,71 @@
+export default {
+  title: "StimulusUse Docs",
+  description: "A collection of composable behaviors for your Stimulus Controllers",
+  ignoreDeadLinks: true,
+  lastUpdated: true,
+  themeConfig: {
+    siteTitle: "",
+    logo: "/stimulus-use-logo.png",
+    sidebar: [
+      {
+        text: "Documentation",
+        collapsible: true,
+        items: [
+          { text: "Home", link: "/" },
+          { text: "Getting Started", link: "/getting_started" },
+          { text: "Usage", link: "/usage" },
+          { text: "Events", link: "/events" },
+          { text: "Debug", link: "/debug" },
+          { text: "Playground", link: "/stu-playground" },
+        ]
+      },
+      {
+        text: "Observers",
+        collapsible: true,
+        items: [
+          { text: "Overview", link: "/observers" },
+          { text: "useClickOutside", link: "/use-click-outside" },
+          { text: "useIdle", link: "use-idle" },
+          { text: "useIntersection", link: "use-intersection" },
+          { text: "useHotkeys", link: "use-hotkeys" },
+          { text: "useHover", link: "use-hover" },
+          { text: "useMatchMedia", link: "use-match-media" },
+          { text: "useMutation", link: "use-mutation" },
+          { text: "useResize", link: "use-resize" },
+          { text: "useTargetMutation", link: "use-target-mutation" },
+          { text: "useVisibility", link: "use-visibility" },
+          { text: "useWindowFocus", link: "use-window-focus" },
+          { text: "useWindowResize", link: "use-window-resize" }
+        ]
+      },
+      {
+        text: "Optimization",
+        collapsible: true,
+        items: [
+          { text: "Overview", link: "/optimization" },
+          { text: "useDebounce", link: "/use-debounce" },
+          { text: "useMemo", link: "use-memo" },
+          { text: "useThrottle", link: "use-throttle" },
+        ]
+      },
+      {
+        text: "Animation",
+        collapsible: true,
+        items: [
+          { text: "Overview", link: "/animation" },
+          { text: "useTransition", link: "/use-transition" },
+        ]
+      },
+      {
+        text: "Application",
+        collapsible: true,
+        items: [
+          { text: "Overview", link: "/application" },
+          { text: "useApplication", link: "/application-controller" },
+          { text: "useDispatch", link: "/use-dispatch" },
+          { text: "useMeta", link: "/use-meta" },
+        ]
+      }
+    ]
+  }
+}
