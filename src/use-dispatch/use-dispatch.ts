@@ -32,7 +32,7 @@ export class UseDispatch extends StimulusUse {
   }
 
   dispatch = (eventName: string, detail = {}): CustomEvent => {
-    const { controller, targetElement, eventPrefix, bubbles, cancelable, log } = this
+    const { controller, targetElement, eventPrefix, bubbles, cancelable, log, warn } = this
 
     // includes the emitting controller in the event detail
     Object.assign(detail, { controller })
@@ -49,6 +49,9 @@ export class UseDispatch extends StimulusUse {
     // dispatch the event from the given element or by default from the root element of the controller
     targetElement.dispatchEvent(event)
 
+    warn(
+      'useDispatch() is a deprecated mixin from Stimulus-Use. Please use the built-in this.dispatch() function from Stimulus. You can find more information at: https://stimulus-use.github.io/stimulus-use/#/use-dispatch'
+    )
     log('dispatch', { eventName: eventNameWithPrefix, detail, bubbles, cancelable })
 
     return event
