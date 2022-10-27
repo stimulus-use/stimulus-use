@@ -28,7 +28,7 @@
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
               </svg>
               <span class="absolute inset-0 object-right-top -mr-6">
-                <span class="inline-flex items-center px-1.5 py-0.5 border-2 border-white rounded-full text-xs font-semibold leading-4 bg-red-500 text-white hidden" data-target="cart.counterView">
+                <span class="inline-flex items-center px-1.5 py-0.5 border-2 border-white rounded-full text-xs font-semibold leading-4 bg-red-500 text-white hidden" data-cart-target="counterView">
                 </span>
               </span>
             </button>
@@ -41,16 +41,16 @@
               <div>
                 <button class="bg-white rounded-sm flex text-sm focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-400  text-gray-400 hover:text-gray-500" id="user-menu" aria-haspopup="true">
                   <span class="sr-only">Open user menu</span>
-                  <svg class="h-8 w-8" data-target="dropdown.controlOpen" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <svg class="h-8 w-8" data-dropdown-target="controlOpen" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
                   </svg>
-                  <svg class="h-8 w-8 hidden" data-target="dropdown.controlClose" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <svg class="h-8 w-8 hidden" data-dropdown-target="controlClose" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
                   </svg>
                 </button>
               </div>
               <div class="origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg py-1 bg-white ring-1 ring-black ring-opacity-5"
-                  data-target="dropdown.content"
+                  data-dropdown-target="content"
                   role="menu"
                   aria-orientation="vertical"
                   aria-labelledby="user-menu">
@@ -79,10 +79,10 @@
               </div>
               <div class="grid grid-cols-2 mt-3">
                 <div class="mt-3 text-gray-500">
-                  Time : <span  data-target="visibility.standardCounter">0</span>s
+                  Time : <span  data-visibility-target="standardCounter">0</span>s
                 </div>
                 <div class="mt-3 text-gray-500">
-                  Visible : <span  data-target="visibility.visibleCounter">0</span>s
+                  Visible : <span  data-visibility-target="visibleCounter">0</span>s
                 </div>
               </div>
             </div>
@@ -97,7 +97,7 @@
               </div>
               <div class="grid mt-3">
                 <div class="mt-3 text-gray-500">
-                  Window : <span data-target="window-focus.visibility"></span>
+                  Window : <span data-window-focus-target="visibility"></span>
                 </div>
               </div>
             </div>
@@ -111,7 +111,7 @@
               </div>
               <div class="grid grid-cols-2 mt-3">
                 <div class="mt-3 text-gray-500">
-                  User is:  <span  data-target="idle.status"></span>
+                  User is:  <span  data-idle-target="status"></span>
                 </div>
               </div>
             </div>
@@ -127,11 +127,11 @@
               <div class="grid grid-cols-2 mt-3">
                 <div class="mt-3 text-gray-500">
                   <span>Width  : </span>
-                  <span data-target="resize.width"></span>
+                  <span data-resize-target="width"></span>
                 </div>
                 <div class="mt-3 text-gray-500">
                   <span>Height : </span>
-                  <span data-target="resize.height"></span>
+                  <span data-resize-target="height"></span>
                 </div>
               </div>
             </div>
@@ -147,11 +147,11 @@
               <div class="grid grid-cols-2 mt-3">
                 <div class="mt-3 text-gray-500">
                   <span>Width  : </span>
-                  <span data-target="window-size.width"></span>
+                  <span data-window-size-target="width"></span>
                 </div>
                 <div class="mt-3 text-gray-500">
                   <span>Height : </span>
-                  <span data-target="window-size.height"></span>
+                  <span data-window-size-target="height"></span>
                 </div>
               </div>
             </div>
@@ -198,7 +198,7 @@
                     </button>
                   </div>
                   <div class="origin-top-right absolute left-0 mt-2 w-48 rounded-md shadow-lg py-1 bg-white ring-1 ring-black ring-opacity-5"
-                  data-target="dropdown.content"
+                  data-dropdown-target="content"
                   role="menu"
                   aria-orientation="vertical"
                   aria-labelledby="user-menu">
@@ -219,7 +219,7 @@
               <div class="grid grid-cols-2 mt-3">
                 <div class="relative" data-hover-target="content">
                   <div class="origin-top-right absolute left-0 mt-2 w-48 rounded-md shadow-lg py-1 bg-white ring-1 ring-black ring-opacity-5"
-                  data-target="dropdown.content"
+                  data-dropdown-target="content"
                   role="menu"
                   aria-orientation="vertical"
                   aria-labelledby="user-menu">
@@ -285,7 +285,7 @@
                 Memoizes getters
                 Watch the browser console.
               </div>
-              <div class="text-xs text-gray-300" data-target="memo.longText">
+              <div class="text-xs text-gray-300" data-memo-target="longText">
                 Лорем ипсум долор сит амет, граецо ессент импедит ид хас, ат иус прима индоцтум, персиус пондерум яуи но. Ет ест яуод денияуе оффендит, про цу вивендо инвидунт. Сит волуптариа сигниферумяуе те, дицта фацилис волуптуа ан яуо. Ет вис мунди моллис еуисмод. Вим ут децоре цонтентионес делицатиссими. Цибо цоррумпит цонсеяуунтур вих ид, инани алтера еа при.
                 Ех тота иллум сенсибус яуо. Вих ид пауло денияуе, еи алии цетеро нам, зрил сенсерит улламцорпер но хас. Цетеро тимеам фацилисис ех еум, ехерци детрахит диссентиунт ат ест. Дуо ин пертинах цонсулату, ех утамур лобортис пер. При ех мутат алиенум медиоцритатем, ад меа лабитур мелиоре адолесценс.
                 Сеа аудиам аццусата еу, апеириан яуалисяуе меа ин. Яуи солум сапиентем модератиус ат, елитр проприае хис ут. Меа яуод иллуд ет, цум оптион апериам пондерум ин. Яуи дебет апеириан цонсететур но, меи яуас сцаевола ат, нолуиссе перфецто витуператорибус вис ад.
