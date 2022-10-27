@@ -89,7 +89,7 @@ The HTML markup. See the custom event `item:add` that the cart controller is lis
 
   <div>
     <span>No of items : </span>
-    <span data-target="cart.counterView">0</span>
+    <span data-cart-target="counterView">0</span>
   </div>
 </div>
 ```

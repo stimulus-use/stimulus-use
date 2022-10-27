@@ -74,7 +74,7 @@ Here is a typical dropdown component from Tailwind.
     </button>
   </div>
   <div class="origin-top-right absolute left-0 mt-2 w-48 rounded-md shadow-lg py-1 bg-white ring-1 ring-black ring-opacity-5"
-  data-target="dropdown.content"
+  data-dropdown-target="content"
   data-transition-enter-active="transition ease-out duration-300"
   data-transition-enter-from="transform opacity-0 scale-95"
   data-transition-enter-to="transform opacity-100 scale-100"
