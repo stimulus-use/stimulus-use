@@ -29,5 +29,5 @@ Some mixin have a debug option. For those, debug can be turned on locally using 
 Example:
 
 ```js
-useDispatch(this, { debug: true })
+useMatchMedia(this, { debug: true })
 ```

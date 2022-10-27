@@ -2,6 +2,32 @@
 
 Adds a `dispatch` helper function to emit custom events. Useful to communicate between different controllers.
 
+
+!> **Deprecated**: `useDispatch()` is deprecated. Please use the built-in `this.dispatch()` function from Stimulus: https://stimulus.hotwired.dev/reference/controllers#cross-controller-coordination-with-events
+
+## Migration guide
+
+Because the `dispatch()` function from Stimulus is very similar, the migration process to the Stimulus version of `dispatch()` should be fairly simple:
+- remove the `useDispatch` import
+- remove the  `useDispatch` initializer
+- wrap your payload in a `detail` object
+
+```js
+  import { Controller } from '@hotwired/stimulus'
+- import { useDispatch } from 'stimulus-use'
+
+  export default class extends Controller {
+    connect() {
+-     useDispatch(this)
+    }
+
+    add() {
+-     this.dispatch('add', { quantity: 1 })
++     this.dispatch('add', { detail: { quantity: 1 } })
+    }
+  }
+```
+
 ## Reference
 
 #### Mixin

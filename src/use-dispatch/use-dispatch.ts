@@ -50,7 +50,7 @@ export class UseDispatch extends StimulusUse {
     targetElement.dispatchEvent(event)
 
     warn(
-      'useDispatch() is a deprecated mixin from Stimulus-Use. Please use the built-in this.dispatch() function from Stimulus. You can find more information at: https://stimulus-use.github.io/stimulus-use/#/use-dispatch'
+      '`useDispatch()` is deprecated. Please use the built-in `this.dispatch()` function from Stimulus. You can find more information on how to upgrade at: https://stimulus-use.github.io/stimulus-use/#/use-dispatch'
     )
     log('dispatch', { eventName: eventNameWithPrefix, detail, bubbles, cancelable })
 
