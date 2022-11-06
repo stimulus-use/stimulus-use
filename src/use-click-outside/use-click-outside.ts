@@ -44,13 +44,13 @@ export const useClickOutside = (composableController: Controller, options: Click
 
   const observe = () => {
     events?.forEach(event => {
-      window.addEventListener(event, onEvent, false)
+      window.addEventListener(event, onEvent, true)
     })
   }
 
   const unobserve = () => {
     events?.forEach(event => {
-      window.removeEventListener(event, onEvent, false)
+      window.removeEventListener(event, onEvent, true)
     })
   }
 
