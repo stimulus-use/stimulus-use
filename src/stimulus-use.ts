@@ -56,7 +56,7 @@ export class StimulusUse {
   }
 
   warn = (message: string): void => {
-    this.logger.warn(`%c${this.controller.identifier} %c${message}`, 'color: #3B82F6')
+    this.logger.warn(`%c${this.controller.identifier} %c${message}`, 'color: #3B82F6; font-weight: bold', 'color: unset')
   }
 
   dispatch = (eventName: string, details: any = {}) => {
