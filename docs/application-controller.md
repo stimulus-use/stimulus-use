@@ -2,6 +2,21 @@
 
 This is a supercharged Stimulus Controller. You can extend all of your Stimulus controllers from this one and access a few handy functions everywhere.
 
+## Reference
+
+```javascript
+useApplication(controller, options = {})
+```
+
+**controller:** A Stimulus Controller (usually `'this'`)
+
+**options:**
+
+| Option| Description | Default value |
+|-----------------------|-------------|---------------------|
+| `overwriteDispatch` | Whether to call the deprecated `useDispatch()` on the controller or not. | `true` |
+
+
 ## Usage
 
 **Composing**
@@ -42,7 +57,7 @@ export default class extends ApplicationController {
 
 **Getters**
 
-**`isPreview`**: returns `true`/`false` whether the current page is a Turbolinks preview. [Use case for playing animations with Turbolinks](https://dev.to/adrienpoly/animations-with-turbolinks-and-stimulus-4862)
+**`isPreview`**: returns `true`/`false` whether the current page is a Turbo/Turbolinks preview. [Use case for playing animations with Turbolinks](https://dev.to/adrienpoly/animations-with-turbolinks-and-stimulus-4862)
 
 **`isConnected`**: returns `true`/`false` for whether the Stimulus controller is connected or not.
 

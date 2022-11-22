@@ -1,7 +1,17 @@
 import { Controller } from '@hotwired/stimulus'
 import { useDispatch, DispatchOptions } from '../use-dispatch/index'
 
-export const useApplication = (controller: Controller, options: DispatchOptions = {}) => {
+export type ApplicationOptions = DispatchOptions & {
+  overwriteDispatch?: boolean
+}
+
+const defaultOptions: ApplicationOptions = {
+  overwriteDispatch: true
+}
+
+export const useApplication = (controller: Controller, options: ApplicationOptions = {}) => {
+  const { overwriteDispatch } = Object.assign({}, defaultOptions, options)
+
   // getter to detect Turbolinks preview
   Object.defineProperty(controller, 'isPreview', {
     get(): boolean {
@@ -26,7 +36,9 @@ export const useApplication = (controller: Controller, options: DispatchOptions 
     }
   })
 
-  useDispatch(controller, options)
+  if (overwriteDispatch) {
+    useDispatch(controller, options)
+  }
 
   Object.assign(controller, {
     metaValue(name: string) {
