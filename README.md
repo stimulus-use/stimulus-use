@@ -158,7 +158,7 @@ export default class extends IntersectionController {
 
 ## Contributors ✨
 
-Made with :heart: by [@adrienpoly](https://twitter.com/adrienpoly) and all these wonderful contributors ([emoji key](https://github.com/kentcdodds/all-contributors#emoji-key)):
+Made with :heart: by [@adrienpoly](https://twitter.com/adrienpoly), [@marcoroth](https://twitter.com/marcoroth_) and all these wonderful contributors ([emoji key](https://github.com/kentcdodds/all-contributors#emoji-key)):
 
 <!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
 <!-- prettier-ignore-start -->
