@@ -154,6 +154,15 @@ export default class extends IntersectionController {
 }
 ```
 
+## Development
+
+- Fork the project locally
+- `yarn install`
+- `yarn start` - to run the local dev server with examples
+- `yarn test` - to run the unit tests
+- `yarn lint` - to run the linter with ESLint
+- `yarn format` - to format changes with Prettier
+- `yarn build` - to bundle the app into static files for production
 
 
 ## Contributors ✨
