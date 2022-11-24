@@ -49,8 +49,10 @@ export class UseHotkeys extends StimulusUse {
   }
 
   unbind = () => {
-    for (const hotkey in this.hotkeysOptions.hotkeys as any) {
-      hotkeys.unbind(hotkey)
+    for (const [hotkey, definition] of Object.entries(this.hotkeysOptions.hotkeys as any)) {
+      const options = (definition as HotkeyDefinition).options
+      const scope = options.scope ? options.scope : ''
+      hotkeys.unbind(hotkey, scope)
     }
   }
 
