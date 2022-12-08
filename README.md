@@ -214,6 +214,7 @@ Made with :heart: by [@adrienpoly](https://twitter.com/adrienpoly), [@marcoroth]
       <td align="center"><a href="https://michaeljcoyne.me"><img src="https://avatars.githubusercontent.com/u/82063?v=4?s=80" width="80px;" alt="Michael Coyne"/><br /><sub><b>Michael Coyne</b></sub></a><br /><a href="https://github.com/stimulus-use/stimulus-use/issues?q=author%3Amjc-gh" title="Bug reports">🐛</a></td>
       <td align="center"><a href="http://oll.ie"><img src="https://avatars.githubusercontent.com/u/342090?v=4?s=80" width="80px;" alt="Ollie Harridge"/><br /><sub><b>Ollie Harridge</b></sub></a><br /><a href="https://github.com/stimulus-use/stimulus-use/commits?author=ollietb" title="Documentation">📖</a></td>
       <td align="center"><a href="https://github.com/leon-vogt"><img src="https://avatars.githubusercontent.com/u/17851143?v=4?s=80" width="80px;" alt="Leon Vogt"/><br /><sub><b>Leon Vogt</b></sub></a><br /><a href="#infra-leon-vogt" title="Infrastructure (Hosting, Build-Tools, etc)">🚇</a> <a href="https://github.com/stimulus-use/stimulus-use/commits?author=leon-vogt" title="Code">💻</a></td>
+      <td align="center"><a href="https://github.com/tkoenig"><img src="https://avatars.githubusercontent.com/u/63860?v=4?s=80" width="80px;" alt="Thomas König"/><br /><sub><b>Thomas König</b></sub></a><br /><a href="https://github.com/stimulus-use/stimulus-use/commits?author=tkoenig" title="Documentation">📖</a></td>
     </tr>
   </tbody>
 </table>
