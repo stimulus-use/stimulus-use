@@ -304,6 +304,15 @@
       "contributions": [
         "doc"
       ]
+    },
+    {
+      "login": "sc0ttman",
+      "name": "Scott",
+      "avatar_url": "https://avatars.githubusercontent.com/u/272701?v=4",
+      "profile": "https://github.com/sc0ttman",
+      "contributions": [
+        "bug"
+      ]
     }
   ],
   "contributorsPerLine": 7,
