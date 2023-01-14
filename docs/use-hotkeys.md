@@ -1,16 +1,29 @@
 # useHotkeys
 
-Adds one new behavior to your Stimulus controller : `useHotkeys`
+The `useHotkeys` behavior can be used to register hotkeys using the [hotkeys-js](https://wangchujiang.com/hotkeys/) library. To use it, do the following:
 
-This behavior can be used to register hotkeys using the [hotkeys-js](https://wangchujiang.com/hotkeys/) library. To use it, do the following:
-
-1. Install the hotkeys-js peer dependency:
+1. Install the `hotkeys-js` peer dependency:
 
 ```bash
-$ yarn add hotkeys-js
+yarn add hotkeys-js
+```
+
+```bash
+bin/importmap pin hotkeys-js
 ```
 
 2. Define hotkeys and respective handlers and pass them as an argument to `useHotkeys`.
+
+## Importing the behavior
+
+!> **Note**: `stimulus-use` version `0.52.0` changed the way how this behavior needs to be imported in your application.
+
+```diff
+- import { useHotkeys } from "stimulus-use"
++ import { useHotkeys } from "stimulus-use/hotkeys"
+```
+
+**Also, please add `hotkeys-js` as a npm dependency to your application if you haven't added it yet, version `0.52.0` removed it as a dependency.**
 
 ## Reference
 
@@ -22,13 +35,13 @@ useHotkeys(controller, options)
 
 **options** : Hotkey definitions, in simple or advanced format (see examples below)
 
-*simple:* 
+*simple:*
 
 ```typescript
 { [hotkey: string]: [handler: KeyHandler, element: HTMLElement] }
 ```
 
-*advanced:* 
+*advanced:*
 ```typescript
 {
   hotkeys?: {
@@ -52,7 +65,7 @@ useHotkeys(controller, options)
 ### Simple Hotkey Definition
 ```js
 import { Controller } from '@hotwired/stimulus'
-import { useHotkeys } from 'stimulus-use'
+import { useHotkeys } from 'stimulus-use/hotkeys'
 
 export default class extends Controller {
   connect() {
@@ -65,12 +78,12 @@ export default class extends Controller {
   }
 }
 ```
-    
-    
+
+
 ### Advanced Hotkey Definition
 ```js
 import { Controller } from '@hotwired/stimulus'
-import { useHotkeys } from 'stimulus-use'
+import { useHotkeys } from 'stimulus-use/hotkeys'
 
 export default class extends Controller {
   connect() {

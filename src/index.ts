@@ -2,7 +2,6 @@ export * from './use-application'
 export * from './use-click-outside'
 export * from './use-debounce'
 export * from './use-dispatch'
-export * from './use-hotkeys'
 export * from './use-hover'
 export * from './use-idle'
 export * from './use-intersection'
@@ -18,3 +17,7 @@ export * from './use-transition'
 export * from './use-visibility'
 export * from './use-window-focus'
 export * from './use-window-resize'
+
+export function useHotkeys() {
+  throw '[stimulus-use] Notice: The import for `useHotkeys()` has been moved from `stimulus-use` to `stimulus-use/hotkeys`. \nPlease change the import accordingly and add `hotkey-js` as a dependency to your project. \n\nFor more information see: https://stimulus-use.github.io/stimulus-use/#/use-hotkeys?id=importing-the-behavior'
+}
