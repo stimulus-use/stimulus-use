@@ -41,7 +41,7 @@
     "babel-loader": "^8.1.0",
     "chai": "^4.2.0",
     "chai-dom": "^1.8.2",
-    "cypress": "^9.6.1",
+    "cypress": "^12.3.0",
     "docsify-cli": "^4.4.4",
     "html2js": "^0.2.0",
     "intersection-observer": "^0.12.2",
