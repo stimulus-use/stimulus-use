@@ -25,7 +25,6 @@ export class UseWindowFocus extends StimulusUse {
     if (document.hasFocus()) {
       this.becomesFocused()
     } else {
-      console.log('i should be there')
       this.becomesUnfocused()
     }
 
