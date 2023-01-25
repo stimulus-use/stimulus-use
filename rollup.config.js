@@ -9,7 +9,7 @@ const banner = `/*\nStimulus-Use ${version}\n*/`
 export default [
   {
     input: 'src/index.ts',
-    external: ['@hotwired/stimulus', 'hotkeys-js'],
+    external: ['@hotwired/stimulus'],
     output: [
       {
         name: 'StimulusUse',
@@ -17,8 +17,7 @@ export default [
         format: 'umd',
         banner,
         globals: {
-          '@hotwired/stimulus': 'Stimulus',
-          'hotkeys-js': 'hotkeys'
+          '@hotwired/stimulus': 'Stimulus'
         }
       },
       {
@@ -30,6 +29,31 @@ export default [
     plugins: [resolve(), typescript(), filesize()],
     watch: {
       include: 'src/**'
+    }
+  },
+  {
+    input: 'src/hotkeys.ts',
+    external: ['@hotwired/stimulus', 'hotkeys-js'],
+    output: [
+      {
+        name: 'StimulusUseHotkeys',
+        file: 'dist/hotkeys.umd.js',
+        format: 'umd',
+        banner,
+        globals: {
+          '@hotwired/stimulus': 'Stimulus',
+          'hotkeys-js': 'hotkeys'
+        }
+      },
+      {
+        file: 'dist/hotkeys.js',
+        format: 'es',
+        banner
+      }
+    ],
+    plugins: [resolve(), typescript(), filesize()],
+    watch: {
+      include: ['src/hotkeys.ts', 'src/use-hotkeys/**/*']
     }
   }
 ]

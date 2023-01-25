@@ -2,15 +2,36 @@
   "name": "stimulus-use",
   "version": "0.51.3",
   "description": "A collection of standard controllers and utilities for Stimulus",
-  "sideEffects": false,
-  "main": "dist/index.js",
-  "module": "dist/index.js",
-  "unpkg": "dist/index.umd.js",
-  "types": "dist/types/index.d.ts",
-  "amdName": "StimulusUse",
-  "author": "@adrienpoly",
+  "repository": "https://github.com/stimulus-use/stimulus-use",
   "license": "MIT",
-  "external": "@hotwired/stimulus",
+  "author": "Adrien Poly",
+  "contributors": [
+    "Adrien Poly",
+    "Marco Roth"
+  ],
+  "sideEffects": false,
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
+  "unpkg": "./dist/index.umd.js",
+  "types": "./dist/types/index.d.ts",
+  "exports": {
+    ".": {
+      "main": "./dist/index.umd.js",
+      "browser": "./dist/index.js",
+      "import": "./dist/index.js",
+      "module": "./dist/index.js",
+      "umd": "./dist/index.umd.js",
+      "types": "./dist/types/index.d.ts"
+    },
+    "./hotkeys": {
+      "main": "./dist/hotkeys.umd.js",
+      "browser": "./dist/hotkeys.js",
+      "import": "./dist/hotkeys.js",
+      "module": "./dist/hotkeys.js",
+      "umd": "./dist/hotkeys.umd.js",
+      "types": "./dist/types/hotkeys.d.ts"
+    }
+  },
   "scripts": {
     "prestart": "cd playground && yarn install && cd -",
     "start": "cd playground && yarn start",
@@ -43,6 +64,7 @@
     "chai-dom": "^1.8.2",
     "cypress": "^12.3.0",
     "docsify-cli": "^4.4.4",
+    "hotkeys-js": "^3.10.1",
     "html2js": "^0.2.0",
     "intersection-observer": "^0.12.2",
     "karma": "^6.1.0",
@@ -72,14 +94,8 @@
     "typescript": "^3.9.7",
     "webpack": "^4.44.1"
   },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/stimulus-use/stimulus-use"
-  },
   "peerDependencies": {
-    "@hotwired/stimulus": ">= 3"
-  },
-  "dependencies": {
-    "hotkeys-js": ">=3"
+    "@hotwired/stimulus": ">= 3",
+    "hotkeys-js": ">= 3"
   }
 }
