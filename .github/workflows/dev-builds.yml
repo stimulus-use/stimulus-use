@@ -21,4 +21,4 @@ jobs:
       - run: yarn build
 
       - name: Publish dev build
-        run: .github/scripts/publish-dev-build '${{ secrets.STIMULUSUSE_DEV_BUILDS_TOKEN }}'
+        run: .github/scripts/publish-dev-build 'stimulus-use:${{ secrets.STIMULUSUSE_DEV_BUILDS_TOKEN }}'
