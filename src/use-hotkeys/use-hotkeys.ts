@@ -2,7 +2,7 @@ import { Controller } from '@hotwired/stimulus'
 import hotkeys, { KeyHandler, HotkeysEvent } from 'hotkeys-js'
 import { StimulusUse, StimulusUseOptions } from '../stimulus-use'
 
-// from https://github.com/jaywcjlove/hotkeys/blob/master/index.d.ts
+// from https://github.com/jaywcjlove/hotkeys/blob/0a8c8bc1d6579e6d89a735d3573239fcf138b0e6/index.d.ts#L13-L20
 type Options = {
   scope?: string
   element?: HTMLElement | null
