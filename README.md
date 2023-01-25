@@ -217,6 +217,7 @@ Made with :heart: by [@adrienpoly](https://twitter.com/adrienpoly), [@marcoroth]
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/tkoenig"><img src="https://avatars.githubusercontent.com/u/63860?v=4?s=80" width="80px;" alt="Thomas König"/><br /><sub><b>Thomas König</b></sub></a><br /><a href="https://github.com/stimulus-use/stimulus-use/commits?author=tkoenig" title="Documentation">📖</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/sc0ttman"><img src="https://avatars.githubusercontent.com/u/272701?v=4?s=80" width="80px;" alt="Scott"/><br /><sub><b>Scott</b></sub></a><br /><a href="https://github.com/stimulus-use/stimulus-use/issues?q=author%3Asc0ttman" title="Bug reports">🐛</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/daniel-rikowski"><img src="https://avatars.githubusercontent.com/u/1169363?v=4?s=80" width="80px;" alt="Daniel Rikowski"/><br /><sub><b>Daniel Rikowski</b></sub></a><br /><a href="https://github.com/stimulus-use/stimulus-use/issues?q=author%3Adaniel-rikowski" title="Bug reports">🐛</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="http://twitter.com/marckohlbrugge"><img src="https://avatars.githubusercontent.com/u/93276?v=4?s=80" width="80px;" alt="Marc Köhlbrugge"/><br /><sub><b>Marc Köhlbrugge</b></sub></a><br /><a href="#ideas-marckohlbrugge" title="Ideas, Planning, & Feedback">🤔</a></td>
     </tr>
   </tbody>
 </table>
