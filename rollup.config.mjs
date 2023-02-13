@@ -1,10 +1,23 @@
 import resolve from '@rollup/plugin-node-resolve'
 import typescript from '@rollup/plugin-typescript'
 import filesize from 'rollup-plugin-filesize'
+import terser from '@rollup/plugin-terser'
+import { readFileSync } from 'fs'
 
-import { version } from './package.json'
-const year = new Date().getFullYear()
-const banner = `/*\nStimulus-Use ${version}\n*/`
+const json = JSON.parse(readFileSync('./package.json'))
+const banner = `/*\n * stimulus-use ${json.version}\n */`
+
+const pretty = () => {
+  return terser({
+    mangle: false,
+    compress: false,
+    format: {
+      comments: "all",
+      beautify: true,
+      indent_level: 2
+    }
+  })
+}
 
 export default [
   {
@@ -26,7 +39,7 @@ export default [
         banner
       }
     ],
-    plugins: [resolve(), typescript(), filesize()],
+    plugins: [resolve(), typescript(), filesize(), pretty()],
     watch: {
       include: 'src/**'
     }
@@ -51,7 +64,7 @@ export default [
         banner
       }
     ],
-    plugins: [resolve(), typescript(), filesize()],
+    plugins: [resolve(), typescript(), filesize(), pretty()],
     watch: {
       include: ['src/hotkeys.ts', 'src/use-hotkeys/**/*']
     }
