@@ -14,12 +14,23 @@ useIntersection(controller, options = {})
 
 **options** :
 
-| Option| Description |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Default&nbsp;value&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|
+| Option | Description | Default&nbsp;value|
 |-----------------------|-------------|---------------------|
 | `dispatchEvent` | Whether to dispatch `appear`, `disappear` events or not. | `true` |
 | `element` | The root element listening to intersection events. | The controller element|
 |`eventPrefix`| Whether to prefix or not the emitted event. Can be a **boolean** or a **string**.<br>- **true** prefix the event with the controller identifier `card:appear` <br>- **someString** prefix the event with the given string `someString:appear` <br>- **false** to remove prefix  |true|
 | `visibleAttribute` | The name of the attribute which gets added to the tracked element when the element is visible | `isVisible` |
+
+
+Additionally, the following options can also be passed to the `options` object. The following descriptions are from [MDN](https://developer.mozilla.org/en-US/docs/Web/API/IntersectionObserver/IntersectionObserver#parameters):
+
+If options isn't specified, the observer uses the document's viewport as the root, with no margin, and a 0% threshold (meaning that even a one-pixel change is enough to trigger a callback). You can provide any combination of the following options:
+
+| Option | Description | Default&nbsp;value |
+|-----------------------|-------------|---------------------|
+| `root` | An Element or Document object which is an ancestor of the intended target, whose bounding rectangle will be considered the viewport. Any part of the target not visible in the visible area of the root is not considered visible. | document viewport |
+| `rootMargin` | A string which specifies a set of offsets to add to the root's bounding_box when calculating intersections, effectively shrinking or growing the root for calculation purposes. The syntax is approximately the same as that for the CSS margin property; see The intersection root and root margin for more information on how the margin works and the syntax. | `"0px 0px 0px 0px"` |
+| `threshold` | Either a single number or an array of numbers between 0.0 and 1.0, specifying a ratio of intersection area to total bounding box area for the observed target. A value of 0.0 means that even a single visible pixel counts as the target being visible. 1.0 means that the entire target element is visible. See Thresholds for a more in-depth description of how thresholds are used.  | ` 0.0` |
 
 ## Usage
 
