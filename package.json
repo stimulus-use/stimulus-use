@@ -60,7 +60,7 @@
     "@rollup/plugin-terser": "^0.4.0",
     "@rollup/plugin-typescript": "^11.0.0",
     "agadoo": "^2.0.0",
-    "babel-loader": "^8.1.0",
+    "babel-loader": "^9.1.2",
     "chai": "^4.2.0",
     "chai-dom": "^1.8.2",
     "cypress": "^12.3.0",
