@@ -59,7 +59,7 @@
     "@rollup/plugin-node-resolve": "^15.0.1",
     "@rollup/plugin-terser": "^0.4.0",
     "@rollup/plugin-typescript": "^11.0.0",
-    "agadoo": "^2.0.0",
+    "agadoo": "^3.0.0",
     "babel-loader": "^8.1.0",
     "chai": "^4.2.0",
     "chai-dom": "^1.8.2",
