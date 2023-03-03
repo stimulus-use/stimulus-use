@@ -9,6 +9,7 @@ yarn add hotkeys-js
 ```
 
 ```bash
+bin/importmap pin stimulus-use/hotkeys
 bin/importmap pin hotkeys-js
 ```
 
