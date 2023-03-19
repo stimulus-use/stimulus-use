@@ -61,29 +61,34 @@ data-transition-leave-end-class="transform opacity-0 scale-95"
 Here is a typical dropdown component from Tailwind.
 
 ```html
-<div class="relative"
-     data-controller="transition click-outside"
-     data-transition-target="content"
-     data-action="click-outside:click:outside->transition#leave">
+<div 
+  class="relative"
+  data-controller="transition click-outside"
+  data-transition-target="content"
+  data-action="click-outside:click:outside->transition#leave"
+>
   <div>
     <button
       data-action="click->dropdown#toggle"
       type="button"
-      class="inline-flex items-center px-2.5 py-1.5 border border-transparent text-xs font-medium rounded text-indigo-700 bg-indigo-100 hover:bg-indigo-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+      class="inline-flex items-center px-2.5 py-1.5 border border-transparent text-xs font-medium rounded text-indigo-700 bg-indigo-100 hover:bg-indigo-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+    >
       Dropdown
     </button>
   </div>
-  <div class="origin-top-right absolute left-0 mt-2 w-48 rounded-md shadow-lg py-1 bg-white ring-1 ring-black ring-opacity-5"
-  data-dropdown-target="content"
-  data-transition-enter-active="transition ease-out duration-300"
-  data-transition-enter-from="transform opacity-0 scale-95"
-  data-transition-enter-to="transform opacity-100 scale-100"
-  data-transition-leave-active="transition ease-in duration-300"
-  data-transition-leave-from="transform opacity-100 scale-100"
-  data-transition-leave-to="transform opacity-0 scale-95"
-  role="menu"
-  aria-orientation="vertical"
-  aria-labelledby="user-menu">
+  <div
+    class="origin-top-right absolute left-0 mt-2 w-48 rounded-md shadow-lg py-1 bg-white ring-1 ring-black ring-opacity-5"
+    data-dropdown-target="content"
+    data-transition-enter-active="transition ease-out duration-300"
+    data-transition-enter-from="transform opacity-0 scale-95"
+    data-transition-enter-to="transform opacity-100 scale-100"
+    data-transition-leave-active="transition ease-in duration-300"
+    data-transition-leave-from="transform opacity-100 scale-100"
+    data-transition-leave-to="transform opacity-0 scale-95"
+    role="menu"
+    aria-orientation="vertical"
+    aria-labelledby="user-menu"
+  >
     <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem">Your Profile</a>
     <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem">Settings</a>
     <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem">Sign out</a>
@@ -97,13 +102,13 @@ If you're not using Tailwind, you'll need to create custom CSS classes. Here's a
 
 ```html
 <div data-controller="custom-close">
-    <div data-custom-close-target="boxToClose">
-        This element will fade out and in!
-    </div>
+  <div data-custom-close-target="boxToClose">
+    This element will fade out and in!
+  </div>
 
-    <button data-action="custom-close#close">Close Box</button>
-    <button data-action="custom-close#open">Open Box</button>
-    <button data-action="custom-close#toggle">Toggle Box</button>
+  <button data-action="custom-close#close">Close Box</button>
+  <button data-action="custom-close#open">Open Box</button>
+  <button data-action="custom-close#toggle">Toggle Box</button>
 </div>
 ```
 
