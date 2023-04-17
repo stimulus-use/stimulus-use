@@ -5734,9 +5734,9 @@ normalize-url@^6.0.1:
   integrity sha512-DlL+XwOy3NxAQ8xuC0okPgK46iuVNAK01YN7RueYBqqFeGsBjV9XmCAzAdgt+667bCl5kPh9EqKKDwnaPG1I7A==
 
 np@^7.5.0:
-  version "7.6.4"
-  resolved "https://registry.yarnpkg.com/np/-/np-7.6.4.tgz#5b901be85cb498e9feada52b2945c8a0ae68d2f7"
-  integrity sha512-w1bwfhN2OCY8VgVdtkSn2vHN+c0KtPnCCWKWvPjuB6WCxMc1bmU797xCc1NZJdRAW2F79zrMMKOIh0N/A1xdXg==
+  version "7.7.0"
+  resolved "https://registry.yarnpkg.com/np/-/np-7.7.0.tgz#7fbf2495f6395bcc702b84ca38c4a125363fd5a5"
+  integrity sha512-G4HfO6JUl7iKOX1qfYHM/kG5ApqqZ4ma8YjtVAJoyS5VdKkGE/OdSG3cOE9Lwr71klNz9n6KIZmPRnh0L7qM1Q==
   dependencies:
     "@samverschueren/stream-to-observable" "^0.3.1"
     any-observable "^0.5.1"
