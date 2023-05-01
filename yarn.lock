@@ -6973,9 +6973,9 @@ rollup@^1:
     acorn "^7.1.0"
 
 rollup@^3.15.0:
-  version "3.20.4"
-  resolved "https://registry.yarnpkg.com/rollup/-/rollup-3.20.4.tgz#cde35731c5c0c637de0b532d5d1a84bd802c128e"
-  integrity sha512-n7J4tuctZXUErM9Uc916httwqmTc63zzCr2+TLCiSCpfO/Xuk3g/marGN1IlRJZi+QF3XMYx75PxXRfZDVgaRw==
+  version "3.21.2"
+  resolved "https://registry.yarnpkg.com/rollup/-/rollup-3.21.2.tgz#c3a06bc8d235a0c0a8f1f7d9da73426f53706bdc"
+  integrity sha512-c4vC+JZ3bbF4Kqq2TtM7zSKtSyMybFOjqmomFax3xpfYaPZDZ4iz8NMIuBRMjnXOcKYozw7bC6vhJjiWD6JpzQ==
   optionalDependencies:
     fsevents "~2.3.2"
 
