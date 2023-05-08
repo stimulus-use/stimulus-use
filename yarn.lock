@@ -4767,9 +4767,9 @@ karma-sourcemap-loader@^0.4.0:
     graceful-fs "^4.2.10"
 
 karma-typescript@^5.5.3:
-  version "5.5.3"
-  resolved "https://registry.yarnpkg.com/karma-typescript/-/karma-typescript-5.5.3.tgz#29c04d9677f8bd78dfacd89e8fa6f475dd25aba2"
-  integrity sha512-l1FHurolXEBIzRa9ExpNtjzysAhsi/vLpTazpwLHWWK86mknvVpqor6pRZ5Nid7jvOPrTBqAq0JRuLgiCdRkFw==
+  version "5.5.4"
+  resolved "https://registry.yarnpkg.com/karma-typescript/-/karma-typescript-5.5.4.tgz#969871512b8476dfc7a496f48da9ca9c73d710e5"
+  integrity sha512-D7nQ96xu/UekuqCmiPimnCuOFqp8+BxiND6MU6IJVN37E7DgXzr7SUeTzwuTHtKSYpgxKv4iOTUteYTxpeZL9A==
   dependencies:
     acorn "^8.1.0"
     acorn-walk "^8.0.2"
