@@ -86,7 +86,7 @@
     "mocha": "^10.2.0",
     "np": "^7.5.0",
     "prettier": "^2.3.1",
-    "rimraf": "^4.1.1",
+    "rimraf": "^5.0.1",
     "rollup": "^3.15.0",
     "rollup-plugin-filesize": "^9.1.1",
     "sinon": "^15.0.1",
