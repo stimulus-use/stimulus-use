@@ -1,6 +1,6 @@
 # useIntersection
 
-Adds 2 new behaviors to your Stimulus controller : `appear` and `disappear`.
+Adds 2 new behaviors to your Stimulus controller: `appear` and `disappear`.
 
 This behavior is built on top of the [Intersection Observer API](https://developer.mozilla.org/en-US/docs/Web/API/Intersection_Observer_API)
 
@@ -45,12 +45,12 @@ export default class extends Controller {
     useIntersection(this)
   }
 
-  appear(entry) {
+  appear(entry, observer) {
     // callback automatically triggered when the element
     // intersects with the viewport (or root Element specified in the options)
   }
 
-  disappear(entry) {
+  disappear(entry, observer) {
     // callback automatically triggered when the element
     // leaves the viewport (or root Element specified in the options)
   }
@@ -67,11 +67,11 @@ export default class extends IntersectionController {
     element: this.element, // default
   }
 
-  appear(entry) {
+  appear(entry, observer) {
     // ...
   }
 
-  disappear(entry) {
+  disappear(entry, observer) {
     // ...
   }
 }
@@ -124,7 +124,7 @@ Get the emitting controller and entry object for an appear event
 
 ```js
 count(event) {
-  const { controller, entry } = event.detail
+  const { controller, entry, observer } = event.detail
 }
 ```
 
@@ -165,6 +165,47 @@ export default class extends Controller {
   }
 }
 ```
+
+## Manually calling `observe()` and `unobserve()`
+
+You can manually call `observe()` and `unobserve()` by obtaining references from the `useIntersection()` function call.
+
+`useIntersection()` returns an array with two functions, the first one is the `observe()` and the second one is the `unobserve()` function.
+
+```js
+export default class extends Controller {
+  connect() {
+    const [observe, unobserve] = useIntersection(this)
+    this.observe = observe
+    this.unobserve = unobserve
+  }
+
+  appear() {
+    // observe and emit `appear()` callback just once
+    this.unobserve()
+  }
+}
+```
+
+
+## Accessing the `IntersectionObserver` instance
+
+You have the freedom to perform more advanced operations on the observer directly, so you can customize the logic according to your needs. The `IntersectionObserver` instance gets passed in as the second argument to the `appear` and `disappear` callbacks.
+
+```js
+export default class extends Controller {
+  connect() {
+    useIntersection(this)
+  }
+
+  appear(entry, observer) {
+    // observe and emit `appear()` callback just once
+    observer.unobserve(entry.target)
+  }
+}
+```
+
+Alternatively, you can also access the `observer` from the event detail.
 
 ## Example
 

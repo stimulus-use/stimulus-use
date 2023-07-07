@@ -33,28 +33,30 @@ export const useIntersection = (composableController: Controller, options: Inter
     }
   }
 
+  const observer = new IntersectionObserver(callback, options)
+
   const dispatchAppear = (entry: IntersectionObserverEntry) => {
     targetElement.setAttribute(visibleAttribute, 'true')
-    method(controller, 'appear').call(controller, entry)
+    method(controller, 'appear').call(controller, entry, observer)
 
     // emit a custom "appear" event
     if (dispatchEvent) {
       const eventName = composeEventName('appear', controller, eventPrefix)
 
-      const appearEvent = extendedEvent(eventName, null, { controller, entry })
+      const appearEvent = extendedEvent(eventName, null, { controller, entry, observer })
       targetElement.dispatchEvent(appearEvent)
     }
   }
 
   const dispatchDisappear = (entry: IntersectionObserverEntry) => {
     targetElement.removeAttribute(visibleAttribute)
-    method(controller, 'disappear').call(controller, entry)
+    method(controller, 'disappear').call(controller, entry, observer)
 
     // emit a custom "disappear" event
     if (dispatchEvent) {
       const eventName = composeEventName('disappear', controller, eventPrefix)
 
-      const disappearEvent = extendedEvent(eventName, null, { controller, entry })
+      const disappearEvent = extendedEvent(eventName, null, { controller, entry, observer })
       targetElement.dispatchEvent(disappearEvent)
     }
   }
@@ -63,7 +65,10 @@ export const useIntersection = (composableController: Controller, options: Inter
   // to support composing several behaviors
   const controllerDisconnect = controller.disconnect.bind(controller)
 
-  const observer = new IntersectionObserver(callback, options)
+  const disconnect = () => {
+    unobserve()
+    controllerDisconnect()
+  }
 
   const observe = () => {
     observer.observe(targetElement)
@@ -97,10 +102,7 @@ export const useIntersection = (composableController: Controller, options: Inter
     oneVisible,
     atLeastOneVisible,
     allVisible,
-    disconnect() {
-      unobserve()
-      controllerDisconnect()
-    }
+    disconnect
   })
 
   observe()
