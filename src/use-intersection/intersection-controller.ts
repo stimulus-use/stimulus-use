@@ -2,8 +2,8 @@ import { Controller, Context } from '@hotwired/stimulus'
 import { useIntersection, IntersectionOptions } from './use-intersection'
 
 export class IntersectionComposableController extends Controller {
-  declare appear?: (entry: IntersectionObserverEntry) => void
-  declare disappear?: (entry: IntersectionObserverEntry) => void
+  declare appear?: (entry: IntersectionObserverEntry, observer: IntersectionObserver) => void
+  declare disappear?: (entry: IntersectionObserverEntry, observer: IntersectionObserver) => void
   declare intersectionElements: Element[]
   declare isVisible: () => boolean
   declare noneVisible: () => boolean
