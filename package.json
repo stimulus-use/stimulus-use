@@ -1,6 +1,6 @@
 {
   "name": "stimulus-use",
-  "version": "0.52.0",
+  "version": "0.52.1",
   "description": "A collection of standard controllers and utilities for Stimulus",
   "repository": "https://github.com/stimulus-use/stimulus-use",
   "license": "MIT",
