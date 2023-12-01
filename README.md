@@ -2,18 +2,17 @@
   <img src="docs/assets/stimulus-use-logo.png" width="500" srcset="docs/assets/stimulus-use-logo@2x.png 2x, docs/assets/stimulus-use-logo@3x.png 3x" />
 </p>
 
-<p align="center">
-  <b>A collection of composable behaviors for your Stimulus Controllers</b>
-  </br>
-  </br>
-  <img src="https://badgen.net/npm/v/stimulus-use" alt="npm version">
-  <a href="https://bundlephobia.com/result?p=stimulus-use" rel="nofollow">
-    <img src="https://badgen.net/bundlephobia/minzip/stimulus-use" alt="minified + gzip size">
-  </a>
-  <img src="https://badgen.net/npm/types/tslib" alt="types included">
-  <img src="https://badgen.net/npm/license/stimulus-use" alt="types included">
-  <img src="./docs/assets/example-buildstatus-badge.png" alt="Sauce test status">
-</p>
+<div align="center">
+
+  **A collection of composable behaviors for your Stimulus Controllers**
+
+  [![npm version](https://badgen.net/npm/v/stimulus-use)](https://npmjs.com/package/stimulus-use)
+  [![minified + gzip size](https://badgen.net/bundlephobia/minzip/stimulus-use)](https://bundlephobia.com/result?p=stimulus-use)
+  ![types included](https://badgen.net/npm/types/tslib)
+  ![license](https://badgen.net/npm/license/stimulus-use)
+  ![Sauce test status](./docs/assets/example-buildstatus-badge.png)
+
+</div>
 <br />
 
 <p align="center">
