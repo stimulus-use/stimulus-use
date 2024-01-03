@@ -1,5 +1,6 @@
 export * from './use-application'
 export * from './use-click-outside'
+export * from './use-cookie'
 export * from './use-debounce'
 export * from './use-dispatch'
 export * from './use-hover'
