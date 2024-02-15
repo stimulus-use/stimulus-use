@@ -16,7 +16,7 @@ useVisibility(controller, options)
 
 | Option| Description |&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Default value&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;|
 |-----------------------|-------------|---------------------|
-| `dispatchEvent` | Whether to dispatch a `click:outside` event or not.| `true` |
+| `dispatchEvent` | Whether to dispatch `visible`, `invisible` events or not. | `true` |
 |`eventPrefix`| Whether to prefix or not the emitted event. Can be a **boolean** or a **string**.<br>- **true** prefix the event with the controller identifier `application:visible` <br>- **someString** prefix the event with the given string `someString:invisible` <br>- **false** to remove prefix  |true|
 | `debug` | Whether to log debug information. See [debug](debug.md) for more information on the debugging tools|false|
 

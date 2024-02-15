@@ -73,7 +73,7 @@ We got you covered 👉 [stimulus-use.github.io/stimulus-use](https://stimulus-u
   | Mixin | Description | NEW Callbacks |
   |-----------------------|-------------|---------------------|
   |[`useClickOutside`](./docs/use-click-outside.md)|Tracks the clicks outside of the element and adds a new lifecycle callback **clickOutside**.|`clickOutside`|
-  |[`useHotkeys`](./docs/use-hotkeys.md)|Registers hotkeys using the [hotkeys-js](https://wangchujiang.com/hotkeys/) library and binds them to handler methods||
+  |[`useHotkeys`](./docs/use-hotkeys.md)|Registers hotkeys using the [hotkeys-js](https://wangchujiang.com/hotkeys-js/) library and binds them to handler methods||
   |[`useHover`](./docs/use-hover.md)|Tracks the user's mouse movements over an element and adds **mouseEnter** and **mouseLeave** callbacks to your controller.|`mouseEnter` `mouseLeave`|
   |[`useIdle`](./docs/use-idle.md)| Tracks if the user is idle on your page and adds **away** and **back** callbacks to your controller.|`away`</br> `back`|
   |[`useIntersection`](./docs/use-intersection.md) | Tracks the element's intersection and adds **appear**, **disappear** callbacks to your controller.|`appear`</br> `disappear`|
@@ -218,6 +218,9 @@ Made with :heart: by [@adrienpoly](https://twitter.com/adrienpoly), [@marcoroth]
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/sc0ttman"><img src="https://avatars.githubusercontent.com/u/272701?v=4?s=80" width="80px;" alt="Scott"/><br /><sub><b>Scott</b></sub></a><br /><a href="https://github.com/stimulus-use/stimulus-use/issues?q=author%3Asc0ttman" title="Bug reports">🐛</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/daniel-rikowski"><img src="https://avatars.githubusercontent.com/u/1169363?v=4?s=80" width="80px;" alt="Daniel Rikowski"/><br /><sub><b>Daniel Rikowski</b></sub></a><br /><a href="https://github.com/stimulus-use/stimulus-use/issues?q=author%3Adaniel-rikowski" title="Bug reports">🐛</a></td>
       <td align="center" valign="top" width="14.28%"><a href="http://twitter.com/marckohlbrugge"><img src="https://avatars.githubusercontent.com/u/93276?v=4?s=80" width="80px;" alt="Marc Köhlbrugge"/><br /><sub><b>Marc Köhlbrugge</b></sub></a><br /><a href="#ideas-marckohlbrugge" title="Ideas, Planning, & Feedback">🤔</a></td>
+    </tr>
+    <tr>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/leonvogt"><img src="https://avatars.githubusercontent.com/u/17851143?v=4?s=80" width="80px;" alt="Leon Vogt"/><br /><sub><b>Leon Vogt</b></sub></a><br /><a href="https://github.com/stimulus-use/stimulus-use/commits?author=leonvogt" title="Documentation">📖</a></td>
     </tr>
   </tbody>
 </table>

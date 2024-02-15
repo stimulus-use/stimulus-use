@@ -1,6 +1,6 @@
 # useHotkeys
 
-The `useHotkeys` behavior can be used to register hotkeys using the [hotkeys-js](https://wangchujiang.com/hotkeys/) library. To use it, do the following:
+The `useHotkeys` behavior can be used to register hotkeys using the [hotkeys-js](https://wangchujiang.com/hotkeys-js/) library. To use it, do the following:
 
 1. Install the `hotkeys-js` peer dependency:
 
