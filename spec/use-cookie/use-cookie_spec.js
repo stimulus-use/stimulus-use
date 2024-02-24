@@ -1,11 +1,17 @@
 import { Controller, Application } from '@hotwired/stimulus'
 import { useCookie } from '../../src'
 import { nextFrame } from '../helpers'
-import { expect } from 'chai'
 import { fixtureBase } from './fixtures'
-import { getCookieValue, getCookieCount, getCookies, setInitialCookies } from './helpers'
+import { getCookieValue, setBrowserCookies } from './helpers'
 
+const defaultOptions = {
+  expires: 30,
+  suffix: true
+}
+
+const declaredCookieNames = ['lunch', 'breakfast']
 class UseLogController extends Controller {
+  static cookieNames = declaredCookieNames
   connect() {
     useCookie(this, this.application.options)
   }
@@ -25,93 +31,70 @@ const scenarios = [
     initialCookies: ''
   },
   {
+    name: 'scenario with no suffix',
+    fixture: fixtureBase,
+    options: { suffix: false },
+    initialCookies: ''
+  },
+  {
     name: 'scenario without options',
     fixture: fixtureBase,
-    options: undefined,
-    initialCookies: ''
+    options: { suffix: true, expires: 100 },
+    initialCookies: `${declaredCookieNames[0]}=pasta; ${declaredCookieNames[1]}=pancakes`
   },
   {
     name: 'scenario with previously set cookies',
     fixture: fixtureBase,
     options: undefined,
-    initialCookies: 'food=pasta; breakfast=pancakes'
+    initialCookies: `${declaredCookieNames[0]}=pasta; ${declaredCookieNames[1]}=pancakes`
   }
 ]
 
 scenarios.forEach(scenario => {
-  describe(`CookieController tests scenario : ${scenario.name}`, function() {
+  describe(`useCookie tests scenario : ${scenario.name}`, function () {
     let application
-    let initialCookiesCount
     let controller
+    let suffixValue
 
-    beforeEach('initialize controller', async function() {
+    beforeEach('initialize controller', async function () {
       application = Application.start()
-      application.options = scenario.options
-      setInitialCookies(scenario.initialCookies)
-      initialCookiesCount = getCookieCount()
+      application.options = Object.assign({}, defaultOptions, scenario.options)
+
+      setBrowserCookies(scenario.initialCookies)
 
       fixture.set(fixtureBase)
       application.register('cookie', UseLogController)
       await nextFrame()
       controller = application.controllers[0]
+      suffixValue = application.options.suffix ? 'Cookie' : ''
     })
 
-    describe(`reads previous cookies in: ${scenario.name}}`, function() {
-      it('from browsers current cookies', function() {
-        getCookies().forEach(cookie => {
-          const [cookieName, cookieValue] = cookie;
-
-          const cookieGetterValue = controller[`${cookieName}Cookie`];
-          expect(cookieValue).to.equal(cookieGetterValue)
+    describe(`test cookie getters in: ${scenario.name}}`, function () {
+      it('returns value from browsers cookies', function () {
+        UseLogController.cookieNames.forEach(cookieName => {
+          const cookieValue = controller[`${cookieName}${suffixValue}`]
+          expect(getCookieValue(cookieName)).to.equal(cookieValue)
         })
       })
     })
 
-
-    describe('setCookie', function() {
-      const cookieName = "colorscheme"
-      const cookieValue = "dark"
-
-      describe(`sets a new cookie in: ${scenario.name}`, function() {
-        it('from a cookie object', function() {
-          expect(getCookieValue(cookieName)).to.equal(null)
-          controller.setCookie({ name: cookieName, value: cookieValue })
-          expect(getCookieValue(cookieName)).to.equal(cookieValue)
-          expect(getCookieCount()).to.equal(1 + initialCookiesCount)
-        })
-
-        it('from strings (cookieName, cookieValue) ', function() {
-          expect(getCookieValue(cookieName)).to.equal(null)
-          controller.setCookie(cookieName, cookieValue)
-          expect(getCookieValue(cookieName)).to.equal(cookieValue)
-          expect(getCookieCount()).to.equal(1 + initialCookiesCount)
+    describe(`test cookie setters in: ${scenario.name}}`, function () {
+      it('stores the cookie value on the browser with default assignation', function () {
+        UseLogController.cookieNames.forEach(cookieName => {
+          controller[`${cookieName}${suffixValue}`] = 'updatedValue'
+          expect(getCookieValue(cookieName)).to.equal('updatedValue')
         })
       })
-
-      describe(`overrides existing cookie: ${scenario.name}`, function() {
-        it('from a cookie object', function() {
-          expect(getCookieValue(cookieName)).to.equal(null)
-          controller.setCookie({ name: cookieName, value: cookieValue })
-          expect(getCookieValue(cookieName)).to.equal(cookieValue)
-          controller.setCookie({ name: cookieName, value: "light" })
-          expect(getCookieValue(cookieName)).to.equal("light")
-        })
-
-        it('from strings (cookieName, cookieValue) ', function() {
-          expect(getCookieValue(cookieName)).to.equal(null)
-          controller.setCookie(cookieName, cookieValue)
-          expect(getCookieValue(cookieName)).to.equal(cookieValue)
-          expect(getCookieCount()).to.equal(1 + initialCookiesCount)
+      it('stores the cookie value on the browser with object assignation', function () {
+        UseLogController.cookieNames.forEach(cookieName => {
+          controller[`${cookieName}${suffixValue}`] = { value: 'updatedValue' }
+          expect(getCookieValue(cookieName)).to.equal('updatedValue')
         })
       })
-
-      describe(`clearCookie API: ${scenario.name}`, function() {
-        it('removes cookie', function() {
-          controller.setCookie(cookieName, cookieValue)
-          expect(getCookieCount()).to.equal(1 + initialCookiesCount)
-
-          controller.clearCookie(cookieName);
-          expect(getCookieCount()).to.equal(initialCookiesCount)
+      it('removes the cookie from the browser', function () {
+        UseLogController.cookieNames.forEach(cookieName => {
+          controller[`${cookieName}${suffixValue}`] = null
+          expect(getCookieValue(cookieName)).to.equal(undefined)
         })
       })
     })

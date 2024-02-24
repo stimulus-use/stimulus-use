@@ -1,39 +1,40 @@
 function parseCookie(cookie) {
-  return cookie.trim().split('=');
+  return cookie.trim().split('=')
 }
 
 export function getCookies() {
-  return document.cookie.split(';').map(cookie => { 
+  return document.cookie.split(';').map(cookie => {
     return parseCookie(cookie)
-  });
+  })
 }
 
 export function getCookieValue(cookieName) {
-  const cookies = document.cookie.split(';').map(cookie => cookie.trim())
+  const cookies = document.cookie
+    .split(';')
+    .map(cookie => cookie.trim())
+    .filter(cookie => cookie !== '')
 
   for (const cookie of cookies) {
-    const [parsedName, parsedValue] = parseCookie(cookie);
+    const [parsedName, parsedValue] = parseCookie(cookie)
     if (parsedName === cookieName) {
       return decodeURIComponent(parsedValue)
     }
   }
 
-  return null
+  return undefined
 }
 
-export function getCookieCount() {
-  const cookies = document.cookie.trim()
-  return cookies ? cookies.split(';').map(cookie => cookie.trim()).length : 0
-}
-
-export function setInitialCookies(cookies) {
+export function setBrowserCookies(cookies) {
   // Discard previous cookies
   document.cookie.split(';').forEach(cookie => {
-    const [cookieName, _cookieValue] = parseCookie(cookie);
-    document.cookie = `${cookieName}=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;`;
-  });
+    const [cookieName, _cookieValue] = parseCookie(cookie)
+    document.cookie = `${cookieName}=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;`
+  })
 
-  cookies.split(';').map(cookie => cookie.trim()).forEach(cookiePair => {
-    document.cookie = cookiePair;
-  });
+  cookies
+    .split(';')
+    .map(cookie => cookie.trim())
+    .forEach(cookiePair => {
+      document.cookie = cookiePair
+    })
 }
