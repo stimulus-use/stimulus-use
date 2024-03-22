@@ -122,12 +122,13 @@ export default class extends TargetMutationController {
   }
 
   locationTargetChanged(element) {
-    // triggered when a locationTarget is removed
+    // triggered when a locationTarget is changed
   }
 
 }
 ```
-**Extending a controller with options **
+
+**Extending a controller with options**
 
 ```js
 import { TargetMutationController } from 'stimulus-use'
@@ -146,7 +147,7 @@ export default class extends TargetMutationController {
   }
 
   locationTargetChanged(element) {
-    // triggered when a locationTarget is removed
+    // triggered when a locationTarget is changed
   }
 
 }
