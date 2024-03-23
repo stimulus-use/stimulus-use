@@ -109,6 +109,7 @@ We got you covered 👉 [stimulus-use.github.io/stimulus-use](https://stimulus-u
   |[`useApplication, ApplicationController`](./docs/application-controller.md)| supercharged controller for your application.|
   |[`useDispatch`](./docs/use-dispatch.md)|Adds a dispatch helper function to emit custom events. Useful to communicate between different controllers.|
   |[`useMeta`](./docs/use-meta.md)|Adds getters to easily access <head> meta values.|
+  |[`useCookie`](./docs/use-cookie.md)|Adds getters to read cookies, and a simple API to add, edit and clear cookies on the client.|
 
 ## Extend or compose
 
