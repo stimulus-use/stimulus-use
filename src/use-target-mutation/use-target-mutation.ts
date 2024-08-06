@@ -159,12 +159,18 @@ export class UseTargetMutation extends StimulusUse {
   private targetAdded(name: string, node: Node, trigger: string) {
     let targetCallback = `${name}TargetAdded`
     this.controller[targetCallback] && method(this.controller, targetCallback).call(this.controller, node)
+    this.warn(
+      '`[target]TargetAdded` is deprecated. Please use the built-in `[target]TargetConnected()` function from Stimulus.'
+    )
     this.log('targetAdded', { target: name, node, trigger })
   }
 
   private targetRemoved(name: string, node: Node, trigger: string) {
     let targetCallback = `${name}TargetRemoved`
     this.controller[targetCallback] && method(this.controller, targetCallback).call(this.controller, node)
+    this.warn(
+      '`[target]TargetRemoved` is deprecated. Please use the built-in `[target]TargetDisconnected()` function from Stimulus.'
+    )
     this.log('targetRemoved', { target: name, node, trigger })
   }
 
@@ -210,5 +216,10 @@ export class UseTargetMutation extends StimulusUse {
 export const useTargetMutation = (composableController: Controller, options: TargetMutationOptions = {}) => {
   const controller = composableController as TargetMutationComposableController
   const observer = new UseTargetMutation(controller, options)
+
+  observer.warn(
+    '`[target]TargetAdded` and `[target]TargetRemoved` are deprecated. Please use the built-in `[target]TargetConnected()` and `[target]TargetDisconnected()` functions from Stimulus.'
+  )
+
   return [observer.observe, observer.unobserve]
 }
