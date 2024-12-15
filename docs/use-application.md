@@ -34,8 +34,9 @@ export default class extends Controller {
 
 **Extending a controller**
 
-```js
-// greet_controller.js
+:::code-group
+
+```js [greet_controller.js]
 import { ApplicationController } from 'stimulus-use'
 
 export default class extends ApplicationController {
@@ -48,10 +49,12 @@ export default class extends ApplicationController {
   }
 }
 ```
+:::
 
 ## Functions
 
-!> **Deprecated**: **`dispatch(name, eventArgs)`**: helper function to dispatch events to other Stimulus controllers
+> [!WARNING]
+> **Deprecated**: **`dispatch(name, eventArgs)`**: helper function to dispatch events to other Stimulus controllers
 
 **`metaValue(name)`**: return the value of a meta attribute
 
@@ -61,7 +64,7 @@ export default class extends ApplicationController {
 
 **`isConnected`**: returns `true`/`false` for whether the Stimulus controller is connected or not.
 
-**`csrfToken`**: return the csrf token if any
+**`csrfToken`**: return the CSRF token if any
 
 
 ## Example building a cart counter with the dispatch helper
@@ -69,16 +72,17 @@ export default class extends ApplicationController {
 The HTML markup. See the custom event `item:add` that the cart controller is listening to
 
 ```html
-<div data-controller="cart"
-     data-action="item:add->cart#refreshTotal"
-     data-cart-counter="0">
-
+<div
+  data-controller="cart"
+  data-action="item:add->cart#refreshTotal"
+  data-cart-counter="0"
+>
   <button data-controller="item" data-action="item#add">
     Add
   </button>
 
   <div>
-    <span>No of items : </span>
+    <span>No of items:</span>
     <span data-cart-target="counterView">0</span>
   </div>
 </div>
@@ -86,8 +90,8 @@ The HTML markup. See the custom event `item:add` that the cart controller is lis
 
 The item controller dispatching the event
 
-```js
-//item_controller.js
+:::code-group
+```js [item_controller.js]
 import { ApplicationController } from 'stimulus-use'
 
 export default class extends ApplicationController {
@@ -96,11 +100,12 @@ export default class extends ApplicationController {
   }
 }
 ```
+:::
 
 The cart controller receiving the event
 
-```js
-//cart_controller.js
+:::code-group
+```js [cart_controller.js]
 import { ApplicationController } from 'stimulus-use'
 
 export default class extends ApplicationController {
@@ -125,3 +130,4 @@ export default class extends ApplicationController {
   }
 }
 ```
+:::

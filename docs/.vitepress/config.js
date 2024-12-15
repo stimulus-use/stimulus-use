@@ -10,6 +10,9 @@ export default {
     socialLinks: [
       { icon: 'github', link: 'https://github.com/stimulus-use/stimulus-use' }
     ],
+    search: {
+      provider: 'local'
+    },
     sidebar: [
       {
         text: "Documentation",
@@ -65,7 +68,7 @@ export default {
         collapsed: false,
         items: [
           { text: "Overview", link: "/application" },
-          { text: "useApplication", link: "/application-controller" },
+          { text: "useApplication", link: "/use-application" },
           { text: "useDispatch", link: "/use-dispatch" },
           { text: "useMeta", link: "/use-meta" },
         ]
