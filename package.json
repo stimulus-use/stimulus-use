@@ -89,7 +89,7 @@
     "rimraf": "^5.0.1",
     "rollup": "^4.9.1",
     "rollup-plugin-filesize": "^9.1.1",
-    "sinon": "^17.0.0",
+    "sinon": "^19.0.2",
     "sinon-chai": "^3.5.0",
     "ts-loader": "^9.4.2",
     "typescript": "^5.0.4",
