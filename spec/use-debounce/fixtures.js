@@ -3,3 +3,9 @@ export const fixtureBase = `
     <div id="debounced" data-action="click->debounce#a click->debounce#b click->debounce#c"></div>
   </div>
 `
+
+export const sameEventMultipleActions = `
+  <div data-controller="debounce" data-action="click@window->debounce#b">
+    <button id="debounced" data-debounce-some-id-param="123" data-action="click->debounce#a">Click me</button>
+  </div>
+`

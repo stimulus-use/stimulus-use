@@ -248,6 +248,107 @@
       "contributions": [
         "code"
       ]
+    },
+    {
+      "login": "ocarreterom",
+      "name": "Óscar Carretero",
+      "avatar_url": "https://avatars.githubusercontent.com/u/11599942?v=4",
+      "profile": "http://ocarreterom.github.io",
+      "contributions": [
+        "review",
+        "bug"
+      ]
+    },
+    {
+      "login": "eltociear",
+      "name": "Ikko Ashimine",
+      "avatar_url": "https://avatars.githubusercontent.com/u/22633385?v=4",
+      "profile": "https://bandism.net/",
+      "contributions": [
+        "doc"
+      ]
+    },
+    {
+      "login": "mjc-gh",
+      "name": "Michael Coyne",
+      "avatar_url": "https://avatars.githubusercontent.com/u/82063?v=4",
+      "profile": "https://michaeljcoyne.me",
+      "contributions": [
+        "bug"
+      ]
+    },
+    {
+      "login": "ollietb",
+      "name": "Ollie Harridge",
+      "avatar_url": "https://avatars.githubusercontent.com/u/342090?v=4",
+      "profile": "http://oll.ie",
+      "contributions": [
+        "doc"
+      ]
+    },
+    {
+      "login": "leon-vogt",
+      "name": "Leon Vogt",
+      "avatar_url": "https://avatars.githubusercontent.com/u/17851143?v=4",
+      "profile": "https://github.com/leon-vogt",
+      "contributions": [
+        "infra",
+        "code"
+      ]
+    },
+    {
+      "login": "tkoenig",
+      "name": "Thomas König",
+      "avatar_url": "https://avatars.githubusercontent.com/u/63860?v=4",
+      "profile": "https://github.com/tkoenig",
+      "contributions": [
+        "doc"
+      ]
+    },
+    {
+      "login": "sc0ttman",
+      "name": "Scott",
+      "avatar_url": "https://avatars.githubusercontent.com/u/272701?v=4",
+      "profile": "https://github.com/sc0ttman",
+      "contributions": [
+        "bug"
+      ]
+    },
+    {
+      "login": "daniel-rikowski",
+      "name": "Daniel Rikowski",
+      "avatar_url": "https://avatars.githubusercontent.com/u/1169363?v=4",
+      "profile": "https://github.com/daniel-rikowski",
+      "contributions": [
+        "bug"
+      ]
+    },
+    {
+      "login": "marckohlbrugge",
+      "name": "Marc Köhlbrugge",
+      "avatar_url": "https://avatars.githubusercontent.com/u/93276?v=4",
+      "profile": "http://twitter.com/marckohlbrugge",
+      "contributions": [
+        "ideas"
+      ]
+    },
+    {
+      "login": "leonvogt",
+      "name": "Leon Vogt",
+      "avatar_url": "https://avatars.githubusercontent.com/u/17851143?v=4",
+      "profile": "https://github.com/leonvogt",
+      "contributions": [
+        "doc"
+      ]
+    },
+    {
+      "login": "TedTran2019",
+      "name": "Ted H. Tran",
+      "avatar_url": "https://avatars.githubusercontent.com/u/53202666?v=4",
+      "profile": "https://github.com/TedTran2019",
+      "contributions": [
+        "doc"
+      ]
     }
   ],
   "contributorsPerLine": 7,
@@ -255,5 +356,7 @@
   "projectOwner": "stimulus-use",
   "repoType": "github",
   "repoHost": "https://github.com",
-  "skipCi": true
+  "skipCi": true,
+  "commitConvention": "angular",
+  "commitType": "docs"
 }

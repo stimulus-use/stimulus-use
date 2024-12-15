@@ -56,7 +56,7 @@ export default class extends Controller {
   }
 
   // The same for
-  // tall      => tallChanged()      // isTall()      // notTall
+  // tall      => tallChanged()      // isTall()      // notTall()
   // light     => lightChanged()     // isLight()     // notLight()
   // landscape => landscapeChanged() // isLandscape() // notLandscape()
 }

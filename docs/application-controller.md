@@ -2,6 +2,21 @@
 
 This is a supercharged Stimulus Controller. You can extend all of your Stimulus controllers from this one and access a few handy functions everywhere.
 
+## Reference
+
+```javascript
+useApplication(controller, options = {})
+```
+
+**controller:** A Stimulus Controller (usually `'this'`)
+
+**options:**
+
+| Option| Description | Default value |
+|-----------------------|-------------|---------------------|
+| `overwriteDispatch` | Whether to call the deprecated `useDispatch()` on the controller or not. | `true` |
+
+
 ## Usage
 
 **Composing**
@@ -29,19 +44,20 @@ export default class extends ApplicationController {
     this.isPreview // true/false if it is a Turbolinks preview
     this.isConnected // true/false if the controller is connected
     this.dispatch("hello") // helper to dispatch a custom event "greet:hello" to other Stimulus controllers
+    // this.dispatch() is deprecated: For more information https://stimulus-use.github.io/stimulus-use/#/use-dispatch?id=migration-guide
   }
 }
 ```
 
 ## Functions
 
-**`dispatch(name, eventArgs)`**: helper function to dispatch events to other Stimulus controllers
+!> **Deprecated**: **`dispatch(name, eventArgs)`**: helper function to dispatch events to other Stimulus controllers
 
 **`metaValue(name)`**: return the value of a meta attribute
 
 **Getters**
 
-**`isPreview`**: returns `true`/`false` whether the current page is a Turbolinks preview. [Use case for playing animations with Turbolinks](https://dev.to/adrienpoly/animations-with-turbolinks-and-stimulus-4862)
+**`isPreview`**: returns `true`/`false` whether the current page is a Turbo/Turbolinks preview. [Use case for playing animations with Turbolinks](https://dev.to/adrienpoly/animations-with-turbolinks-and-stimulus-4862)
 
 **`isConnected`**: returns `true`/`false` for whether the Stimulus controller is connected or not.
 
@@ -63,7 +79,7 @@ The HTML markup. See the custom event `item:add` that the cart controller is lis
 
   <div>
     <span>No of items : </span>
-    <span data-target="cart.counterView">0</span>
+    <span data-cart-target="counterView">0</span>
   </div>
 </div>
 ```

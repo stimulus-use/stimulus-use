@@ -11,14 +11,18 @@ class DebounceController extends Controller {
 
 const defaultWait = 200
 
-const debounce = (fn: Function, wait: number = defaultWait) => {
+export const debounce = (fn: Function, wait: number = defaultWait) => {
   let timeoutId: ReturnType<typeof setTimeout> | null = null
 
   return function (this: any): any {
-    const args = arguments
+    const args = Array.from(arguments)
     const context = this
+    const params = args.map(arg => arg.params)
 
-    const callback = () => fn.apply(context, args)
+    const callback = () => {
+      args.forEach((arg, index) => (arg.params = params[index]))
+      return fn.apply(context, args)
+    }
     if (timeoutId) {
       clearTimeout(timeoutId)
     }
@@ -26,7 +30,8 @@ const debounce = (fn: Function, wait: number = defaultWait) => {
   }
 }
 
-export const useDebounce = (controller: DebounceController, options?: DebounceOptions) => {
+export const useDebounce = (composableController: Controller, options?: DebounceOptions) => {
+  const controller = composableController as DebounceController
   const constructor = controller.constructor as typeof DebounceController
 
   constructor.debounces.forEach((func: string | DebounceOptions) => {

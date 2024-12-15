@@ -1,3 +1,4 @@
+import { Controller } from '@hotwired/stimulus'
 import { StimulusUse, StimulusUseOptions } from '../stimulus-use'
 import { VisibilityComposableController } from './visibility-controller'
 
@@ -64,7 +65,8 @@ export class UseVisibility extends StimulusUse {
   }
 }
 
-export const useVisibility = (controller: VisibilityComposableController, options: VisibilityOptions = {}) => {
+export const useVisibility = (composableController: Controller, options: VisibilityOptions = {}) => {
+  const controller = composableController as VisibilityComposableController
   const observer = new UseVisibility(controller, options)
   return [observer.observe, observer.unobserve] as const
 }

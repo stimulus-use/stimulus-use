@@ -2,18 +2,17 @@
   <img src="docs/assets/stimulus-use-logo.png" width="500" srcset="docs/assets/stimulus-use-logo@2x.png 2x, docs/assets/stimulus-use-logo@3x.png 3x" />
 </p>
 
-<p align="center">
-  <b>A collection of composable behaviors for your Stimulus Controllers</b>
-  </br>
-  </br>
-  <img src="https://badgen.net/npm/v/stimulus-use" alt="npm version">
-  <a href="https://bundlephobia.com/result?p=stimulus-use" rel="nofollow">
-    <img src="https://badgen.net/bundlephobia/minzip/stimulus-use" alt="minified + gzip size">
-  </a>
-  <img src="https://badgen.net/npm/types/tslib" alt="types included">
-  <img src="https://badgen.net/npm/license/stimulus-use" alt="types included">
-  <img src="./docs/assets/example-buildstatus-badge.png" alt="Sauce test status">
-</p>
+<div align="center">
+
+  **A collection of composable behaviors for your Stimulus Controllers**
+
+  [![npm version](https://badgen.net/npm/v/stimulus-use)](https://npmjs.com/package/stimulus-use)
+  [![minified + gzip size](https://badgen.net/bundlephobia/minzip/stimulus-use)](https://bundlephobia.com/result?p=stimulus-use)
+  ![types included](https://badgen.net/npm/types/tslib)
+  ![license](https://badgen.net/npm/license/stimulus-use)
+  ![Sauce test status](./docs/assets/example-buildstatus-badge.png)
+
+</div>
 <br />
 
 <p align="center">
@@ -74,7 +73,7 @@ We got you covered 👉 [stimulus-use.github.io/stimulus-use](https://stimulus-u
   | Mixin | Description | NEW Callbacks |
   |-----------------------|-------------|---------------------|
   |[`useClickOutside`](./docs/use-click-outside.md)|Tracks the clicks outside of the element and adds a new lifecycle callback **clickOutside**.|`clickOutside`|
-  |[`useHotkeys`](./docs/use-hotkeys.md)|Registers hotkeys using the [hotkeys-js](https://wangchujiang.com/hotkeys/) library and binds them to handler methods||
+  |[`useHotkeys`](./docs/use-hotkeys.md)|Registers hotkeys using the [hotkeys-js](https://wangchujiang.com/hotkeys-js/) library and binds them to handler methods||
   |[`useHover`](./docs/use-hover.md)|Tracks the user's mouse movements over an element and adds **mouseEnter** and **mouseLeave** callbacks to your controller.|`mouseEnter` `mouseLeave`|
   |[`useIdle`](./docs/use-idle.md)| Tracks if the user is idle on your page and adds **away** and **back** callbacks to your controller.|`away`</br> `back`|
   |[`useIntersection`](./docs/use-intersection.md) | Tracks the element's intersection and adds **appear**, **disappear** callbacks to your controller.|`appear`</br> `disappear`|
@@ -154,50 +153,76 @@ export default class extends IntersectionController {
 }
 ```
 
+## Development
+
+- Fork the project locally
+- `yarn install`
+- `yarn start` - to run the local dev server with examples
+- `yarn test` - to run the unit tests
+- `yarn lint` - to run the linter with ESLint
+- `yarn format` - to format changes with Prettier
+- `yarn build` - to bundle the app into static files for production
 
 
 ## Contributors ✨
 
-Made with :heart: by [@adrienpoly](https://twitter.com/adrienpoly) and all these wonderful contributors ([emoji key](https://github.com/kentcdodds/all-contributors#emoji-key)):
+Made with :heart: by [@adrienpoly](https://twitter.com/adrienpoly), [@marcoroth](https://twitter.com/marcoroth_) and all these wonderful contributors ([emoji key](https://github.com/kentcdodds/all-contributors#emoji-key)):
 
 <!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
 <!-- prettier-ignore-start -->
 <!-- markdownlint-disable -->
 <table>
-  <tr>
-    <td align="center"><a href="https://marcoroth.dev"><img src="https://avatars2.githubusercontent.com/u/6411752?v=4?s=80" width="80px;" alt=""/><br /><sub><b>Marco Roth</b></sub></a><br /><a href="#infra-marcoroth" title="Infrastructure (Hosting, Build-Tools, etc)">🚇</a> <a href="https://github.com/stimulus-use/stimulus-use/commits?author=marcoroth" title="Code">💻</a> <a href="https://github.com/stimulus-use/stimulus-use/pulls?q=is%3Apr+reviewed-by%3Amarcoroth" title="Reviewed Pull Requests">👀</a> <a href="https://github.com/stimulus-use/stimulus-use/issues?q=author%3Amarcoroth" title="Bug reports">🐛</a></td>
-    <td align="center"><a href="http://philippdaun.net"><img src="https://avatars3.githubusercontent.com/u/22225348?v=4?s=80" width="80px;" alt=""/><br /><sub><b>Philipp Daun</b></sub></a><br /><a href="https://github.com/stimulus-use/stimulus-use/issues?q=author%3Adaun" title="Bug reports">🐛</a></td>
-    <td align="center"><a href="http://code.digimonkey.com"><img src="https://avatars0.githubusercontent.com/u/74207?v=4?s=80" width="80px;" alt=""/><br /><sub><b>M. E. Patterson</b></sub></a><br /><a href="https://github.com/stimulus-use/stimulus-use/issues?q=author%3Amepatterson" title="Bug reports">🐛</a></td>
-    <td align="center"><a href="https://www.argpar.se"><img src="https://avatars3.githubusercontent.com/u/2124818?v=4?s=80" width="80px;" alt=""/><br /><sub><b>Jonathan Sundqvist</b></sub></a><br /><a href="https://github.com/stimulus-use/stimulus-use/commits?author=jonathan-s" title="Documentation">📖</a></td>
-    <td align="center"><a href="http://www.rodloboz.com"><img src="https://avatars3.githubusercontent.com/u/23458442?v=4?s=80" width="80px;" alt=""/><br /><sub><b>Rui Freitas</b></sub></a><br /><a href="https://github.com/stimulus-use/stimulus-use/commits?author=rodloboz" title="Documentation">📖</a></td>
-    <td align="center"><a href="https://koudetat.co"><img src="https://avatars0.githubusercontent.com/u/7533706?v=4?s=80" width="80px;" alt=""/><br /><sub><b>Nicolas Filzi</b></sub></a><br /><a href="https://github.com/stimulus-use/stimulus-use/commits?author=nfilzi" title="Documentation">📖</a></td>
-    <td align="center"><a href="https://github.com/bdarcet"><img src="https://avatars1.githubusercontent.com/u/9220278?v=4?s=80" width="80px;" alt=""/><br /><sub><b>Benjamin Darcet</b></sub></a><br /><a href="https://github.com/stimulus-use/stimulus-use/commits?author=bdarcet" title="Documentation">📖</a></td>
-  </tr>
-  <tr>
-    <td align="center"><a href="https://github.com/juancarlosasensio"><img src="https://avatars3.githubusercontent.com/u/37816105?v=4?s=80" width="80px;" alt=""/><br /><sub><b>juancarlosasensio</b></sub></a><br /><a href="https://github.com/stimulus-use/stimulus-use/commits?author=juancarlosasensio" title="Documentation">📖</a></td>
-    <td align="center"><a href="https://lidqqq.dev/"><img src="https://avatars3.githubusercontent.com/u/39523918?v=4?s=80" width="80px;" alt=""/><br /><sub><b>lidqqq</b></sub></a><br /><a href="#infra-lidqqq" title="Infrastructure (Hosting, Build-Tools, etc)">🚇</a> <a href="https://github.com/stimulus-use/stimulus-use/issues?q=author%3Alidqqq" title="Bug reports">🐛</a></td>
-    <td align="center"><a href="http://www.julianrubisch.at"><img src="https://avatars0.githubusercontent.com/u/4352208?v=4?s=80" width="80px;" alt=""/><br /><sub><b>Julian Rubisch</b></sub></a><br /><a href="https://github.com/stimulus-use/stimulus-use/commits?author=julianrubisch" title="Code">💻</a> <a href="https://github.com/stimulus-use/stimulus-use/pulls?q=is%3Apr+reviewed-by%3Ajulianrubisch" title="Reviewed Pull Requests">👀</a></td>
-    <td align="center"><a href="https://github.com/chalkygames123"><img src="https://avatars1.githubusercontent.com/u/5608239?v=4?s=80" width="80px;" alt=""/><br /><sub><b>Takuya Fukuju</b></sub></a><br /><a href="https://github.com/stimulus-use/stimulus-use/commits?author=chalkygames123" title="Documentation">📖</a></td>
-    <td align="center"><a href="https://github.com/jcoyne"><img src="https://avatars2.githubusercontent.com/u/92044?v=4?s=80" width="80px;" alt=""/><br /><sub><b>Justin Coyne</b></sub></a><br /><a href="https://github.com/stimulus-use/stimulus-use/commits?author=jcoyne" title="Documentation">📖</a></td>
-    <td align="center"><a href="http://www.asgerbehnckejacobsen.dk"><img src="https://avatars3.githubusercontent.com/u/1920077?v=4?s=80" width="80px;" alt=""/><br /><sub><b>Asger Behncke Jacobsen</b></sub></a><br /><a href="https://github.com/stimulus-use/stimulus-use/commits?author=asgerb" title="Documentation">📖</a></td>
-    <td align="center"><a href="https://github.com/dancallaghan"><img src="https://avatars1.githubusercontent.com/u/1025380?v=4?s=80" width="80px;" alt=""/><br /><sub><b>Dan Callaghan</b></sub></a><br /><a href="https://github.com/stimulus-use/stimulus-use/commits?author=dancallaghan" title="Documentation">📖</a></td>
-  </tr>
-  <tr>
-    <td align="center"><a href="https://Konnor.site"><img src="https://avatars2.githubusercontent.com/u/26425882?v=4?s=80" width="80px;" alt=""/><br /><sub><b>Konnor Rogers</b></sub></a><br /><a href="https://github.com/stimulus-use/stimulus-use/issues?q=author%3AParamagicDev" title="Bug reports">🐛</a> <a href="https://github.com/stimulus-use/stimulus-use/commits?author=ParamagicDev" title="Code">💻</a></td>
-    <td align="center"><a href="https://francisco.io/"><img src="https://avatars2.githubusercontent.com/u/2801252?v=4?s=80" width="80px;" alt=""/><br /><sub><b>Francisco Presencia</b></sub></a><br /><a href="https://github.com/stimulus-use/stimulus-use/commits?author=franciscop" title="Documentation">📖</a></td>
-    <td align="center"><a href="https://github.com/tsmd"><img src="https://avatars3.githubusercontent.com/u/490085?v=4?s=80" width="80px;" alt=""/><br /><sub><b>Takayuki Shimada</b></sub></a><br /><a href="https://github.com/stimulus-use/stimulus-use/issues?q=author%3Atsmd" title="Bug reports">🐛</a></td>
-    <td align="center"><a href="https://github.com/Sub-Xaero"><img src="https://avatars0.githubusercontent.com/u/9960703?v=4?s=80" width="80px;" alt=""/><br /><sub><b>Dylan Clarke</b></sub></a><br /><a href="https://github.com/stimulus-use/stimulus-use/commits?author=Sub-Xaero" title="Code">💻</a> <a href="https://github.com/stimulus-use/stimulus-use/commits?author=Sub-Xaero" title="Documentation">📖</a></td>
-    <td align="center"><a href="https://www.howtoruby.com"><img src="https://avatars0.githubusercontent.com/u/1651750?v=4?s=80" width="80px;" alt=""/><br /><sub><b>Martin Tomov</b></sub></a><br /><a href="https://github.com/stimulus-use/stimulus-use/commits?author=mtomov" title="Documentation">📖</a></td>
-    <td align="center"><a href="https://symfonycasts.com"><img src="https://avatars.githubusercontent.com/u/121003?v=4?s=80" width="80px;" alt=""/><br /><sub><b>Ryan Weaver</b></sub></a><br /><a href="https://github.com/stimulus-use/stimulus-use/commits?author=weaverryan" title="Documentation">📖</a> <a href="https://github.com/stimulus-use/stimulus-use/issues?q=author%3Aweaverryan" title="Bug reports">🐛</a></td>
-    <td align="center"><a href="https://github.com/Intrepidd"><img src="https://avatars.githubusercontent.com/u/803765?v=4?s=80" width="80px;" alt=""/><br /><sub><b>Adrien S</b></sub></a><br /><a href="https://github.com/stimulus-use/stimulus-use/issues?q=author%3AIntrepidd" title="Bug reports">🐛</a></td>
-  </tr>
-  <tr>
-    <td align="center"><a href="https://github.com/FlxAlbroscheit"><img src="https://avatars.githubusercontent.com/u/2439195?v=4?s=80" width="80px;" alt=""/><br /><sub><b>Felix Albroscheit</b></sub></a><br /><a href="https://github.com/stimulus-use/stimulus-use/issues?q=author%3AFlxAlbroscheit" title="Bug reports">🐛</a></td>
-    <td align="center"><a href="https://guillaumebriday.fr"><img src="https://avatars.githubusercontent.com/u/8252238?v=4?s=80" width="80px;" alt=""/><br /><sub><b>Guillaume Briday</b></sub></a><br /><a href="https://github.com/stimulus-use/stimulus-use/commits?author=guillaumebriday" title="Code">💻</a></td>
-    <td align="center"><a href="https://github.com/craisp"><img src="https://avatars.githubusercontent.com/u/16748711?v=4?s=80" width="80px;" alt=""/><br /><sub><b>craisp</b></sub></a><br /><a href="https://github.com/stimulus-use/stimulus-use/issues?q=author%3Acraisp" title="Bug reports">🐛</a> <a href="https://github.com/stimulus-use/stimulus-use/commits?author=craisp" title="Code">💻</a></td>
-    <td align="center"><a href="https://github.com/gahia"><img src="https://avatars.githubusercontent.com/u/8942202?v=4?s=80" width="80px;" alt=""/><br /><sub><b>Gabriel</b></sub></a><br /><a href="https://github.com/stimulus-use/stimulus-use/issues?q=author%3Agahia" title="Bug reports">🐛</a> <a href="https://github.com/stimulus-use/stimulus-use/commits?author=gahia" title="Code">💻</a></td>
-    <td align="center"><a href="https://github.com/floodfx"><img src="https://avatars.githubusercontent.com/u/35109?v=4?s=80" width="80px;" alt=""/><br /><sub><b>Donnie Flood</b></sub></a><br /><a href="https://github.com/stimulus-use/stimulus-use/commits?author=floodfx" title="Code">💻</a></td>
-  </tr>
+  <tbody>
+    <tr>
+      <td align="center" valign="top" width="14.28%"><a href="https://marcoroth.dev"><img src="https://avatars2.githubusercontent.com/u/6411752?v=4?s=80" width="80px;" alt="Marco Roth"/><br /><sub><b>Marco Roth</b></sub></a><br /><a href="#infra-marcoroth" title="Infrastructure (Hosting, Build-Tools, etc)">🚇</a> <a href="https://github.com/stimulus-use/stimulus-use/commits?author=marcoroth" title="Code">💻</a> <a href="https://github.com/stimulus-use/stimulus-use/pulls?q=is%3Apr+reviewed-by%3Amarcoroth" title="Reviewed Pull Requests">👀</a> <a href="https://github.com/stimulus-use/stimulus-use/issues?q=author%3Amarcoroth" title="Bug reports">🐛</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="http://philippdaun.net"><img src="https://avatars3.githubusercontent.com/u/22225348?v=4?s=80" width="80px;" alt="Philipp Daun"/><br /><sub><b>Philipp Daun</b></sub></a><br /><a href="https://github.com/stimulus-use/stimulus-use/issues?q=author%3Adaun" title="Bug reports">🐛</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="http://code.digimonkey.com"><img src="https://avatars0.githubusercontent.com/u/74207?v=4?s=80" width="80px;" alt="M. E. Patterson"/><br /><sub><b>M. E. Patterson</b></sub></a><br /><a href="https://github.com/stimulus-use/stimulus-use/issues?q=author%3Amepatterson" title="Bug reports">🐛</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://www.argpar.se"><img src="https://avatars3.githubusercontent.com/u/2124818?v=4?s=80" width="80px;" alt="Jonathan Sundqvist"/><br /><sub><b>Jonathan Sundqvist</b></sub></a><br /><a href="https://github.com/stimulus-use/stimulus-use/commits?author=jonathan-s" title="Documentation">📖</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="http://www.rodloboz.com"><img src="https://avatars3.githubusercontent.com/u/23458442?v=4?s=80" width="80px;" alt="Rui Freitas"/><br /><sub><b>Rui Freitas</b></sub></a><br /><a href="https://github.com/stimulus-use/stimulus-use/commits?author=rodloboz" title="Documentation">📖</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://koudetat.co"><img src="https://avatars0.githubusercontent.com/u/7533706?v=4?s=80" width="80px;" alt="Nicolas Filzi"/><br /><sub><b>Nicolas Filzi</b></sub></a><br /><a href="https://github.com/stimulus-use/stimulus-use/commits?author=nfilzi" title="Documentation">📖</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/bdarcet"><img src="https://avatars1.githubusercontent.com/u/9220278?v=4?s=80" width="80px;" alt="Benjamin Darcet"/><br /><sub><b>Benjamin Darcet</b></sub></a><br /><a href="https://github.com/stimulus-use/stimulus-use/commits?author=bdarcet" title="Documentation">📖</a></td>
+    </tr>
+    <tr>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/juancarlosasensio"><img src="https://avatars3.githubusercontent.com/u/37816105?v=4?s=80" width="80px;" alt="juancarlosasensio"/><br /><sub><b>juancarlosasensio</b></sub></a><br /><a href="https://github.com/stimulus-use/stimulus-use/commits?author=juancarlosasensio" title="Documentation">📖</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://lidqqq.dev/"><img src="https://avatars3.githubusercontent.com/u/39523918?v=4?s=80" width="80px;" alt="lidqqq"/><br /><sub><b>lidqqq</b></sub></a><br /><a href="#infra-lidqqq" title="Infrastructure (Hosting, Build-Tools, etc)">🚇</a> <a href="https://github.com/stimulus-use/stimulus-use/issues?q=author%3Alidqqq" title="Bug reports">🐛</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="http://www.julianrubisch.at"><img src="https://avatars0.githubusercontent.com/u/4352208?v=4?s=80" width="80px;" alt="Julian Rubisch"/><br /><sub><b>Julian Rubisch</b></sub></a><br /><a href="https://github.com/stimulus-use/stimulus-use/commits?author=julianrubisch" title="Code">💻</a> <a href="https://github.com/stimulus-use/stimulus-use/pulls?q=is%3Apr+reviewed-by%3Ajulianrubisch" title="Reviewed Pull Requests">👀</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/chalkygames123"><img src="https://avatars1.githubusercontent.com/u/5608239?v=4?s=80" width="80px;" alt="Takuya Fukuju"/><br /><sub><b>Takuya Fukuju</b></sub></a><br /><a href="https://github.com/stimulus-use/stimulus-use/commits?author=chalkygames123" title="Documentation">📖</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/jcoyne"><img src="https://avatars2.githubusercontent.com/u/92044?v=4?s=80" width="80px;" alt="Justin Coyne"/><br /><sub><b>Justin Coyne</b></sub></a><br /><a href="https://github.com/stimulus-use/stimulus-use/commits?author=jcoyne" title="Documentation">📖</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="http://www.asgerbehnckejacobsen.dk"><img src="https://avatars3.githubusercontent.com/u/1920077?v=4?s=80" width="80px;" alt="Asger Behncke Jacobsen"/><br /><sub><b>Asger Behncke Jacobsen</b></sub></a><br /><a href="https://github.com/stimulus-use/stimulus-use/commits?author=asgerb" title="Documentation">📖</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/dancallaghan"><img src="https://avatars1.githubusercontent.com/u/1025380?v=4?s=80" width="80px;" alt="Dan Callaghan"/><br /><sub><b>Dan Callaghan</b></sub></a><br /><a href="https://github.com/stimulus-use/stimulus-use/commits?author=dancallaghan" title="Documentation">📖</a></td>
+    </tr>
+    <tr>
+      <td align="center" valign="top" width="14.28%"><a href="https://Konnor.site"><img src="https://avatars2.githubusercontent.com/u/26425882?v=4?s=80" width="80px;" alt="Konnor Rogers"/><br /><sub><b>Konnor Rogers</b></sub></a><br /><a href="https://github.com/stimulus-use/stimulus-use/issues?q=author%3AParamagicDev" title="Bug reports">🐛</a> <a href="https://github.com/stimulus-use/stimulus-use/commits?author=ParamagicDev" title="Code">💻</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://francisco.io/"><img src="https://avatars2.githubusercontent.com/u/2801252?v=4?s=80" width="80px;" alt="Francisco Presencia"/><br /><sub><b>Francisco Presencia</b></sub></a><br /><a href="https://github.com/stimulus-use/stimulus-use/commits?author=franciscop" title="Documentation">📖</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/tsmd"><img src="https://avatars3.githubusercontent.com/u/490085?v=4?s=80" width="80px;" alt="Takayuki Shimada"/><br /><sub><b>Takayuki Shimada</b></sub></a><br /><a href="https://github.com/stimulus-use/stimulus-use/issues?q=author%3Atsmd" title="Bug reports">🐛</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/Sub-Xaero"><img src="https://avatars0.githubusercontent.com/u/9960703?v=4?s=80" width="80px;" alt="Dylan Clarke"/><br /><sub><b>Dylan Clarke</b></sub></a><br /><a href="https://github.com/stimulus-use/stimulus-use/commits?author=Sub-Xaero" title="Code">💻</a> <a href="https://github.com/stimulus-use/stimulus-use/commits?author=Sub-Xaero" title="Documentation">📖</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://www.howtoruby.com"><img src="https://avatars0.githubusercontent.com/u/1651750?v=4?s=80" width="80px;" alt="Martin Tomov"/><br /><sub><b>Martin Tomov</b></sub></a><br /><a href="https://github.com/stimulus-use/stimulus-use/commits?author=mtomov" title="Documentation">📖</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://symfonycasts.com"><img src="https://avatars.githubusercontent.com/u/121003?v=4?s=80" width="80px;" alt="Ryan Weaver"/><br /><sub><b>Ryan Weaver</b></sub></a><br /><a href="https://github.com/stimulus-use/stimulus-use/commits?author=weaverryan" title="Documentation">📖</a> <a href="https://github.com/stimulus-use/stimulus-use/issues?q=author%3Aweaverryan" title="Bug reports">🐛</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/Intrepidd"><img src="https://avatars.githubusercontent.com/u/803765?v=4?s=80" width="80px;" alt="Adrien S"/><br /><sub><b>Adrien S</b></sub></a><br /><a href="https://github.com/stimulus-use/stimulus-use/issues?q=author%3AIntrepidd" title="Bug reports">🐛</a></td>
+    </tr>
+    <tr>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/FlxAlbroscheit"><img src="https://avatars.githubusercontent.com/u/2439195?v=4?s=80" width="80px;" alt="Felix Albroscheit"/><br /><sub><b>Felix Albroscheit</b></sub></a><br /><a href="https://github.com/stimulus-use/stimulus-use/issues?q=author%3AFlxAlbroscheit" title="Bug reports">🐛</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://guillaumebriday.fr"><img src="https://avatars.githubusercontent.com/u/8252238?v=4?s=80" width="80px;" alt="Guillaume Briday"/><br /><sub><b>Guillaume Briday</b></sub></a><br /><a href="https://github.com/stimulus-use/stimulus-use/commits?author=guillaumebriday" title="Code">💻</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/craisp"><img src="https://avatars.githubusercontent.com/u/16748711?v=4?s=80" width="80px;" alt="craisp"/><br /><sub><b>craisp</b></sub></a><br /><a href="https://github.com/stimulus-use/stimulus-use/issues?q=author%3Acraisp" title="Bug reports">🐛</a> <a href="https://github.com/stimulus-use/stimulus-use/commits?author=craisp" title="Code">💻</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/gahia"><img src="https://avatars.githubusercontent.com/u/8942202?v=4?s=80" width="80px;" alt="Gabriel"/><br /><sub><b>Gabriel</b></sub></a><br /><a href="https://github.com/stimulus-use/stimulus-use/issues?q=author%3Agahia" title="Bug reports">🐛</a> <a href="https://github.com/stimulus-use/stimulus-use/commits?author=gahia" title="Code">💻</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/floodfx"><img src="https://avatars.githubusercontent.com/u/35109?v=4?s=80" width="80px;" alt="Donnie Flood"/><br /><sub><b>Donnie Flood</b></sub></a><br /><a href="https://github.com/stimulus-use/stimulus-use/commits?author=floodfx" title="Code">💻</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="http://ocarreterom.github.io"><img src="https://avatars.githubusercontent.com/u/11599942?v=4?s=80" width="80px;" alt="Óscar Carretero"/><br /><sub><b>Óscar Carretero</b></sub></a><br /><a href="https://github.com/stimulus-use/stimulus-use/pulls?q=is%3Apr+reviewed-by%3Aocarreterom" title="Reviewed Pull Requests">👀</a> <a href="https://github.com/stimulus-use/stimulus-use/issues?q=author%3Aocarreterom" title="Bug reports">🐛</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://bandism.net/"><img src="https://avatars.githubusercontent.com/u/22633385?v=4?s=80" width="80px;" alt="Ikko Ashimine"/><br /><sub><b>Ikko Ashimine</b></sub></a><br /><a href="https://github.com/stimulus-use/stimulus-use/commits?author=eltociear" title="Documentation">📖</a></td>
+    </tr>
+    <tr>
+      <td align="center" valign="top" width="14.28%"><a href="https://michaeljcoyne.me"><img src="https://avatars.githubusercontent.com/u/82063?v=4?s=80" width="80px;" alt="Michael Coyne"/><br /><sub><b>Michael Coyne</b></sub></a><br /><a href="https://github.com/stimulus-use/stimulus-use/issues?q=author%3Amjc-gh" title="Bug reports">🐛</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="http://oll.ie"><img src="https://avatars.githubusercontent.com/u/342090?v=4?s=80" width="80px;" alt="Ollie Harridge"/><br /><sub><b>Ollie Harridge</b></sub></a><br /><a href="https://github.com/stimulus-use/stimulus-use/commits?author=ollietb" title="Documentation">📖</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/leon-vogt"><img src="https://avatars.githubusercontent.com/u/17851143?v=4?s=80" width="80px;" alt="Leon Vogt"/><br /><sub><b>Leon Vogt</b></sub></a><br /><a href="#infra-leon-vogt" title="Infrastructure (Hosting, Build-Tools, etc)">🚇</a> <a href="https://github.com/stimulus-use/stimulus-use/commits?author=leon-vogt" title="Code">💻</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/tkoenig"><img src="https://avatars.githubusercontent.com/u/63860?v=4?s=80" width="80px;" alt="Thomas König"/><br /><sub><b>Thomas König</b></sub></a><br /><a href="https://github.com/stimulus-use/stimulus-use/commits?author=tkoenig" title="Documentation">📖</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/sc0ttman"><img src="https://avatars.githubusercontent.com/u/272701?v=4?s=80" width="80px;" alt="Scott"/><br /><sub><b>Scott</b></sub></a><br /><a href="https://github.com/stimulus-use/stimulus-use/issues?q=author%3Asc0ttman" title="Bug reports">🐛</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/daniel-rikowski"><img src="https://avatars.githubusercontent.com/u/1169363?v=4?s=80" width="80px;" alt="Daniel Rikowski"/><br /><sub><b>Daniel Rikowski</b></sub></a><br /><a href="https://github.com/stimulus-use/stimulus-use/issues?q=author%3Adaniel-rikowski" title="Bug reports">🐛</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="http://twitter.com/marckohlbrugge"><img src="https://avatars.githubusercontent.com/u/93276?v=4?s=80" width="80px;" alt="Marc Köhlbrugge"/><br /><sub><b>Marc Köhlbrugge</b></sub></a><br /><a href="#ideas-marckohlbrugge" title="Ideas, Planning, & Feedback">🤔</a></td>
+    </tr>
+    <tr>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/leonvogt"><img src="https://avatars.githubusercontent.com/u/17851143?v=4?s=80" width="80px;" alt="Leon Vogt"/><br /><sub><b>Leon Vogt</b></sub></a><br /><a href="https://github.com/stimulus-use/stimulus-use/commits?author=leonvogt" title="Documentation">📖</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/TedTran2019"><img src="https://avatars.githubusercontent.com/u/53202666?v=4?s=80" width="80px;" alt="Ted H. Tran"/><br /><sub><b>Ted H. Tran</b></sub></a><br /><a href="https://github.com/stimulus-use/stimulus-use/commits?author=TedTran2019" title="Documentation">📖</a></td>
+    </tr>
+  </tbody>
 </table>
 
 <!-- markdownlint-restore -->

@@ -1,3 +1,4 @@
+import { Controller } from '@hotwired/stimulus'
 import { composeEventName, extendedEvent, method } from '../support/index'
 import { ResizeComposableController } from './resize-controller'
 
@@ -12,7 +13,8 @@ const defaultOptions = {
   eventPrefix: true
 }
 
-export const useResize = (controller: ResizeComposableController, options: ResizeOptions = {}) => {
+export const useResize = (composableController: Controller, options: ResizeOptions = {}) => {
+  const controller = composableController as ResizeComposableController
   const { dispatchEvent, eventPrefix } = Object.assign({}, defaultOptions, options)
   const targetElement: Element = options?.element || controller.element
 

@@ -1,5 +1,5 @@
 import { Controller } from '@hotwired/stimulus'
-import { useHotkeys } from '../../src'
+import { useHotkeys } from '../../src/hotkeys'
 
 class UseLogController extends Controller {
   static targets = ['input']

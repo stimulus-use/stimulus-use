@@ -8,15 +8,28 @@ export default class UseLogController extends Controller {
     useDebounce(this, this.application.options)
   }
 
-  a() {
-    this.application.testLogger.log({ name: 'a' })
+  a(event) {
+    this.recordAction('a', event)
   }
 
-  b() {
-    this.application.testLogger.log({ name: 'b' })
+  b(event) {
+    this.recordAction('b', event)
   }
 
-  c() {
-    this.application.testLogger.log({ name: 'c' })
+  c(event) {
+    this.recordAction('c', event)
+  }
+
+  recordAction(name, event, passive = null) {
+    this.application.testLogger.log({
+      name,
+      controller: this,
+      identifier: this.identifier,
+      eventType: event.type,
+      currentTarget: event.currentTarget,
+      params: event.params,
+      defaultPrevented: event.defaultPrevented,
+      passive: passive || false
+    })
   }
 }

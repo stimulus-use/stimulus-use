@@ -2,7 +2,7 @@ import { Application } from '@hotwired/stimulus'
 import { nextFrame, TestLogger, click, delay } from '../helpers'
 import { expect } from 'chai'
 import UseLogController from './use_log_controller'
-import { fixtureBase } from './fixtures'
+import { fixtureBase, sameEventMultipleActions } from './fixtures'
 
 const controllers = [
   {
@@ -64,6 +64,47 @@ scenarios.forEach(scenario => {
           expect(testLogger.eventsFilter({ name: ['a'] }).length).to.equal(1)
         })
       })
+    })
+  })
+})
+
+describe(`debounced controller action should retain Stimulus action params`, function () {
+  let application
+  let testLogger
+
+  before('initialize controller', async function () {
+    application = Application.start()
+    testLogger = new TestLogger()
+    application.testLogger = testLogger
+
+    fixture.set(sameEventMultipleActions)
+    application.register('debounce', UseLogController)
+    await nextFrame()
+  })
+
+  after('stop application', async function () {
+    await application.stop()
+  })
+
+  describe('retains action params', async function () {
+    it('it debounces a function', async function () {
+      const waitValue = 200
+
+      click('#debounced')
+
+      await nextFrame()
+
+      expect(testLogger.eventsFilter({ name: ['a'] }).length).to.equal(0)
+      expect(testLogger.eventsFilter({ name: ['b'] }).length).to.equal(1)
+      expect(testLogger.eventsFilter({ name: ['b'] })[0].params).to.deep.equal({})
+
+      await delay(waitValue + 10)
+      await nextFrame()
+
+      expect(testLogger.eventsFilter({ name: ['a'] }).length).to.equal(1)
+      expect(testLogger.eventsFilter({ name: ['a'] })[0].params).to.deep.equal({ someId: 123 })
+      expect(testLogger.eventsFilter({ name: ['b'] }).length).to.equal(1)
+      expect(testLogger.eventsFilter({ name: ['b'] })[0].params).to.deep.equal({})
     })
   })
 })

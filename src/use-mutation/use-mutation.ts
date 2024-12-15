@@ -27,7 +27,7 @@ export class UseMutation extends StimulusUse {
   observe = () => {
     try {
       this.observer.observe(this.targetElement, this.options)
-    } catch (error) {
+    } catch (error: any) {
       this.controller.application.handleError(
         error,
         'At a minimum, one of childList, attributes, and/or characterData must be true',
