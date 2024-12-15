@@ -1,4 +1,4 @@
-## Observers
+# Observers
 
 This set of mixins is built around the [`Observer APIs`](https://developer.mozilla.org/en-US/docs/Web/API) and custom events to enhance your controllers with new behaviors.
 

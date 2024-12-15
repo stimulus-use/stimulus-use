@@ -12,3 +12,4 @@ yarn-error.log
 .rollup.cache
 playground/dist/
 docs/.vitepress/dist/
+docs/.vitepress/cache/

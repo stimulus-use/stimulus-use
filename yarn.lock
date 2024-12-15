@@ -9965,7 +9965,7 @@ vite@^5.4.10:
   optionalDependencies:
     fsevents "~2.3.3"
 
-vitepress@^1.0.0-alpha.4:
+vitepress@^1.5.0:
   version "1.5.0"
   resolved "https://registry.yarnpkg.com/vitepress/-/vitepress-1.5.0.tgz#61870b27dc9a580e46cea92989f64cdcb550dc23"
   integrity sha512-q4Q/G2zjvynvizdB3/bupdYkCJe2umSAMv9Ju4d92E6/NXJ59z70xB0q5p/4lpRyAwflDsbwy1mLV9Q5+nlB+g==
@@ -10004,7 +10004,7 @@ vue-demi@>=0.14.10:
   resolved "https://registry.yarnpkg.com/vue-demi/-/vue-demi-0.14.10.tgz#afc78de3d6f9e11bf78c55e8510ee12814522f04"
   integrity sha512-nMZBOwuzabUO0nLgIcc6rycZEebF6eeUfaiQx9+WSk8e29IbLvPU9feI6tqW4kTo3hvoYAJkMh8n8D0fuISphg==
 
-vue@^3.2.37, vue@^3.5.12:
+vue@^3.5.12:
   version "3.5.13"
   resolved "https://registry.yarnpkg.com/vue/-/vue-3.5.13.tgz#9f760a1a982b09c0c04a867903fc339c9f29ec0a"
   integrity sha512-wmeiSMxkZCSc+PM2w2VRsOYAZC8GdipNFRTsLSfodVqI9mbejKeXEGr8SckuLnrQPGe3oJN5c3K0vpoU9q/wCQ==
