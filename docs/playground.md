@@ -1,5 +1,6 @@
-## Launch a local playground
+# Playground
 
+## Launch a local playground
 
 Play with Stimulus-use controllers locally before adding them to one of your projects.
 
@@ -18,7 +19,7 @@ Then, build the library locally
 yarn build
 ```
 
-Launch the playground locally (available at http://localhost:8080/ by default):
+Launch the playground locally (available at `http://localhost:8080/` by default):
 ```bash
 yarn start
 ```

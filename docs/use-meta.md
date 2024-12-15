@@ -1,8 +1,8 @@
 # useMeta
 
-Adds getters to easily retrieve <head> meta value.
+Adds getters to easily retrieve `<head>` meta value.
 
-Simply list at the top of your controller the list of meta name you need (static metaNames = [])
+Simply list at the top of your controller the list of meta name you need (`static metaNames = []`)
 
 Getters are then automatically defined by the mixin.
 - Getter name is a camelized conversion of the meta name with an optional `Meta` suffix. `user_id`  becomes `userIdMeta`
@@ -23,15 +23,15 @@ useMeta(this, { suffix: false })
 
 **Composing**
 
-Given some <head> html
+Given some `<head>` html
 
 ```html
 <head>
   ...
-  <meta name="userId" content="12345678">
-  <meta name="admin" content="true">
-  <meta name="email" content="joe@doe.com">
-  <meta name="snake_case_name" content="are camelized">
+  <meta name="userId" content="12345678" />
+  <meta name="admin" content="true" />
+  <meta name="email" content="joe@doe.com" />
+  <meta name="snake_case_name" content="are camelized" />
   ...
 </head>
 ```
@@ -63,5 +63,3 @@ export default class extends Controller {
   }
 }
 ```
-
-

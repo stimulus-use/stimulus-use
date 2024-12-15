@@ -1,4 +1,4 @@
-# useTransition (this is currently in beta version)
+# useTransition <Badge type="tip" text="Beta" />
 
 Mixin/controller to apply transition effects when items are inserted, updated, or removed from the DOM (largely inspired by the Vue, AlpineJS & Tailwind world).
 
@@ -61,7 +61,7 @@ data-transition-leave-end-class="transform opacity-0 scale-95"
 Here is a typical dropdown component from Tailwind.
 
 ```html
-<div 
+<div
   class="relative"
   data-controller="transition click-outside"
   data-transition-target="content"

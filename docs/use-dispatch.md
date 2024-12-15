@@ -1,9 +1,9 @@
-# useDispatch
+# useDispatch <Badge type="warning" text="Deprecated" />
 
 Adds a `dispatch` helper function to emit custom events. Useful to communicate between different controllers.
 
-
-!> **Deprecated**: `useDispatch()` is deprecated. Please use the built-in `this.dispatch()` function from Stimulus: https://stimulus.hotwired.dev/reference/controllers#cross-controller-coordination-with-events
+>[!WARNING]
+> **Deprecated**: `useDispatch()` is deprecated. Please use the built-in `this.dispatch()` function from Stimulus: https://stimulus.hotwired.dev/reference/controllers#cross-controller-coordination-with-events
 
 ## Migration guide
 

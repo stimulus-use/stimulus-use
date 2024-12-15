@@ -11,3 +11,5 @@ yarn-error.log
 /cypress/screenshots/
 .rollup.cache
 playground/dist/
+docs/.vitepress/dist/
+docs/.vitepress/cache/
