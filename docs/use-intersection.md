@@ -210,14 +210,3 @@ Alternatively, you can also access the `observer` from the event detail.
 ## Example
 
 Rails Infinite scroll: https://github.com/adrienpoly/infinite-scroll-stimulus-js
-
-
-## Polyfill
-
-**Availability:**
-
-https://caniuse.com/#feat=intersectionobserver
-
-**Exisiting polyfill:**
-
-https://github.com/w3c/IntersectionObserver/tree/master/polyfill
