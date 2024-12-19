@@ -1,5 +1,3 @@
-import 'intersection-observer'
-
 import { Application } from '@hotwired/stimulus'
 import { nextFrame, TestLogger, click, remove } from '../helpers'
 import { expect } from 'chai'

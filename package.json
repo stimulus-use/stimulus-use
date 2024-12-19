@@ -67,7 +67,6 @@
     "docsify-cli": "^4.4.4",
     "hotkeys-js": "^3.10.1",
     "html2js": "^0.2.0",
-    "intersection-observer": "^0.12.2",
     "karma": "^6.1.0",
     "karma-chai": "^0.1.0",
     "karma-chrome-launcher": "^3.1.0",
