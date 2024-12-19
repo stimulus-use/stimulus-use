@@ -1,7 +1,7 @@
 import { ApplicationController, useDebounce } from 'stimulus-use'
 
 export default class extends ApplicationController {
-  static targets = ['yellow', 'purple']
+  static targets = ['yellow', 'purple', 'teal']
   static debounces = [
     { name: 'yellow', leading: true },
     { name: 'purple', leading: false }
@@ -23,6 +23,10 @@ export default class extends ApplicationController {
 
   purple() {
     this.#increment('purple')
+  }
+
+  teal() {
+    this.#increment('teal')
   }
 
   #increment(color) {
