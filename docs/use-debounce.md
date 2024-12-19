@@ -14,9 +14,10 @@ useDebounce(controller, options = {})
 
 **options:**
 
-| Option| Description | Default value |
-|-----------------------|-------------|---------------------|
-| `wait` | The number of milliseconds to wait | `200` |
+| Option    | Description                                                             | Default value |
+|-----------|-------------------------------------------------------------------------|---------------|
+| `wait`    | The number of milliseconds to wait                                      | `200`         |
+| `leading` | Whether your function will be called on the leading edge of the timeout | `false`       |
 
 **Example:**
 
@@ -40,9 +41,9 @@ export default class extends ApplicationController {
 }
 ```
 
-## Per function wait option
+## Per function options
 
-If you need to set a different wait option for each function, you can specify it within the `debounces` array like so :
+If you need to set a different wait or leading edge option for each function, you can specify it within the `debounces` array like so :
 
 ```js
 export default class extends ApplicationController {
@@ -51,6 +52,10 @@ export default class extends ApplicationController {
     {
       name: 'fetch',
       wait: 500
+    },
+    {
+      name: 'duplicate',
+      leading: true
     }
   ]
 
@@ -59,11 +64,15 @@ export default class extends ApplicationController {
   }
 
   click() {
-    // this function is debounced with a wait time of 100ms.
+    // this function is debounced only on the trailing edge with a wait time of 100ms.
   }
 
   fetch() {
-    // this function is debounced with a wait time of 500ms.
+    // this function is debounced only on the trailing edge with a wait time of 500ms.
+  }
+  
+  duplicate() {
+    // this function is debounced on both the leading and trailing edges with a wait time of 500ms.
   }
 
   instant() {

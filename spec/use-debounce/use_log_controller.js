@@ -20,6 +20,10 @@ export default class UseLogController extends Controller {
     this.recordAction('c', event)
   }
 
+  d(event) {
+    this.recordAction('d', event)
+  }
+
   recordAction(name, event, passive = null) {
     this.application.testLogger.log({
       name,

@@ -3,6 +3,7 @@ import { Controller } from '@hotwired/stimulus'
 export interface DebounceOptions {
   wait?: number
   name?: string
+  leading?: boolean
 }
 
 class DebounceController extends Controller {
@@ -11,8 +12,9 @@ class DebounceController extends Controller {
 
 const defaultWait = 200
 
-export const debounce = (fn: Function, wait: number = defaultWait) => {
+export const debounce = (fn: Function, wait: number = defaultWait, leading: boolean = false) => {
   let timeoutId: ReturnType<typeof setTimeout> | null = null
+  let leadingCalled: boolean = false
 
   return function (this: any): any {
     const args = Array.from(arguments)
@@ -26,7 +28,16 @@ export const debounce = (fn: Function, wait: number = defaultWait) => {
     if (timeoutId) {
       clearTimeout(timeoutId)
     }
-    timeoutId = setTimeout(callback, wait)
+    if (leading && !timeoutId && !leadingCalled) {
+      callback()
+      leadingCalled = true
+    } else {
+      timeoutId = setTimeout(() => {
+        leadingCalled = false
+        timeoutId = null
+        callback()
+      }, wait)
+    }
   }
 }
 
@@ -36,13 +47,17 @@ export const useDebounce = (composableController: Controller, options?: Debounce
 
   constructor.debounces.forEach((func: string | DebounceOptions) => {
     if (typeof func === 'string') {
-      ;(controller as any)[func] = debounce((controller as any)[func] as Function, options?.wait)
+      ;(controller as any)[func] = debounce((controller as any)[func] as Function, options?.wait, options?.leading)
     }
 
     if (typeof func === 'object') {
-      const { name, wait } = func as DebounceOptions
+      const { name, wait, leading } = func as DebounceOptions
       if (!name) return
-      ;(controller as any)[name] = debounce((controller as any)[name] as Function, wait || options?.wait)
+      ;(controller as any)[name] = debounce(
+        (controller as any)[name] as Function,
+        wait || options?.wait,
+        leading || options?.leading
+      )
     }
   })
 }
