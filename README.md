@@ -25,7 +25,7 @@
 - **Composable**: compose at will different behaviors in a single controller with mixins.
 - **Modular**: built as ES6 modules, just import what you need and tree shaking will remove the rest.
 - **Typescript**: Types available, better autocompletion.
-- **Tiny**: 3k gzip + tree shaking 🌳🌳🌳
+- **Small**: ~7k gzip + tree shaking 🌳🌳🌳
 
 ## Getting Started
 
