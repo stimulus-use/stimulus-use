@@ -367,6 +367,15 @@
       "contributions": [
         "code"
       ]
+    },
+    {
+      "login": "Kerrick",
+      "name": "Kerrick Long",
+      "avatar_url": "https://avatars.githubusercontent.com/u/552093?v=4",
+      "profile": "https://kerricklong.com/",
+      "contributions": [
+        "code"
+      ]
     }
   ],
   "contributorsPerLine": 7,
