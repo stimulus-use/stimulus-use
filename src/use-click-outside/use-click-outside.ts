@@ -24,7 +24,10 @@ export const useClickOutside = (composableController: Controller, options: Click
   const onEvent = (event: Event) => {
     const targetElement: Element = options?.element || controller.element
 
-    if (event.target instanceof Node && targetElement.contains(event.target as Node) || (!isElementInViewport(targetElement) && onlyVisible)) {
+    if (
+      (event.target instanceof Node && targetElement.contains(event.target as Node)) ||
+      (!isElementInViewport(targetElement) && onlyVisible)
+    ) {
       return
     }
 
