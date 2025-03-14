@@ -20,7 +20,9 @@ const scenarios = [
       secondACount: 1,
       firstBCount: 2,
       firstCCount: 1,
-      secondCCount: 1
+      secondCCount: 1,
+      firstDCount: 2,
+      secondDCount: 2
     }
   },
   {
@@ -32,7 +34,9 @@ const scenarios = [
       secondACount: 1,
       firstBCount: 2,
       firstCCount: 1,
-      secondCCount: 1
+      secondCCount: 1,
+      firstDCount: 2,
+      secondDCount: 2
     }
   },
   {
@@ -46,7 +50,25 @@ const scenarios = [
       secondACount: 1,
       firstBCount: 2,
       firstCCount: 1,
-      secondCCount: 1
+      secondCCount: 1,
+      firstDCount: 2,
+      secondDCount: 2
+    }
+  },
+  {
+    name: 'with both leading and trailing',
+    fixture: fixtureBase,
+    options: {
+      leading: true
+    },
+    answers: {
+      firstACount: 1,
+      secondACount: 2,
+      firstBCount: 2,
+      firstCCount: 2,
+      secondCCount: 2,
+      firstDCount: 2,
+      secondDCount: 2
     }
   }
 ]
@@ -79,12 +101,14 @@ scenarios.forEach(scenario => {
           await delay(20)
           click('#debounced')
           await delay(waitValue + 20)
-          expect(testLogger.eventsFilter({ name: ['a'] }).length).to.equal(answers.firstACount)
-          expect(testLogger.eventsFilter({ name: ['b'] }).length).to.equal(answers.firstBCount)
-          expect(testLogger.eventsFilter({ name: ['c'] }).length).to.equal(answers.firstCCount)
+          expect(testLogger.eventsFilter({ name: ['a'] }).length).to.equal(answers.firstACount, 'first a')
+          expect(testLogger.eventsFilter({ name: ['b'] }).length).to.equal(answers.firstBCount, 'first b')
+          expect(testLogger.eventsFilter({ name: ['c'] }).length).to.equal(answers.firstCCount, 'first c')
+          expect(testLogger.eventsFilter({ name: ['d'] }).length).to.equal(answers.firstDCount, 'first d')
           await delay(waitValue + 20)
-          expect(testLogger.eventsFilter({ name: ['a'] }).length).to.equal(answers.secondACount)
-          expect(testLogger.eventsFilter({ name: ['c'] }).length).to.equal(answers.secondCCount)
+          expect(testLogger.eventsFilter({ name: ['a'] }).length).to.equal(answers.secondACount, 'second a')
+          expect(testLogger.eventsFilter({ name: ['c'] }).length).to.equal(answers.secondCCount, 'second c')
+          expect(testLogger.eventsFilter({ name: ['d'] }).length).to.equal(answers.secondDCount, 'second d')
         })
       })
     })

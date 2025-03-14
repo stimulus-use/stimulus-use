@@ -7,7 +7,11 @@ export default class UseLogObjectDescriptionController extends Controller {
       name: 'a',
       wait: 300
     },
-    'c'
+    'c',
+    {
+      name: 'd',
+      leading: true
+    }
   ]
 
   connect() {
@@ -24,5 +28,9 @@ export default class UseLogObjectDescriptionController extends Controller {
 
   c() {
     this.application.testLogger.log({ name: 'c' })
+  }
+
+  d() {
+    this.application.testLogger.log({ name: 'd' })
   }
 }
