@@ -2,7 +2,7 @@ import { Controller, Context } from '@hotwired/stimulus'
 import { useApplication } from './use-application'
 import { DispatchOptions } from '../use-dispatch'
 
-export class ApplicationController extends Controller {
+export class ApplicationController<ElementType extends Element = Element> extends Controller<ElementType> {
   options?: DispatchOptions
   readonly isPreview: boolean = false
   readonly isConnected: boolean = false
