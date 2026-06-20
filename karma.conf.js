@@ -91,6 +91,18 @@ module.exports = function (config) {
     // available frameworks: https://npmjs.org/browse/keyword/karma-adapter
     frameworks: ['karma-typescript', 'mocha', 'sinon-chai', 'fixture'],
 
+    // Scope karma-typescript to our source only. Without this it walks
+    // node_modules and compiles dependency typings (e.g. puppeteer) at its
+    // default low target, emitting TS18028 errors for their `#private` fields.
+    karmaTypescriptConfig: {
+      compilerOptions: {
+        target: 'es2017',
+        module: 'commonjs',
+        lib: ['dom', 'es2017']
+      },
+      exclude: ['node_modules']
+    },
+
     // list of files / patterns to load in the browser
     files: [
       'spec/**/*_spec.js',
@@ -148,7 +160,10 @@ module.exports = function (config) {
       chai: {
         includeStack: true
       },
-      clearContext: false
+      // Default (true) clears the context between runs. `false` is only for
+      // interactive `karma start` debugging; under headless singleRun it makes
+      // Karma flag a false-positive "full page reload" and exit with an error.
+      clearContext: true
     },
 
     // test results reporter to use
