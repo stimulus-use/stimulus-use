@@ -83,9 +83,38 @@ export default class extends WindowFocusController {
 }
 ```
 
+## Controlling observation
+
+`useWindowFocus` returns an `[observe, unobserve]` tuple so you can start and stop observing manually. Observation starts automatically and is cleaned up when the controller disconnects. When extending `WindowFocusController`, the same functions are available as `this.observe()` and `this.unobserve()`.
+
+```js
+import { Controller } from '@hotwired/stimulus'
+import { useWindowFocus } from 'stimulus-use'
+
+export default class extends Controller {
+  connect() {
+    const [observe, unobserve] = useWindowFocus(this)
+    this.observe = observe
+    this.unobserve = unobserve
+  }
+}
+```
+
+## State
+
+`useWindowFocus` adds a `hasFocus` boolean property to the controller, reflecting whether the window is currently focused. You can read it anywhere in the controller:
+
+```js
+if (this.hasFocus) {
+  // the window is currently focused
+}
+```
+
 ## Events
 
 This module adds two new events `focus` and `unfocus` (prefixed by the controller identifier by default) event that you may use to triggers Stimulus actions.
+
+Both events carry an `event.detail` of the shape `{ event, hasFocus }`, where `hasFocus` is a boolean.
 
 ```html
 <div class="player" data-controller="player" data-action="focus@document->player#play unfocus@document->player#pause">

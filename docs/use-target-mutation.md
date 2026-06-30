@@ -154,3 +154,14 @@ export default class extends TargetMutationController {
 
 }
 ```
+
+## Controlling observation
+
+`useTargetMutation` returns an `[observe, unobserve]` tuple so you can start and stop observing manually. Observation starts automatically when the mixin is called and is cleaned up automatically when the controller disconnects. When extending `TargetMutationController`, the same functions are available as `this.observe()` and `this.unobserve()`.
+
+```js
+connect() {
+  const [observe, unobserve] = useTargetMutation(this)
+  // later: unobserve() to pause, observe() to resume
+}
+```

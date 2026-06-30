@@ -77,6 +77,33 @@ export default class extends IdleController {
 }
 ```
 
+## Controlling observation
+
+`useIdle` returns an `[observe, unobserve]` tuple so you can start and stop observing manually. Observation starts automatically and is cleaned up when the controller disconnects. When extending `IdleController`, the same functions are available as `this.observe()` and `this.unobserve()`.
+
+```js
+import { Controller } from '@hotwired/stimulus'
+import { useIdle } from 'stimulus-use'
+
+export default class extends Controller {
+  connect() {
+    const [observe, unobserve] = useIdle(this)
+    this.observe = observe
+    this.unobserve = unobserve
+  }
+}
+```
+
+## State
+
+`useIdle` adds an `isIdle` boolean property to the controller, reflecting whether the user is currently idle. You can read it anywhere in the controller:
+
+```js
+if (this.isIdle) {
+  // the user is currently idle
+}
+```
+
 
 ## Events
 

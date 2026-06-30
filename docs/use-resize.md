@@ -56,6 +56,35 @@ export default class extends ResizeController {
 }
 ```
 
+## Controlling observation
+
+`useResize` returns an `[observe, unobserve]` tuple so you can start and stop observing manually. Observation starts automatically when the mixin is called and is cleaned up automatically when the controller disconnects. When extending `ResizeController`, the same functions are available as `this.observe()` and `this.unobserve()`.
+
+```js
+connect() {
+  const [observe, unobserve] = useResize(this)
+  // later: unobserve() to pause, observe() to resume
+}
+```
+
+## Events
+
+This module dispatches a `resize` event whenever the observed element is resized (when the `dispatchEvent` option is `true`, which is the default). The event is prefixed by the controller identifier by default, e.g. `card:resize`. See [events](events.md) for more on the prefix behavior.
+
+```html
+<div data-controller="card" data-action="card:resize->card#resize">
+  ...
+</div>
+```
+
+The dispatched event carries the controller and the `ResizeObserverEntry` in its `detail`:
+
+```js
+resize(event) {
+  const { controller, entry } = event.detail
+}
+```
+
 ## Polyfill
 
 ResizeObserver is quite widely supported by modern browsers [can I use](https://caniuse.com/#feat=resizeobserver).

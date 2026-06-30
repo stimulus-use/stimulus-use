@@ -65,6 +65,17 @@ export default class extends ClickOutsideController {
 }
 ```
 
+## Controlling observation
+
+`useClickOutside` returns an `[observe, unobserve]` tuple so you can start and stop listening for outside clicks manually. Observation starts automatically when the mixin is called and is cleaned up automatically when the controller disconnects. When extending `ClickOutsideController`, the same functions are available as `this.observe()` and `this.unobserve()`.
+
+```js
+connect() {
+  const [observe, unobserve] = useClickOutside(this)
+  // later: unobserve() to pause, observe() to resume
+}
+```
+
 ## Events
 
 This module adds a new `click:outside` (prefixed by the controller identifier by default) event that you may use to triggers Stimulus actions

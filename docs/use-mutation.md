@@ -24,6 +24,8 @@ See https://developer.mozilla.org/en-US/docs/Web/API/MutationObserverInit
 | Option| Description |&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Default value&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;|
 |-----------------------|-------------|---------------------|
 | `debug` | Whether to log debug information. See [debug](debug.md) for more information on the debugging tools|false|
+| `dispatchEvent` | Whether to dispatch a `mutate` event or not.| `true` |
+|`eventPrefix`| Whether to prefix or not the emitted event. Can be a **boolean** or a **string**.<br>- **true** prefix the event with the controller identifier `card:mutate` <br>- **someString** prefix the event with the given string `someString:mutate` <br>- **false** to remove prefix  |true|
 | `element` | The element which the controller will listen for mutation on/under | The controller element|
 | `subtree`| Set to true to extend monitoring to the entire subtree of nodes rooted at target. All of the other MutationObserverInit properties are then extended to all of the nodes in the subtree instead of applying solely to the target node. | false |
 | `childList`| Set to true to monitor the target node (and, if subtree is true, its descendants) for the addition of new child nodes or removal of existing child nodes. | false |
@@ -95,5 +97,41 @@ export default class extends MutationController {
   }
 
 }
+```
+
+## Controlling observation
+
+`useMutation()` returns an array with two functions, the first one is the `observe()` and the second one is the `unobserve()` function. You can use them to manually start and stop observing the element.
+
+```js
+import { Controller } from '@hotwired/stimulus'
+import { useMutation } from 'stimulus-use'
+
+export default class extends Controller {
+  connect() {
+    const [observe, unobserve] = useMutation(this, { childList: true })
+    this.observe = observe
+    this.unobserve = unobserve
+  }
+
+  mutate(entries) {
+    // stop observing once the first mutation happened
+    this.unobserve()
+  }
+}
+```
+
+When extending the `MutationController`, the `observe()` and `unobserve()` functions are exposed directly on the controller instance instead (e.g. `this.unobserve()`).
+
+## Events
+
+When `dispatchEvent` is enabled (the default), this module dispatches a `mutate` event (prefixed by the controller identifier by default, e.g. `modal:mutate`) every time a mutation occurs. The `event.detail` contains the `entries` array of `MutationRecord`s.
+
+See [events](events.md) for more information on the event prefix behavior.
+
+```html
+<div data-controller="modal" data-action="modal:mutate->modal#mutate">
+  ...
+</div>
 ```
 

@@ -56,6 +56,23 @@ export default class extends HoverController {
 }
 ```
 
+## Controlling observation
+
+`useHover` returns an `[observe, unobserve]` tuple so you can start and stop observing manually. Observation starts automatically and is cleaned up when the controller disconnects. When extending `HoverController`, the same functions are available as `this.observe()` and `this.unobserve()`.
+
+```js
+import { Controller } from '@hotwired/stimulus'
+import { useHover } from 'stimulus-use'
+
+export default class extends Controller {
+  connect() {
+    const [observe, unobserve] = useHover(this, { element: this.element })
+    this.observe = observe
+    this.unobserve = unobserve
+  }
+}
+```
+
 
 
 ## Callbacks
@@ -84,5 +101,15 @@ export default class extends Controller {
     this.element.classList.remove('active')
   }
 }
+```
+
+## Events
+
+In addition to the callbacks, this module dispatches two events, `mouseEnter` and `mouseLeave` (prefixed by the controller identifier by default), that you may use to trigger Stimulus actions. See [Events](events.md) for more information on event names and prefixes.
+
+```html
+<div data-controller="card" data-action="card:mouseEnter->card#highlight card:mouseLeave->card#reset">
+  ...
+</div>
 ```
 

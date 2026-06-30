@@ -63,6 +63,8 @@ dispatch(eventName, detail = {})
 | `eventName` | a mandatory string for the name of the event to emit.|
 | `detail` | A payload object that will be passed through the event and available for the receiver with `event.detail` |
 
+`dispatch()` returns the created `CustomEvent`, which you can use to inspect the event or check whether it was cancelled (for example via `event.defaultPrevented`).
+
 ## Usage
 
 ```js

@@ -82,9 +82,38 @@ export default class extends VisibilityController {
 }
 ```
 
+## Controlling observation
+
+`useVisibility` returns an `[observe, unobserve]` tuple so you can start and stop observing manually. Observation starts automatically and is cleaned up when the controller disconnects. When extending `VisibilityController`, the same functions are available as `this.observe()` and `this.unobserve()`.
+
+```js
+import { Controller } from '@hotwired/stimulus'
+import { useVisibility } from 'stimulus-use'
+
+export default class extends Controller {
+  connect() {
+    const [observe, unobserve] = useVisibility(this)
+    this.observe = observe
+    this.unobserve = unobserve
+  }
+}
+```
+
+## State
+
+`useVisibility` adds an `isVisible` boolean property to the controller, reflecting whether the page is currently visible. You can read it anywhere in the controller:
+
+```js
+if (this.isVisible) {
+  // the page is currently visible
+}
+```
+
 ## Events
 
 This module adds two new events `visible` and `invisible` (prefixed by the controller identifier by default) event that you may use to triggers Stimulus actions
+
+Both events carry an `event.detail` of the shape `{ event, isVisible }`, where `event` is the originating `visibilitychange` event and `isVisible` is a boolean.
 
 ```html
 <div class="player" data-controller="player" data-action="visible@document->player#play invisible@document->player#pause">

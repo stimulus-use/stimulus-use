@@ -61,3 +61,24 @@ export default class extends Controller {
   // landscape => landscapeChanged() // isLandscape() // notLandscape()
 }
 ```
+
+## Events
+
+When `dispatchEvent` is enabled (the default), this module dispatches three events for each media query you define, where `[name]` is the key of the media query (all prefixed by the controller identifier by default, e.g. `users:small:changed`):
+
+- `[name]:changed` dispatched when the media query changes.
+- `is:[name]` dispatched when the media query matches.
+- `not:[name]` dispatched when the media query doesn't match.
+
+Each event carries `event.detail = { name, media, matches, event }`.
+
+See [events](events.md) for more information on the event prefix behavior.
+
+```html
+<div
+  data-controller="users"
+  data-action="users:small:changed@window->users#smallChanged users:is:small@window->users#isSmall users:not:small@window->users#notSmall"
+>
+  ...
+</div>
+```

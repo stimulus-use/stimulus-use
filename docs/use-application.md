@@ -16,6 +16,8 @@ useApplication(controller, options = {})
 |-----------------------|-------------|---------------------|
 | `overwriteDispatch` | Whether to call the deprecated `useDispatch()` on the controller or not. | `true` |
 
+When `overwriteDispatch` is `true`, the whole `options` object is passed through to [`useDispatch`](use-dispatch.md), so it also accepts all of its options: `element`, `eventPrefix`, `bubbles`, `cancelable` and `debug`. See [useDispatch](use-dispatch.md) for their descriptions and default values.
+
 
 ## Usage
 

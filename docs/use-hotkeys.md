@@ -59,6 +59,34 @@ useHotkeys(controller, options)
     }
   }
   filter?: (e: KeyboardEvent) => boolean
+  debug?: boolean
+}
+```
+
+The advanced format also accepts the inherited `debug` option. Set it to `true` to log debug information. See [debug](debug.md) for more information on the debugging tools (defaults to `false`).
+
+## Re-binding and unbinding hotkeys
+
+`useHotkeys()` returns an object exposing `bind` and `unbind` methods, which you can use to register or remove the configured hotkeys at runtime. The hotkeys are automatically unbound when the controller disconnects.
+
+```js
+import { Controller } from '@hotwired/stimulus'
+import { useHotkeys } from 'stimulus-use/hotkeys'
+
+export default class extends Controller {
+  connect() {
+    this.hotkeys = useHotkeys(this, {
+      '/': [this.singleKeyHandler]
+    })
+  }
+
+  disableHotkeys() {
+    this.hotkeys.unbind()
+  }
+
+  enableHotkeys() {
+    this.hotkeys.bind()
+  }
 }
 ```
 

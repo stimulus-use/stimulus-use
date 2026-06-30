@@ -47,3 +47,14 @@ export default class extends WindowResizeController {
   }
 }
 ```
+
+## Controlling observation
+
+`useWindowResize` returns an `[observe, unobserve]` tuple so you can start and stop observing manually. Observation starts automatically when the mixin is called and is cleaned up automatically when the controller disconnects. When extending `WindowResizeController`, the same functions are available as `this.observe()` and `this.unobserve()`.
+
+```js
+connect() {
+  const [observe, unobserve] = useWindowResize(this)
+  // later: unobserve() to pause, observe() to resume
+}
+```
