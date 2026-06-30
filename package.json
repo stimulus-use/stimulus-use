@@ -60,6 +60,7 @@
     "rimraf": "^5.0.1",
     "rollup": "^4.9.1",
     "rollup-plugin-filesize": "^9.1.1",
+    "tslib": "^2.8.1",
     "typescript": "^5.0.4",
     "vitepress": "^1.6.4",
     "vitest": "^3.2.4"
