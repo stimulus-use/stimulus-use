@@ -50,11 +50,14 @@ export default class extends Controller {
 
   clickOutside(event) {
     // example to close a modal
-    event.preventDefault()
     this.modal.close()
   }
 }
 ```
+
+::: warning Avoid `event.preventDefault()` in `clickOutside`
+The `event` passed to `clickOutside` is the original click (or touch) that happened outside the element. Calling `event.preventDefault()` on it cancels that click's default action, which breaks the element you clicked — submit buttons won't submit, links won't navigate, checkboxes won't toggle, etc. Close your UI without calling `preventDefault()`.
+:::
 
 **Extending a controller**
 
@@ -64,7 +67,6 @@ import { ClickOutsideController } from 'stimulus-use'
 export default class extends ClickOutsideController {
   clickOutside(event) {
     // example to close a modal
-    event.preventDefault()
     this.modal.close()
   }
 }
@@ -99,7 +101,6 @@ export default class extends Controller {
   }
 
   close(event) {
-    event.preventDefault()
     this.modal.close()
   }
 }
