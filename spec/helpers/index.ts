@@ -26,10 +26,6 @@ export const classList = (selector: string) => {
   return query(selector).classList.toString()
 }
 
-export const addAttribute = (selector: string) => {
-  return query(selector).classList.toString()
-}
-
 export const keyDown = (selector: string, keyboardEventInit?: KeyboardEventInit) => {
   query(selector).dispatchEvent(new KeyboardEvent('keydown', { bubbles: true, ...keyboardEventInit }))
   return nextFrame()
@@ -38,17 +34,6 @@ export const keyDown = (selector: string, keyboardEventInit?: KeyboardEventInit)
 export const keyUp = (selector: string, keyboardEventInit?: KeyboardEventInit) => {
   query(selector).dispatchEvent(new KeyboardEvent('keyup', { bubbles: true, ...keyboardEventInit }))
   return nextFrame()
-}
-
-const fixtureFiles = import.meta.glob('../fixtures/*.html', {
-  query: '?raw',
-  import: 'default',
-  eager: true
-}) as Record<string, string>
-
-const fixtureContents: Record<string, string> = {}
-for (const path in fixtureFiles) {
-  fixtureContents[path.split('/').pop() as string] = fixtureFiles[path]
 }
 
 let fixtureContainer: HTMLElement | null = null
@@ -67,16 +52,6 @@ export const setFixture = (html: string): HTMLElement => {
   const container = ensureFixtureContainer()
   container.innerHTML = html
   return container
-}
-
-export const loadFixture = (name: string): HTMLElement => {
-  const html = fixtureContents[name]
-
-  if (html == null) {
-    throw new Error(`Fixture not found: ${name} (available: ${Object.keys(fixtureContents).join(', ')})`)
-  }
-
-  return setFixture(html)
 }
 
 export const cleanupFixture = (): void => {
