@@ -16,8 +16,7 @@ const defaultWait = 200
 export const debounce = (
   fn: Function,
   wait: number = defaultWait,
-  leading: boolean = false,
-  trailing: boolean = true
+  { leading = false, trailing = true }: Pick<DebounceOptions, 'leading' | 'trailing'> = {}
 ) => {
   let timeoutId: ReturnType<typeof setTimeout> | null = null
   let trailingPending = false
@@ -64,23 +63,19 @@ export const useDebounce = (composableController: Controller, options?: Debounce
 
   constructor.debounces.forEach((func: string | DebounceOptions) => {
     if (typeof func === 'string') {
-      ;(controller as any)[func] = debounce(
-        (controller as any)[func] as Function,
-        options?.wait,
-        options?.leading,
-        options?.trailing
-      )
+      ;(controller as any)[func] = debounce((controller as any)[func] as Function, options?.wait, {
+        leading: options?.leading,
+        trailing: options?.trailing
+      })
     }
 
     if (typeof func === 'object') {
       const { name, wait, leading, trailing } = func as DebounceOptions
       if (!name) return
-      ;(controller as any)[name] = debounce(
-        (controller as any)[name] as Function,
-        wait ?? options?.wait,
-        leading ?? options?.leading,
-        trailing ?? options?.trailing
-      )
+      ;(controller as any)[name] = debounce((controller as any)[name] as Function, wait ?? options?.wait, {
+        leading: leading ?? options?.leading,
+        trailing: trailing ?? options?.trailing
+      })
     }
   })
 }

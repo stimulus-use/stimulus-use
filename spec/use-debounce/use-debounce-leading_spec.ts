@@ -1,5 +1,5 @@
 import { Application } from '@hotwired/stimulus'
-import { nextFrame, TestLogger, click, delay } from '../helpers'
+import { nextFrame, TestLogger, click, delay, setFixture } from '../helpers'
 import UseLogObjectDescriptionController from './use_log_object_description_controller'
 import { fixtureBase } from './fixtures'
 
@@ -8,16 +8,16 @@ describe('useDebounce leading edge across separate bursts', function () {
   let testLogger
   const wait = 200
 
-  before('initialize controller', async function () {
+  beforeAll(async function () {
     application = Application.start()
     testLogger = new TestLogger()
     application.testLogger = testLogger
-    fixture.set(fixtureBase)
+    setFixture(fixtureBase)
     application.register('debounce', UseLogObjectDescriptionController)
     await nextFrame()
   })
 
-  after('stop application', async function () {
+  afterAll(async function () {
     await application.stop()
   })
 

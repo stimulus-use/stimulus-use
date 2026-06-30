@@ -19,7 +19,7 @@ describe('debounce() leading/trailing edges', function () {
 
   it('leading + trailing: a burst fires twice, a lone call once', async function () {
     let calls = 0
-    const fn = debounce(() => calls++, wait, true)
+    const fn = debounce(() => calls++, wait, { leading: true })
 
     fn()
     fn()
@@ -36,7 +36,7 @@ describe('debounce() leading/trailing edges', function () {
 
   it('leading-only (trailing: false): never fires on the trailing edge', async function () {
     let calls = 0
-    const fn = debounce(() => calls++, wait, true, false)
+    const fn = debounce(() => calls++, wait, { leading: true, trailing: false })
 
     fn()
     fn()
@@ -53,7 +53,7 @@ describe('debounce() leading/trailing edges', function () {
 
   it('leading: false, trailing: false never invokes', async function () {
     let calls = 0
-    const fn = debounce(() => calls++, wait, false, false)
+    const fn = debounce(() => calls++, wait, { leading: false, trailing: false })
 
     fn()
     fn()
