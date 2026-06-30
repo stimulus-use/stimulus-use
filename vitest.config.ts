@@ -2,12 +2,11 @@ import { defineConfig } from 'vitest/config'
 
 export default defineConfig({
   esbuild: {
-    target: 'es2017'
+    target: 'es2020'
   },
   test: {
     globals: true,
-    include: ['spec/**/*_spec.js'],
-    setupFiles: ['./spec/helpers/setup.js'],
+    include: ['spec/**/*_spec.ts'],
     browser: {
       enabled: true,
       provider: 'playwright',

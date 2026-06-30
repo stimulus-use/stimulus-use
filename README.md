@@ -1,22 +1,42 @@
 <p align="center">
-  <img src="docs/assets/stimulus-use-logo.png" width="500" srcset="docs/assets/stimulus-use-logo@2x.png 2x, docs/assets/stimulus-use-logo@3x.png 3x" />
+  <img src="docs/public/stimulus-use-logo.png" width="500" srcset="docs/public/stimulus-use-logo@2x.png 2x, docs/public/stimulus-use-logo@3x.png 3x" />
 </p>
-
-<div align="center">
-
-  **A collection of composable behaviors for your Stimulus Controllers**
-
-  [![npm version](https://badgen.net/npm/v/stimulus-use)](https://npmjs.com/package/stimulus-use)
-  [![minified + gzip size](https://badgen.net/bundlephobia/minzip/stimulus-use)](https://bundlephobia.com/result?p=stimulus-use)
-  ![types included](https://badgen.net/npm/types/tslib)
-  ![license](https://badgen.net/npm/license/stimulus-use)
-
-</div>
-<br />
 
 <p align="center">
-  <img src="./docs/assets/stimulus-use example.png" alt="Stimulus Use Example">
+  <b>A collection of composable behaviors for your Stimulus Controllers</b>
 </p>
+
+<p align="center">
+  <a href="https://www.npmjs.com/package/stimulus-use"><img alt="npm Version" src="https://img.shields.io/npm/v/stimulus-use"></a>
+  <a href="https://bundlephobia.com/result?p=stimulus-use"><img alt="minified + gzip size" src="https://img.shields.io/bundlephobia/minzip/stimulus-use"></a>
+  <a href="https://www.npmjs.com/package/stimulus-use"><img alt="Types Included" src="https://img.shields.io/npm/types/stimulus-use"></a>
+</p>
+<br />
+
+```js
+import { Controller } from '@hotwired/stimulus'
+import { useIntersection, useResize } from 'stimulus-use'
+
+export default class extends Controller {
+  connect() {
+    useIntersection(this)
+    useResize(this)
+  }
+
+  appear(entry) {
+    // new callback whenever the element appears.
+    // entry is an IntersectionObserverEntry
+  }
+
+  disappear(entry) {
+    // new callback whenever the element disappears.
+  }
+
+  resize({ width, height }) {
+    // callback whenever the element gets resized
+  }
+}
+```
 
 <br />
 
@@ -30,9 +50,9 @@
 
 ### Stimulus 3
 
-If you want to use `stimulus-use` with Stimulus 3 you can use the version `0.50.0+`. This and all future versions are designed to work with the `@hotwired/stimulus` npm package. 
+If you want to use `stimulus-use` with Stimulus 3 you can use the version `0.50.0+`. This and all future versions are designed to work with the `@hotwired/stimulus` npm package.
 
-**Note:** If other packages still depend on the `stimulus` npm package you can safely keep that in your `package.json`, this won't break the `stimulus-use` compability.
+**Note:** If other packages still depend on the `stimulus` npm package you can safely keep that in your `package.json`, this won't break the `stimulus-use` compatibility.
 
 #### Using npm
 ```bash
@@ -61,7 +81,7 @@ yarn add stimulus-use@0.41.0 stimulus@2.0.0
 
 ## Documentation
 
-We got you covered 👉 [stimulus-use.github.io/stimulus-use](https://stimulus-use.github.io/stimulus-use/#/)
+Read the full documentation at [stimulus-use.dev](https://stimulus-use.dev).
 
 ## Mixins
 
@@ -74,14 +94,14 @@ We got you covered 👉 [stimulus-use.github.io/stimulus-use](https://stimulus-u
   |[`useClickOutside`](./docs/use-click-outside.md)|Tracks the clicks outside of the element and adds a new lifecycle callback **clickOutside**.|`clickOutside`|
   |[`useHotkeys`](./docs/use-hotkeys.md)|Registers hotkeys using the [hotkeys-js](https://wangchujiang.com/hotkeys-js/) library and binds them to handler methods||
   |[`useHover`](./docs/use-hover.md)|Tracks the user's mouse movements over an element and adds **mouseEnter** and **mouseLeave** callbacks to your controller.|`mouseEnter` `mouseLeave`|
-  |[`useIdle`](./docs/use-idle.md)| Tracks if the user is idle on your page and adds **away** and **back** callbacks to your controller.|`away`</br> `back`|
-  |[`useIntersection`](./docs/use-intersection.md) | Tracks the element's intersection and adds **appear**, **disappear** callbacks to your controller.|`appear`</br> `disappear`|
+  |[`useIdle`](./docs/use-idle.md)| Tracks if the user is idle on your page and adds **away** and **back** callbacks to your controller.|`away`<br> `back`|
+  |[`useIntersection`](./docs/use-intersection.md) | Tracks the element's intersection and adds **appear**, **disappear** callbacks to your controller.|`appear`<br> `disappear`|
   |[`useMatchMedia`](./docs/use-match-media.md) | Tracks if the window matches a media query string.| `is[Name]`, `not[Name]` and `[name]Changed`|
   |[`useMutation`](./docs/use-mutation.md) | Tracks mutations on an element, its attributes and/or subtree. Adds a **mutate** callback to your controller.|`mutate`|
   |[`useResize`](./docs/use-resize.md)|Tracks the element's size and adds a new lifecycle callback **resize**.|`resize`|
   |[`useTargetMutation`](./docs/use-target-mutation.md) | Tracks when targets are added or removed from the controller's scope, or their contents changed. Adds **[target]TargetAdded** , **[target]TargetRemoved** and **[target]TargetChanged** callback to your controller for each specified target.| `[target]TargetAdded` `[target]TargetRemoved` `[target]TargetChanged`|
-  |[`useVisibility`](./docs/use-visibility.md) </br>| Tracks the page visibility and adds **visible**, **invisible** callbacks to your controller.|`visible`</br> `invisible`|
-  |[`useWindowFocus`](./docs/use-window-focus.md) </br>| Tracks the window focus and adds **focus**, **unfocus** callbacks to your controller.|`focus`</br> `unfocus`|
+  |[`useVisibility`](./docs/use-visibility.md) <br>| Tracks the page visibility and adds **visible**, **invisible** callbacks to your controller.|`visible`<br> `invisible`|
+  |[`useWindowFocus`](./docs/use-window-focus.md) <br>| Tracks the window focus and adds **focus**, **unfocus** callbacks to your controller.|`focus`<br> `unfocus`|
   |[`useWindowResize`](./docs/use-window-resize.md)| Tracks the size of the `window` object and adds a new lifecycle callback **windowResize**.|`windowResize`|
 
 ### Optimization
@@ -107,7 +127,7 @@ We got you covered 👉 [stimulus-use.github.io/stimulus-use](https://stimulus-u
   |------|-------------|
   |[`useApplication, ApplicationController`](./docs/application-controller.md)| supercharged controller for your application.|
   |[`useDispatch`](./docs/use-dispatch.md)|Adds a dispatch helper function to emit custom events. Useful to communicate between different controllers.|
-  |[`useMeta`](./docs/use-meta.md)|Adds getters to easily access <head> meta values.|
+  |[`useMeta`](./docs/use-meta.md)|Adds getters to easily access `<head>` meta values.|
 
 ## Extend or compose
 
@@ -152,16 +172,9 @@ export default class extends IntersectionController {
 }
 ```
 
-## Development
+## Contributing
 
-- Fork the project locally
-- `yarn install`
-- `yarn start` - to run the local dev server with examples
-- `yarn test` - to run the unit tests
-- `yarn lint` - to run the linter with ESLint
-- `yarn format` - to format changes with Prettier
-- `yarn build` - to bundle the app into static files for production
-
+Want to help out? See [CONTRIBUTING.md](./CONTRIBUTING.md) to get started with local development.
 
 ## Contributors ✨
 
