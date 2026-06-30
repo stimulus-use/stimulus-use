@@ -29,7 +29,20 @@ export class StimulusUse {
   targetElement: Element
 
   constructor(controller: Controller, options: StimulusUseOptions = {}) {
-    this.debug = options?.debug ?? (controller.application as any).stimulusUseDebug ?? defaultOptions.debug
+    const application = controller.application as any
+
+    if (application.stimulusUseDebug !== undefined && !application.stimulusUseDebugWarned) {
+      application.stimulusUseDebugWarned = true
+      console.warn(
+        '[stimulus-use] `application.stimulusUseDebug` is deprecated and will be removed in a future release. ' +
+          'Use Stimulus’ built-in debug mode instead: `application.debug = true`. ' +
+          'https://stimulus.hotwired.dev/handbook/installing#debugging'
+      )
+    }
+
+    const globalDebug = application.debug || application.stimulusUseDebug || defaultOptions.debug
+
+    this.debug = options?.debug ?? globalDebug
     this.logger = options?.logger ?? defaultOptions.logger
     this.controller = controller
     this.controllerId = controller.element.id || (controller.element as HTMLElement).dataset.id
