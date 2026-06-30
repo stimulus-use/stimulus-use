@@ -12,7 +12,7 @@ yarn
 yarn add stimulus-use
 ```
 
-## Wihtout a build system
+## Without a build system
 
 ### Rails with Import Maps
 
