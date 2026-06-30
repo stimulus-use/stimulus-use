@@ -12,7 +12,11 @@ useIntersection(controller, options = {})
 
 **controller** : a Stimulus Controller (usually `'this'`)
 
-**options** :
+**options** : a single object that accepts both the stimulus-use specific options listed below **and** any [`IntersectionObserver` option](https://developer.mozilla.org/en-US/docs/Web/API/IntersectionObserver/IntersectionObserver#parameters). stimulus-use reads the options it knows about and forwards the whole object to the underlying `IntersectionObserver`, so there is no separate place to configure the observer.
+
+### stimulus-use options
+
+These options control how stimulus-use reports intersections. They are consumed by stimulus-use and ignored by the browser.
 
 | Option | Description | Default&nbsp;value|
 |-----------------------|-------------|---------------------|
@@ -22,9 +26,11 @@ useIntersection(controller, options = {})
 | `visibleAttribute` | The name of the attribute which gets added to the tracked element when the element is visible | `isVisible` |
 
 
-Additionally, the following options can also be passed to the `options` object. The following descriptions are from [MDN](https://developer.mozilla.org/en-US/docs/Web/API/IntersectionObserver/IntersectionObserver#parameters):
+### IntersectionObserver options
 
-If options isn't specified, the observer uses the document's viewport as the root, with no margin, and a 0% threshold (meaning that even a one-pixel change is enough to trigger a callback). You can provide any combination of the following options:
+The same `options` object is passed straight to the [`IntersectionObserver` constructor](https://developer.mozilla.org/en-US/docs/Web/API/IntersectionObserver/IntersectionObserver#parameters). This is how you tune **when** the `appear` and `disappear` callbacks fire — for example, raising the `threshold` so they only run once a portion of the element is visible, or changing the `root` to observe inside a scroll container instead of the viewport. You don't need to create or access the observer yourself.
+
+The descriptions below are from [MDN](https://developer.mozilla.org/en-US/docs/Web/API/IntersectionObserver/IntersectionObserver#parameters). If options isn't specified, the observer uses the document's viewport as the root, with no margin, and a 0% threshold (meaning that even a one-pixel change is enough to trigger a callback). You can provide any combination of the following options:
 
 | Option | Description | Default&nbsp;value |
 |-----------------------|-------------|---------------------|
@@ -53,6 +59,38 @@ export default class extends Controller {
   disappear(entry, observer) {
     // callback automatically triggered when the element
     // leaves the viewport (or root Element specified in the options)
+  }
+}
+```
+
+**Passing `IntersectionObserver` options**
+
+Because `options` is forwarded to the `IntersectionObserver`, you can configure intersection behavior right where you call `useIntersection`, without ever touching the observer directly. A common case is delaying `appear`/`disappear` until a portion of the element is on screen via `threshold`:
+
+```js
+import { Controller } from '@hotwired/stimulus'
+import { useIntersection } from 'stimulus-use'
+
+export default class extends Controller {
+  connect() {
+    useIntersection(this, {
+      // only trigger `appear` once 80% of the element is visible
+      threshold: 0.8,
+
+      // grow or shrink the root box before intersections are computed
+      rootMargin: '0px 0px -200px 0px',
+
+      // observe relative to a scroll container instead of the viewport
+      root: document.querySelector('#scroll-container')
+    })
+  }
+
+  appear(entry, observer) {
+    // triggered once the threshold / rootMargin conditions are met
+  }
+
+  disappear(entry, observer) {
+    // ...
   }
 }
 ```
