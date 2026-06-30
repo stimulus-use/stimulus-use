@@ -83,6 +83,10 @@ module.exports = function (config) {
   //   process.exit(1)
   // }
 
+  // `test:watch` runs `karma start --no-single-run` for interactive debugging.
+  // CI (`yarn test`) runs single-run and must exit cleanly.
+  const singleRun = !process.argv.includes('--no-single-run')
+
   config.set({
     // base path that will be used to resolve all patterns (eg. files, exclude)
     basePath: '',
@@ -90,6 +94,18 @@ module.exports = function (config) {
     // frameworks to use
     // available frameworks: https://npmjs.org/browse/keyword/karma-adapter
     frameworks: ['karma-typescript', 'mocha', 'sinon-chai', 'fixture'],
+
+    // Scope karma-typescript to our source only. Without this it walks
+    // node_modules and compiles dependency typings (e.g. puppeteer) at its
+    // default low target, emitting TS18028 errors for their `#private` fields.
+    karmaTypescriptConfig: {
+      compilerOptions: {
+        target: 'es2017',
+        module: 'commonjs',
+        lib: ['dom', 'es2017']
+      },
+      exclude: ['node_modules']
+    },
 
     // list of files / patterns to load in the browser
     files: [
@@ -148,7 +164,10 @@ module.exports = function (config) {
       chai: {
         includeStack: true
       },
-      clearContext: false
+      // Keep the runner context only for interactive watch debugging. Under
+      // headless singleRun, `false` makes Karma flag a false-positive "full
+      // page reload" and exit with an error, so clear it there.
+      clearContext: singleRun
     },
 
     // test results reporter to use
@@ -194,7 +213,7 @@ module.exports = function (config) {
 
     // Continuous Integration mode
     // if true, Karma captures browsers, runs the tests and exits
-    singleRun: true
+    singleRun
   })
 
   // if (process.env.CI) {
