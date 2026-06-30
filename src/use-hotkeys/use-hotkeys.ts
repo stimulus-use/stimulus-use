@@ -30,6 +30,7 @@ export interface HotkeysOptions extends StimulusUseOptions {
 export class UseHotkeys extends StimulusUse {
   controller: Controller
   hotkeysOptions: HotkeysOptions
+  registrations: { hotkey: string; scope: string; callback: KeyHandler }[] = []
 
   constructor(controller: Controller, hotkeysOptions: HotkeysOptions) {
     super(controller, hotkeysOptions)
@@ -41,17 +42,18 @@ export class UseHotkeys extends StimulusUse {
 
   bind = () => {
     for (const [hotkey, definition] of Object.entries(this.hotkeysOptions.hotkeys as any)) {
+      const options = (definition as HotkeyDefinition).options
       const handler = (definition as HotkeyDefinition).handler.bind(this.controller)
-      hotkeys(hotkey, (definition as HotkeyDefinition).options, (e: KeyboardEvent, hotkeysEvent: HotkeysEvent) =>
-        handler(e, hotkeysEvent)
-      )
+      const callback = (e: KeyboardEvent, hotkeysEvent: HotkeysEvent) => handler(e, hotkeysEvent)
+
+      hotkeys(hotkey, options, callback)
+      this.registrations.push({ hotkey, scope: options?.scope || 'all', callback })
     }
   }
 
   unbind = () => {
-    for (const hotkey in this.hotkeysOptions.hotkeys as any) {
-      hotkeys.unbind(hotkey)
-    }
+    this.registrations.forEach(({ hotkey, scope, callback }) => hotkeys.unbind(hotkey, scope, callback))
+    this.registrations = []
   }
 
   private enhanceController() {
