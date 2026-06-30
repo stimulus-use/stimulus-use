@@ -45,9 +45,7 @@
     "format": "prettier --write **/*.js **/*.ts src/**/*.ts spec/**/*.js playground/**/*.js",
     "clean": "rimraf dist *.tsbuildinfo coverage",
     "docs:dev": "vitepress dev docs/",
-    "docs:build": "vitepress build docs/",
-    "prerelease": "$npm_execpath run build && $npm_execpath run test:treeshake",
-    "release": "np"
+    "docs:build": "vitepress build docs/"
   },
   "devDependencies": {
     "@hotwired/stimulus": ">=3",
@@ -57,7 +55,6 @@
     "@vitest/browser": "^3.2.4",
     "agadoo": "^2.0.0",
     "hotkeys-js": "^3.10.1",
-    "np": "^10.0.3",
     "playwright": "^1.49.1",
     "prettier": "^3.0.0",
     "rimraf": "^5.0.1",
