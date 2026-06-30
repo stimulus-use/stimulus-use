@@ -122,22 +122,16 @@ scenarios.forEach(scenario => {
       })
 
       describe('scroll down', function () {
-        const waitForLog = async filter => {
-          for (let i = 0; i < 60; i++) {
-            if (testLogger.eventsFilter(filter).length > 0) return
-            await nextFrame()
-          }
-        }
-
         it('fires a "disappear" for the first element and an "appear" for the second', async function () {
           await nextFrame()
 
           document.getElementById('2').scrollIntoView()
-          await waitForLog({ id: ['1'], type: ['disappear'] })
-          await waitForLog({ id: ['2'], type: ['appear'] })
 
-          expect(testLogger.eventsFilter({ id: ['1'], type: ['disappear'] }).length).to.equal(1)
-          expect(testLogger.eventsFilter({ id: ['2'], type: ['appear'] }).length).to.equal(1)
+          await vi.waitFor(() => {
+            expect(testLogger.eventsFilter({ id: ['1'], type: ['disappear'] }).length).to.equal(1)
+            expect(testLogger.eventsFilter({ id: ['2'], type: ['appear'] }).length).to.equal(1)
+          })
+
           expect(testLogger.eventsFilter({ id: ['2'], type: ['disappear'] }).length).to.equal(0)
         })
       })
