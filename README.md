@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="docs/assets/stimulus-use-logo.png" width="500" srcset="docs/assets/stimulus-use-logo@2x.png 2x, docs/assets/stimulus-use-logo@3x.png 3x" />
+  <img src="docs/public/stimulus-use-logo.png" width="500" srcset="docs/public/stimulus-use-logo@2x.png 2x, docs/public/stimulus-use-logo@3x.png 3x" />
 </p>
 
 <div align="center">
@@ -15,7 +15,7 @@
 <br />
 
 <p align="center">
-  <img src="./docs/assets/stimulus-use example.png" alt="Stimulus Use Example">
+  <img src="./docs/public/stimulus-use-example.png" alt="Stimulus Use Example">
 </p>
 
 <br />
@@ -74,14 +74,14 @@ We got you covered 👉 [stimulus-use.github.io/stimulus-use](https://stimulus-u
   |[`useClickOutside`](./docs/use-click-outside.md)|Tracks the clicks outside of the element and adds a new lifecycle callback **clickOutside**.|`clickOutside`|
   |[`useHotkeys`](./docs/use-hotkeys.md)|Registers hotkeys using the [hotkeys-js](https://wangchujiang.com/hotkeys-js/) library and binds them to handler methods||
   |[`useHover`](./docs/use-hover.md)|Tracks the user's mouse movements over an element and adds **mouseEnter** and **mouseLeave** callbacks to your controller.|`mouseEnter` `mouseLeave`|
-  |[`useIdle`](./docs/use-idle.md)| Tracks if the user is idle on your page and adds **away** and **back** callbacks to your controller.|`away`</br> `back`|
-  |[`useIntersection`](./docs/use-intersection.md) | Tracks the element's intersection and adds **appear**, **disappear** callbacks to your controller.|`appear`</br> `disappear`|
+  |[`useIdle`](./docs/use-idle.md)| Tracks if the user is idle on your page and adds **away** and **back** callbacks to your controller.|`away`<br> `back`|
+  |[`useIntersection`](./docs/use-intersection.md) | Tracks the element's intersection and adds **appear**, **disappear** callbacks to your controller.|`appear`<br> `disappear`|
   |[`useMatchMedia`](./docs/use-match-media.md) | Tracks if the window matches a media query string.| `is[Name]`, `not[Name]` and `[name]Changed`|
   |[`useMutation`](./docs/use-mutation.md) | Tracks mutations on an element, its attributes and/or subtree. Adds a **mutate** callback to your controller.|`mutate`|
   |[`useResize`](./docs/use-resize.md)|Tracks the element's size and adds a new lifecycle callback **resize**.|`resize`|
   |[`useTargetMutation`](./docs/use-target-mutation.md) | Tracks when targets are added or removed from the controller's scope, or their contents changed. Adds **[target]TargetAdded** , **[target]TargetRemoved** and **[target]TargetChanged** callback to your controller for each specified target.| `[target]TargetAdded` `[target]TargetRemoved` `[target]TargetChanged`|
-  |[`useVisibility`](./docs/use-visibility.md) </br>| Tracks the page visibility and adds **visible**, **invisible** callbacks to your controller.|`visible`</br> `invisible`|
-  |[`useWindowFocus`](./docs/use-window-focus.md) </br>| Tracks the window focus and adds **focus**, **unfocus** callbacks to your controller.|`focus`</br> `unfocus`|
+  |[`useVisibility`](./docs/use-visibility.md) <br>| Tracks the page visibility and adds **visible**, **invisible** callbacks to your controller.|`visible`<br> `invisible`|
+  |[`useWindowFocus`](./docs/use-window-focus.md) <br>| Tracks the window focus and adds **focus**, **unfocus** callbacks to your controller.|`focus`<br> `unfocus`|
   |[`useWindowResize`](./docs/use-window-resize.md)| Tracks the size of the `window` object and adds a new lifecycle callback **windowResize**.|`windowResize`|
 
 ### Optimization
@@ -107,7 +107,7 @@ We got you covered 👉 [stimulus-use.github.io/stimulus-use](https://stimulus-u
   |------|-------------|
   |[`useApplication, ApplicationController`](./docs/application-controller.md)| supercharged controller for your application.|
   |[`useDispatch`](./docs/use-dispatch.md)|Adds a dispatch helper function to emit custom events. Useful to communicate between different controllers.|
-  |[`useMeta`](./docs/use-meta.md)|Adds getters to easily access <head> meta values.|
+  |[`useMeta`](./docs/use-meta.md)|Adds getters to easily access `<head>` meta values.|
 
 ## Extend or compose
 
@@ -152,16 +152,9 @@ export default class extends IntersectionController {
 }
 ```
 
-## Development
+## Contributing
 
-- Fork the project locally
-- `yarn install`
-- `yarn start` - to run the local dev server with examples
-- `yarn test` - to run the unit tests
-- `yarn lint` - to run the linter with ESLint
-- `yarn format` - to format changes with Prettier
-- `yarn build` - to bundle the app into static files for production
-
+Want to help out? See [CONTRIBUTING.md](./CONTRIBUTING.md) to get started with local development.
 
 ## Contributors ✨
 

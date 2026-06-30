@@ -1,8 +1,71 @@
+function rewriteReadmePath(url) {
+  if (!url) return url
+
+  let path = url.replace(/^\.\//, "")
+
+  if (/^CONTRIBUTING\.md$/.test(path)) {
+    return "https://github.com/stimulus-use/stimulus-use/blob/main/CONTRIBUTING.md"
+  }
+
+  path = path.replace(/^\/?docs\/public\//, "/")
+
+  const page = path.match(/^\/?docs\/([^?#]+?)(?:\.md)?([?#].*)?$/)
+
+  if (page) {
+    let slug = page[1]
+    if (slug === "application-controller") slug = "use-application"
+
+    return `/${slug}${page[2] || ""}`
+  }
+
+  return path
+}
+
+function rewriteReadmeHtml(html) {
+  return html.replace(/\b(src|srcset)=(["'])(.*?)\2/g, (_, attr, quote, value) => {
+    const rewritten = value.split(",").map((candidate) => {
+      const [target, ...descriptor] = candidate.trim().split(/\s+/)
+      return [rewriteReadmePath(target), ...descriptor].join(" ")
+    }).join(", ")
+
+    return `${attr}=${quote}${rewritten}${quote}`
+  })
+}
+
+function rewriteReadmeTokens(tokens) {
+  for (const token of tokens) {
+    if (token.type === "html_block" || token.type === "html_inline") {
+      token.content = rewriteReadmeHtml(token.content)
+    }
+
+    if (token.type === "link_open") {
+      const href = token.attrGet("href")
+      if (href) token.attrSet("href", rewriteReadmePath(href))
+    }
+
+    if (token.type === "image") {
+      const src = token.attrGet("src")
+      if (src) token.attrSet("src", rewriteReadmePath(src))
+    }
+
+    if (token.children) rewriteReadmeTokens(token.children)
+  }
+}
+
 export default {
   title: "Stimulus Use",
   description: "A collection of composable behaviors for your Stimulus Controllers",
   ignoreDeadLinks: false,
   lastUpdated: true,
+  markdown: {
+    config(md) {
+      md.core.ruler.push("rewrite-readme-paths", (state) => {
+        if (state.env?.relativePath === "index.md") {
+          rewriteReadmeTokens(state.tokens)
+        }
+      })
+    }
+  },
   themeConfig: {
     siteTitle: "",
     logo: "/stimulus-use-logo.png",
