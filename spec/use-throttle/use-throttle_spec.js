@@ -1,6 +1,5 @@
 import { Application } from '@hotwired/stimulus'
 import { nextFrame, TestLogger, click, delay } from '../helpers'
-import { expect } from 'chai'
 import UseLogController from './use_log_controller'
 import { fixtureBase } from './fixtures'
 

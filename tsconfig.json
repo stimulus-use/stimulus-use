@@ -12,5 +12,6 @@
     "baseUrl": ".",
     "noEmit": false,
     "declaration": false
-  }
+  },
+  "include": ["src"]
 }

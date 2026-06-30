@@ -10,7 +10,6 @@
   [![minified + gzip size](https://badgen.net/bundlephobia/minzip/stimulus-use)](https://bundlephobia.com/result?p=stimulus-use)
   ![types included](https://badgen.net/npm/types/tslib)
   ![license](https://badgen.net/npm/license/stimulus-use)
-  ![Sauce test status](./docs/assets/example-buildstatus-badge.png)
 
 </div>
 <br />
@@ -235,10 +234,3 @@ Made with :heart: by [@adrienpoly](https://twitter.com/adrienpoly), [@marcoroth]
 <!-- ALL-CONTRIBUTORS-LIST:END -->
 
 This project follows the [all-contributors](https://github.com/all-contributors/all-contributors) specification. Contributions of any kind welcome!
-
-
-## Acknowledgments
-
-Continuous integration and cross browser testing is generously provided Sauce Labs.
-
-[![Testing Powered By SauceLabs](https://opensource.saucelabs.com/images/opensauce/powered-by-saucelabs-badge-white.png?sanitize=true "Testing Powered By SauceLabs")](https://saucelabs.com)

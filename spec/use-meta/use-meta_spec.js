@@ -1,7 +1,6 @@
 import { Controller, Application } from '@hotwired/stimulus'
 import { useMeta } from '../../src'
 import { nextFrame } from '../helpers'
-import { expect } from 'chai'
 import { fixtureBase } from './fixtures'
 
 const application = Application.start()

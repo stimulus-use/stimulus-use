@@ -1,7 +1,6 @@
 import { Application } from '@hotwired/stimulus'
 import hotkeys from 'hotkeys-js'
 import { nextFrame, TestLogger, keyDown, keyUp } from '../helpers'
-import { expect } from 'chai'
 import { UseSimpleLogController, UseAdvancedLogController } from './use_log_controller'
 import { fixtureBase, fixtureWithFilter } from './fixtures'
 

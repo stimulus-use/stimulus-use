@@ -1,6 +1,5 @@
 import { Application } from '@hotwired/stimulus'
 import { nextFrame, TestLogger, remove } from '../helpers'
-import { expect } from 'chai'
 import LogController from './log_controller'
 import UseLogController from './use_log_controller'
 import { fixtureBase } from './fixtures'
@@ -43,6 +42,7 @@ scenarios.forEach(scenario => {
         application.options = scenario.options
         fixture.set(scenario.fixture)
         application.register('mutation', Controller.controller)
+        await nextFrame()
         await nextFrame()
       })
 
