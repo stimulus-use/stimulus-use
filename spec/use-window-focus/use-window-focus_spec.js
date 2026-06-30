@@ -25,28 +25,31 @@ controllers.forEach(Controller => {
     const count = type => testLogger.logs.filter(entry => entry.type === type).length
 
     beforeEach('initialize controller', async function () {
-      // `useWindowFocus` polls `document.hasFocus()`, so stub it to control the
-      // window focus state deterministically (the ambient focus of a headless
-      // browser is unreliable).
       originalHasFocus = document.hasFocus.bind(document)
       focused = true
+
       document.hasFocus = () => focused
 
       application = Application.start()
       testLogger = new TestLogger()
       application.testLogger = testLogger
-      // short poll interval so the tests stay fast
       application.options = { interval: 20 }
+
       fixture.set(fixtureBase)
+
       application.register('window-focus', Controller.controller)
+
       await nextFrame()
       await nextFrame()
     })
 
     afterEach('stop application', async function () {
       fixture.cleanup()
+
       await application.stop()
+
       document.hasFocus = originalHasFocus
+
       await nextFrame()
     })
 
