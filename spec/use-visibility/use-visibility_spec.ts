@@ -1,5 +1,5 @@
 import { Application } from '@hotwired/stimulus'
-import { nextFrame, TestLogger, click, remove } from '../helpers'
+import { nextFrame, TestLogger, click, remove, setFixture } from '../helpers'
 // import { LogController } from './log_controller'
 import { UseLogController } from './use_log_controller'
 import { fixtureBase } from './fixtures'
@@ -28,17 +28,17 @@ scenarios.forEach(scenario => {
     describe(`IntersectionController tests scenario : ${scenario.name} controller type ${Controller.type}`, function () {
       let application
       let testLogger
-      before('initialize controller', async function () {
+      beforeAll(async function () {
         application = Application.start()
         testLogger = new TestLogger()
         application.testLogger = testLogger
         application.options = scenario.options
-        fixture.set(scenario.fixture)
+        setFixture(scenario.fixture)
         application.register('visibility', Controller.controller)
         await nextFrame()
       })
 
-      after('stop application', async function () {
+      afterAll(async function () {
         await application.stop()
         await nextFrame()
       })
@@ -51,7 +51,7 @@ scenarios.forEach(scenario => {
       })
 
       describe(`Preserve connect and disconnect lifecycles`, async function () {
-        before('perform a full lifecycle', async function () {
+        beforeAll(async function () {
           await remove('#controller-1')
         })
 

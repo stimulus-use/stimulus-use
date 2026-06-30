@@ -1,6 +1,6 @@
 import { Application } from '@hotwired/stimulus'
 import { page } from '@vitest/browser/context'
-import { nextFrame, TestLogger } from '../helpers'
+import { nextFrame, TestLogger, setFixture, cleanupFixture } from '../helpers'
 import { UseLogController } from './use_log_controller'
 import { fixtureBase } from './fixtures'
 
@@ -16,19 +16,19 @@ describe('useMatchMedia tests', function () {
 
   const count = type => testLogger.logs.filter(entry => entry.type === type).length
 
-  beforeEach('initialize controller', async function () {
+  beforeEach(async function () {
     await page.viewport(1000, 600)
     application = Application.start()
     testLogger = new TestLogger()
     application.testLogger = testLogger
     application.options = options
-    fixture.set(fixtureBase)
+    setFixture(fixtureBase)
     application.register('match-media', UseLogController)
     await nextFrame()
   })
 
-  afterEach('stop application', async function () {
-    fixture.cleanup()
+  afterEach(async function () {
+    cleanupFixture()
     await application.stop()
     await nextFrame()
   })

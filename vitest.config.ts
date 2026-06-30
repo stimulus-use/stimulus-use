@@ -6,8 +6,7 @@ export default defineConfig({
   },
   test: {
     globals: true,
-    include: ['spec/**/*_spec.js'],
-    setupFiles: ['./spec/helpers/setup.js'],
+    include: ['spec/**/*_spec.ts'],
     browser: {
       enabled: true,
       provider: 'playwright',

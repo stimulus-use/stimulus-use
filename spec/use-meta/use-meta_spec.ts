@@ -1,6 +1,6 @@
 import { Controller, Application } from '@hotwired/stimulus'
 import { useMeta } from '../../src'
-import { nextFrame } from '../helpers'
+import { nextFrame, setFixture } from '../helpers'
 import { fixtureBase } from './fixtures'
 
 const application = Application.start()
@@ -14,8 +14,8 @@ class UseLogController extends Controller {
 }
 
 describe(`useMeta tests`, function () {
-  beforeEach('initialize controller', async function () {
-    fixture.set(fixtureBase)
+  beforeEach(async function () {
+    setFixture(fixtureBase)
     application.register('meta', UseLogController)
     await nextFrame()
   })

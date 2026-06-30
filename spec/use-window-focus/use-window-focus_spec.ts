@@ -1,5 +1,5 @@
 import { Application } from '@hotwired/stimulus'
-import { nextFrame, delay, TestLogger } from '../helpers'
+import { nextFrame, delay, TestLogger, setFixture, cleanupFixture } from '../helpers'
 import { LogController } from './log_controller'
 import { UseLogController } from './use_log_controller'
 import { fixtureBase } from './fixtures'
@@ -24,7 +24,7 @@ controllers.forEach(Controller => {
 
     const count = type => testLogger.logs.filter(entry => entry.type === type).length
 
-    beforeEach('initialize controller', async function () {
+    beforeEach(async function () {
       originalHasFocus = document.hasFocus.bind(document)
       focused = true
 
@@ -35,7 +35,7 @@ controllers.forEach(Controller => {
       application.testLogger = testLogger
       application.options = { interval: 20 }
 
-      fixture.set(fixtureBase)
+      setFixture(fixtureBase)
 
       application.register('window-focus', Controller.controller)
 
@@ -43,8 +43,8 @@ controllers.forEach(Controller => {
       await nextFrame()
     })
 
-    afterEach('stop application', async function () {
-      fixture.cleanup()
+    afterEach(async function () {
+      cleanupFixture()
 
       await application.stop()
 

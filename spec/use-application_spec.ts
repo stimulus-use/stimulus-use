@@ -1,10 +1,16 @@
 import { Controller, Application } from '@hotwired/stimulus'
 import { useApplication, ApplicationController } from '../src'
-import { nextFrame, TestLogger, click } from './helpers'
+import { nextFrame, TestLogger, click, setFixture } from './helpers'
 
 const application = Application.start()
 
 const testLogger = new TestLogger()
+
+const applicationFixture = `
+  <div data-controller="application" data-action="application:add->application#log" data-id="1" id="cart">
+    <div data-controller="application" data-action="click->application#count" id="children" data-id="2"></div>
+  </div>
+`
 
 class LogController extends ApplicationController {
   log(e) {
@@ -49,9 +55,9 @@ const controllers = [LogController, UseLogController]
 
 controllers.forEach(Controller => {
   describe(`ApplicationController tests`, function () {
-    before('initialize controller', async function () {
+    beforeAll(async function () {
       testLogger.clear()
-      fixture.load('index-application.html')
+      setFixture(applicationFixture)
       application.register('application', Controller)
       await nextFrame()
     })

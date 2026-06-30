@@ -1,6 +1,6 @@
 import { Application } from '@hotwired/stimulus'
 import hotkeys from 'hotkeys-js'
-import { nextFrame, TestLogger, keyDown, keyUp } from '../helpers'
+import { nextFrame, TestLogger, keyDown, keyUp, setFixture } from '../helpers'
 import { UseSimpleLogController, UseAdvancedLogController } from './use_log_controller'
 import { fixtureBase, fixtureWithFilter } from './fixtures'
 
@@ -83,16 +83,16 @@ scenarios.forEach(scenario => {
       let application
       let testLogger
 
-      before('initialize controller', async function () {
+      beforeAll(async function () {
         application = Application.start()
         testLogger = new TestLogger()
         application.testLogger = testLogger
-        fixture.set(scenario.fixture)
+        setFixture(scenario.fixture)
         application.register('hotkeys', Controller.controller)
         await nextFrame()
       })
 
-      after('stop application', async function () {
+      afterAll(async function () {
         await application.stop()
       })
 

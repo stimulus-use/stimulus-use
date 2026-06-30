@@ -1,5 +1,5 @@
 import { Application } from '@hotwired/stimulus'
-import { nextFrame, TestLogger, click, delay } from '../helpers'
+import { nextFrame, TestLogger, click, delay, setFixture } from '../helpers'
 import UseLogController from './use_log_controller'
 import { fixtureBase, sameEventMultipleActions } from './fixtures'
 
@@ -35,18 +35,18 @@ scenarios.forEach(scenario => {
       let application
       let testLogger
 
-      before('initialize controller', async function () {
+      beforeAll(async function () {
         application = Application.start()
         testLogger = new TestLogger()
         application.testLogger = testLogger
         application.options = scenario.options
 
-        fixture.set(scenario.fixture)
+        setFixture(scenario.fixture)
         application.register('debounce', Controller.controller)
         await nextFrame()
       })
 
-      after('stop application', async function () {
+      afterAll(async function () {
         await application.stop()
       })
 
@@ -71,17 +71,17 @@ describe(`debounced controller action should retain Stimulus action params`, fun
   let application
   let testLogger
 
-  before('initialize controller', async function () {
+  beforeAll(async function () {
     application = Application.start()
     testLogger = new TestLogger()
     application.testLogger = testLogger
 
-    fixture.set(sameEventMultipleActions)
+    setFixture(sameEventMultipleActions)
     application.register('debounce', UseLogController)
     await nextFrame()
   })
 
-  after('stop application', async function () {
+  afterAll(async function () {
     await application.stop()
   })
 

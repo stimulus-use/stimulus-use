@@ -1,6 +1,6 @@
 import { Application } from '@hotwired/stimulus'
 import { page } from '@vitest/browser/context'
-import { nextFrame, TestLogger } from '../helpers'
+import { nextFrame, TestLogger, setFixture, cleanupFixture } from '../helpers'
 import { LogController } from './log_controller'
 import { UseLogController } from './use_log_controller'
 import { fixtureBase } from './fixtures'
@@ -23,19 +23,19 @@ controllers.forEach(Controller => {
 
     const lastResize = () => testLogger.logs.filter(entry => entry.type === 'resize').pop()
 
-    beforeEach('initialize controller', async function () {
+    beforeEach(async function () {
       await page.viewport(1000, 600)
       application = Application.start()
       testLogger = new TestLogger()
       application.testLogger = testLogger
-      fixture.set(fixtureBase)
+      setFixture(fixtureBase)
       application.register('window-resize', Controller.controller)
       await nextFrame()
       await nextFrame()
     })
 
-    afterEach('stop application', async function () {
-      fixture.cleanup()
+    afterEach(async function () {
+      cleanupFixture()
       await application.stop()
       await nextFrame()
     })
