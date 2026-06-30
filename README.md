@@ -2,21 +2,41 @@
   <img src="docs/public/stimulus-use-logo.png" width="500" srcset="docs/public/stimulus-use-logo@2x.png 2x, docs/public/stimulus-use-logo@3x.png 3x" />
 </p>
 
-<div align="center">
-
-  **A collection of composable behaviors for your Stimulus Controllers**
-
-  [![npm version](https://badgen.net/npm/v/stimulus-use)](https://npmjs.com/package/stimulus-use)
-  [![minified + gzip size](https://badgen.net/bundlephobia/minzip/stimulus-use)](https://bundlephobia.com/result?p=stimulus-use)
-  ![types included](https://badgen.net/npm/types/tslib)
-  ![license](https://badgen.net/npm/license/stimulus-use)
-
-</div>
-<br />
+<p align="center">
+  <b>A collection of composable behaviors for your Stimulus Controllers</b>
+</p>
 
 <p align="center">
-  <img src="./docs/public/stimulus-use-example.png" alt="Stimulus Use Example">
+  <a href="https://www.npmjs.com/package/stimulus-use"><img alt="npm Version" src="https://img.shields.io/npm/v/stimulus-use"></a>
+  <a href="https://bundlephobia.com/result?p=stimulus-use"><img alt="minified + gzip size" src="https://img.shields.io/bundlephobia/minzip/stimulus-use"></a>
+  <a href="https://www.npmjs.com/package/stimulus-use"><img alt="Types Included" src="https://img.shields.io/npm/types/stimulus-use"></a>
 </p>
+<br />
+
+```js
+import { Controller } from '@hotwired/stimulus'
+import { useIntersection, useResize } from 'stimulus-use'
+
+export default class extends Controller {
+  connect() {
+    useIntersection(this)
+    useResize(this)
+  }
+
+  appear(entry) {
+    // new callback whenever the element appears.
+    // entry is an IntersectionObserverEntry
+  }
+
+  disappear(entry) {
+    // new callback whenever the element disappears.
+  }
+
+  resize({ width, height }) {
+    // callback whenever the element gets resized
+  }
+}
+```
 
 <br />
 
