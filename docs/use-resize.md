@@ -16,6 +16,7 @@ useResize(controller, options = {})
 
 | Option| Description |&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Default value&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;|
 |-----------------------|-------------|---------------------|
+| `box` | The [box model](https://developer.mozilla.org/en-US/docs/Web/API/ResizeObserver/observe#box) the observation is based on. One of `content-box`, `border-box` or `device-pixel-content-box`. Use `border-box` to also be notified when padding or borders change.| `content-box` |
 | `dispatchEvent` | Whether to dispatch a `resize` event or not.| `true` |
 | `element` | The root element being observed for resize.| The controller element|
 |`eventPrefix`| Whether to prefix or not the emitted event. Can be a **boolean** or a **string**.<br>- **true** prefix the event with the controller identifier `card:resize` <br>- **someString** prefix the event with the given string `someString:resize` <br>- **false** to remove prefix  |true|

@@ -13,6 +13,16 @@ export class UseResizeLogController extends Controller {
   }
 }
 
+export class UseResizeBorderBoxController extends Controller {
+  connect() {
+    useResize(this, { box: 'border-box' })
+  }
+
+  resize(rect: DOMRectReadOnly) {
+    this.application.testLogger.log({ name: 'resize-border', width: Math.round(rect.width) })
+  }
+}
+
 export class UseResizeElementController extends Controller {
   static targets = ['observed']
 

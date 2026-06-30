@@ -4,6 +4,7 @@ import { ResizeComposableController } from './resize-controller'
 
 export interface ResizeOptions {
   element?: Element
+  box?: ResizeObserverBoxOptions
   dispatchEvent?: boolean
   eventPrefix?: boolean | string
 }
@@ -17,6 +18,7 @@ export const useResize = (composableController: Controller, options: ResizeOptio
   const controller = composableController as ResizeComposableController
   const { dispatchEvent, eventPrefix } = Object.assign({}, defaultOptions, options)
   const targetElement: Element = options?.element || controller.element
+  const box = options?.box
 
   let frame: number | null = null
 
@@ -47,7 +49,7 @@ export const useResize = (composableController: Controller, options: ResizeOptio
   const observer = new ResizeObserver(callback)
 
   const observe = () => {
-    observer.observe(targetElement)
+    observer.observe(targetElement, box ? { box } : undefined)
   }
 
   const unobserve = () => {
