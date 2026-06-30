@@ -10,7 +10,6 @@
   [![minified + gzip size](https://badgen.net/bundlephobia/minzip/stimulus-use)](https://bundlephobia.com/result?p=stimulus-use)
   ![types included](https://badgen.net/npm/types/tslib)
   ![license](https://badgen.net/npm/license/stimulus-use)
-  ![Sauce test status](./docs/assets/example-buildstatus-badge.png)
 
 </div>
 <br />
@@ -25,7 +24,7 @@
 - **Composable**: compose at will different behaviors in a single controller with mixins.
 - **Modular**: built as ES6 modules, just import what you need and tree shaking will remove the rest.
 - **Typescript**: Types available, better autocompletion.
-- **Tiny**: 3k gzip + tree shaking 🌳🌳🌳
+- **Small**: ~7k gzip + tree shaking 🌳🌳🌳
 
 ## Getting Started
 
@@ -222,6 +221,9 @@ Made with :heart: by [@adrienpoly](https://twitter.com/adrienpoly), [@marcoroth]
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/leonvogt"><img src="https://avatars.githubusercontent.com/u/17851143?v=4?s=80" width="80px;" alt="Leon Vogt"/><br /><sub><b>Leon Vogt</b></sub></a><br /><a href="https://github.com/stimulus-use/stimulus-use/commits?author=leonvogt" title="Documentation">📖</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/TedTran2019"><img src="https://avatars.githubusercontent.com/u/53202666?v=4?s=80" width="80px;" alt="Ted H. Tran"/><br /><sub><b>Ted H. Tran</b></sub></a><br /><a href="https://github.com/stimulus-use/stimulus-use/commits?author=TedTran2019" title="Documentation">📖</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://talesfroma.dev"><img src="https://avatars.githubusercontent.com/u/5331654?v=4?s=80" width="80px;" alt="Romain Monteil"/><br /><sub><b>Romain Monteil</b></sub></a><br /><a href="https://github.com/stimulus-use/stimulus-use/commits?author=ker0x" title="Code">💻</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://adamyonk.com"><img src="https://avatars.githubusercontent.com/u/33258?v=4?s=80" width="80px;" alt="Adam Jahnke"/><br /><sub><b>Adam Jahnke</b></sub></a><br /><a href="https://github.com/stimulus-use/stimulus-use/commits?author=adamyonk" title="Code">💻</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://kerricklong.com/"><img src="https://avatars.githubusercontent.com/u/552093?v=4?s=80" width="80px;" alt="Kerrick Long"/><br /><sub><b>Kerrick Long</b></sub></a><br /><a href="https://github.com/stimulus-use/stimulus-use/commits?author=Kerrick" title="Code">💻</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/myabc"><img src="https://avatars.githubusercontent.com/u/755?v=4?s=80" width="80px;" alt="Alexander Brandon Coles"/><br /><sub><b>Alexander Brandon Coles</b></sub></a><br /><a href="https://github.com/stimulus-use/stimulus-use/commits?author=myabc" title="Code">💻</a></td>
     </tr>
   </tbody>
 </table>
@@ -232,10 +234,3 @@ Made with :heart: by [@adrienpoly](https://twitter.com/adrienpoly), [@marcoroth]
 <!-- ALL-CONTRIBUTORS-LIST:END -->
 
 This project follows the [all-contributors](https://github.com/all-contributors/all-contributors) specification. Contributions of any kind welcome!
-
-
-## Acknowledgments
-
-Continuous integration and cross browser testing is generously provided Sauce Labs.
-
-[![Testing Powered By SauceLabs](https://opensource.saucelabs.com/images/opensauce/powered-by-saucelabs-badge-white.png?sanitize=true "Testing Powered By SauceLabs")](https://saucelabs.com)

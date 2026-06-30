@@ -17,7 +17,8 @@ bin/importmap pin hotkeys-js
 
 ## Importing the behavior
 
-!> **Note**: `stimulus-use` version `0.52.0` changed the way how this behavior needs to be imported in your application.
+>[!WARNING] Note
+> `stimulus-use` version `0.52.0` changed the way how this behavior needs to be imported in your application.
 
 ```diff
 - import { useHotkeys } from "stimulus-use"

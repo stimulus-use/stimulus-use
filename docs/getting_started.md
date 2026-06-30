@@ -1,6 +1,6 @@
-## Getting Started
+# Getting Started
 
-#### With a build system
+## With a build system
 
 npm
 ```bash
@@ -12,7 +12,7 @@ yarn
 yarn add stimulus-use
 ```
 
-#### UMD
+## UMD
 
 If you prefer not to use a build system, you can load StimulusUse in a `<script>` tag and it will be globally available through the window.StimulusUse object.
 
