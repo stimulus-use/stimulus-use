@@ -30,9 +30,9 @@
 
 ### Stimulus 3
 
-If you want to use `stimulus-use` with Stimulus 3 you can use the version `0.50.0+`. This and all future versions are designed to work with the `@hotwired/stimulus` npm package. 
+If you want to use `stimulus-use` with Stimulus 3 you can use the version `0.50.0+`. This and all future versions are designed to work with the `@hotwired/stimulus` npm package.
 
-**Note:** If other packages still depend on the `stimulus` npm package you can safely keep that in your `package.json`, this won't break the `stimulus-use` compability.
+**Note:** If other packages still depend on the `stimulus` npm package you can safely keep that in your `package.json`, this won't break the `stimulus-use` compatibility.
 
 #### Using npm
 ```bash
