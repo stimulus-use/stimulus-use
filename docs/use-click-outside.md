@@ -56,7 +56,7 @@ export default class extends Controller {
 ```
 
 ::: warning Avoid `event.preventDefault()` in `clickOutside`
-The `event` passed to `clickOutside` is the original click (or touch) that happened outside the element. Calling `event.preventDefault()` on it cancels that click's default action, which breaks the element you clicked — submit buttons won't submit, links won't navigate, checkboxes won't toggle, etc. Close your UI without calling `preventDefault()`.
+The `event` passed to `clickOutside` is the original click (or touch) that happened outside the element. Calling `event.preventDefault()` on it cancels that click's default action, which breaks the element you clicked, submit buttons won't submit, links won't navigate, checkboxes won't toggle, etc. Close your UI without calling `preventDefault()`.
 :::
 
 **Extending a controller**
@@ -69,6 +69,56 @@ export default class extends ClickOutsideController {
     // example to close a modal
     this.modal.close()
   }
+}
+```
+
+## Multiple instances
+
+`clickOutside` is **per-instance**: each controller listens independently and only reacts to clicks that fall outside _its own_ element (or the element passed via the `element` option). When several instances of the same controller are on the page, a click that lands outside **all** of them triggers `clickOutside` on **each** of them, that is expected, since the click is genuinely outside every instance.
+
+This makes a set of independent widgets **mutually exclusive for free**: opening one closes the others, because the click that opens a widget happens _outside_ the others.
+
+```js
+// dropdown_controller.js
+import { Controller } from '@hotwired/stimulus'
+import { useClickOutside } from 'stimulus-use'
+
+export default class extends Controller {
+  static targets = ['menu']
+
+  connect() {
+    useClickOutside(this)
+  }
+
+  toggle() {
+    this.menuTarget.classList.toggle('hidden')
+  }
+
+  clickOutside() {
+    this.menuTarget.classList.add('hidden')
+  }
+}
+```
+
+```html
+<div data-controller="dropdown">
+  <button data-action="dropdown#toggle">Account</button>
+  <div data-dropdown-target="menu" class="hidden">…</div>
+</div>
+
+<div data-controller="dropdown">
+  <button data-action="dropdown#toggle">Help</button>
+  <div data-dropdown-target="menu" class="hidden">…</div>
+</div>
+```
+
+With the markup above, clicking **Help** while the **Account** menu is open closes Account (the click is outside it) and opens Help, so only one menu is ever open. `useClickOutside` listens in the capture phase, so each instance's `clickOutside` runs _before_ the `toggle` action, the previously open menu is closed first.
+
+If a single instance should treat a larger area as "inside" (so clicks there don't count as outside), scope it with the `element` option:
+
+```js
+connect() {
+  useClickOutside(this, { element: this.regionTarget })
 }
 ```
 
