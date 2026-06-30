@@ -82,8 +82,9 @@ const convertSimpleHotkeyDefinition = (definition: SimpleHotkeyDefinition): Hotk
 const coerceOptions = (options: HotkeysOptions | HotkeyDefinitions): HotkeysOptions => {
   if (!options.hotkeys) {
     const hotkeys = {}
+    const { filter, ...definitions } = options as HotkeysOptions
 
-    Object.entries(options as HotkeyDefinitions).forEach(([hotkey, definition]) => {
+    Object.entries(definitions as HotkeyDefinitions).forEach(([hotkey, definition]) => {
       Object.defineProperty(hotkeys, hotkey, {
         value: convertSimpleHotkeyDefinition(definition as SimpleHotkeyDefinition),
         writable: false,
@@ -92,7 +93,8 @@ const coerceOptions = (options: HotkeysOptions | HotkeyDefinitions): HotkeysOpti
     })
 
     options = {
-      hotkeys
+      hotkeys,
+      filter
     }
   }
 
