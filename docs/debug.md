@@ -4,6 +4,8 @@ Some `stimulus-use` mixins and controller have built in logging capabilities to 
 
 ## Global setting
 
+`stimulus-use` follows Stimulus' own [debug mode](https://stimulus.hotwired.dev/handbook/installing#debugging). Enable it on your application and `stimulus-use` will log too:
+
 ```js
 import { Application } from '@hotwired/stimulus'
 import { definitionsFromContext } from '@hotwired/stimulus-webpack-helpers'
@@ -12,15 +14,19 @@ const application = Application.start()
 const context = require.context('./controllers', true, /\.js$/)
 application.load(definitionsFromContext(context))
 
-// enable StimulusUse debug mode
-application.stimulusUseDebug = true
+// enable debug mode (Stimulus + stimulus-use)
+application.debug = true
 ```
 
 Another solution is to use the ENV variable to have something more dynamic per environment
 
 ```js
-application.stimulusUseDebug = process.env.NODE_ENV === 'development'
+application.debug = process.env.NODE_ENV === 'development'
 ```
+
+::: warning `application.stimulusUseDebug` is deprecated
+Earlier versions used a separate `application.stimulusUseDebug` flag. It still works as a fallback but is deprecated and will be removed in a future release, setting it logs a deprecation warning. Use Stimulus' built-in `application.debug` instead.
+:::
 
 ## Per mixin
 
