@@ -16,7 +16,7 @@ useWindowFocus(controller, options)
 
 | Option| Description |&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Default value&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;|
 |-----------------------|-------------|---------------------|
-| `dispatchEvent` | Whether to dispatch a `window-focus:focus` event or not.| `true` |
+| `dispatchEvent` | Whether to dispatch the `focus` / `unfocus` events or not (prefixed by the controller identifier by default, e.g. `application:focus`).| `true` |
 |`eventPrefix`| Whether to prefix or not the emitted event. Can be a **boolean** or a **string**.<br>- **true** prefix the event with the controller identifier `application:visible` <br>- **someString** prefix the event with the given string `someString:invisible` <br>- **false** to remove prefix  |true|
 | `debug` | Whether to log debug information. See [debug](debug.md) for more information on the debugging tools|false|
 | `interval` | The interval in ms to check if the window is focused or not. | `200` |
