@@ -224,6 +224,7 @@ Made with :heart: by [@adrienpoly](https://twitter.com/adrienpoly), [@marcoroth]
       <td align="center" valign="top" width="14.28%"><a href="https://talesfroma.dev"><img src="https://avatars.githubusercontent.com/u/5331654?v=4?s=80" width="80px;" alt="Romain Monteil"/><br /><sub><b>Romain Monteil</b></sub></a><br /><a href="https://github.com/stimulus-use/stimulus-use/commits?author=ker0x" title="Code">💻</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://adamyonk.com"><img src="https://avatars.githubusercontent.com/u/33258?v=4?s=80" width="80px;" alt="Adam Jahnke"/><br /><sub><b>Adam Jahnke</b></sub></a><br /><a href="https://github.com/stimulus-use/stimulus-use/commits?author=adamyonk" title="Code">💻</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://kerricklong.com/"><img src="https://avatars.githubusercontent.com/u/552093?v=4?s=80" width="80px;" alt="Kerrick Long"/><br /><sub><b>Kerrick Long</b></sub></a><br /><a href="https://github.com/stimulus-use/stimulus-use/commits?author=Kerrick" title="Code">💻</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/myabc"><img src="https://avatars.githubusercontent.com/u/755?v=4?s=80" width="80px;" alt="Alexander Brandon Coles"/><br /><sub><b>Alexander Brandon Coles</b></sub></a><br /><a href="https://github.com/stimulus-use/stimulus-use/commits?author=myabc" title="Code">💻</a></td>
     </tr>
   </tbody>
 </table>

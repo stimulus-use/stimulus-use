@@ -376,6 +376,15 @@
       "contributions": [
         "code"
       ]
+    },
+    {
+      "login": "myabc",
+      "name": "Alexander Brandon Coles",
+      "avatar_url": "https://avatars.githubusercontent.com/u/755?v=4",
+      "profile": "https://github.com/myabc",
+      "contributions": [
+        "code"
+      ]
     }
   ],
   "contributorsPerLine": 7,
