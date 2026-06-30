@@ -45,7 +45,7 @@ export default class extends ApplicationController {
     this.isPreview // true/false if it is a Turbolinks preview
     this.isConnected // true/false if the controller is connected
     this.dispatch("hello") // helper to dispatch a custom event "greet:hello" to other Stimulus controllers
-    // this.dispatch() is deprecated: For more information https://stimulus-use.github.io/stimulus-use/#/use-dispatch?id=migration-guide
+    // this.dispatch() is deprecated: For more information https://stimulus-use.dev/use-dispatch#migration-guide
   }
 }
 ```

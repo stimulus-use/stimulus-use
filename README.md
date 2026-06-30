@@ -81,7 +81,7 @@ yarn add stimulus-use@0.41.0 stimulus@2.0.0
 
 ## Documentation
 
-We got you covered 👉 [stimulus-use.github.io/stimulus-use](https://stimulus-use.github.io/stimulus-use/#/)
+Read the full documentation at [stimulus-use.dev](https://stimulus-use.dev).
 
 ## Mixins
 
