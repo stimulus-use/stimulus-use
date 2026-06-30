@@ -1,6 +1,6 @@
-## Getting Started
+# Getting Started
 
-#### With a build system
+## With a build system
 
 npm
 ```bash
@@ -12,14 +12,11 @@ yarn
 yarn add stimulus-use
 ```
 
-#### #NoBuild
+## Wihtout a build system
 
-##### Rails with Import Maps
+### Rails with Import Maps
 
-If you are using [Ruby on Rails](https://rubyonrails.org/)
-with [import maps](https://html.spec.whatwg.org/multipage/webappapis.html#import-maps)
-via [`importmap-rails`](https://github.com/rails/importmap-rails),
-you can add StimulusUse to your `importmap.rb`:
+If you are using [Ruby on Rails](https://rubyonrails.org/) with [import maps](https://html.spec.whatwg.org/multipage/webappapis.html#import-maps) via [`importmap-rails`](https://github.com/rails/importmap-rails), you can add Stimulus Use to your `importmap.rb`:
 
 ```sh
 bin/importmap pin stimulus-use
@@ -31,19 +28,14 @@ You can then import it in your Stimulus controllers:
 import { ApplicationController } from 'stimulus-use'
 ```
 
-**Important note!** Because of the way `importmap-rails` works,
-this will update your pinned version of `@hotwired/stimulus` from
-`"stimulus.min.js"` to `"@hotwired--stimulus.js" # @3.2.2`. 
-If you already had `@hotwired/stimulus` in your `importmap.rb`
-thanks to the [`stimulus-rails`](https://github.com/hotwired/stimulus-rails) gem,
+**Important note!** Because of the way `importmap-rails` works, this will update your pinned version of `@hotwired/stimulus` from `"stimulus.min.js"` to `"@hotwired--stimulus.js" # @3.2.2`. 
+
+If you already had `@hotwired/stimulus` in your `importmap.rb` thanks to the [`stimulus-rails`](https://github.com/hotwired/stimulus-rails) gem,
 you should revert this dependency to `"stimulus.min.js"`.
 
-<small>Thanks to [@searls](https://github.com/searls) for
-[pointing out this issue](https://github.com/stimulus-use/stimulus-use/issues/529).</small>
+### UMD
 
-##### UMD
-
-If you prefer not to use a build system, you can load StimulusUse in a `<script>` tag and it will be globally available through the window.StimulusUse object.
+Alternatively, you can load `StimulusUse` in a `<script>` tag and it will be globally available through the `window.StimulusUse` object.
 
 ```html
 <!doctype html>
@@ -68,6 +60,7 @@ If you prefer not to use a build system, you can load StimulusUse in a `<script>
     })()
   </script>
 </head>
+  
 <body>
   <div data-controller="hello">
     …

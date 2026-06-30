@@ -358,6 +358,33 @@
       "contributions": [
         "code"
       ]
+    },
+    {
+      "login": "adamyonk",
+      "name": "Adam Jahnke",
+      "avatar_url": "https://avatars.githubusercontent.com/u/33258?v=4",
+      "profile": "https://adamyonk.com",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "Kerrick",
+      "name": "Kerrick Long",
+      "avatar_url": "https://avatars.githubusercontent.com/u/552093?v=4",
+      "profile": "https://kerricklong.com/",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "myabc",
+      "name": "Alexander Brandon Coles",
+      "avatar_url": "https://avatars.githubusercontent.com/u/755?v=4",
+      "profile": "https://github.com/myabc",
+      "contributions": [
+        "code"
+      ]
     }
   ],
   "contributorsPerLine": 7,

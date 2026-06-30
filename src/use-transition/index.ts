@@ -1,2 +1,3 @@
 export { TransitionController } from './transition-controller'
-export { useTransition, TransitionOptions } from './use-transition'
+export { useTransition } from './use-transition'
+export type { TransitionOptions } from './use-transition'

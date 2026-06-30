@@ -8,20 +8,23 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        node: [18, 19, 20, 21]
+        node: [20, 22, 24]
 
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v7
 
       - name: Setup Node
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v6
         with:
           node-version: ${{ matrix.node }}
           cache: 'yarn'
 
       - name: Yarn install
         run: yarn install
+
+      - name: Install Playwright browser
+        run: yarn playwright install --with-deps chromium
 
       - name: Yarn build
         run: yarn build

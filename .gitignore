@@ -7,7 +7,7 @@ yarn-error.log
 *.tsbuildinfo
 *.log
 *~
-/cypress/videos/
-/cypress/screenshots/
 .rollup.cache
 playground/dist/
+docs/.vitepress/dist/
+docs/.vitepress/cache/
