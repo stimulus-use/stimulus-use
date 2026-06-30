@@ -1,6 +1,6 @@
 import { Controller, Application } from '@hotwired/stimulus'
 import { useApplication, ApplicationController } from '../src'
-import { nextFrame, TestLogger, click } from './helpers'
+import { nextFrame, TestLogger, click, loadFixture } from './helpers'
 
 const application = Application.start()
 
@@ -49,9 +49,9 @@ const controllers = [LogController, UseLogController]
 
 controllers.forEach(Controller => {
   describe(`ApplicationController tests`, function () {
-    before('initialize controller', async function () {
+    beforeAll(async function () {
       testLogger.clear()
-      fixture.load('index-application.html')
+      loadFixture('index-application.html')
       application.register('application', Controller)
       await nextFrame()
     })

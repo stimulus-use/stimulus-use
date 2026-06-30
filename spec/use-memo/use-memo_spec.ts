@@ -1,5 +1,5 @@
 import { Application } from '@hotwired/stimulus'
-import { nextFrame, TestLogger, click, remove } from '../helpers'
+import { nextFrame, TestLogger, click, remove, setFixture } from '../helpers'
 import UseLogController from './use_log_controller'
 import { fixtureBase } from './fixtures'
 
@@ -23,17 +23,17 @@ scenarios.forEach(scenario => {
       let application
       let testLogger
 
-      before('initialize controller', async function () {
+      beforeAll(async function () {
         application = Application.start()
         testLogger = new TestLogger()
         application.testLogger = testLogger
         application.options = scenario.options
-        fixture.set(scenario.fixture)
+        setFixture(scenario.fixture)
         application.register('memo', Controller.controller)
         await nextFrame()
       })
 
-      after('stop application', async function () {
+      afterAll(async function () {
         await application.stop()
       })
 

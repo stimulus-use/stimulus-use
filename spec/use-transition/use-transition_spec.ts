@@ -1,5 +1,5 @@
 import { Application } from '@hotwired/stimulus'
-import { nextFrame, TestLogger, remove, click, classList, delay } from '../helpers'
+import { nextFrame, TestLogger, remove, click, classList, delay, setFixture, cleanupFixture } from '../helpers'
 import LogController from './log_controller'
 import UseLogController from './use_log_controller'
 import { fixtureBase } from './fixtures'
@@ -19,19 +19,19 @@ controllers.forEach(Controller => {
   describe(`useTransition controller type ${Controller.type}`, function () {
     let application
     let testLogger
-    beforeEach('initialize controller', async function () {
+    beforeEach(async function () {
       application = Application.start()
       testLogger = new TestLogger()
       application.testLogger = testLogger
       await nextFrame()
-      fixture.set(fixtureBase)
+      setFixture(fixtureBase)
       application.register('transition', Controller.controller)
       await nextFrame()
       await nextFrame()
     })
 
-    afterEach('stop application', async function () {
-      fixture.cleanup()
+    afterEach(async function () {
+      cleanupFixture()
       await application.stop()
       await nextFrame()
     })
