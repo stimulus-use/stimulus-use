@@ -97,6 +97,7 @@ export default {
           { text: "useClickOutside", link: "/use-click-outside" },
           { text: "useIdle", link: "/use-idle" },
           { text: "useIntersection", link: "/use-intersection" },
+          { text: "useLazyLoad", link: "/use-lazy-load" },
           { text: "useHotkeys", link: "/use-hotkeys" },
           { text: "useHover", link: "/use-hover" },
           { text: "useMatchMedia", link: "/use-match-media" },
