@@ -4,6 +4,7 @@ export interface DebounceOptions {
   wait?: number
   name?: string
   leading?: boolean
+  trailing?: boolean
 }
 
 class DebounceController extends Controller {
@@ -12,9 +13,14 @@ class DebounceController extends Controller {
 
 const defaultWait = 200
 
-export const debounce = (fn: Function, wait: number = defaultWait, leading: boolean = false) => {
+export const debounce = (
+  fn: Function,
+  wait: number = defaultWait,
+  leading: boolean = false,
+  trailing: boolean = true
+) => {
   let timeoutId: ReturnType<typeof setTimeout> | null = null
-  let leadingCalled: boolean = false
+  let trailingPending = false
 
   return function (this: any): any {
     const args = Array.from(arguments)
@@ -25,19 +31,30 @@ export const debounce = (fn: Function, wait: number = defaultWait, leading: bool
       args.forEach((arg, index) => (arg.params = params[index]))
       return fn.apply(context, args)
     }
+
+    const startOfBurst = timeoutId === null
+
     if (timeoutId) {
       clearTimeout(timeoutId)
     }
-    if (leading && !timeoutId && !leadingCalled) {
+
+    if (leading && startOfBurst) {
       callback()
-      leadingCalled = true
+
+      trailingPending = false
     } else {
-      timeoutId = setTimeout(() => {
-        leadingCalled = false
-        timeoutId = null
-        callback()
-      }, wait)
+      trailingPending = true
     }
+
+    timeoutId = setTimeout(() => {
+      timeoutId = null
+
+      if (trailing && trailingPending) {
+        trailingPending = false
+
+        callback()
+      }
+    }, wait)
   }
 }
 
@@ -47,16 +64,22 @@ export const useDebounce = (composableController: Controller, options?: Debounce
 
   constructor.debounces.forEach((func: string | DebounceOptions) => {
     if (typeof func === 'string') {
-      ;(controller as any)[func] = debounce((controller as any)[func] as Function, options?.wait, options?.leading)
+      ;(controller as any)[func] = debounce(
+        (controller as any)[func] as Function,
+        options?.wait,
+        options?.leading,
+        options?.trailing
+      )
     }
 
     if (typeof func === 'object') {
-      const { name, wait, leading } = func as DebounceOptions
+      const { name, wait, leading, trailing } = func as DebounceOptions
       if (!name) return
       ;(controller as any)[name] = debounce(
         (controller as any)[name] as Function,
-        wait || options?.wait,
-        leading || options?.leading
+        wait ?? options?.wait,
+        leading ?? options?.leading,
+        trailing ?? options?.trailing
       )
     }
   })
