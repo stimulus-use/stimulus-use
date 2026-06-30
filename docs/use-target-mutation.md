@@ -1,6 +1,8 @@
 # useTargetMutation
 
-`useTargetMutation` tracks when targets are added and removed to your controller.
+`useTargetMutation` tracks when targets are added, updated and removed to your controller.
+
+!> **Deprecated**: `[target]TargetAdded` and `[target]TargetRemoved` are deprecated. Please use the built-in `[target]TargetConnected()` and `[target]TargetDisconnected()` functions from Stimulus: https://stimulus.hotwired.dev/reference/targets#connected-and-disconnected-callbacks
 
 It adds three new behaviors to your Stimulus controller for each target you specify:
 
