@@ -24,13 +24,13 @@ export const debounce = (
   return function (this: any): any {
     const args = Array.from(arguments)
     const context = this
-    const params = args.map(arg => (arg instanceof Event ? arg.params : undefined))
+    const params = args.map(arg => (arg instanceof Event ? (arg as any).params : undefined))
     const currentTargets = args.map(arg => (arg instanceof Event ? arg.currentTarget : undefined))
 
     const callback = () => {
       args.forEach((arg, index) => {
         if (arg instanceof Event) {
-          arg.params = params[index]
+          ;(arg as any).params = params[index]
           Object.defineProperty(arg, 'currentTarget', { configurable: true, value: currentTargets[index] })
         }
       })
