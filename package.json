@@ -47,9 +47,7 @@
     "docs:dev": "vitepress dev docs/",
     "docs:build": "vitepress build docs/",
     "prerelease": "$npm_execpath run build && $npm_execpath run test:treeshake",
-    "release": "np",
-    "cypress:open": "cypress open",
-    "cypress:run": "cypress run"
+    "release": "np"
   },
   "devDependencies": {
     "@hotwired/stimulus": ">=3",
@@ -58,7 +56,6 @@
     "@rollup/plugin-typescript": "^12.1.0",
     "@vitest/browser": "^3.2.4",
     "agadoo": "^2.0.0",
-    "cypress": "^12.3.0",
     "hotkeys-js": "^3.10.1",
     "np": "^10.0.3",
     "playwright": "^1.49.1",

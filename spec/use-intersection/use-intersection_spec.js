@@ -116,7 +116,7 @@ scenarios.forEach(scenario => {
         })
       })
 
-      // lets move it to cypress
+      // TODO: port this scroll-based scenario to browser mode (drive scrolling via the page)
       // describe('scroll down', function () {
       //   it('it fires one more "appear" for the second element and one disappear for the first', async function () {
       //     await nextFrame()
