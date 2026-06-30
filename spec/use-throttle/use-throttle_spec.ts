@@ -95,3 +95,33 @@ scenarios.forEach(scenario => {
     })
   })
 })
+
+// https://github.com/stimulus-use/stimulus-use/issues/91
+describe(`throttled controller action should retain event.currentTarget`, function () {
+  let application
+  let testLogger
+
+  beforeAll(async function () {
+    application = Application.start()
+    testLogger = new TestLogger()
+    application.testLogger = testLogger
+    application.options = {}
+
+    setFixture(fixtureBase)
+    application.register('throttle', UseLogController)
+    await nextFrame()
+  })
+
+  afterAll(async function () {
+    await application.stop()
+  })
+
+  it('retains currentTarget on the throttled action', async function () {
+    click('#throttled')
+    await nextFrame()
+
+    const aEvents = testLogger.eventsFilter({ name: ['a'] })
+    expect(aEvents.length).to.equal(1)
+    expect(aEvents[0].id).to.equal('throttled')
+  })
+})
