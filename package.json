@@ -45,9 +45,7 @@
     "format": "prettier --write **/*.js **/*.ts src/**/*.ts spec/**/*.js playground/**/*.js",
     "clean": "rimraf dist *.tsbuildinfo coverage",
     "docs:dev": "vitepress dev docs/",
-    "docs:build": "vitepress build docs/",
-    "cypress:open": "cypress open",
-    "cypress:run": "cypress run"
+    "docs:build": "vitepress build docs/"
   },
   "devDependencies": {
     "@hotwired/stimulus": ">=3",
@@ -56,13 +54,13 @@
     "@rollup/plugin-typescript": "^12.1.0",
     "@vitest/browser": "^3.2.4",
     "agadoo": "^2.0.0",
-    "cypress": "^12.3.0",
     "hotkeys-js": "^3.10.1",
     "playwright": "^1.49.1",
     "prettier": "^3.0.0",
     "rimraf": "^5.0.1",
     "rollup": "^4.9.1",
     "rollup-plugin-filesize": "^9.1.1",
+    "tslib": "^2.8.1",
     "typescript": "^5.0.4",
     "vitepress": "^1.6.4",
     "vitest": "^3.2.4"

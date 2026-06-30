@@ -6,7 +6,7 @@
     "noUnusedLocals": true,
     "rootDir": "src",
     "strict": true,
-    "target": "es2017",
+    "target": "es2020",
     "removeComments": true,
     "outDir": "dist",
     "baseUrl": ".",
