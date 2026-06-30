@@ -107,3 +107,41 @@ describe(`debounced controller action should retain Stimulus action params`, fun
     })
   })
 })
+
+// https://github.com/stimulus-use/stimulus-use/issues/91
+describe(`debounced controller action should retain event.currentTarget`, function () {
+  let application
+  let testLogger
+
+  beforeAll(async function () {
+    application = Application.start()
+    testLogger = new TestLogger()
+    application.testLogger = testLogger
+
+    setFixture(sameEventMultipleActions)
+    application.register('debounce', UseLogController)
+    await nextFrame()
+  })
+
+  afterAll(async function () {
+    await application.stop()
+  })
+
+  it('retains currentTarget on the debounced action', async function () {
+    const waitValue = 200
+    const button = document.querySelector('#debounced')
+
+    click('#debounced')
+    await nextFrame()
+
+    expect(testLogger.eventsFilter({ name: ['a'] }).length).to.equal(0)
+    expect(testLogger.eventsFilter({ name: ['b'] }).length).to.equal(1)
+
+    await delay(waitValue + 10)
+    await nextFrame()
+
+    const aEvents = testLogger.eventsFilter({ name: ['a'] })
+    expect(aEvents.length).to.equal(1)
+    expect(aEvents[0].currentTarget).to.equal(button)
+  })
+})
