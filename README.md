@@ -10,6 +10,7 @@
   <a href="https://www.npmjs.com/package/stimulus-use"><img alt="npm Version" src="https://img.shields.io/npm/v/stimulus-use"></a>
   <a href="https://bundlephobia.com/result?p=stimulus-use"><img alt="minified + gzip size" src="https://img.shields.io/bundlephobia/minzip/stimulus-use"></a>
   <a href="https://www.npmjs.com/package/stimulus-use"><img alt="Types Included" src="https://img.shields.io/npm/types/stimulus-use"></a>
+  <a href="https://pkg.pr.new/~/stimulus-use/stimulus-use"><img alt="pkg.pr.new" src="https://pkg.pr.new/badge/stimulus-use/stimulus-use"></a>
 </p>
 <br />
 

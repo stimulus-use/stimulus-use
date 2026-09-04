@@ -12,6 +12,12 @@ Thanks for your interest in contributing to `stimulus-use`!
 - `yarn format` - to format changes with Prettier
 - `yarn build` - to bundle the app into static files for production
 
+## Preview builds
+
+Commits on `main` and pull requests opened by maintainers are published as preview packages to [pkg.pr.new](https://pkg.pr.new/~/stimulus-use/stimulus-use), and a bot comments the install command on the pull request.
+
+For a pull request from a fork, a maintainer needs to add the `release-preview` label to opt it in.
+
 ## Documentation
 
 The documentation site is built with [VitePress](https://vitepress.dev/) and lives in the [`docs/`](./docs) directory.

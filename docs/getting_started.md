@@ -12,6 +12,22 @@ yarn
 yarn add stimulus-use
 ```
 
+## Preview builds
+
+Every commit on `main` and every pull request from a maintainer is published to [pkg.pr.new](https://pkg.pr.new/~/stimulus-use/stimulus-use). You can install an unreleased build directly from a commit or PR:
+
+npm
+```bash
+npm i https://pkg.pr.new/stimulus-use@{commit}
+```
+
+yarn
+```bash
+yarn add https://pkg.pr.new/stimulus-use@{commit}
+```
+
+Replace `{commit}` with a commit SHA (e.g. `209b96d`) or a pull request number (e.g. `606`). Browse the available preview builds at [pkg.pr.new/~/stimulus-use/stimulus-use](https://pkg.pr.new/~/stimulus-use/stimulus-use).
+
 ## Without a build system
 
 ### Rails with Import Maps
