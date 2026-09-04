@@ -18,5 +18,5 @@ yarn-error.log
 /src
 readme.md
 .all-contributorsrc
-rollup.config.mjs
+rolldown.config.mjs
 vitest.config.ts

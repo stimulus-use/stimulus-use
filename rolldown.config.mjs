@@ -1,27 +1,24 @@
-import resolve from '@rollup/plugin-node-resolve'
-import typescript from '@rollup/plugin-typescript'
-import filesize from 'rollup-plugin-filesize'
-import terser from '@rollup/plugin-terser'
+import { defineConfig } from 'rolldown'
 import { readFileSync } from 'fs'
 
 const json = JSON.parse(readFileSync('./package.json'))
 const banner = `/*\n * stimulus-use ${json.version}\n */`
 
-const pretty = () => {
-  return terser({
-    mangle: false,
-    compress: false,
-    format: {
-      comments: "all",
-      beautify: true,
-      indent_level: 2
-    }
-  })
+const pretty = {
+  compress: false,
+  mangle: false,
+  codegen: {
+    removeWhitespace: false,
+    legalComments: 'inline'
+  }
 }
 
-export default [
+const transform = { target: 'es2020' }
+
+export default defineConfig([
   {
     input: 'src/index.ts',
+    transform,
     external: ['@hotwired/stimulus'],
     output: [
       {
@@ -29,6 +26,7 @@ export default [
         file: 'dist/index.umd.js',
         format: 'umd',
         banner,
+        minify: pretty,
         globals: {
           '@hotwired/stimulus': 'Stimulus'
         }
@@ -36,16 +34,17 @@ export default [
       {
         file: 'dist/index.js',
         format: 'es',
-        banner
+        banner,
+        minify: pretty
       }
     ],
-    plugins: [resolve(), typescript(), filesize(), pretty()],
     watch: {
       include: 'src/**'
     }
   },
   {
     input: 'src/hotkeys.ts',
+    transform,
     external: ['@hotwired/stimulus', 'hotkeys-js'],
     output: [
       {
@@ -53,6 +52,7 @@ export default [
         file: 'dist/hotkeys.umd.js',
         format: 'umd',
         banner,
+        minify: pretty,
         globals: {
           '@hotwired/stimulus': 'Stimulus',
           'hotkeys-js': 'hotkeys'
@@ -61,12 +61,12 @@ export default [
       {
         file: 'dist/hotkeys.js',
         format: 'es',
-        banner
+        banner,
+        minify: pretty
       }
     ],
-    plugins: [resolve(), typescript(), filesize(), pretty()],
     watch: {
       include: ['src/hotkeys.ts', 'src/use-hotkeys/**/*']
     }
   }
-]
+])
