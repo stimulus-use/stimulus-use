@@ -1,0 +1,48 @@
+name: Preview
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+    tags:
+      - '!**'
+  pull_request:
+    types: [opened, synchronize, labeled]
+
+permissions:
+  contents: read
+
+jobs:
+  preview:
+    name: Publish preview package
+    if: |
+      github.repository == 'stimulus-use/stimulus-use' && (
+        github.event_name != 'pull_request' ||
+        github.event.pull_request.head.repo.full_name == github.repository ||
+        contains(github.event.pull_request.labels.*.name, 'release-preview')
+      )
+
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v6
+        with:
+          node-version-file: ".node-version"
+          cache: 'yarn'
+
+      - name: Check permissions
+        id: check
+        if: github.event_name == 'pull_request'
+        uses: actions-cool/check-user-permission@v2
+        with:
+          require: write
+
+      - run: yarn install --frozen-lockfile
+      - run: yarn build
+
+      - name: Publish preview package
+        if: github.event_name != 'pull_request' || steps.check.outputs.require-result == 'true'
+        run: npx pkg-pr-new@0.0.88 publish --compact --comment=update --no-template
