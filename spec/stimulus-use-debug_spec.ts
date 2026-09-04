@@ -24,14 +24,14 @@ class DebugController extends Controller {
   }
 }
 
-const deprecationWarnings = (spy: any) =>
-  spy.mock.calls.filter((args: any[]) => String(args[0]).includes('stimulusUseDebug'))
+const deprecationWarnings = (spy: any) =>  spy.mock.calls.filter((args: any[]) => String(args[0]).includes('stimulusUseDebug'))
 
 describe(`StimulusUse debug mode`, function () {
   describe('with application.debug', function () {
     let application: any
     let logger: ReturnType<typeof makeLogger>
     let warnSpy: any
+    let warnings: any[]
 
     beforeAll(async function () {
       warnSpy = vi.spyOn(console, 'warn').mockImplementation(() => {})
@@ -43,6 +43,8 @@ describe(`StimulusUse debug mode`, function () {
       setFixture(`<div data-controller="debug-app" id="d1"></div>`)
       application.register('debug-app', DebugController)
       await nextFrame()
+
+      warnings = deprecationWarnings(warnSpy)
     })
 
     afterAll(async function () {
@@ -55,7 +57,7 @@ describe(`StimulusUse debug mode`, function () {
     })
 
     it('does not emit a deprecation warning', function () {
-      expect(deprecationWarnings(warnSpy).length).to.equal(0)
+      expect(warnings.length).to.equal(0)
     })
   })
 
@@ -63,6 +65,7 @@ describe(`StimulusUse debug mode`, function () {
     let application: any
     let logger: ReturnType<typeof makeLogger>
     let warnSpy: any
+    let warnings: any[]
 
     beforeAll(async function () {
       warnSpy = vi.spyOn(console, 'warn').mockImplementation(() => {})
@@ -74,6 +77,8 @@ describe(`StimulusUse debug mode`, function () {
       setFixture(`<div data-controller="debug-legacy" id="d2"></div>`)
       application.register('debug-legacy', DebugController)
       await nextFrame()
+
+      warnings = deprecationWarnings(warnSpy)
     })
 
     afterAll(async function () {
@@ -86,7 +91,7 @@ describe(`StimulusUse debug mode`, function () {
     })
 
     it('emits a deprecation warning', function () {
-      expect(deprecationWarnings(warnSpy).length).to.be.greaterThan(0)
+      expect(warnings.length).to.be.greaterThan(0)
     })
   })
 

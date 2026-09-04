@@ -41,15 +41,16 @@
     "test": "vitest run",
     "test:watch": "vitest",
     "test:treeshake": "npx agadoo",
-    "lint": "prettier --check src/**/*.ts spec/**/*.ts playground/**/*.js vitest.config.ts",
-    "format": "prettier --write src/**/*.ts spec/**/*.ts playground/**/*.js vitest.config.ts",
+    "lint": "prettier --check src/**/*.ts spec/**/*.ts playground/**/*.js vitest.config.mts",
+    "format": "prettier --write src/**/*.ts spec/**/*.ts playground/**/*.js vitest.config.mts",
     "clean": "rimraf dist *.tsbuildinfo coverage",
     "docs:dev": "vitepress dev docs/",
     "docs:build": "vitepress build docs/"
   },
   "devDependencies": {
     "@hotwired/stimulus": ">=3",
-    "@vitest/browser": "^3.2.4",
+    "@vitest/browser": "^5.0.0",
+    "@vitest/browser-playwright": "^5.0.0",
     "agadoo": "^2.0.0",
     "hotkeys-js": "^3.10.1",
     "playwright": "^1.49.1",
@@ -58,8 +59,9 @@
     "rolldown": "1.2.7",
     "tslib": "^2.8.1",
     "typescript": "7.0.2",
+    "vite": "^8.2.2",
     "vitepress": "2.0.0-alpha.20",
-    "vitest": "^3.2.4"
+    "vitest": "^5.0.0"
   },
   "peerDependencies": {
     "@hotwired/stimulus": ">= 3",

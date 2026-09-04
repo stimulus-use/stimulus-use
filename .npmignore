@@ -19,4 +19,4 @@ yarn-error.log
 readme.md
 .all-contributorsrc
 rolldown.config.mjs
-vitest.config.ts
+vitest.config.mts

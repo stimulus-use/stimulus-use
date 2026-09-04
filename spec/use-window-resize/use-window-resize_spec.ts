@@ -1,5 +1,5 @@
 import { Application } from '@hotwired/stimulus'
-import { page } from '@vitest/browser/context'
+import { page } from 'vitest/browser'
 import { nextFrame, TestLogger, setFixture, cleanupFixture } from '../helpers'
 import { LogController } from './log_controller'
 import { UseLogController } from './use_log_controller'
