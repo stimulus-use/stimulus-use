@@ -40,7 +40,7 @@
     "dev": "rollup -wc",
     "test": "vitest run",
     "test:watch": "vitest",
-    "test:treeshake": "$npm_execpath run agadoo",
+    "test:treeshake": "npx agadoo",
     "lint": "prettier --check src/**/*.ts spec/**/*.ts playground/**/*.js vitest.config.ts",
     "format": "prettier --write src/**/*.ts spec/**/*.ts playground/**/*.js vitest.config.ts",
     "clean": "rimraf dist *.tsbuildinfo coverage",
