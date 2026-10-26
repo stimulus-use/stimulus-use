@@ -51,7 +51,7 @@
     "@hotwired/stimulus": ">=3",
     "@vitest/browser": "^5.0.0",
     "@vitest/browser-playwright": "^5.0.0",
-    "agadoo": "^2.0.0",
+    "agadoo": "^3.0.0",
     "hotkeys-js": "^3.13.15",
     "playwright": "^1.62.1",
     "prettier": "^3.9.6",
