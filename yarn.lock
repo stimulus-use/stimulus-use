@@ -938,10 +938,10 @@ hookable@^5.5.3:
   resolved "https://registry.yarnpkg.com/hookable/-/hookable-5.5.3.tgz#6cfc358984a1ef991e2518cb9ed4a778bbd3215d"
   integrity sha512-Yc+BQe8SvoXH1643Qez1zqLRmbA5rCL+sSmk6TVos0LWVfNIB7PGncdlId77WzLGSIB5KaWgTaNTs2lNVEI6VQ==
 
-hotkeys-js@^3.13.15:
-  version "3.13.15"
-  resolved "https://registry.yarnpkg.com/hotkeys-js/-/hotkeys-js-3.13.15.tgz#2d394bd6bd78857d4b24dc86bdba2fa1cf7012fc"
-  integrity sha512-gHh8a/cPTCpanraePpjRxyIlxDFrIhYqjuh01UHWEwDpglJKCnvLW8kqSx5gQtOuSsJogNZXLhOdbSExpgUiqg==
+hotkeys-js@^4.0.9:
+  version "4.0.9"
+  resolved "https://registry.yarnpkg.com/hotkeys-js/-/hotkeys-js-4.0.9.tgz#8ff8937f98993e0b0ac90a61f295bedffb60f165"
+  integrity sha512-7hmoUO/3FF8RED6yv5aAz5V5kHQT1uzmBxgS4XLdPoMGML+ZjYQH5olmZR8bZ1TaDBbE6+NCu8JBvI2MA6aMBQ==
 
 html-void-elements@^3.0.0:
   version "3.0.0"
