@@ -25,7 +25,7 @@ export const useIntersection = (composableController: Controller, options: Inter
   controller.intersectionElements.push(targetElement)
 
   const callback = (entries: IntersectionObserverEntry[]) => {
-    const [entry] = entries
+    const entry = entries[entries.length - 1]
     if (entry.isIntersecting) {
       dispatchAppear(entry)
     } else if (targetElement.hasAttribute(visibleAttribute)) {
