@@ -3,7 +3,7 @@ import { method } from '../support/index'
 
 export const useLazyLoad = (controller: LazyLoadComposableController, options?: IntersectionObserverInit) => {
   const callback = (entries: IntersectionObserverEntry[]) => {
-    const [entry] = entries
+    const entry = entries[entries.length - 1]
     if (entry.isIntersecting && !controller.isLoaded) {
       handleAppear(entry)
     }
